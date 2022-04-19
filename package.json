@@ -32,9 +32,11 @@
     "typescript": "4.6.3"
   },
   "prettier": {
-    "singleQuote": true,
+    "bracketSameLine": true,
     "importOrderSeparation": true,
     "importOrderSortSpecifiers": true,
-    "importOrderCaseInsensitive": true
+    "importOrderCaseInsensitive": true,
+    "printWidth": 110,
+    "singleQuote": true
   }
 }
