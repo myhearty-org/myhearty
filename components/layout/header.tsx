@@ -21,8 +21,8 @@ function NavItem({ href, children }: NavItemProps) {
       <a
         className={cn(
           isActive &&
-            'text-pink-600 after:absolute after:h-full after:w-full after:mt-6 after:border-pink-600 after:border-b-2',
-          'relative flex items-center justify-center p-2 text-base font-medium text-gray-90 hover:text-pink-600'
+            'text-pink-600 after:absolute after:mt-6 after:h-full after:w-full after:border-b-2 after:border-pink-600',
+          'text-gray-90 relative flex items-center justify-center p-2 text-base font-medium hover:text-pink-600'
         )}>
         {children}
       </a>
@@ -35,7 +35,7 @@ function LogoTextLink() {
     <Link href="/">
       <a className="flex items-center p-2">
         <Logo className="mr-3" width={36} height={36} />
-        <span className="inline-block text-xl font-semibold whitespace-nowrap sm:text-lg">MyHearty</span>
+        <span className="inline-block whitespace-nowrap text-xl font-semibold sm:text-lg">MyHearty</span>
       </a>
     </Link>
   );
@@ -44,7 +44,7 @@ function LogoTextLink() {
 function LoginLink() {
   return (
     <Link href="/login">
-      <a className="inline-flex items-center justify-center px-3 py-2 text-base font-medium text-gray-900 whitespace-nowrap hover:text-pink-600">
+      <a className="inline-flex items-center justify-center whitespace-nowrap px-3 py-2 text-base font-medium text-gray-900 hover:text-pink-600">
         Log In
       </a>
     </Link>
@@ -54,9 +54,9 @@ function LoginLink() {
 function SignupLink() {
   return (
     <Link href="/signup">
-      <a className="inline-flex items-center justify-center px-3 py-2 text-base font-medium text-white bg-pink-500 border border-transparent rounded-md shadow-sm hover:bg-pink-600 group whitespace-nowrap">
-        <span className="group-hover:transition group-hover:-translate-x-0.5">Sign Up</span>
-        <ChevronRightIcon className="w-6 h-6 group-hover:transition group-hover:translate-x-1" />
+      <a className="group inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-pink-500 px-3 py-2 text-base font-medium text-white shadow-sm hover:bg-pink-600">
+        <span className="group-hover:-translate-x-0.5 group-hover:transition">Sign Up</span>
+        <ChevronRightIcon className="h-6 w-6 group-hover:translate-x-1 group-hover:transition" />
       </a>
     </Link>
   );
@@ -71,8 +71,8 @@ type MobileNavItemProps = {
 function MobileNavItem({ href, icon, name }: MobileNavItemProps) {
   return (
     <Link href={href}>
-      <a className="flex items-center p-3 -m-3 rounded-md hover:bg-pink-50" key={name}>
-        <span className="flex-shrink-0 w-6 h-6 text-pink-600">{icon}</span>
+      <a className="-m-3 flex items-center rounded-md p-3 hover:bg-pink-50" key={name}>
+        <span className="h-6 w-6 flex-shrink-0 text-pink-600">{icon}</span>
         <span className="ml-3 text-base font-medium text-gray-900">{name}</span>
       </a>
     </Link>
@@ -82,7 +82,7 @@ function MobileNavItem({ href, icon, name }: MobileNavItemProps) {
 function MobileSignupLink() {
   return (
     <Link href="/signup">
-      <a className="flex items-center justify-center w-full px-3 py-2 text-base font-medium text-white bg-pink-500 border border-transparent rounded-md shadow-sm hover:bg-pink-600">
+      <a className="flex w-full items-center justify-center rounded-md border border-transparent bg-pink-500 px-3 py-2 text-base font-medium text-white shadow-sm hover:bg-pink-600">
         Sign Up
       </a>
     </Link>
@@ -92,7 +92,7 @@ function MobileSignupLink() {
 function MobileLoginLink() {
   return (
     <Link href="/login">
-      <a className="flex items-center justify-center w-full px-3 py-2 text-base font-medium text-pink-600 hover:text-pink-400">
+      <a className="flex w-full items-center justify-center px-3 py-2 text-base font-medium text-pink-600 hover:text-pink-400">
         Log In
       </a>
     </Link>
@@ -111,18 +111,18 @@ function MobileMenu() {
       leaveTo="opacity-0 scale-95">
       <Popover.Panel
         focus
-        className="absolute inset-x-0 top-0 z-10 p-2 transition origin-top-right transform md:hidden">
-        <div className="bg-white divide-y-2 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 divide-gray-50">
+        className="absolute inset-x-0 top-0 z-10 origin-top-right transform p-2 transition md:hidden">
+        <div className="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
           <div className="p-5">
             <div className="flex items-center justify-between">
               <Logo width={36} height={36} />
               <div className="-mr-3">
-                <Popover.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500">
-                  <XIcon className="w-6 h-6" />
+                <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500">
+                  <XIcon className="h-6 w-6" />
                 </Popover.Button>
               </div>
             </div>
-            <div className="px-2 mt-6">
+            <div className="mt-6 px-2">
               <nav className="grid gap-y-8">
                 <MobileNavItem href={'/campaigns'} name="Donate Today" icon={<GiftIcon />} />
                 <MobileNavItem href={'/volunteer-events'} name="Be a Volunteer" icon={<UsersIcon />} />
@@ -130,7 +130,7 @@ function MobileMenu() {
               </nav>
             </div>
           </div>
-          <div className="p-6 space-y-2">
+          <div className="space-y-2 p-6">
             <MobileSignupLink />
             <MobileLoginLink />
           </div>
@@ -142,21 +142,21 @@ function MobileMenu() {
 
 export function Header() {
   return (
-    <Popover as="nav" className="relative bg-white border-b-2 border-gray-100 shadow-sm">
-      <div className="px-4 py-1 mx-auto max-w-8xl">
-        <div className="flex items-center justify-start mx-auto md:space-x-5">
+    <Popover as="nav" className="relative border-b-2 border-gray-100 bg-white shadow-sm">
+      <div className="max-w-8xl mx-auto px-4 py-1">
+        <div className="mx-auto flex items-center justify-start md:space-x-5">
           <LogoTextLink />
-          <div className="items-center hidden md:flex md:space-x-2">
+          <div className="hidden items-center md:flex md:space-x-2">
             <NavItem href={'/campaigns'}>Donate Today</NavItem>
             <NavItem href={'/volunteer-events'}>Be a Volunteer</NavItem>
             <NavItem href={'/aids'}>Receive Aids</NavItem>
           </div>
-          <div className="flex justify-end flex-1 w-0 md:hidden">
-            <Popover.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500">
-              <MenuIcon className="w-6 h-6" />
+          <div className="flex w-0 flex-1 justify-end md:hidden">
+            <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500">
+              <MenuIcon className="h-6 w-6" />
             </Popover.Button>
           </div>
-          <div className="items-center justify-end hidden lg:space-x-4 md:flex md:flex-1 md:w-0">
+          <div className="hidden items-center justify-end md:flex md:w-0 md:flex-1 lg:space-x-4">
             <LoginLink />
             <SignupLink />
           </div>
