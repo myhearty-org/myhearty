@@ -24,7 +24,7 @@ function SignupLink() {
 
 export function Footer() {
   return (
-    <footer className="bg-white border-t-2 border-gray-100">
+    <footer className="relative bg-white border-t-2 border-gray-100">
       <div className="px-4 pt-1 pb-4 mx-auto max-w-8xl">
         <div className="flex flex-col items-center">
           <LogoText />
