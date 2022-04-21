@@ -70,32 +70,38 @@ type MobileNavItemProps = {
 
 function MobileNavItem({ href, icon, name }: MobileNavItemProps) {
   return (
-    <Link href={href}>
-      <a className="-m-3 flex items-center rounded-md p-3 hover:bg-pink-50" key={name}>
-        <span className="h-6 w-6 flex-shrink-0 text-pink-600">{icon}</span>
-        <span className="ml-3 text-base font-medium text-gray-900">{name}</span>
-      </a>
-    </Link>
+    <Popover.Button as={'div'}>
+      <Link href={href}>
+        <a className="-m-3 flex items-center rounded-md p-3 hover:bg-pink-50" key={name}>
+          <span className="h-6 w-6 flex-shrink-0 text-pink-600">{icon}</span>
+          <span className="ml-3 text-base font-medium text-gray-900">{name}</span>
+        </a>
+      </Link>
+    </Popover.Button>
   );
 }
 
 function MobileSignupLink() {
   return (
-    <Link href="/signup">
-      <a className="flex w-full items-center justify-center rounded-md border border-transparent bg-pink-500 px-3 py-2 text-base font-medium text-white shadow-sm hover:bg-pink-600">
-        Sign Up
-      </a>
-    </Link>
+    <Popover.Button as={'div'}>
+      <Link href="/signup">
+        <a className="flex w-full items-center justify-center rounded-md border border-transparent bg-pink-500 px-3 py-2 text-base font-medium text-white shadow-sm hover:bg-pink-600">
+          Sign Up
+        </a>
+      </Link>
+    </Popover.Button>
   );
 }
 
 function MobileLoginLink() {
   return (
-    <Link href="/login">
-      <a className="flex w-full items-center justify-center px-3 py-2 text-base font-medium text-pink-600 hover:text-pink-400">
-        Log In
-      </a>
-    </Link>
+    <Popover.Button as={'div'}>
+      <Link href="/login">
+        <a className="flex w-full items-center justify-center px-3 py-2 text-base font-medium text-pink-600 hover:text-pink-400">
+          Log In
+        </a>
+      </Link>
+    </Popover.Button>
   );
 }
 
