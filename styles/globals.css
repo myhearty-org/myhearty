@@ -5,3 +5,7 @@
 #__next {
   @apply flex flex-col min-h-screen text-gray-900;
 }
+
+*:focus-visible {
+  @apply outline outline-2 outline-pink-500;
+}
