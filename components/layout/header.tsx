@@ -44,7 +44,7 @@ function LogoTextLink() {
 function LoginLink() {
   return (
     <Link href="/login">
-      <a className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-gray-900 whitespace-nowrap hover:text-pink-600">
+      <a className="inline-flex items-center justify-center px-3 py-2 text-base font-medium text-gray-900 whitespace-nowrap hover:text-pink-600">
         Log In
       </a>
     </Link>
@@ -54,7 +54,7 @@ function LoginLink() {
 function SignupLink() {
   return (
     <Link href="/signup">
-      <a className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-pink-500 border border-transparent rounded-md shadow-sm hover:bg-pink-600 group whitespace-nowrap">
+      <a className="inline-flex items-center justify-center px-3 py-2 text-base font-medium text-white bg-pink-500 border border-transparent rounded-md shadow-sm hover:bg-pink-600 group whitespace-nowrap">
         <span className="group-hover:transition group-hover:-translate-x-0.5">Sign Up</span>
         <ChevronRightIcon className="w-6 h-6 group-hover:transition group-hover:translate-x-1" />
       </a>
@@ -82,7 +82,7 @@ function MobileNavItem({ href, icon, name }: MobileNavItemProps) {
 function MobileSignupLink() {
   return (
     <Link href="/signup">
-      <a className="flex items-center justify-center w-full px-4 py-2 text-base font-medium text-white bg-pink-500 border border-transparent rounded-md shadow-sm hover:bg-pink-600">
+      <a className="flex items-center justify-center w-full px-3 py-2 text-base font-medium text-white bg-pink-500 border border-transparent rounded-md shadow-sm hover:bg-pink-600">
         Sign Up
       </a>
     </Link>
@@ -92,7 +92,7 @@ function MobileSignupLink() {
 function MobileLoginLink() {
   return (
     <Link href="/login">
-      <a className="flex items-center justify-center w-full px-4 py-2 text-base font-medium text-pink-600 hover:text-pink-400">
+      <a className="flex items-center justify-center w-full px-3 py-2 text-base font-medium text-pink-600 hover:text-pink-400">
         Log In
       </a>
     </Link>
