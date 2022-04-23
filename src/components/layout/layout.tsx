@@ -1,6 +1,7 @@
 import { Footer } from './footer';
 import { Header } from './header';
 import { Main } from './main';
+import { Toaster } from 'react-hot-toast';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -12,6 +13,7 @@ export function Layout({ children }: LayoutProps) {
       <Header />
       <Main>{children}</Main>
       <Footer />
+      <Toaster position="bottom-right" />
     </div>
   );
 }

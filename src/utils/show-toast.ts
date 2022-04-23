@@ -5,22 +5,15 @@ export function showToast(message: string, variant: 'success' | 'warning' | 'err
     case 'success':
       toast.success(message, {
         duration: 6000,
-        style: {
-          borderRadius: '4px',
-          background: '#333',
-          color: '#fff',
-          boxShadow: 'none',
-        },
       });
       break;
     case 'warning':
       toast(message, {
         duration: 6000,
+        icon: '⚠️',
         style: {
-          borderRadius: '4px',
           background: '#FFEDD5',
           color: '#C2410C',
-          boxShadow: 'none',
         },
       });
       break;
@@ -28,22 +21,14 @@ export function showToast(message: string, variant: 'success' | 'warning' | 'err
       toast.error(message, {
         duration: 6000,
         style: {
-          borderRadius: '4px',
           background: '#FEE2E2',
           color: '#B91C1C',
-          boxShadow: 'none',
         },
       });
       break;
     default:
       toast.success(message, {
         duration: 6000,
-        style: {
-          borderRadius: '4px',
-          background: '#333',
-          color: '#fff',
-          boxShadow: 'none',
-        },
       });
   }
 }
