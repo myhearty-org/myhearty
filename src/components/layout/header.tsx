@@ -1,4 +1,4 @@
-import { Logo } from '@components/icons/logo';
+import { Logo } from '@components/ui/icons/logo';
 import { Button } from '@components/ui/button';
 import { Popover, Transition } from '@headlessui/react';
 import { GiftIcon, HeartIcon, MenuIcon, UsersIcon, XIcon } from '@heroicons/react/outline';
