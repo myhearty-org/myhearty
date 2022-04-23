@@ -1,4 +1,4 @@
-import { SpinnerIcon } from '@components/icons/spinner-icon';
+import { Spinner } from '@components/ui/icons/spinner';
 import cn from 'classnames';
 import Link, { LinkProps } from 'next/link';
 import React, { forwardRef } from 'react';
@@ -97,7 +97,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
       {props.children}
       {loading && (
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-          <SpinnerIcon theme={color === 'primary' ? 'light' : 'dark'} />
+          <Spinner theme={color === 'primary' ? 'light' : 'dark'} />
         </div>
       )}
       {EndIcon && <EndIcon className="-mr-1 inline h-5 w-5 ltr:ml-2 rtl:mr-2" />}

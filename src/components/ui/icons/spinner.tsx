@@ -1,10 +1,10 @@
 import cn from 'classnames';
 
-type SpinnerIconProps = {
+type SpinnerProps = {
   theme: 'light' | 'dark';
 };
 
-export function SpinnerIcon({ theme }: SpinnerIconProps) {
+export function Spinner({ theme }: SpinnerProps) {
   return (
     <svg
       className={cn('mx-4 h-5 w-5 animate-spin', theme === 'light' ? 'text-white' : 'text-pink-400')}
