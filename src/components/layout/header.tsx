@@ -16,7 +16,7 @@ function LogoTextLink() {
       </a>
     </Link>
   );
-}3
+}
 
 type NavItemProps = {
   href: string;
@@ -31,9 +31,10 @@ function NavItem({ href, children }: NavItemProps) {
     <Link href={href}>
       <a
         className={cn(
-          isActive &&
-            'text-pink-600 after:absolute after:mt-6 after:h-full after:w-full after:border-b-2 after:border-pink-600',
-          'relative flex items-center justify-center p-2 text-base font-medium text-gray-900 hover:text-pink-600'
+          'relative flex items-center justify-center p-2 text-base font-medium hover:text-pink-600',
+          isActive
+            ? 'text-pink-600 after:absolute after:mt-6 after:h-full after:w-full after:border-b-2 after:border-pink-600'
+            : 'text-gray-900'
         )}>
         {children}
       </a>
