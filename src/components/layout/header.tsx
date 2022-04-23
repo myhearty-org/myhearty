@@ -1,11 +1,22 @@
 import { Logo } from '@components/icons/logo';
+import { Button } from '@components/ui/button';
 import { Popover, Transition } from '@headlessui/react';
 import { GiftIcon, HeartIcon, MenuIcon, UsersIcon, XIcon } from '@heroicons/react/outline';
-import { ChevronRightIcon } from '@heroicons/react/solid';
 import cn from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Fragment } from 'react';
+
+function LogoTextLink() {
+  return (
+    <Link href="/">
+      <a className="flex items-center p-2">
+        <Logo className="mr-3" width={36} height={36} />
+        <span className="inline-block whitespace-nowrap text-xl font-semibold sm:text-lg">MyHearty</span>
+      </a>
+    </Link>
+  );
+}3
 
 type NavItemProps = {
   href: string;
@@ -22,41 +33,9 @@ function NavItem({ href, children }: NavItemProps) {
         className={cn(
           isActive &&
             'text-pink-600 after:absolute after:mt-6 after:h-full after:w-full after:border-b-2 after:border-pink-600',
-          'text-gray-90 relative flex items-center justify-center p-2 text-base font-medium hover:text-pink-600'
+          'relative flex items-center justify-center p-2 text-base font-medium text-gray-900 hover:text-pink-600'
         )}>
         {children}
-      </a>
-    </Link>
-  );
-}
-
-function LogoTextLink() {
-  return (
-    <Link href="/">
-      <a className="flex items-center p-2">
-        <Logo className="mr-3" width={36} height={36} />
-        <span className="inline-block whitespace-nowrap text-xl font-semibold sm:text-lg">MyHearty</span>
-      </a>
-    </Link>
-  );
-}
-
-function LoginLink() {
-  return (
-    <Link href="/login">
-      <a className="inline-flex items-center justify-center whitespace-nowrap px-3 py-2 text-base font-medium text-gray-900 hover:text-pink-600">
-        Log In
-      </a>
-    </Link>
-  );
-}
-
-function SignupLink() {
-  return (
-    <Link href="/signup">
-      <a className="group inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-pink-500 px-3 py-2 text-base font-medium text-white shadow-sm hover:bg-pink-600">
-        <span className="group-hover:-translate-x-0.5 group-hover:transition">Sign Up</span>
-        <ChevronRightIcon className="h-6 w-6 group-hover:translate-x-1 group-hover:transition" />
       </a>
     </Link>
   );
@@ -75,30 +54,6 @@ function MobileNavItem({ href, icon, name }: MobileNavItemProps) {
         <a className="-m-3 flex items-center rounded-md p-3 hover:bg-pink-50" key={name}>
           <span className="h-6 w-6 flex-shrink-0 text-pink-600">{icon}</span>
           <span className="ml-3 text-base font-medium text-gray-900">{name}</span>
-        </a>
-      </Link>
-    </Popover.Button>
-  );
-}
-
-function MobileSignupLink() {
-  return (
-    <Popover.Button as={'div'}>
-      <Link href="/signup">
-        <a className="flex w-full items-center justify-center rounded-md border border-transparent bg-pink-500 px-3 py-2 text-base font-medium text-white shadow-sm hover:bg-pink-600">
-          Sign Up
-        </a>
-      </Link>
-    </Popover.Button>
-  );
-}
-
-function MobileLoginLink() {
-  return (
-    <Popover.Button as={'div'}>
-      <Link href="/login">
-        <a className="flex w-full items-center justify-center px-3 py-2 text-base font-medium text-pink-600 hover:text-pink-400">
-          Log In
         </a>
       </Link>
     </Popover.Button>
@@ -137,8 +92,16 @@ function MobileMenu() {
             </div>
           </div>
           <div className="space-y-2 p-6">
-            <MobileSignupLink />
-            <MobileLoginLink />
+            <Popover.Button as={'div'}>
+              <Button className="w-full justify-center" href="/signup" type="button" size="lg">
+                Sign Up
+              </Button>
+            </Popover.Button>
+            <Popover.Button as={'div'}>
+              <Button className="w-full justify-center" href="/login" type="button" color="minimal" size="lg">
+                Log In
+              </Button>
+            </Popover.Button>
           </div>
         </div>
       </Popover.Panel>
@@ -163,8 +126,12 @@ export function Header() {
             </Popover.Button>
           </div>
           <div className="hidden items-center justify-end md:flex md:w-0 md:flex-1 lg:space-x-4">
-            <LoginLink />
-            <SignupLink />
+            <Button href="/login" type="button" color="minimal" size="lg">
+              Log In
+            </Button>
+            <Button href="/signup" type="button" size="lg">
+              Sign Up
+            </Button>
           </div>
         </div>
       </div>

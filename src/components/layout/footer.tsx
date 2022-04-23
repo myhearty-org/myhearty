@@ -1,4 +1,5 @@
 import { Logo } from '@components/icons/logo';
+import { Button } from '@components/ui/button';
 import Link from 'next/link';
 
 function LogoText() {
@@ -12,16 +13,6 @@ function LogoText() {
   );
 }
 
-function SignupLink() {
-  return (
-    <Link href="/signup">
-      <a className="flex w-full items-center justify-center rounded-md border border-transparent bg-pink-500 px-3 py-2 text-base font-medium text-white shadow-sm hover:bg-pink-600">
-        Sign Up Now
-      </a>
-    </Link>
-  );
-}
-
 export function Footer() {
   return (
     <footer className="relative border-t-2 border-gray-100 bg-white">
@@ -30,7 +21,9 @@ export function Footer() {
           <LogoText />
           <p className="mt-2 text-base font-semibold ">{"Let's join us today!"}</p>
           <div className="mt-4">
-            <SignupLink />
+            <Button href="/signup" type="button" size="lg">
+              Sign Up Now
+            </Button>
           </div>
         </div>
         <div className="mt-4 flex flex-col items-center gap-1 sm:flex-row sm:justify-between">
