@@ -2,7 +2,9 @@ import { Alert } from '@components/ui/alert';
 import { Button } from '@components/ui/button';
 import { EmailField, Form, PasswordField } from '@components/ui/form/fields';
 import { useAuth } from '@hooks/use-auth';
+import { getPathHistory } from '@utils/common';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -12,12 +14,18 @@ type SignupFormData = {
 };
 
 function SignupForm() {
+  const auth = useAuth();
+  const router = useRouter();
+
+  if (auth.isAuthenticated) {
+    const [previousPath] = getPathHistory();
+    previousPath === '' ? router.replace('/') : router.back();
+  }
+
   const form = useForm<SignupFormData>();
   const { formState, register } = form;
   const [successMessage, setSuccessMessage] = useState<string>();
   const [errorMessage, setErrorMessage] = useState<string>();
-
-  const auth = useAuth();
 
   async function signUp({ email, password }: SignupFormData) {
     try {

@@ -2,6 +2,7 @@ import { Alert } from '@components/ui/alert';
 import { Button } from '@components/ui/button';
 import { EmailField, Form, PasswordField } from '@components/ui/form/fields';
 import { useAuth } from '@hooks/use-auth';
+import { getPathHistory } from '@utils/common';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -13,12 +14,17 @@ type LoginFormData = {
 };
 
 function LoginForm() {
+  const auth = useAuth();
+  const router = useRouter();
+
+  if (auth.isAuthenticated) {
+    const [previousPath] = getPathHistory();
+    previousPath === '' ? router.replace('/') : router.back();
+  }
+
   const form = useForm<LoginFormData>();
   const { formState, register } = form;
   const [errorMessage, setErrorMessage] = useState<string>();
-
-  const auth = useAuth();
-  const router = useRouter();
 
   async function logIn({ email, password }: LoginFormData) {
     try {
