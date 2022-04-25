@@ -1,9 +1,9 @@
 import { Alert } from '@components/ui/alert';
+import { handleUnknownError } from '@utils/errors';
+import { showToast } from '@utils/show-toast';
 import cn from 'classnames';
 import { forwardRef, ReactElement, ReactNode, Ref, useId } from 'react';
 import { FieldValues, FormProvider, SubmitHandler, useFormContext, UseFormReturn } from 'react-hook-form';
-import { handleUnknownError } from '@utils/errors';
-import { showToast } from '@utils/show-toast';
 
 type InputProps = Omit<JSX.IntrinsicElements['input'], 'name'> & { name: string };
 
@@ -73,7 +73,7 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputF
         <Input id={id} placeholder={placeholder} className={className} {...passThrough} ref={ref} />
       )}
       {methods?.formState?.errors[props.name] && (
-        <Alert className="mt-1" severity="error" message={methods.formState.errors[props.name].message} />
+        <Alert className="mt-4" severity="error" message={methods.formState.errors[props.name].message} />
       )}
     </div>
   );
