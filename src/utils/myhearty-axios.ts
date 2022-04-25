@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://api.myhearty.my';
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 
 axios.defaults.xsrfCookieName = 'X-CSRF-Token';
 
