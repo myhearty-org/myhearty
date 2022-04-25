@@ -1,4 +1,5 @@
 import { Layout } from '@components/layout';
+import { AuthProvider } from '@hooks/use-auth';
 import { appWithTranslation } from 'next-i18next';
 import { DefaultSeo } from 'next-seo';
 import defaultSeoConfig from 'next-seo.json';
@@ -9,9 +10,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <DefaultSeo {...defaultSeoConfig} />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <AuthProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AuthProvider>
     </>
   );
 }

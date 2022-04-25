@@ -1,7 +1,9 @@
 import { Alert } from '@components/ui/alert';
 import { Button } from '@components/ui/button';
 import { EmailField, Form, PasswordField } from '@components/ui/form/fields';
+import { useAuth } from '@hooks/use-auth';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -15,8 +17,22 @@ function LoginForm() {
   const { formState, register } = form;
   const [errorMessage, setErrorMessage] = useState<string>();
 
+  const auth = useAuth();
+  const router = useRouter();
+
+  async function logIn({ email, password }: LoginFormData) {
+    try {
+      setErrorMessage('');
+
+      await auth.logIn(email, password);
+      router.replace('/');
+    } catch (error) {
+      setErrorMessage(error.response.data.error);
+    }
+  }
+
   return (
-    <Form className="mt-8 space-y-6" form={form} handleSubmit={() => {}}>
+    <Form className="mt-8 space-y-6" form={form} handleSubmit={logIn}>
       <EmailField 
         id="email" 
         label="Email Address" 
