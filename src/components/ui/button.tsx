@@ -90,9 +90,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
     },
     <>
       {StartIcon && (
-        <StartIcon
-          className={cn('inline', size === 'icon' ? 'h-5 w-5' : '-ml-1 h-5 w-5 ltr:mr-2 rtl:ml-2 rtl:-mr-1')}
-        />
+        <StartIcon className={cn('inline', size === 'icon' ? 'h-5 w-5' : '-ml-1 mr-2 h-5 w-5')} />
       )}
       {props.children}
       {loading && (
@@ -100,7 +98,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
           <Spinner theme={color === 'primary' ? 'light' : 'dark'} />
         </div>
       )}
-      {EndIcon && <EndIcon className="-mr-1 inline h-5 w-5 ltr:ml-2 rtl:mr-2" />}
+      {EndIcon && <EndIcon className="-mr-1 ml-2 inline h-5 w-5" />}
     </>
   );
 
