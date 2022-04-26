@@ -1,4 +1,4 @@
-import { useLocalStorage } from '@hooks/use-local-storage';
+import { useLocalStorage } from '@hooks/index';
 import { User } from '@lib/types';
 import { logInUser, logOutUser, signUpUser } from '@lib/users';
 import { AxiosResponse } from 'axios';

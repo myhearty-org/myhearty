@@ -1,7 +1,7 @@
 import { Alert } from '@components/ui/alert';
 import { Button } from '@components/ui/button';
 import { EmailField, Form, PasswordField } from '@components/ui/form/fields';
-import { useAuth } from '@hooks/use-auth';
+import { useAuth } from '@hooks/index';
 import { getPathHistory } from '@utils/common';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
