@@ -3,7 +3,7 @@ import { Button } from '@components/ui/button';
 import { Logo } from '@components/ui/icons/logo';
 import { Popover, Transition } from '@headlessui/react';
 import { GiftIcon, HeartIcon, MenuIcon, UserIcon, UsersIcon, XIcon } from '@heroicons/react/outline';
-import { useAuth } from '@hooks/index';
+import { useAuth, useHasMounted } from '@hooks/index';
 import { handleUnknownError } from '@utils/errors';
 import { showToast } from '@utils/show-toast';
 import cn from 'classnames';
@@ -78,6 +78,8 @@ function MobileMenu() {
     }
   }
 
+  const hasMounted = useHasMounted();
+
   return (
     <Transition
       as={Fragment}
@@ -105,14 +107,14 @@ function MobileMenu() {
                 <MobileNavItem href={'/campaigns'} name="Donate Today" icon={<GiftIcon />} />
                 <MobileNavItem href={'/volunteer-events'} name="Be a Volunteer" icon={<UsersIcon />} />
                 <MobileNavItem href={'/aids'} name="Receive Aids" icon={<HeartIcon />} />
-                {auth.isAuthenticated && (
+                {hasMounted && auth.isAuthenticated && (
                   <MobileNavItem href={'/user'} name="Your Profile" icon={<UserIcon />} />
                 )}
               </nav>
             </div>
           </div>
           <div className="space-y-2 p-6">
-            {!auth.isAuthenticated && (
+            {hasMounted && !auth.isAuthenticated && (
               <>
                 <Popover.Button as={'div'}>
                   <Button className="w-full justify-center" href="/signup" type="button" size="lg">
@@ -131,7 +133,7 @@ function MobileMenu() {
                 </Popover.Button>
               </>
             )}
-            {auth.isAuthenticated && (
+            {hasMounted && auth.isAuthenticated && (
               <Popover.Button as={'div'}>
                 <Button
                   className="w-full justify-center"
@@ -152,6 +154,7 @@ function MobileMenu() {
 
 export function Header() {
   const auth = useAuth();
+  const hasMounted = useHasMounted();
 
   return (
     <Popover as="nav" className="relative border-b-2 border-gray-100 bg-white shadow-sm">
@@ -169,7 +172,7 @@ export function Header() {
             </Popover.Button>
           </div>
           <div className="hidden items-center justify-end md:flex md:w-0 md:flex-1 lg:space-x-4">
-            {!auth.isAuthenticated && (
+            {hasMounted && !auth.isAuthenticated && (
               <>
                 <Button href="/login" type="button" color="minimal" size="lg">
                   Log In
@@ -179,7 +182,7 @@ export function Header() {
                 </Button>
               </>
             )}
-            {auth.isAuthenticated && <UserDropdown />}
+            {hasMounted && auth.isAuthenticated && <UserDropdown />}
           </div>
         </div>
       </div>
