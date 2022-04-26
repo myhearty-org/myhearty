@@ -49,12 +49,12 @@ export function UserDropdown() {
           <ChevronDownIcon className="h-4 w-4 text-gray-400 group-hover:text-gray-600" />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent portalled>
+      <DropdownMenuContent portalled sideOffset={6}>
         <DropdownItem name="Your Profile" href="/user" />
-        <DropdownMenuSeparator className="h-px bg-gray-300" />
+        <DropdownMenuSeparator className="h-px bg-gray-300 my-2" />
         <DropdownMenuItem>
           <a
-            className="flex cursor-pointer px-4 py-2 text-sm hover:bg-pink-500 hover:text-white"
+            className="flex cursor-pointer px-4 py-1 text-sm hover:bg-pink-500 hover:text-white"
             onClick={logOut}>
             Log Out
           </a>

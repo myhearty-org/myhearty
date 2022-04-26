@@ -34,7 +34,7 @@ export const DropdownMenuContent = forwardRef<HTMLDivElement, DropdownMenuConten
   function DropdownMenuContent({ children, ...props }, forwardedRef) {
     return (
       <DropdownMenuPrimitive.Content
-        className="w-50 z-10 -ml-0 origin-top-right rounded-md bg-white text-sm shadow-lg ring-2 ring-black ring-opacity-5 focus:outline-none"
+        className="w-50 py-2 z-10 origin-top-right rounded-md bg-white text-sm shadow-lg ring-2 ring-black ring-opacity-5 focus:outline-none"
         ref={forwardedRef}
         portalled={props.portalled}
         {...props}>
