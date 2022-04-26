@@ -1,7 +1,11 @@
-import { Logo } from '@components/ui/icons/logo';
+import { UserDropdown } from './user-dropdown';
 import { Button } from '@components/ui/button';
+import { Logo } from '@components/ui/icons/logo';
 import { Popover, Transition } from '@headlessui/react';
-import { GiftIcon, HeartIcon, MenuIcon, UsersIcon, XIcon } from '@heroicons/react/outline';
+import { GiftIcon, HeartIcon, MenuIcon, UserIcon, UsersIcon, XIcon } from '@heroicons/react/outline';
+import { useAuth } from '@hooks/index';
+import { handleUnknownError } from '@utils/errors';
+import { showToast } from '@utils/show-toast';
 import cn from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -62,6 +66,18 @@ function MobileNavItem({ href, icon, name }: MobileNavItemProps) {
 }
 
 function MobileMenu() {
+  const auth = useAuth();
+  const router = useRouter();
+
+  async function logOut() {
+    try {
+      await auth.logOut();
+      router.reload();
+    } catch (error) {
+      showToast(handleUnknownError(error).message, 'error');
+    }
+  }
+
   return (
     <Transition
       as={Fragment}
@@ -89,20 +105,44 @@ function MobileMenu() {
                 <MobileNavItem href={'/campaigns'} name="Donate Today" icon={<GiftIcon />} />
                 <MobileNavItem href={'/volunteer-events'} name="Be a Volunteer" icon={<UsersIcon />} />
                 <MobileNavItem href={'/aids'} name="Receive Aids" icon={<HeartIcon />} />
+                {auth.isAuthenticated && (
+                  <MobileNavItem href={'/user'} name="Your Profile" icon={<UserIcon />} />
+                )}
               </nav>
             </div>
           </div>
           <div className="space-y-2 p-6">
-            <Popover.Button as={'div'}>
-              <Button className="w-full justify-center" href="/signup" type="button" size="lg">
-                Sign Up
-              </Button>
-            </Popover.Button>
-            <Popover.Button as={'div'}>
-              <Button className="w-full justify-center" href="/login" type="button" color="minimal" size="lg">
-                Log In
-              </Button>
-            </Popover.Button>
+            {!auth.isAuthenticated && (
+              <>
+                <Popover.Button as={'div'}>
+                  <Button className="w-full justify-center" href="/signup" type="button" size="lg">
+                    Sign Up
+                  </Button>
+                </Popover.Button>
+                <Popover.Button as={'div'}>
+                  <Button
+                    className="w-full justify-center"
+                    href="/login"
+                    type="button"
+                    color="minimal"
+                    size="lg">
+                    Log In
+                  </Button>
+                </Popover.Button>
+              </>
+            )}
+            {auth.isAuthenticated && (
+              <Popover.Button as={'div'}>
+                <Button
+                  className="w-full justify-center"
+                  href="/signup"
+                  type="button"
+                  size="lg"
+                  onClick={logOut}>
+                  Log Out
+                </Button>
+              </Popover.Button>
+            )}
           </div>
         </div>
       </Popover.Panel>
@@ -111,6 +151,8 @@ function MobileMenu() {
 }
 
 export function Header() {
+  const auth = useAuth();
+
   return (
     <Popover as="nav" className="relative border-b-2 border-gray-100 bg-white shadow-sm">
       <div className="max-w-8xl mx-auto px-4 py-1">
@@ -127,12 +169,17 @@ export function Header() {
             </Popover.Button>
           </div>
           <div className="hidden items-center justify-end md:flex md:w-0 md:flex-1 lg:space-x-4">
-            <Button href="/login" type="button" color="minimal" size="lg">
-              Log In
-            </Button>
-            <Button href="/signup" type="button" size="lg">
-              Sign Up
-            </Button>
+            {!auth.isAuthenticated && (
+              <>
+                <Button href="/login" type="button" color="minimal" size="lg">
+                  Log In
+                </Button>
+                <Button href="/signup" type="button" size="lg">
+                  Sign Up
+                </Button>
+              </>
+            )}
+            {auth.isAuthenticated && <UserDropdown />}
           </div>
         </div>
       </div>
