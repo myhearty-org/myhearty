@@ -1,10 +1,9 @@
+import { NoAuth } from '@components/helpers';
 import { Alert } from '@components/ui/alert';
 import { Button } from '@components/ui/button';
 import { EmailField, Form, PasswordField } from '@components/ui/form/fields';
 import { useAuth } from '@hooks/index';
-import { getPathHistory } from '@utils/common';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -14,24 +13,17 @@ type LoginFormData = {
 };
 
 function LoginForm() {
-  const auth = useAuth();
-  const router = useRouter();
-
-  if (auth.isAuthenticated) {
-    const [previousPath] = getPathHistory();
-    previousPath === '' ? router.replace('/') : router.back();
-  }
-
   const form = useForm<LoginFormData>();
   const { formState, register } = form;
   const [errorMessage, setErrorMessage] = useState<string>();
+
+  const auth = useAuth();
 
   async function logIn({ email, password }: LoginFormData) {
     try {
       setErrorMessage('');
 
       await auth.logIn(email, password);
-      router.replace('/');
     } catch (error) {
       setErrorMessage(error.response.data.error);
     }
@@ -73,16 +65,18 @@ function SignupLink() {
 
 export default function LoginPage() {
   return (
-    <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-sm space-y-6 sm:max-w-md">
-        <h2 className="mt-6 text-center text-2xl font-bold text-gray-900">
-          Welcome.
-          <br />
-          Log in to your account
-        </h2>
-        <LoginForm />
-        <SignupLink />
+    <NoAuth>
+      <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-sm space-y-6 sm:max-w-md">
+          <h2 className="mt-6 text-center text-2xl font-bold text-gray-900">
+            Welcome.
+            <br />
+            Log in to your account
+          </h2>
+          <LoginForm />
+          <SignupLink />
+        </div>
       </div>
-    </div>
+    </NoAuth>
   );
 }
