@@ -12,7 +12,6 @@ import { handleUnknownError } from '@utils/errors';
 import { showToast } from '@utils/show-toast';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { forwardRef } from 'react';
 
 type DropdownItemProps = {
   name: string;
@@ -20,20 +19,17 @@ type DropdownItemProps = {
 };
 
 function DropdownItem({ name, href }: DropdownItemProps) {
-  // prettier-ignore
-  // Manually forward ref to <a> as Next's Link does not pass ref
-  // to its children properly. ref is required to ensure dropdown
-  // menu is closed after the item was clicked.
-  const AnchorWithRef = forwardRef<HTMLAnchorElement, { name: string }>(
-    function AnchorWithRef({ name }, forwardedRef) {
-      return <a ref={forwardedRef}>{name}</a>;
-    }
-  );
+  // Next's Link does not pass ref to its children properly, causing the
+  // dropdown menu to not close after the menu item was clicked. Hence, we have
+  // to dispatch an 'Escape' keydown event to close the dropdown menu manually.
+  function onClick() {
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+  }
 
   return (
     <DropdownMenuItem className="flex cursor-pointer px-4 py-1 text-sm hover:bg-pink-500 hover:text-white">
-      <Link href={href} passHref>
-        <AnchorWithRef name={name} />
+      <Link href={href}>
+        <a onClick={onClick}>{name}</a>
       </Link>
     </DropdownMenuItem>
   );
