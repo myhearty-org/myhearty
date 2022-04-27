@@ -36,6 +36,8 @@ export const DropdownMenuContent = forwardRef<HTMLDivElement, DropdownMenuConten
       <DropdownMenuPrimitive.Content
         className="w-50 z-10 origin-top-right rounded-md bg-white py-2 text-sm shadow-lg ring-2 ring-black ring-opacity-5 focus:outline-none"
         ref={forwardedRef}
+        onCloseAutoFocus={(e) => e.preventDefault()}
+        onFocusOutside={(e) => e.preventDefault()}
         portalled={props.portalled}
         {...props}>
         {children}
