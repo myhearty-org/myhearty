@@ -58,9 +58,9 @@ export function UserDropdown() {
           <ChevronDownIcon className="h-4 w-4 text-gray-400 group-hover:text-gray-600" />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent portalled sideOffset={6}>
+      <DropdownMenuContent portalled sideOffset={6} align="start">
         <DropdownItem name="Your Profile" href="/user" />
-        <DropdownMenuSeparator className="h-px bg-gray-300 my-2" />
+        <DropdownMenuSeparator className="my-2 h-px bg-gray-300" />
         <DropdownMenuItem>
           <a
             className="flex cursor-pointer px-4 py-1 text-sm hover:bg-pink-500 hover:text-white"

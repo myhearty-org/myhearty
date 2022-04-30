@@ -3,7 +3,11 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import cn from 'classnames';
 import { ComponentProps, forwardRef } from 'react';
 
-export const Dropdown = DropdownMenuPrimitive.Root;
+type DropdownProps = ComponentProps<typeof DropdownMenuPrimitive['Root']>;
+
+export function Dropdown(props: DropdownProps) {
+  return <DropdownMenuPrimitive.Root modal={false} {...props} />;
+}
 
 type DropdownMenuTriggerProps = ComponentProps<typeof DropdownMenuPrimitive['Trigger']>;
 
@@ -34,7 +38,7 @@ export const DropdownMenuContent = forwardRef<HTMLDivElement, DropdownMenuConten
   function DropdownMenuContent({ children, ...props }, forwardedRef) {
     return (
       <DropdownMenuPrimitive.Content
-        className="w-50 z-10 origin-top-right rounded-md bg-white py-2 text-sm shadow-lg ring-2 ring-black ring-opacity-5 focus:outline-none"
+        className="w-50 z-50 origin-top-right rounded-md bg-white py-2 text-sm shadow-lg ring-2 ring-black ring-opacity-5 focus:outline-none"
         ref={forwardedRef}
         onCloseAutoFocus={(e) => e.preventDefault()}
         onFocusOutside={(e) => e.preventDefault()}
