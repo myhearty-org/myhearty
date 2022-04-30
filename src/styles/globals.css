@@ -3,9 +3,86 @@
 @tailwind utilities;
 
 #__next {
-  @apply flex flex-col min-h-screen text-gray-900;
+  @apply flex min-h-screen flex-col text-gray-900;
 }
 
 *:focus-visible {
-  @apply outline outline-2 outline-pink-500;
+  @apply rounded border-pink-300 outline-none ring ring-pink-300;
+}
+
+/* Override default tailwindcss-forms styling */
+
+[type='text']:focus,
+[type='email']:focus,
+[type='url']:focus,
+[type='password']:focus,
+[type='number']:focus,
+[type='date']:focus,
+[type='datetime-local']:focus,
+[type='month']:focus,
+[type='search']:focus,
+[type='tel']:focus,
+[type='checkbox']:focus,
+[type='radio']:focus,
+[type='time']:focus,
+[type='week']:focus,
+[multiple]:focus,
+textarea:focus,
+select:focus {
+  --tw-ring-color: #f9a8d4;
+  border-color: #f9a8d4;
+  @apply rounded border-pink-300 outline-none ring-2 ring-pink-300;
+}
+
+[type='checkbox'] {
+  color: #ec4899;
+}
+
+/* InstantSearch.js */
+
+.ais-Pagination-list {
+  @apply space-x-[2px] !important;
+}
+
+.ais-Pagination-item {
+  @apply m-0 !important;
+}
+
+.ais-Pagination-link {
+  @apply rounded border border-none bg-white text-gray-900 transition-all duration-150 ease-out !important;
+}
+.ais-Pagination-link:hover {
+  @apply bg-pink-400 text-white !important;
+}
+
+.ais-Pagination-link--selected {
+  @apply bg-pink-500 text-white !important;
+}
+.ais-Pagination-link--selected:hover {
+  @apply bg-pink-400 text-white !important;
+}
+
+.ais-Pagination-item--disabled {
+  @apply cursor-not-allowed opacity-95 !important;
+}
+
+.ais-SortBy-select {
+  @apply rounded-none border-transparent bg-transparent py-3 pr-6 pl-2 text-xs text-gray-900 transition hover:bg-gray-50 sm:pr-8 sm:pl-4 sm:text-sm;
+}
+
+.ais-ClearRefinements-button {
+  @apply bg-transparent text-black !important;
+}
+
+/* Simplebar */
+
+@import 'simplebar/dist/simplebar.min.css';
+
+.simplebar-content:before,
+.simplebar-content:after {
+  content: '';
+}
+
+.simplebar-scrollbar:before {
+  @apply bg-gray-500;
 }
