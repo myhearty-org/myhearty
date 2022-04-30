@@ -15,3 +15,7 @@ export function getPathHistory() {
 
   return [previousPath, currentPath];
 }
+
+export function onlyWhitespace(string: string) {
+  return /^\s*$/.test(string);
+}
