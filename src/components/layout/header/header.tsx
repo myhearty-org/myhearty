@@ -49,15 +49,15 @@ function NavItem({ href, children }: NavItemProps) {
 type MobileNavItemProps = {
   href: string;
   name: string;
-  icon: JSX.Element;
+  icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 };
 
-function MobileNavItem({ href, icon, name }: MobileNavItemProps) {
+function MobileNavItem({ href, name, icon: Icon }: MobileNavItemProps) {
   return (
     <Popover.Button as={'div'}>
       <Link href={href}>
         <a className="-m-3 flex items-center rounded-md p-3 hover:bg-pink-50" key={name}>
-          <span className="h-6 w-6 flex-shrink-0 text-pink-600">{icon}</span>
+          <Icon className="h-6 w-6 flex-shrink-0 text-pink-600" />
           <span className="ml-3 text-base font-medium text-gray-900">{name}</span>
         </a>
       </Link>
@@ -104,11 +104,11 @@ function MobileMenu() {
             </div>
             <div className="mt-6 px-2">
               <nav className="grid gap-y-8">
-                <MobileNavItem href={'/campaigns'} name="Donate Today" icon={<GiftIcon />} />
-                <MobileNavItem href={'/volunteer-events'} name="Be a Volunteer" icon={<UsersIcon />} />
-                <MobileNavItem href={'/aids'} name="Receive Aids" icon={<HeartIcon />} />
+                <MobileNavItem href={'/campaigns'} name="Donate Today" icon={GiftIcon} />
+                <MobileNavItem href={'/volunteer-events'} name="Be a Volunteer" icon={UsersIcon} />
+                <MobileNavItem href={'/aids'} name="Receive Aids" icon={HeartIcon} />
                 {hasMounted && auth.isAuthenticated && (
-                  <MobileNavItem href={'/user'} name="Your Profile" icon={<UserIcon />} />
+                  <MobileNavItem href={'/user'} name="Your Profile" icon={UserIcon} />
                 )}
               </nav>
             </div>
