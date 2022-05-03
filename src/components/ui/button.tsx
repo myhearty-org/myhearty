@@ -7,7 +7,7 @@ type SVGComponent = React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 
 export type ButtonBaseProps = {
   color?: 'primary' | 'secondary' | 'minimal' | 'warn';
-  size?: 'base' | 'sm' | 'lg' | 'fab' | 'icon';
+  size?: 'base' | 'xs' | 'sm' | 'lg' | 'fab' | 'icon';
   loading?: boolean;
   disabled?: boolean;
   onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
@@ -49,7 +49,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
       ref: forwardedRef,
       className: cn(
         'inline-flex items-center',
-
+        size == 'xs' && 'px-2 py-1.5 text-xs leading-3 font-medium rounded',
         size === 'sm' && 'px-3 py-2 text-sm leading-4 font-medium rounded',
         size === 'base' && 'px-3 py-2 text-sm font-medium rounded',
         size === 'lg' && 'px-4 py-2 text-base font-medium rounded',
@@ -67,7 +67,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
         color === 'secondary' &&
           (disabled
             ? 'border border-gray-200 text-gray-400 bg-white'
-            : 'border border-gray-300 text-gray-900 bg-white hover:bg-gray-50 hover:text-gray-900 hover:shadow-sm focus:outline-none focus:border-pink-300 focus:ring focus:ring-pink-300'),
+            : 'border border-gray-300 text-gray-900 bg-white hover:bg-gray-50 hover:text-gray-900 hover:ffab-sm focus:outline-none focus:border-pink-300 focus:ring focus:ring-pink-300'),
 
         color === 'minimal' &&
           (disabled
@@ -103,7 +103,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
   );
 
   return props.href ? (
-    <Link passHref href={props.href} shallow={shallow && shallow}>
+    <Link passHref href={props.href} shallow={shallow}>
       {element}
     </Link>
   ) : (
