@@ -38,6 +38,16 @@ select:focus {
   color: #ec4899;
 }
 
+.spinner-none::-webkit-inner-spin-button,
+.spinner-none::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+.spinner-none {
+  -moz-appearance: textfield !important;
+}
+
 /* InstantSearch.js */
 
 .ais-Pagination-list {
@@ -72,6 +82,20 @@ select:focus {
 
 .ais-ClearRefinements-button {
   @apply bg-transparent text-black !important;
+}
+
+/* Rheostat */
+
+.DefaultProgressBar_progressBar {
+  @apply top-[-2px] h-1 bg-pink-500 !important;
+}
+
+.DefaultBackground {
+  @apply h-1 rounded-full border-none bg-gray-300 !important;
+}
+
+.DefaultHandle_handle {
+  @apply top-[-6px] z-10 ml-[-6px] h-4 w-4 cursor-grab rounded-full border-none bg-white drop-shadow before:hidden after:hidden !important;
 }
 
 /* Simplebar */
