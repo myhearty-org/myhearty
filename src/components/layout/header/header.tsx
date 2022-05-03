@@ -37,7 +37,7 @@ function NavItem({ href, children }: NavItemProps) {
         className={cn(
           'relative flex items-center justify-center p-2 text-base font-medium hover:text-pink-600',
           isActive
-            ? 'text-pink-600 after:absolute after:mt-6 after:h-full after:w-full after:border-b-2 after:border-pink-600'
+            ? 'text-pink-600 after:absolute after:mt-5 after:h-full after:w-full after:border-b-2 after:border-pink-600'
             : 'text-gray-900'
         )}>
         {children}
@@ -104,8 +104,8 @@ function MobileMenu() {
             </div>
             <div className="mt-6 px-2">
               <nav className="grid gap-y-8">
-                <MobileNavItem href={'/campaigns'} name="Donate Today" icon={GiftIcon} />
-                <MobileNavItem href={'/volunteer-events'} name="Be a Volunteer" icon={UsersIcon} />
+                <MobileNavItem href={'/campaigns'} name="Donate Now" icon={GiftIcon} />
+                <MobileNavItem href={'/volunteer-events'} name="Volunteer With Us" icon={UsersIcon} />
                 <MobileNavItem href={'/aids'} name="Receive Aids" icon={HeartIcon} />
                 {hasMounted && auth.isAuthenticated && (
                   <MobileNavItem href={'/user'} name="Your Profile" icon={UserIcon} />
@@ -157,13 +157,13 @@ export function Header() {
   const hasMounted = useHasMounted();
 
   return (
-    <Popover as="nav" className="relative border-b-2 border-gray-100 bg-white shadow-sm">
+    <Popover as="nav" className="relative border-b border-gray-100 bg-white shadow-sm">
       <div className="max-w-8xl mx-auto px-4 py-1">
         <div className="mx-auto flex items-center justify-start md:space-x-5">
           <LogoTextLink />
           <div className="hidden items-center md:flex md:space-x-2">
-            <NavItem href={'/campaigns'}>Donate Today</NavItem>
-            <NavItem href={'/volunteer-events'}>Be a Volunteer</NavItem>
+            <NavItem href={'/campaigns'}>Donate Now</NavItem>
+            <NavItem href={'/volunteer-events'}>Volunteer With Us</NavItem>
             <NavItem href={'/aids'}>Receive Aids</NavItem>
           </div>
           <div className="flex w-0 flex-1 justify-end md:hidden">
