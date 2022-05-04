@@ -67,7 +67,7 @@ function CustomRefinementList({
           <div>
             <input
               type="search"
-              className="placholder-gray-600 w-full border border-transparent bg-transparent px-2 py-1 text-sm text-black transition focus:border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300"
+              className="placeholder-gray-600 w-full border border-transparent bg-transparent px-2 py-1 text-sm text-black transition focus:border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300"
               placeholder={`Search ${label}`}
               onChange={(event) => searchForItems(event.currentTarget.value)}
             />
