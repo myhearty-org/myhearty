@@ -49,6 +49,7 @@ function DesktopRefinementList() {
           <RefinementList
             limit={14}
             attribute="categories"
+            label="Categories"
             transformItems={(items) => sortBy(items, ['label'])}
           />
           <RangeSlider attribute="target_amount" label="Target Amount (RM)" />
@@ -85,6 +86,7 @@ function MobileRefinementList({ showFilter, toggleShowFilter }: MobileRefinement
             <RefinementList
               limit={14}
               attribute="categories"
+              label="Categories"
               transformItems={(items) => sortBy(items, ['label'])}
             />
           </div>

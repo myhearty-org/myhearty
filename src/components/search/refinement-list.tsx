@@ -1,5 +1,4 @@
 import cn from 'classnames';
-import startCase from 'lodash/startCase';
 import { connectRefinementList, Highlight } from 'react-instantsearch-dom';
 
 type ItemProps = {
@@ -47,6 +46,7 @@ type CustomRefinementListProps = {
   refine: any;
   searchForItems: any;
   attribute: string;
+  label: string;
 };
 
 function CustomRefinementList({
@@ -55,19 +55,20 @@ function CustomRefinementList({
   refine,
   searchForItems,
   attribute,
+  label,
 }: CustomRefinementListProps) {
   const searchableAttributes = ['categories'];
 
   return (
     <div className="px-1">
-      <label className="px-2 text-sm font-medium">{startCase(attribute)}</label>
+      <label className="px-2 text-sm font-medium">{label}</label>
       {searchableAttributes.includes(attribute!) && (
         <div className="group relative">
           <div>
             <input
               type="search"
               className="placholder-gray-600 w-full border border-transparent bg-transparent px-2 py-1 text-sm text-black transition focus:border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300"
-              placeholder={`Search ${startCase(attribute)}`}
+              placeholder={`Search ${label}`}
               onChange={(event) => searchForItems(event.currentTarget.value)}
             />
           </div>
