@@ -1,6 +1,6 @@
 import { UserDropdown } from './user-dropdown';
 import { Button } from '@components/ui/button';
-import { Logo } from '@components/ui/icons/logo';
+import { Logo } from '@components/ui/icons';
 import { Popover, Transition } from '@headlessui/react';
 import { GiftIcon, HeartIcon, MenuIcon, UserIcon, UsersIcon, XIcon } from '@heroicons/react/outline';
 import { useAuth, useHasMounted } from '@hooks/index';

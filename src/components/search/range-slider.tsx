@@ -1,12 +1,12 @@
+import { Alert } from '@components/ui/alert';
 import { Button } from '@components/ui/button';
+import { onlyPositiveInteger } from '@utils/common';
+import inRange from 'lodash/inRange';
 import { useEffect, useState } from 'react';
 import { connectRange } from 'react-instantsearch-dom';
 import Rheostat, { PublicState } from 'rheostat';
 import 'rheostat/css/rheostat.css';
 import 'rheostat/initialize';
-import { onlyPositiveInteger } from '@utils/common';
-import { inRange } from 'lodash';
-import { Alert } from '@components/ui/alert';
 
 type NumberInputProps = {
   min: number;

@@ -16,7 +16,7 @@ export function Pagination() {
       showLast
       translations={{
         first: <ChevronDoubleLeftIcon className="my-1 h-4 w-4" />,
-        previous: <ChevronLeftIcon className="my-1 mx-2 h-4 w-4"/>,
+        previous: <ChevronLeftIcon className="my-1 mx-2 h-4 w-4" />,
         next: <ChevronRightIcon className="my-1 mx-2 h-4 w-4" />,
         last: <ChevronDoubleRightIcon className="my-1 h-4 w-4" />,
         page(currentRefinement: any) {
