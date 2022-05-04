@@ -1,7 +1,7 @@
 import { Alert } from '@components/ui/alert';
 import { Button } from '@components/ui/button';
 import { onlyPositiveInteger } from '@utils/common';
-import { inRange } from 'lodash';
+import inRange from 'lodash/inRange';
 import { useEffect, useState } from 'react';
 import { connectRange } from 'react-instantsearch-dom';
 import Rheostat, { PublicState } from 'rheostat';

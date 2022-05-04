@@ -10,7 +10,8 @@ import {
 } from '@components/search';
 import { AdjustmentsIcon, XIcon } from '@heroicons/react/solid';
 import cn from 'classnames';
-import { get, sortBy } from 'lodash';
+import get from 'lodash/get';
+import sortBy from 'lodash/sortBy';
 import { ClearRefinements, Configure, InstantSearch, SortBy } from 'react-instantsearch-dom';
 import { useToggle } from 'react-use';
 import SimpleBar from 'simplebar-react';
