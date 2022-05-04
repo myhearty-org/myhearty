@@ -1,5 +1,5 @@
-import { Logo } from '@components/ui/icons/logo';
 import { Button } from '@components/ui/button';
+import { Logo } from '@components/ui/icons';
 import Link from 'next/link';
 
 function LogoText() {

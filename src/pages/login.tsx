@@ -1,7 +1,7 @@
 import { NoAuth } from '@components/helpers';
 import { Alert } from '@components/ui/alert';
 import { Button } from '@components/ui/button';
-import { EmailField, Form, PasswordField } from '@components/ui/form/fields';
+import { EmailField, Form, PasswordField } from '@components/ui/form';
 import { useAuth } from '@hooks/index';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -31,12 +31,7 @@ function LoginForm() {
 
   return (
     <Form className="mt-8 space-y-6" form={form} handleSubmit={logIn}>
-      <EmailField 
-        id="email" 
-        label="Email Address" 
-        required 
-        {...register('email')} 
-      />
+      <EmailField id="email" label="Email Address" required {...register('email')} />
       <PasswordField
         id="current-password"
         label="Password"
