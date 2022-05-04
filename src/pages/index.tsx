@@ -1,7 +1,14 @@
-import type { NextPage } from 'next';
+import { GetServerSideProps } from 'next/types';
 
-const Home: NextPage = () => {
-  return <div></div>;
+export default function Home() {
+  return;
+}
+
+export const getServerSideProps: GetServerSideProps = async function () {
+  return {
+    redirect: {
+      destination: '/campaigns',
+      permanent: true,
+    },
+  };
 };
-
-export default Home;
