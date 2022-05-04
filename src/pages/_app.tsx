@@ -11,7 +11,7 @@ import 'styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  
+
   useEffect(() => {
     storePathHistory();
   }, [router.asPath]);

@@ -24,9 +24,15 @@ export function Alert({ title, message, actions, className, severity }: AlertPro
       <div className="flex">
         <div className="flex-shrink-0">
           {severity === 'error' && <XCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />}
-          {severity === 'warning' && <ExclamationIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />}
-          {severity === 'info' && <InformationCircleIcon className="h-5 w-5 text-sky-400" aria-hidden="true" />}
-          {severity === 'success' && <CheckCircleIcon className="h-5 w-5 text-green-400" aria-hidden="true" />}
+          {severity === 'warning' && (
+            <ExclamationIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
+          )}
+          {severity === 'info' && (
+            <InformationCircleIcon className="h-5 w-5 text-sky-400" aria-hidden="true" />
+          )}
+          {severity === 'success' && (
+            <CheckCircleIcon className="h-5 w-5 text-green-400" aria-hidden="true" />
+          )}
         </div>
         <div className="ml-3 flex-grow">
           <h3 className="text-sm font-medium">{title}</h3>

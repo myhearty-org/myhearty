@@ -4,4 +4,4 @@ export function useLocale() {
   const { i18n, t } = useTranslation('common');
 
   return { i18n, t };
-};
+}
