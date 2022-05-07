@@ -77,7 +77,7 @@ select:focus {
 }
 
 .ais-SortBy-select {
-  @apply rounded-none border-transparent bg-transparent py-3 pr-6 pl-2 text-xs text-gray-900 transition hover:bg-gray-50 sm:pr-8 sm:pl-4 sm:text-sm;
+  @apply rounded-none border-transparent bg-transparent py-3 pr-6 pl-2 text-xs text-gray-900 transition hover:bg-gray-50 focus:border-transparent focus:outline-none focus:ring-0 sm:pr-8 sm:pl-4 sm:text-sm;
 }
 
 .ais-ClearRefinements-button {
@@ -109,4 +109,49 @@ select:focus {
 
 .simplebar-scrollbar:before {
   @apply bg-gray-500;
+}
+
+/* Geoapify Location Searchbox */
+
+.geoapify-autocomplete-input {
+  @apply w-full rounded-none border-transparent bg-white py-3 pr-8 text-xs text-black placeholder-gray-600 transition hover:bg-opacity-60 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm;
+}
+
+.geoapify-autocomplete-items {
+  @apply absolute left-2.5 right-0 top-[calc(100%+2px)] z-40 overflow-hidden rounded-md bg-white text-xs shadow-lg ring-2 ring-black ring-opacity-5 focus:outline-none sm:text-sm md:left-0;
+}
+
+.geoapify-autocomplete-item {
+  @apply flex cursor-pointer select-none p-2.5 hover:bg-pink-500 hover:text-white;
+}
+
+.geoapify-autocomplete-item .icon {
+  @apply mr-2 flex-shrink-0 pt-0.5 text-gray-500;
+}
+
+.geoapify-autocomplete-item .icon svg {
+  @apply h-5 w-5;
+}
+
+.geoapify-autocomplete-item:hover .icon {
+  @apply text-white;
+}
+
+.geoapify-autocomplete-item .main-part {
+  @apply font-medium;
+}
+.geoapify-autocomplete-item .main-part strong {
+  @apply font-medium;
+}
+
+.geoapify-autocomplete-item .secondary-part {
+  @apply ml-2;
+}
+
+.geoapify-close-button {
+  @apply absolute top-0 right-1.5 hidden h-full cursor-pointer opacity-40 hover:opacity-60;
+}
+
+.geoapify-close-button.visible {
+  @apply flex items-center;
 }
