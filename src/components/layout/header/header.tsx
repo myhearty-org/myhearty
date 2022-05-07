@@ -163,7 +163,7 @@ export function Header() {
           <LogoTextLink />
           <div className="hidden items-center md:flex md:space-x-2">
             <NavItem href={'/campaigns'}>Donate Now</NavItem>
-            <NavItem href={'/volunteer-events'}>Volunteer With Us</NavItem>
+            <NavItem href={'/volunteer-events'}>Volunteer Today</NavItem>
             <NavItem href={'/aids'}>Receive Aids</NavItem>
           </div>
           <div className="flex w-0 flex-1 justify-end md:hidden">
