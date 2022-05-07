@@ -60,14 +60,14 @@ function CustomRefinementList({
   const searchableAttributes = ['categories'];
 
   return (
-    <div className="px-1">
+    <div>
       <label className="px-2 text-sm font-medium">{label}</label>
       {searchableAttributes.includes(attribute!) && (
         <div className="group relative">
           <div>
             <input
               type="search"
-              className="placeholder-gray-600 w-full border border-transparent bg-transparent px-2 py-1 text-sm text-black transition focus:border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300"
+              className="w-full border border-transparent bg-transparent px-2 py-1 text-sm text-black placeholder-gray-600 transition focus:border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300"
               placeholder={`Search ${label}`}
               onChange={(event) => searchForItems(event.currentTarget.value)}
             />

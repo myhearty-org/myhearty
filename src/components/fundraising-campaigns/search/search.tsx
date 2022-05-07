@@ -1,5 +1,6 @@
 import { SearchResultCard } from './search-result-card';
 import {
+  ClearRefinements as ClearRefinementsButton,
   Hits,
   NoSearchResults,
   Pagination,
@@ -45,7 +46,7 @@ function DesktopRefinementList() {
   return (
     <aside className="relative col-span-2 hidden flex-shrink-0 bg-gray-100 pl-4 lg:block">
       <SimpleBar className="sticky top-0 max-h-screen space-y-4 overflow-y-auto pb-8 pt-3">
-        <div className="space-y-4">
+        <div className="space-y-4 px-1">
           <RefinementList
             limit={14}
             attribute="categories"
@@ -53,6 +54,7 @@ function DesktopRefinementList() {
             transformItems={(items) => sortBy(items, ['label'])}
           />
           <RangeSlider attribute="target_amount" label="Target Amount (RM)" />
+          <ClearRefinementsButton />
         </div>
       </SimpleBar>
     </aside>
@@ -140,11 +142,11 @@ export function Search({
             <DesktopRefinementList />
             <MobileRefinementList showFilter={showFilter} toggleShowFilter={toggleShowFilter} />
             <main className="relative col-span-10 w-full bg-gray-50">
-              <div className="sticky top-0 z-40 flex w-full items-center border-b border-gray-900 border-opacity-5 bg-white shadow-smooth">
-                <SearchBox placeholder="Search Fundraising Campaigns" />
-                <div className="flex flex-shrink-0 flex-nowrap items-center space-x-2 border-l border-gray-100">
+              <div className="sticky top-0 z-40 flex w-full items-center divide-x-2 divide-gray-100 border-b border-gray-900 border-opacity-5 bg-white shadow-smooth">
+                <SearchBox placeholder="Search fundraising campaigns" />
+                <div className="flex flex-shrink-0 flex-nowrap items-center">
                   <SortBy
-                    className="px-0.5"
+                    className="p-0.5 hover:bg-gray-50"
                     defaultRefinement="fundraising_campaigns"
                     items={[
                       { value: 'fundraising_campaigns', label: 'Most Relevant' },

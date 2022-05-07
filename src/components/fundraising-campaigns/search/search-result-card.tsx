@@ -1,7 +1,9 @@
 import { Button } from '@components/ui/button';
 import { ProgressBar } from '@components/ui/progress-bar';
 import { useHasMounted } from '@hooks/index';
-import { calculate_percentage, count_days } from '@utils/common';
+import { calculate_percentage } from '@utils/common';
+import differenceInDays from 'date-fns/differenceInDays';
+import fromUnixTime from 'date-fns/fromUnixTime';
 import pluralize from 'pluralize';
 
 type CardHeaderProps = {
@@ -19,8 +21,8 @@ function CardHeader({
   end_datetime,
   image_url,
 }: CardHeaderProps) {
-  const current_datetime = Math.floor(Date.now() / 1000);
-  const day_count = count_days(current_datetime, end_datetime);
+  const current_datetime = new Date();
+  const day_count = Math.max(differenceInDays(fromUnixTime(end_datetime), current_datetime), 0);
   const amount_percentage = calculate_percentage(total_raised_amount, target_amount);
 
   return (
@@ -32,11 +34,7 @@ function CardHeader({
       <div className="absolute bottom-0 z-10 w-full px-4 pb-2 font-medium text-white">
         <h2 className="text-2xl">RM{total_raised_amount.toLocaleString()}</h2>
         <p className="text-base">from {pluralize('donor', donor_count, true)}</p>
-        <ProgressBar
-          className="my-1"
-          color="bg-gradient-to-r from-pink-300 to-pink-500"
-          percentage={amount_percentage}
-        />
+        <ProgressBar className="my-1" color="bg-pink-500" percentage={amount_percentage} />
         <div className="flex justify-between text-sm">
           <span className="">{pluralize('day', day_count, true)} left</span>
           <span className="">
