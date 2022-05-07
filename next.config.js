@@ -10,7 +10,7 @@ const nextConfig = {
         source: '/',
         destination: '/campaigns',
         locale: false,
-        permanent: true,
+        permanent: false,
       },
     ];
   },

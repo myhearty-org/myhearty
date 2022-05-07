@@ -8,7 +8,7 @@ export const getServerSideProps: GetServerSideProps = async function () {
   return {
     redirect: {
       destination: '/campaigns',
-      permanent: true,
+      permanent: false,
     },
   };
 };
