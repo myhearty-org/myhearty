@@ -1,3 +1,5 @@
+export { GeoSearch } from './geo-search/geo-search';
+export { ClearRefinements } from './clear-refinements';
 export { Hits } from './hits';
 export { NoSearchResults } from './no-search-results';
 export { Pagination } from './pagination';
