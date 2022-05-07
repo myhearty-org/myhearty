@@ -111,11 +111,7 @@ function CustomRangeSlider({
   }
 
   return (
-    <form
-      className="flex w-full flex-col gap-4 px-1"
-      action=""
-      role="search"
-      onSubmit={(e) => e.preventDefault()}>
+    <form className="flex w-full flex-col gap-4" action="" role="search" onSubmit={(e) => e.preventDefault()}>
       <label className="whitespace-nowrap px-2 text-sm font-medium">{label}</label>
       <div className="relative px-2">
         <Rheostat
