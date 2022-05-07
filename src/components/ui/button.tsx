@@ -48,7 +48,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
       disabled,
       ref: forwardedRef,
       className: cn(
-        'inline-flex items-center',
+        'inline-flex items-center whitespace-nowrap',
         size == 'xs' && 'px-2 py-1.5 text-xs leading-3 font-medium rounded',
         size === 'sm' && 'px-3 py-2 text-sm leading-4 font-medium rounded',
         size === 'base' && 'px-3 py-2 text-sm font-medium rounded',
@@ -67,7 +67,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
         color === 'secondary' &&
           (disabled
             ? 'border border-gray-200 text-gray-400 bg-white'
-            : 'border border-gray-300 text-gray-900 bg-white hover:bg-gray-50 hover:text-gray-900 hover:ffab-sm focus:outline-none focus:border-pink-300 focus:ring focus:ring-pink-300'),
+            : 'border border-gray-300 text-gray-900 bg-white hover:bg-gray-50 hover:text-gray-900 hover:shadow-sm focus:outline-none focus:border-transparent focus:ring focus:ring-pink-300'),
 
         color === 'minimal' &&
           (disabled
