@@ -1,7 +1,9 @@
 import { Button } from '@components/ui/button';
 import { ProgressBar } from '@components/ui/progress-bar';
 import { useHasMounted } from '@hooks/index';
-import { calculate_percentage, count_days } from '@utils/common';
+import { calculate_percentage } from '@utils/common';
+import differenceInDays from 'date-fns/differenceInDays';
+import fromUnixTime from 'date-fns/fromUnixTime';
 import pluralize from 'pluralize';
 
 type CardHeaderProps = {
@@ -19,8 +21,8 @@ function CardHeader({
   end_datetime,
   image_url,
 }: CardHeaderProps) {
-  const current_datetime = Math.floor(Date.now() / 1000);
-  const day_count = count_days(current_datetime, end_datetime);
+  const current_datetime = new Date();
+  const day_count = Math.max(differenceInDays(fromUnixTime(end_datetime), current_datetime), 0);
   const amount_percentage = calculate_percentage(total_raised_amount, target_amount);
 
   return (
