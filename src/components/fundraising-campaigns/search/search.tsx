@@ -146,7 +146,7 @@ export function Search({
                 <SearchBox placeholder="Search fundraising campaigns" />
                 <div className="flex flex-shrink-0 flex-nowrap items-center">
                   <SortBy
-                    className="px-0.5"
+                    className="p-0.5 hover:bg-gray-50"
                     defaultRefinement="fundraising_campaigns"
                     items={[
                       { value: 'fundraising_campaigns', label: 'Most Relevant' },
