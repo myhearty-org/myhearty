@@ -1,5 +1,6 @@
 import { SearchResultCard } from './search-result-card';
 import {
+  ClearRefinements as ClearRefinementsButton,
   Hits,
   NoSearchResults,
   Pagination,
@@ -45,7 +46,7 @@ function DesktopRefinementList() {
   return (
     <aside className="relative col-span-2 hidden flex-shrink-0 bg-gray-100 pl-4 lg:block">
       <SimpleBar className="sticky top-0 max-h-screen space-y-4 overflow-y-auto pb-8 pt-3">
-        <div className="space-y-4">
+        <div className="space-y-4 px-1">
           <RefinementList
             limit={14}
             attribute="categories"
@@ -53,6 +54,7 @@ function DesktopRefinementList() {
             transformItems={(items) => sortBy(items, ['label'])}
           />
           <RangeSlider attribute="target_amount" label="Target Amount (RM)" />
+          <ClearRefinementsButton />
         </div>
       </SimpleBar>
     </aside>
