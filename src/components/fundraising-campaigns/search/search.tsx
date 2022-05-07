@@ -142,9 +142,9 @@ export function Search({
             <DesktopRefinementList />
             <MobileRefinementList showFilter={showFilter} toggleShowFilter={toggleShowFilter} />
             <main className="relative col-span-10 w-full bg-gray-50">
-              <div className="sticky top-0 z-40 flex w-full items-center border-b border-gray-900 border-opacity-5 bg-white shadow-smooth">
-                <SearchBox placeholder="Search Fundraising Campaigns" />
-                <div className="flex flex-shrink-0 flex-nowrap items-center space-x-2 border-l border-gray-100">
+              <div className="sticky top-0 z-40 flex w-full items-center divide-x-2 divide-gray-100 border-b border-gray-900 border-opacity-5 bg-white shadow-smooth">
+                <SearchBox placeholder="Search fundraising campaigns" />
+                <div className="flex flex-shrink-0 flex-nowrap items-center">
                   <SortBy
                     className="px-0.5"
                     defaultRefinement="fundraising_campaigns"
