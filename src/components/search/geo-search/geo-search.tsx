@@ -53,7 +53,7 @@ export function GeoSearch() {
           skipDetails
         />
       </div>
-      <button className="flex items-center justify-center p-2" onClick={toggleUseCurrentLocation}>
+      <button className="ml-1 flex items-center justify-center p-2" onClick={toggleUseCurrentLocation}>
         {!useCurrentLocation && <CrosshairIcon className="h-6 w-6 fill-gray-500" />}
         {useCurrentLocation && <CrosshairIcon className="h-6 w-6 fill-pink-600" />}
       </button>
