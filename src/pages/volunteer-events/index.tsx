@@ -17,11 +17,11 @@ const typesense = new TypesenseInstantSearchAdapter({
 
 const searchClient = typesense.searchClient;
 
-type VolunteerEventsPageProps = {
+type VolunteerEventsSearchPageProps = {
   resultsState: any;
 };
 
-export default function VolunteerEventsPage({ resultsState }: VolunteerEventsPageProps) {
+export default function VolunteerEventsSearchPage({ resultsState }: VolunteerEventsSearchPageProps) {
   const [searchState, setSearchState] = useState({});
 
   function onSearchStateChange(searchState: any) {

@@ -16,11 +16,11 @@ const typesense = new TypesenseInstantSearchAdapter({
 
 const searchClient = typesense.searchClient;
 
-type FundraisingCampaignsPageProps = {
+type FundraisingCampaignsSearchPageProps = {
   resultsState: any;
 };
 
-export default function FundraisingCampaignsPage({ resultsState }: FundraisingCampaignsPageProps) {
+export default function FundraisingCampaignsSearchPage({ resultsState }: FundraisingCampaignsSearchPageProps) {
   const [searchState, setSearchState] = useState({});
 
   function onSearchStateChange(searchState: any) {

@@ -17,11 +17,11 @@ const typesense = new TypesenseInstantSearchAdapter({
 
 const searchClient = typesense.searchClient;
 
-type CharitableAidsPageProps = {
+type CharitableAidsSearchPageProps = {
   resultsState: any;
 };
 
-export default function CharitableAidsPage({ resultsState }: CharitableAidsPageProps) {
+export default function CharitableAidsSearchPage({ resultsState }: CharitableAidsSearchPageProps) {
   const [searchState, setSearchState] = useState({});
 
   function onSearchStateChange(searchState: any) {
