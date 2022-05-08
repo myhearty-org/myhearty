@@ -14,7 +14,7 @@ export default function Document() {
           href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
         />
       </Head>
-      <body className="bg-white">
+      <body className="bg-gray-100">
         <Main />
         <NextScript />
       </body>
