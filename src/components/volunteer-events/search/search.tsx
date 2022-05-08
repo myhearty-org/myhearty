@@ -71,7 +71,7 @@ export function Search({
                 label="Categories"
                 transformItems={(items) => sortBy(items, ['label'])}
               />
-              <RangeSlider attribute="openings" label="Number of Openings" />,
+              <RangeSlider attribute="openings" label="Number of Openings" />
             </MobileRefinementList>
             <main className="relative col-span-10 w-full bg-gray-50">
               <div className="sticky top-0 z-40 flex w-full flex-wrap items-center divide-x-2 divide-gray-100 border-b border-gray-900 border-opacity-5 bg-white shadow-smooth md:flex-nowrap">
