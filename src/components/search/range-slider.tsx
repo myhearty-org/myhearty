@@ -29,7 +29,7 @@ function NumberInput({ min, max, value, onChange }: NumberInputProps) {
   );
 }
 
-type CustomRangeSliderProps = {
+type RangeSliderComponentProps = {
   min: number;
   max: number;
   currentRefinement: any;
@@ -38,14 +38,14 @@ type CustomRangeSliderProps = {
   label: string;
 };
 
-function CustomRangeSlider({
+function RangeSliderComponent({
   min: defaultMin,
   max: defaultMax,
   currentRefinement,
   canRefine,
   refine,
   label,
-}: CustomRangeSliderProps) {
+}: RangeSliderComponentProps) {
   const [min, setMin] = useState(defaultMin);
   const [max, setMax] = useState(defaultMax);
   const [errorMessage, setErrorMessage] = useState<string>();
@@ -135,4 +135,4 @@ function CustomRangeSlider({
   );
 }
 
-export const RangeSlider = connectRange(CustomRangeSlider);
+export const RangeSlider = connectRange(RangeSliderComponent);

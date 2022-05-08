@@ -1,12 +1,12 @@
 import { Button } from '@components/ui/button';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
 
-type CustomClearRefinementsProps = {
+type ClearRefinementsComponentProps = {
   items: any[];
   refine: any;
 };
 
-export function CustomClearRefinements({ items, refine }: CustomClearRefinementsProps) {
+export function ClearRefinementsComponent({ items, refine }: ClearRefinementsComponentProps) {
   return (
     <Button
       className="w-full justify-center"
@@ -19,4 +19,4 @@ export function CustomClearRefinements({ items, refine }: CustomClearRefinements
   );
 }
 
-export const ClearRefinements = connectCurrentRefinements(CustomClearRefinements);
+export const ClearRefinements = connectCurrentRefinements(ClearRefinementsComponent);
