@@ -53,6 +53,7 @@ export function LocationSearchBox({
       {
         placeholder: placeholderValue || '',
         skipDetails: skipDetailsValue,
+        debounceDelay: 450,
       }
     );
 
