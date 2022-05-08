@@ -27,7 +27,7 @@ function DropdownItem({ name, href }: DropdownItemProps) {
   }
 
   return (
-    <DropdownMenuItem className="flex cursor-pointer px-4 py-1 text-sm hover:bg-pink-500 hover:text-white">
+    <DropdownMenuItem>
       <Link href={href}>
         <a onClick={onClick}>{name}</a>
       </Link>
@@ -62,11 +62,7 @@ export function UserDropdown() {
         <DropdownItem name="Your Profile" href="/user" />
         <DropdownMenuSeparator className="my-2 h-px bg-gray-300" />
         <DropdownMenuItem>
-          <a
-            className="flex cursor-pointer px-4 py-1 text-sm hover:bg-pink-500 hover:text-white"
-            onClick={logOut}>
-            Log Out
-          </a>
+          <a onClick={logOut}>Log Out</a>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </Dropdown>

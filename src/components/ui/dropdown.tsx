@@ -38,7 +38,7 @@ export const DropdownMenuContent = forwardRef<HTMLDivElement, DropdownMenuConten
   function DropdownMenuContent({ children, ...props }, forwardedRef) {
     return (
       <DropdownMenuPrimitive.Content
-        className="w-50 z-50 origin-top-right rounded-md bg-white py-2 text-sm shadow-lg ring-2 ring-black ring-opacity-5 focus:outline-none"
+        className="w-50 z-50 origin-top-right rounded-md bg-white py-2 text-sm shadow-lg drop-shadow-md focus:outline-none focus:ring-0"
         ref={forwardedRef}
         onCloseAutoFocus={(e) => e.preventDefault()}
         onFocusOutside={(e) => e.preventDefault()}
@@ -63,7 +63,7 @@ export const DropdownMenuItem = forwardRef<HTMLDivElement, DropdownMenuItemProps
   function DropdownMenuItem({ className = '', ...props }, forwardedRef) {
     return (
       <DropdownMenuPrimitive.Item
-        className={cn('text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900', className)}
+        className={cn('flex cursor-pointer px-4 py-1 text-sm focus:bg-pink-500 focus:text-white focus:rounded-none focus:outline-none focus:ring-0', className)}
         {...props}
         ref={forwardedRef}
       />
