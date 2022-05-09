@@ -1,3 +1,4 @@
+import { Loader } from '@components/ui/loader';
 import { useAuth, useHasMounted } from '@hooks/index';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -17,6 +18,11 @@ export function AuthRequired({ children }: AuthRequiredProps) {
   }, [auth.isAuthenticated, router]);
 
   const hasMounted = useHasMounted();
+  if (!hasMounted) return null;
 
-  return <>{hasMounted && auth.isAuthenticated && children}</>;
+  if (!auth.isAuthenticated) {
+    return <Loader text="Redirecting to login page..." />;
+  }
+
+  return <>{children}</>;
 }

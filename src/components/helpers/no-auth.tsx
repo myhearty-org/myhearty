@@ -1,3 +1,4 @@
+import { Loader } from '@components/ui/loader';
 import { useAuth } from '@hooks/index';
 import { getPathHistory } from '@utils/common';
 import { useRouter } from 'next/router';
@@ -18,5 +19,9 @@ export function NoAuth({ children }: NoAuthProps) {
     }
   }, [auth.isAuthenticated, router]);
 
-  return <>{!auth.isAuthenticated && children}</>;
+  if (auth.isAuthenticated) {
+    return <Loader text="Redirecting..." />;
+  }
+
+  return <>{children}</>;
 }
