@@ -38,6 +38,8 @@ select:focus {
   color: #ec4899;
 }
 
+/* Remove default spinner from input[type=number] */
+
 .spinner-none::-webkit-inner-spin-button,
 .spinner-none::-webkit-outer-spin-button {
   -webkit-appearance: none !important;
@@ -46,6 +48,113 @@ select:focus {
 
 .spinner-none {
   -moz-appearance: textfield !important;
+}
+
+/* Loader */
+
+.loader {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.loader::before {
+  content: '';
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  top: -20px;
+  animation: loader-shadow 2s ease infinite;
+}
+
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  background: rgb(236, 72, 153);
+  animation: loader-transform 2s ease infinite;
+}
+
+@keyframes loader-shadow {
+  0% {
+    box-shadow: 20px 20px rgba(236, 72, 153, 0.8), 20px 40px rgba(236, 72, 153, 0.8),
+      0px 40px rgba(236, 72, 153, 0.8);
+  }
+
+  16% {
+    box-shadow: 20px 20px rgba(37, 99, 235, 0.6), 20px 40px rgba(236, 72, 153, 0.8),
+      0px 40px rgba(236, 72, 153, 0.8);
+  }
+
+  33% {
+    box-shadow: 20px 20px rgba(37, 99, 235, 0.6), 20px 40px rgba(37, 99, 235, 0.6),
+      0px 40px rgba(236, 72, 153, 0.8);
+  }
+
+  50% {
+    box-shadow: 20px 20px rgba(37, 99, 235, 0.6), 20px 40px rgba(37, 99, 235, 0.6),
+      0px 40px rgba(37, 99, 235, 0.6);
+  }
+
+  66% {
+    box-shadow: 20px 20px rgba(236, 72, 153, 0.8), 20px 40px rgba(37, 99, 235, 0.6),
+      0px 40px rgba(37, 99, 235, 0.6);
+  }
+
+  83% {
+    box-shadow: 20px 20px rgba(236, 72, 153, 0.8), 20px 40px rgba(236, 72, 153, 0.8),
+      0px 40px rgba(37, 99, 235, 0.6);
+  }
+
+  100% {
+    box-shadow: 20px 20px rgba(236, 72, 153, 0.8), 20px 40px rgba(236, 72, 153, 0.8),
+      0px 40px rgba(236, 72, 153, 0.8);
+  }
+}
+
+@keyframes loader-transform {
+  0% {
+    background: rgb(236, 72, 153);
+    transform: translate(0, 100%) rotateX(-180deg) rotateY(360deg);
+  }
+
+  16% {
+    background: rgb(59, 130, 246);
+    transform: translate(100%, 0) rotateX(0) rotateY(180deg);
+  }
+
+  33% {
+    background: rgb(59, 130, 246);
+    transform: translate(100%, 100%) rotateX(-180deg) rotateY(180deg);
+  }
+
+  50% {
+    background: rgb(59, 130, 246);
+    transform: translate(0, 100%) rotateX(-180deg) rotateY(360deg);
+  }
+
+  66% {
+    background: rgb(236, 72, 153);
+    transform: translate(100%, 0) rotateX(0) rotateY(180deg);
+  }
+
+  83% {
+    background: rgb(236, 72, 153);
+    transform: translate(100%, 100%) rotateX(-180deg) rotateY(180deg);
+  }
+
+  100% {
+    background: rgb(236, 72, 153);
+    transform: translate(0, 100%) rotateX(-180deg) rotateY(360deg);
+  }
 }
 
 /* InstantSearch.js */
