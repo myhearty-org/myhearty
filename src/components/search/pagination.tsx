@@ -4,11 +4,14 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from '@heroicons/react/solid';
-import { useBreakpoint } from '@hooks/index';
+import { useBreakpoint, useHasMounted } from '@hooks/index';
 import { Pagination as InstantSearchPagination } from 'react-instantsearch-dom';
 
 export function Pagination() {
   const { sm } = useBreakpoint();
+
+  const hasMounted = useHasMounted();
+  if (!hasMounted) return null;
 
   return (
     <InstantSearchPagination
