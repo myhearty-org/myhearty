@@ -120,6 +120,7 @@ function RangeSliderComponent({
           values={[currentRefinement.min, currentRefinement.max]}
           onChange={onChange}
           onValuesUpdated={onValuesUpdated}
+          snap
         />
       </div>
       <div className="flex items-center justify-between">
