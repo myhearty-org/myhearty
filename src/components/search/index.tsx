@@ -1,5 +1,6 @@
 export { GeoSearch } from './geo-search/geo-search';
 export { ClearRefinements } from './clear-refinements';
+export { DateRangePicker } from './date-range-picker';
 export { Hits } from './hits';
 export { NoSearchResults } from './no-search-results';
 export { Pagination } from './pagination';
