@@ -1,5 +1,6 @@
 import { SearchResultCard } from './search-result-card';
 import {
+  DateRangePicker,
   DesktopRefinementList,
   FilterToggle,
   GeoSearch,
@@ -70,6 +71,7 @@ export function Search({
                 transformItems={(items) => sortBy(items, ['label'])}
               />
               <RangeSlider attribute="openings" label="Number of Openings" />
+              <DateRangePicker attribute="start_datetime" label="Starting Date" />
             </DesktopRefinementList>
             <MobileRefinementList showFilter={showFilter} toggleShowFilter={toggleShowFilter}>
               <RefinementList
@@ -78,7 +80,10 @@ export function Search({
                 label="Categories"
                 transformItems={(items) => sortBy(items, ['label'])}
               />
-              <RangeSlider attribute="openings" label="Number of Openings" />
+              <div className="my-4 flex flex-col gap-6">
+                <RangeSlider attribute="openings" label="Number of Openings" />
+                <DateRangePicker attribute="start_datetime" label="Starting Date" />
+              </div>
             </MobileRefinementList>
             <main className="relative col-span-10 w-full bg-gray-50">
               <div className="sticky top-0 z-40 flex w-full flex-wrap items-center divide-x-2 divide-gray-100 border-b border-gray-900 border-opacity-5 bg-white shadow-smooth md:flex-nowrap">
