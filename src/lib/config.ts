@@ -8,6 +8,6 @@ export const TYPESENSE_SERVER_CONFIG = {
     },
   ],
   cacheSearchResultsForSeconds: 2 * 60,
-  numRetries: 8,
-  connectionTimeoutSeconds: 1,
+  numRetries: 3,
+  connectionTimeoutSeconds: 10,
 };
