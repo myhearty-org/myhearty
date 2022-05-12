@@ -72,9 +72,9 @@ function DateRangePickerComponent({
   return (
     <form className="flex w-full flex-col gap-4" action="" role="search" onSubmit={(e) => e.preventDefault()}>
       <label className="mb-1 whitespace-nowrap px-2 text-sm font-medium">{label}</label>
-      <div className="flex flex-col gap-2">
+      <div className="flex w-full flex-col items-center gap-2">
         <input
-          className="min-w-0 rounded border border-gray-300 text-center text-xs shadow-sm transition"
+          className="w-full min-w-0 rounded border border-gray-300 text-center text-xs shadow-sm transition"
           type="date"
           min={minDate}
           max={maxDate}
@@ -83,7 +83,7 @@ function DateRangePickerComponent({
         />
         <span className="px-1.5 text-center text-xs">to</span>
         <input
-          className="min-w-0 rounded border border-gray-300 text-center text-xs shadow-sm transition"
+          className="w-full min-w-0 rounded border border-gray-300 text-center text-xs shadow-sm transition"
           type="date"
           min={minDate}
           max={maxDate}
