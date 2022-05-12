@@ -13,7 +13,9 @@ import {
 } from '@components/search';
 import get from 'lodash/get';
 import sortBy from 'lodash/sortBy';
+import { useEffect } from 'react';
 import { Configure, InstantSearch, SortBy } from 'react-instantsearch-dom';
+import { Element as ScrollElement, scroller } from 'react-scroll';
 import { useToggle } from 'react-use';
 
 type SearchProps = {
@@ -32,11 +34,15 @@ export function Search({
 }: SearchProps) {
   const [showFilter, toggleShowFilter] = useToggle(false);
 
+  useEffect(() => {
+    scroller.scrollTo('searchBoxTop', {});
+  }, [searchState]);
+
   const refinementCount = get(searchState, 'refinementList.categories', []).length;
   const searchQuery = get(searchState, 'query', '');
 
   return (
-    <div className="relative bg-gray-100">
+    <div className="relative min-h-screen bg-gray-100">
       <InstantSearch
         indexName="fundraising_campaigns"
         searchClient={searchClient}
@@ -44,6 +50,7 @@ export function Search({
         onSearchStateChange={onSearchStateChange}
         resultsState={resultsState}
         {...props}>
+        <ScrollElement name="searchBoxTop" />
         <Configure hitsPerPage={9} />
         {!showFilter && (
           <FilterToggle
