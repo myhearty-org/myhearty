@@ -42,7 +42,7 @@ export function GeoSearch() {
 
   return (
     <div className="flex w-full p-0.5">
-      {latitudeLongitude !== '' && <Configure aroundLatLng={latitudeLongitude} aroundRadius={45_000} />}
+      {latitudeLongitude !== '' && <Configure aroundLatLng={latitudeLongitude} aroundRadius={20_000} />}
       <div className="flex-1">
         <LocationSearchBox
           placeholder={'Search or use current location'}
