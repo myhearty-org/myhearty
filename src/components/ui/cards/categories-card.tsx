@@ -8,7 +8,7 @@ type CategoriesCardProps = {
 
 export function CategoriesCard({ categories }: CategoriesCardProps) {
   return (
-    <div className="flex w-full flex-col gap-4 rounded-2xl border border-gray-200 bg-white py-3 px-6 shadow-md">
+    <div className="w-full space-y-4 rounded-2xl border border-gray-200 bg-white py-3 px-6 shadow-md">
       <h2 className="border-b border-gray-200 pb-1 font-medium">Categories</h2>
       <div className="flex flex-wrap gap-2">
         {sortBy(categories).map((category, i) => {
