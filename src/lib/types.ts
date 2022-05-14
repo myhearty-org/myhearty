@@ -26,8 +26,8 @@ export type FundraisingCampaign = {
   id: string;
   name: string;
   page_url: string;
-  target_amount: string;
-  total_raised_amount: string;
+  target_amount: number;
+  total_raised_amount: number;
   donor_count: number;
   about_campaign: string;
   categories: string[];
