@@ -16,6 +16,7 @@
     "axios": "^0.26.1",
     "classnames": "^2.3.1",
     "date-fns": "^2.28.0",
+    "isomorphic-dompurify": "^0.18.0",
     "lodash": "^4.17.21",
     "next": "12.1.5",
     "next-i18next": "^11.0.0",
