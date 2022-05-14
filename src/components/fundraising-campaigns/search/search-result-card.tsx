@@ -1,7 +1,7 @@
 import { Button } from '@components/ui/button';
 import { ProgressBar } from '@components/ui/progress-bar';
 import { useHasMounted } from '@hooks/index';
-import { calculate_percentage } from '@utils/common';
+import { calculate_percentage, toLocaleFixed } from '@utils/common';
 import differenceInDays from 'date-fns/differenceInDays';
 import fromUnixTime from 'date-fns/fromUnixTime';
 import pluralize from 'pluralize';
@@ -32,13 +32,13 @@ function CardHeader({
         style={{ backgroundImage: `url(${image_url})` }}
       />
       <div className="absolute bottom-0 z-10 w-full px-4 pb-2 font-medium text-white">
-        <h2 className="text-2xl">RM{total_raised_amount.toLocaleString()}</h2>
+        <h2 className="text-2xl">RM{toLocaleFixed(total_raised_amount)}</h2>
         <p className="text-base">from {pluralize('donor', donor_count, true)}</p>
         <ProgressBar className="my-1" color="bg-pink-500" percentage={amount_percentage} />
         <div className="flex justify-between text-sm">
           <span className="">{pluralize('day', day_count, true)} left</span>
           <span className="">
-            {amount_percentage}% of RM{target_amount.toLocaleString()}
+            {amount_percentage}% of RM{toLocaleFixed(target_amount, 0)}
           </span>
         </div>
       </div>
