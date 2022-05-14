@@ -1,4 +1,11 @@
 export { CalendarXIcon } from './calendar-x-icon';
 export { CrosshairIcon } from './crosshair-icon';
+export { ElderlyIcon } from './elderly-icon';
+export { EscalatorWarningIcon } from './escalator-warning-icon';
+export { FamilyRestroomIcon } from './family-restroom-icon';
+export { FemaleIcon } from './female-icon';
 export { Logo } from './logo';
+export { PawPrintIcon } from './paw-print-icon';
+export { PoolIcon } from './pool-icon';
 export { Spinner } from './spinner';
+export { WheelchairIcon } from './wheelchair-icon';
