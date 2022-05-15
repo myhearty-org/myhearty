@@ -16,7 +16,7 @@ export function OrganizationCard({ organization }: OrganizationCardProps) {
   const { name, location, email, contact_no, website_url, person_in_charge_name, avatar_url } = organization;
 
   return (
-    <div className="flex w-full flex-col gap-4 rounded-2xl border border-gray-200 bg-white py-3 px-6 shadow-md">
+    <div className="flex w-full flex-col gap-4 rounded-md border border-gray-200 bg-white py-3 px-6 shadow-md">
       <h2 className="border-b border-gray-200 pb-1 font-medium">Organization</h2>
       <div className="flex">
         <span className="relative mr-3 flex-shrink-0">
