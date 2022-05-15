@@ -157,6 +157,25 @@ select:focus {
   }
 }
 
+/* Dialog Animation */
+
+.fade-in {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  animation-name: fade-in;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 /* InstantSearch.js */
 
 .ais-Pagination-list {
