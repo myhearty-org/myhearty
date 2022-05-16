@@ -42,7 +42,6 @@ export const DropdownMenuContent = forwardRef<HTMLDivElement, DropdownMenuConten
         ref={forwardedRef}
         onCloseAutoFocus={(e) => e.preventDefault()}
         onFocusOutside={(e) => e.preventDefault()}
-        portalled={props.portalled}
         {...props}>
         {children}
       </DropdownMenuPrimitive.Content>

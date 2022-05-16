@@ -162,7 +162,7 @@ type FormProps<T> =
   Omit<JSX.IntrinsicElements['form'], 'onSubmit'>;
 
 const PlainForm = <T extends FieldValues>(props: FormProps<T>, ref: React.Ref<HTMLFormElement>) => {
-  const { form, handleSubmit, ...passThrough } = props;
+  const { form, handleSubmit, children, ...passThrough } = props;
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     try {
@@ -175,7 +175,7 @@ const PlainForm = <T extends FieldValues>(props: FormProps<T>, ref: React.Ref<HT
   return (
     <FormProvider {...form}>
       <form ref={ref} onSubmit={onSubmit} {...passThrough}>
-        {props.children}
+        {children}
       </form>
     </FormProvider>
   );
