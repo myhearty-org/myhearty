@@ -33,11 +33,15 @@ function CardHeader({
       />
       <div className="absolute bottom-0 z-10 w-full px-4 pb-2 font-medium text-white">
         <h2 className="text-2xl">RM{toLocaleFixed(total_raised_amount)}</h2>
-        <p className="text-base">from {pluralize('donor', donor_count, true)}</p>
+        <p className="text-base">
+          from {donor_count.toLocaleString()} {pluralize('donor', donor_count)}
+        </p>
         <ProgressBar className="my-1" color="bg-pink-500" percentage={amount_percentage} />
         <div className="flex justify-between text-sm">
-          <span className="">{pluralize('day', day_count, true)} left</span>
-          <span className="">
+          <span>
+            {day_count.toLocaleString()} {pluralize('day', day_count)} left
+          </span>
+          <span>
             {amount_percentage}% of RM{toLocaleFixed(target_amount, 0)}
           </span>
         </div>

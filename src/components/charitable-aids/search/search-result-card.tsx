@@ -28,12 +28,21 @@ function CardHeader({ openings, receiver_count, application_deadline, image_url 
         style={{ backgroundImage: `url(${image_url})` }}
       />
       <div className="absolute bottom-0 z-10 w-full px-4 pb-2 font-medium text-white">
-        <h2 className="text-2xl">{pluralize('opening', openings, true)}</h2>
-        <p className="text-base">aided {pluralize('receiver', receiver_count, true)}</p>
+        <h2 className="text-2xl">
+          {openings.toLocaleString()} {pluralize('opening', openings)}
+        </h2>
+        <p className="text-base">
+          aided {receiver_count.toLocaleString()} {pluralize('receiver', receiver_count)}
+        </p>
         <ProgressBar className="my-1" color="bg-pink-500" percentage={count_percentage} />
         <div className="flex justify-between text-sm">
-          <span className="">{pluralize('more day', day_count, true)}</span>
-          <span className="">{pluralize('opening', openings - receiver_count, true)} left</span>
+          <span>
+            {day_count.toLocaleString()} {pluralize('more day', day_count)}
+          </span>
+          <span>
+            {(openings - receiver_count).toLocaleString()} {pluralize('opening', openings - receiver_count)}{' '}
+            left
+          </span>
         </div>
       </div>
     </div>
