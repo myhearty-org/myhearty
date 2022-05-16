@@ -26,7 +26,7 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(func
   return (
     <DialogPrimitive.Content
       className={cn(
-        'fade-in fixed left-1/2 top-1/2 z-[9998] min-w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-md bg-white text-left shadow-xl focus-visible:outline-none sm:w-full sm:align-middle',
+        'fade-in fixed left-1/2 top-1/2 z-[9998] min-w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-md bg-white text-left shadow-xl focus:outline-none focus:ring-0 sm:w-full sm:align-middle',
         size == 'base' && 'p-6 sm:max-w-[35rem]',
         size == 'lg' && 'p-6 sm:max-w-[70rem]',
         size == 'xl' && 'p-0.5 sm:max-w-[98vw]',
