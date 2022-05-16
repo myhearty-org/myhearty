@@ -9,7 +9,7 @@ type LayoutProps = {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="fixed top-0 bottom-0 flex min-h-screen w-full flex-col overflow-x-auto">
       <Header />
       <Main>{children}</Main>
       <Footer />
