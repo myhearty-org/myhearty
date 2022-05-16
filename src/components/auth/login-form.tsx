@@ -5,12 +5,16 @@ import { useAuth } from '@hooks/index';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+type LoginFormProps = {
+  afterLogin?: () => void;
+};
+
 type LoginFormData = {
   email: string;
   password: string;
 };
 
-export function LoginForm() {
+export function LoginForm({ afterLogin }: LoginFormProps) {
   const form = useForm<LoginFormData>();
   const { formState, register } = form;
   const [errorMessage, setErrorMessage] = useState<string>();
@@ -22,6 +26,7 @@ export function LoginForm() {
       setErrorMessage('');
 
       await auth.logIn(email, password);
+      afterLogin && afterLogin();
     } catch (error) {
       setErrorMessage(error.response.data.error);
     }
