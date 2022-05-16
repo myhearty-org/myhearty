@@ -1,3 +1,4 @@
+import { XIcon } from '@heroicons/react/outline';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import cn from 'classnames';
 import { forwardRef } from 'react';
@@ -27,15 +28,18 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(func
     <DialogPrimitive.Content
       className={cn(
         'fade-in fixed left-1/2 top-1/2 z-[9998] min-w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-md bg-white text-left shadow-xl focus:outline-none focus:ring-0 sm:w-full sm:align-middle',
-        size == 'base' && 'p-6 sm:max-w-[35rem]',
-        size == 'lg' && 'p-6 sm:max-w-[70rem]',
+        size == 'base' && 'px-6 pb-6 pt-8 sm:max-w-[35rem]',
+        size == 'lg' && 'px-6 pb-6 pt-8 sm:max-w-[70rem]',
         size == 'xl' && 'p-0.5 sm:max-w-[98vw]',
-        'h-auto max-h-[560px] overflow-auto overscroll-auto md:max-h-[inherit]',
+        'max-h-[80vh] overflow-auto overscroll-auto',
         className
       )}
       ref={forwardedRef}
       {...props}>
       {children}
+      <DialogPrimitive.Close asChild>
+        <XIcon className="absolute top-2.5 right-2.5 h-6 w-6 cursor-pointer text-gray-400 hover:text-gray-500" />
+      </DialogPrimitive.Close>
     </DialogPrimitive.Content>
   );
 });
@@ -69,5 +73,3 @@ export function DialogFooter({ children }: DialogFooterProps) {
 }
 
 export const DialogTrigger = DialogPrimitive.Trigger;
-
-export const DialogClose = DialogPrimitive.Close;

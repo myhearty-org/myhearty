@@ -1,7 +1,6 @@
 import { LoginForm } from './login-form';
 import { SignupForm } from './signup-form';
-import { Dialog, DialogClose, DialogContent } from '@components/ui/dialog';
-import { XIcon } from '@heroicons/react/outline';
+import { Dialog, DialogContent } from '@components/ui/dialog';
 import { useState } from 'react';
 
 type AuthDialogProps = {
@@ -60,9 +59,6 @@ export function AuthDialog({ defaultOpen, open, onOpenChange, handleClose, descr
             </>
           )}
         </div>
-        <DialogClose asChild>
-          <XIcon className="absolute top-2.5 right-2.5 h-6 w-6 cursor-pointer text-gray-400 hover:text-gray-500" />
-        </DialogClose>
       </DialogContent>
     </Dialog>
   );
