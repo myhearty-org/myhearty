@@ -1,7 +1,9 @@
+import { AuthDialog } from '@components/auth';
 import { Button } from '@components/ui/button';
 import { Dialog, DialogClose, DialogContent, DialogFooter } from '@components/ui/dialog';
 import { Form, InputLeading, NumericField, RadioButton } from '@components/ui/form';
 import { XIcon } from '@heroicons/react/outline';
+import { useAuth } from '@hooks/index';
 import { donateForFundraisingCampaign } from '@lib/fundraising-campaigns';
 import { Organization } from '@lib/types';
 import { onlyPositiveInteger } from '@utils/common';
@@ -124,6 +126,7 @@ type DonationButtonProps = {
 };
 
 export function DonationButton({ fundraisingCampaignId, organization }: DonationButtonProps) {
+  const auth = useAuth();
   const [showDialog, setShowDialog] = useState(false);
 
   function onDialogOpenChange(open: boolean) {
@@ -135,12 +138,21 @@ export function DonationButton({ fundraisingCampaignId, organization }: Donation
       <Button className="w-full justify-center" onClick={() => setShowDialog(true)}>
         Donate Now
       </Button>
-      <DonationDialogForm
-        open={showDialog}
-        onOpenChange={onDialogOpenChange}
-        fundraisingCampaignId={fundraisingCampaignId}
-        organization={organization}
-      />
+      {auth.isAuthenticated ? (
+        <DonationDialogForm
+          open={showDialog}
+          onOpenChange={onDialogOpenChange}
+          fundraisingCampaignId={fundraisingCampaignId}
+          organization={organization}
+        />
+      ) : (
+        <AuthDialog
+          open={showDialog}
+          onOpenChange={onDialogOpenChange}
+          handleClose={() => setShowDialog(false)}
+          description="You need to be logged in to donate for this fundraising campaign."
+        />
+      )}
     </>
   );
 }
