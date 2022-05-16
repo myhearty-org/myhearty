@@ -98,7 +98,7 @@ type AboutCampaignCardProps = {
 
 function AboutCampaignCard({ about_campaign }: AboutCampaignCardProps) {
   return (
-    <div className="flex w-full flex-col gap-4 rounded-md border border-gray-200 bg-white py-3 px-6 shadow-md">
+    <div className="mx-[-1rem] flex w-[calc(100%+2rem)] flex-col gap-4 border-0 border-gray-200 bg-white py-3 px-3 shadow-md md:mx-0 md:w-full md:rounded-md md:border md:px-6">
       <h2 className="border-b border-gray-200 pb-1 text-lg font-medium">About Campaign</h2>
       <SanitizedHTML className="prose tracking-tight" html={about_campaign} />
     </div>
@@ -127,7 +127,7 @@ export function Layout({ fundraisingCampaign }: LayoutProps) {
   return (
     <>
       <div className="relative mx-auto min-h-screen w-full max-w-screen-xl py-8">
-        <div className="mx-8 grid grid-flow-row grid-cols-1 justify-center gap-y-4 gap-x-8 md:grid-cols-3 lg:mx-16 lg:gap-x-12">
+        <div className="mx-4 grid grid-flow-row grid-cols-1 justify-center gap-y-4 gap-x-8 md:mx-8 md:grid-cols-3 lg:mx-16 lg:gap-x-12">
           <div className="flex flex-col gap-6 md:col-span-2">
             <h1 className="break-words text-center text-2xl font-bold md:text-left lg:text-3xl">{name}</h1>
             <Gallery name={name} image_url={image_url} />
