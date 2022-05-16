@@ -42,6 +42,13 @@ select:focus {
   color: #ec4899;
 }
 
+/* Add word-break attribute to the break-words (overflow-wrap: break-word) 
+   utility class that does not work due to unknown reason. */
+
+.break-words {
+  word-break: break-word;
+}
+
 /* Remove default spinner from input[type=number] */
 
 .spinner-none::-webkit-inner-spin-button,
