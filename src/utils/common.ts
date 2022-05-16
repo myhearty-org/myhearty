@@ -20,6 +20,10 @@ export function calculate_percentage(partialValue: number, totalValue: number) {
   return Math.round((partialValue / totalValue) * 100);
 }
 
+export function toLocaleFixed(number: number, n: number = 2) {
+  return number.toLocaleString(undefined, { minimumFractionDigits: n, maximumFractionDigits: n });
+}
+
 export function onlyPositiveInteger(value: string) {
   return /^\d*$/.test(value);
 }
