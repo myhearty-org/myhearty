@@ -1,15 +1,15 @@
 import { CheckCircleIcon } from '@heroicons/react/outline';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import cn from 'classnames';
-import { ComponentProps, forwardRef } from 'react';
+import { forwardRef } from 'react';
 
-type DropdownProps = ComponentProps<typeof DropdownMenuPrimitive['Root']>;
+type DropdownProps = React.ComponentProps<typeof DropdownMenuPrimitive['Root']>;
 
 export function Dropdown(props: DropdownProps) {
   return <DropdownMenuPrimitive.Root modal={false} {...props} />;
 }
 
-type DropdownMenuTriggerProps = ComponentProps<typeof DropdownMenuPrimitive['Trigger']>;
+type DropdownMenuTriggerProps = React.ComponentProps<typeof DropdownMenuPrimitive['Trigger']>;
 
 export const DropdownMenuTrigger = forwardRef<HTMLButtonElement, DropdownMenuTriggerProps>(
   function DropdownMenuTrigger({ className = '', ...props }, forwardedRef) {
@@ -32,7 +32,7 @@ export const DropdownMenuTrigger = forwardRef<HTMLButtonElement, DropdownMenuTri
 
 export const DropdownMenuTriggerItem = DropdownMenuPrimitive.TriggerItem;
 
-type DropdownMenuContentProps = ComponentProps<typeof DropdownMenuPrimitive['Content']>;
+type DropdownMenuContentProps = React.ComponentProps<typeof DropdownMenuPrimitive['Content']>;
 
 export const DropdownMenuContent = forwardRef<HTMLDivElement, DropdownMenuContentProps>(
   function DropdownMenuContent({ children, ...props }, forwardedRef) {
@@ -50,13 +50,13 @@ export const DropdownMenuContent = forwardRef<HTMLDivElement, DropdownMenuConten
   }
 );
 
-type DropdownMenuLabelProps = ComponentProps<typeof DropdownMenuPrimitive['Label']>;
+type DropdownMenuLabelProps = React.ComponentProps<typeof DropdownMenuPrimitive['Label']>;
 
 export function DropdownMenuLabel(props: DropdownMenuLabelProps) {
   return <DropdownMenuPrimitive.Label className="px-3 py-2 text-gray-500" {...props} />;
 }
 
-type DropdownMenuItemProps = ComponentProps<typeof DropdownMenuPrimitive['CheckboxItem']>;
+type DropdownMenuItemProps = React.ComponentProps<typeof DropdownMenuPrimitive['CheckboxItem']>;
 
 // prettier-ignore
 export const DropdownMenuItem = forwardRef<HTMLDivElement, DropdownMenuItemProps>(
@@ -73,7 +73,7 @@ export const DropdownMenuItem = forwardRef<HTMLDivElement, DropdownMenuItemProps
 
 export const DropdownMenuGroup = DropdownMenuPrimitive.Group;
 
-type DropdownMenuCheckboxItemProps = ComponentProps<typeof DropdownMenuPrimitive['CheckboxItem']>;
+type DropdownMenuCheckboxItemProps = React.ComponentProps<typeof DropdownMenuPrimitive['CheckboxItem']>;
 
 export const DropdownMenuCheckboxItem = forwardRef<HTMLDivElement, DropdownMenuCheckboxItemProps>(
   function DropdownMenuCheckboxItem({ children, ...props }, forwardedRef) {
@@ -90,7 +90,7 @@ export const DropdownMenuCheckboxItem = forwardRef<HTMLDivElement, DropdownMenuC
 
 export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
 
-type DropdownMenuRadioItemProps = ComponentProps<typeof DropdownMenuPrimitive['RadioItem']>;
+type DropdownMenuRadioItemProps = React.ComponentProps<typeof DropdownMenuPrimitive['RadioItem']>;
 
 export const DropdownMenuRadioItem = forwardRef<HTMLDivElement, DropdownMenuRadioItemProps>(
   function DropdownMenuRadioItem({ children, ...props }, forwardedRef) {

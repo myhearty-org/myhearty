@@ -1,6 +1,6 @@
 import { SearchIcon } from '@heroicons/react/solid';
 import { useBreakpoint, useHasMounted } from '@hooks/index';
-import { ChangeEvent, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { connectSearchBox } from 'react-instantsearch-dom';
 
 type CustomSearchBoxProps = {
@@ -13,7 +13,7 @@ function CustomSearchBox({ currentRefinement, refine, placeholder = '' }: Custom
   const [value, setValue] = useState<any>(currentRefinement);
   const debouncedRefineValueRef = useRef<any>();
 
-  function onChangeDebounced(event: ChangeEvent<HTMLInputElement>) {
+  function onChangeDebounced(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.currentTarget.value;
     clearTimeout(debouncedRefineValueRef.current);
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { connectStats } from 'react-instantsearch-dom';
 
 type NoSearchResultsComponentProps = {

@@ -2,7 +2,7 @@ import { Alert } from '@components/ui/alert';
 import { handleUnknownError } from '@utils/errors';
 import { showToast } from '@utils/show-toast';
 import cn from 'classnames';
-import { ComponentProps, forwardRef, ReactElement, ReactNode, Ref, useId, useState } from 'react';
+import { forwardRef, useId, useState } from 'react';
 import { FieldValues, FormProvider, SubmitHandler, useFormContext, UseFormReturn } from 'react-hook-form';
 
 type InputProps = Omit<JSX.IntrinsicElements['input'], 'name'> & { name: string };
@@ -31,7 +31,7 @@ export function Label({ className, children, ...props }: LabelProps) {
 }
 
 type InputLeadingProps = {
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 export function InputLeading({ children }: InputLeadingProps) {
@@ -44,10 +44,10 @@ export function InputLeading({ children }: InputLeadingProps) {
 
 // prettier-ignore
 type InputFieldProps = 
-  { label?: ReactNode; labelProps?: ComponentProps<typeof Label>; } &
-  { addOnLeading?: ReactNode } &
+  { label?: React.ReactNode; labelProps?: React.ComponentProps<typeof Label>; } &
+  { addOnLeading?: React.ReactNode } &
   { visible?: boolean; } &
-  ComponentProps<typeof Input>;
+  React.ComponentProps<typeof Input>;
 
 const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputField(props, ref) {
   const id = useId();
@@ -161,7 +161,7 @@ type FormProps<T> =
   { form: UseFormReturn<T>; handleSubmit: SubmitHandler<T> } & 
   Omit<JSX.IntrinsicElements['form'], 'onSubmit'>;
 
-const PlainForm = <T extends FieldValues>(props: FormProps<T>, ref: Ref<HTMLFormElement>) => {
+const PlainForm = <T extends FieldValues>(props: FormProps<T>, ref: React.Ref<HTMLFormElement>) => {
   const { form, handleSubmit, ...passThrough } = props;
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -183,4 +183,4 @@ const PlainForm = <T extends FieldValues>(props: FormProps<T>, ref: Ref<HTMLForm
 
 // prettier-ignore
 export const Form = forwardRef(PlainForm) as 
-  <T extends FieldValues>(p: FormProps<T> & { ref?: Ref<HTMLFormElement> }) => ReactElement;
+  <T extends FieldValues>(p: FormProps<T> & { ref?: React.Ref<HTMLFormElement> }) => React.ReactElement;

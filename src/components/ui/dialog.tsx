@@ -1,8 +1,8 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import cn from 'classnames';
-import { ComponentProps, forwardRef, ReactNode } from 'react';
+import { forwardRef } from 'react';
 
-type DialogProps = ComponentProps<typeof DialogPrimitive['Root']>;
+type DialogProps = React.ComponentProps<typeof DialogPrimitive['Root']>;
 
 export function Dialog({ children, ...props }: DialogProps) {
   return (
@@ -15,7 +15,7 @@ export function Dialog({ children, ...props }: DialogProps) {
   );
 }
 
-type DialogContentProps = ComponentProps<typeof DialogPrimitive['Content']> & {
+type DialogContentProps = React.ComponentProps<typeof DialogPrimitive['Content']> & {
   size?: 'base' | 'xl' | 'lg';
 };
 
@@ -57,7 +57,7 @@ export function DialogHeader({ title, subtitle }: DialogHeaderProps) {
 }
 
 type DialogFooterProps = {
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 export function DialogFooter({ children }: DialogFooterProps) {

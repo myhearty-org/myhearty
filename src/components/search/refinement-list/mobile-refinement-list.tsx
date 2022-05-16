@@ -1,6 +1,6 @@
 import { AdjustmentsIcon, XIcon } from '@heroicons/react/solid';
 import cn from 'classnames';
-import React from 'react';
+import { Children } from 'react';
 import { ClearRefinements } from 'react-instantsearch-dom';
 import SimpleBar from 'simplebar-react';
 
@@ -28,7 +28,7 @@ export function MobileRefinementList({ showFilter, toggleShowFilter, children }:
       </div>
       <SimpleBar className="max-h-[300px] px-1 py-2">
         <div className="grid w-full grid-cols-2 gap-5 px-2">
-          {React.Children.map(children, (child) => (
+          {Children.map(children, (child) => (
             <div className="shrink-0">{child}</div>
           ))}
         </div>

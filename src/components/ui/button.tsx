@@ -1,7 +1,7 @@
 import { Spinner } from '@components/ui/icons';
 import cn from 'classnames';
 import Link, { LinkProps } from 'next/link';
-import React, { forwardRef } from 'react';
+import { createElement, forwardRef } from 'react';
 
 type SVGComponent = React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 
@@ -41,7 +41,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
   const isLink = typeof props.href !== 'undefined';
   const elementType = isLink ? 'a' : 'button';
 
-  const element = React.createElement(
+  const element = createElement(
     elementType,
     {
       ...passThroughProps,

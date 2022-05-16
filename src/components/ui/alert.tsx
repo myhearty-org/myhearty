@@ -1,11 +1,10 @@
 import { CheckCircleIcon, ExclamationIcon, InformationCircleIcon, XCircleIcon } from '@heroicons/react/solid';
 import cn from 'classnames';
-import { ReactNode } from 'react';
 
 export type AlertProps = {
-  title?: ReactNode;
-  message?: ReactNode;
-  actions?: ReactNode;
+  title?: React.ReactNode;
+  message?: React.ReactNode;
+  actions?: React.ReactNode;
   className?: string;
   severity: 'success' | 'warning' | 'error' | 'info';
 };

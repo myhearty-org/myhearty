@@ -3,7 +3,7 @@ import { User } from '@lib/types';
 import { logInUser, logOutUser, signUpUser } from '@lib/users';
 import { AxiosResponse } from 'axios';
 import isEmpty from 'lodash/isEmpty';
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 type AuthContextType = {
   user: User;

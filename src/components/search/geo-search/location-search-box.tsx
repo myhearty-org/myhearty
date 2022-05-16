@@ -1,5 +1,5 @@
 import { ByCountryCodeOptions, GeocoderAutocomplete } from '@geoapify/geocoder-autocomplete';
-import { MutableRefObject, useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 const GEOAPIFY_API_KEY = process.env.NEXT_PUBLIC_GEOAPIFY_API_KEY!;
 
@@ -22,10 +22,10 @@ export function LocationSearchBox({
 }: LocationSearchBoxProps) {
   let geocoderContainer: HTMLDivElement | null;
   let initialized = false;
-  let geocoderAutocomplete: MutableRefObject<GeocoderAutocomplete | undefined> =
+  let geocoderAutocomplete: React.MutableRefObject<GeocoderAutocomplete | undefined> =
     useRef<GeocoderAutocomplete>();
 
-  const placeSelectCallbackRef: MutableRefObject<((value: any) => {}) | undefined> =
+  const placeSelectCallbackRef: React.MutableRefObject<((value: any) => {}) | undefined> =
     useRef<(value: any) => {}>();
 
   placeSelectCallbackRef.current = placeSelectCallback;
