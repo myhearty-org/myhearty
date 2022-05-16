@@ -38,7 +38,7 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(func
       {...props}>
       {children}
       <DialogPrimitive.Close asChild>
-        <XIcon className="absolute top-2.5 right-2.5 h-6 w-6 cursor-pointer text-gray-400 hover:text-gray-500" />
+        <XIcon className="absolute top-2 right-2 h-6 w-6 cursor-pointer text-gray-400 hover:text-gray-500" />
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
   );

@@ -3,7 +3,6 @@ import { Button } from '@components/ui/button';
 import { Dialog, DialogContent, DialogFooter } from '@components/ui/dialog';
 import { Form, InputLeading, NumericField, RadioButton } from '@components/ui/form';
 import { useAuth } from '@hooks/index';
-import { useHasMounted } from '@hooks/index';
 import { donateForFundraisingCampaign } from '@lib/fundraising-campaigns';
 import { Organization } from '@lib/types';
 import { onlyPositiveInteger } from '@utils/common';
@@ -125,9 +124,6 @@ type DonationButtonProps = {
 export function DonationButton({ fundraisingCampaignId, organization }: DonationButtonProps) {
   const auth = useAuth();
   const [showDialog, setShowDialog] = useState(false);
-
-  const hasMounted = useHasMounted();
-  if (!hasMounted) return null;
 
   function onDialogOpenChange(open: boolean) {
     if (!open) setShowDialog(false);
