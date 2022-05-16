@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  padding: 0 !important;
+}
+
 #__next {
   @apply flex min-h-screen flex-col text-gray-900;
 }
