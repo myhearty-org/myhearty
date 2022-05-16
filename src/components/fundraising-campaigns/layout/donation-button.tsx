@@ -1,8 +1,7 @@
 import { AuthDialog } from '@components/auth';
 import { Button } from '@components/ui/button';
-import { Dialog, DialogClose, DialogContent, DialogFooter } from '@components/ui/dialog';
+import { Dialog, DialogContent, DialogFooter } from '@components/ui/dialog';
 import { Form, InputLeading, NumericField, RadioButton } from '@components/ui/form';
-import { XIcon } from '@heroicons/react/outline';
 import { useAuth } from '@hooks/index';
 import { donateForFundraisingCampaign } from '@lib/fundraising-campaigns';
 import { Organization } from '@lib/types';
@@ -112,9 +111,6 @@ function DonationDialogForm({
             </DialogFooter>
           </Form>
         </div>
-        <DialogClose asChild>
-          <XIcon className="absolute top-2.5 right-2.5 h-6 w-6 cursor-pointer text-gray-400 hover:text-gray-500" />
-        </DialogClose>
       </DialogContent>
     </Dialog>
   );

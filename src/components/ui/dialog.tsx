@@ -1,3 +1,4 @@
+import { XIcon } from '@heroicons/react/outline';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import cn from 'classnames';
 import { forwardRef } from 'react';
@@ -36,6 +37,9 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(func
       ref={forwardedRef}
       {...props}>
       {children}
+      <DialogPrimitive.Close asChild>
+        <XIcon className="absolute top-2.5 right-2.5 h-6 w-6 cursor-pointer text-gray-400 hover:text-gray-500" />
+      </DialogPrimitive.Close>
     </DialogPrimitive.Content>
   );
 });
