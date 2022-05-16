@@ -67,12 +67,11 @@ function MobileNavItem({ href, name, icon: Icon }: MobileNavItemProps) {
 
 function MobileMenu() {
   const auth = useAuth();
-  const router = useRouter();
 
   async function logOut() {
     try {
       await auth.logOut();
-      router.reload();
+      window.location.reload();
     } catch (error) {
       showToast(handleUnknownError(error).message, 'error');
     }

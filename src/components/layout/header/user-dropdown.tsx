@@ -11,7 +11,6 @@ import { useAuth } from '@hooks/index';
 import { handleUnknownError } from '@utils/errors';
 import { showToast } from '@utils/show-toast';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 type DropdownItemProps = {
   name: string;
@@ -37,12 +36,11 @@ function DropdownItem({ name, href }: DropdownItemProps) {
 
 export function UserDropdown() {
   const auth = useAuth();
-  const router = useRouter();
 
   async function logOut() {
     try {
       await auth.logOut();
-      router.reload();
+      window.location.reload();
     } catch (error) {
       showToast(handleUnknownError(error).message, 'error');
     }
