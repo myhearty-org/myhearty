@@ -28,7 +28,7 @@ export function LoginForm() {
   }
 
   return (
-    <Form className="mt-8 space-y-6" form={form} handleSubmit={logIn}>
+    <Form className="flex flex-col gap-6" form={form} handleSubmit={logIn}>
       <EmailField id="email" label="Email Address" required {...register('email')} />
       <PasswordField
         id="current-password"

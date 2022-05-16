@@ -31,7 +31,7 @@ export function SignupForm() {
   }
 
   return (
-    <Form className="mt-8 space-y-6" form={form} handleSubmit={signUp}>
+    <Form className="flex flex-col gap-6" form={form} handleSubmit={signUp}>
       <EmailField id="email" label="Email Address" required {...register('email')} />
       <PasswordField
         id="current-password"
