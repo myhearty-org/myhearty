@@ -3,7 +3,7 @@ import { User } from '@lib/types';
 import { logInUser, logOutUser, signUpUser } from '@lib/users';
 import { AxiosResponse } from 'axios';
 import isEmpty from 'lodash/isEmpty';
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useMemo } from 'react';
 
 type AuthContextType = {
   user: User;
@@ -31,13 +31,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
 function useAuthProvider() {
   const [storedUser, setStoredUser] = useLocalStorage<User>('user', {} as User);
-  const [user, setUser] = useState<User>(storedUser);
 
-  useEffect(() => {
-    setUser(storedUser);
-  }, [storedUser]);
-
-  const isAuthenticated = !isEmpty(user);
+  const isAuthenticated = !isEmpty(storedUser);
 
   function signUp(email: string, password: string) {
     return signUpUser(email, password);
@@ -68,13 +63,13 @@ function useAuthProvider() {
 
   const authProvider = useMemo(
     () => ({
-      user,
+      user: storedUser,
       isAuthenticated,
       signUp,
       logIn,
       logOut,
     }),
-    [user, isAuthenticated, logIn, logOut]
+    [storedUser, isAuthenticated, logIn, logOut]
   );
 
   return authProvider;
