@@ -3,5 +3,5 @@ type MainProps = {
 };
 
 export function Main({ children }: MainProps) {
-  return <div className={'flex w-full grow flex-col'}>{children}</div>;
+  return <div className="flex w-full grow flex-col">{children}</div>;
 }
