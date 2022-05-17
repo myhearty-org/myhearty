@@ -360,6 +360,11 @@
   resolved "https://registry.yarnpkg.com/@geoapify/geocoder-autocomplete/-/geocoder-autocomplete-1.3.4.tgz#acd83903343a616349aa7ff26a14401d0f60a622"
   integrity sha512-KweWQzhgVSXqeQIoP0tdDoOt5hmG4WgmEjXpMXz1rFXTu3DkJw/x4wJOYelDBe7cHcdGjYUk/Mw/N3W2MpbSbw==
 
+"@glidejs/glide@^3.5.2":
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/@glidejs/glide/-/glide-3.5.2.tgz#7012c5920ecf202bbda44d8526fc979984b6dd54"
+  integrity sha512-7jGciNJ2bQ4eZLSNlSZ+VAyW63kALf420CvkEpK4lEsUfWJq9odqimci0YCiyNyMUFB+pWHwLYyNc57dijYsCg==
+
 "@headlessui/react@^1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.5.0.tgz#483b44ba2c8b8d4391e1d2c863898d7dd0cc0296"
@@ -813,6 +818,11 @@
   integrity sha512-nnVQSgRVuZ/843oAfhA25eRSNzUFcBPk/LOiw5gm8mD9/X7CNcbRkQu/OsjCewO8+VIYfPxUnXvPEVGenw14+w==
   dependencies:
     "@types/trusted-types" "*"
+
+"@types/glidejs__glide@^3.4.2":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/@types/glidejs__glide/-/glidejs__glide-3.4.2.tgz#fb486e376aab88788e09bbdeb81f89dcf363be1c"
+  integrity sha512-RM095h5dzR4645Z2moR1kFEEyr26BteRySLsAsUXWvI1Nxh4z2SU3qhNx68uYutvLbRIHCIve40ItylC8r+kEw==
 
 "@types/hoist-non-react-statics@^3.3.1":
   version "3.3.1"

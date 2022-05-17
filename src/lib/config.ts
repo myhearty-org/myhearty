@@ -1,4 +1,4 @@
-export const TYPESENSE_SERVER_CONFIG = {
+export const TYPESENSE_CONFIG = {
   apiKey: process.env.NEXT_PUBLIC_TYPESENSE_API_KEY!,
   nodes: [
     {

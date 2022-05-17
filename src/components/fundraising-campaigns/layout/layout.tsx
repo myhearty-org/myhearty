@@ -1,5 +1,6 @@
 import { DonationButton } from './donation-button';
 import { DonationSuccessfulDialog } from './donation-successful-dialog';
+import { FundraisingCampaignsSlider } from './fundraising-campaigns-slider';
 import { SanitizedHTML } from '@components/helpers';
 import { CategoriesCard, OrganizationCard } from '@components/ui/cards';
 import { ProgressBar } from '@components/ui/progress-bar';
@@ -127,23 +128,26 @@ export function Layout({ fundraisingCampaign }: LayoutProps) {
   return (
     <>
       <div className="relative mx-auto min-h-screen w-full max-w-screen-xl py-8">
-        <div className="mx-4 grid grid-flow-row grid-cols-1 justify-center gap-y-4 gap-x-8 md:mx-8 md:grid-cols-3 lg:mx-16 lg:gap-x-12">
-          <div className="flex flex-col gap-6 md:col-span-2">
-            <h1 className="break-words text-center text-2xl font-bold md:text-left lg:text-3xl">{name}</h1>
-            <Gallery name={name} image_url={image_url} />
-            <AboutCampaignCard about_campaign={about_campaign} />
+        <div className="mx-4 md:mx-8 lg:mx-16 flex flex-col gap-6">
+          <div className="grid grid-flow-row grid-cols-1 justify-center gap-y-4 gap-x-8 md:grid-cols-3 lg:gap-x-12">
+            <div className="flex flex-col gap-6 md:col-span-2">
+              <h1 className="break-words text-center text-2xl font-bold md:text-left lg:text-3xl">{name}</h1>
+              <Gallery name={name} image_url={image_url} />
+              <AboutCampaignCard about_campaign={about_campaign} />
+            </div>
+            <div className="flex flex-col gap-6 md:col-span-1">
+              <TotalRaisedAmountCard
+                target_amount={target_amount}
+                total_raised_amount={total_raised_amount}
+                donor_count={donor_count}
+              />
+              <DonationButton fundraisingCampaignId={id} organization={organization} />
+              <DateAndTimeCard start_datetime={start_datetime} end_datetime={end_datetime} />
+              <CategoriesCard categories={categories} />
+              <OrganizationCard organization={organization} />
+            </div>
           </div>
-          <div className="flex flex-col gap-6 md:col-span-1">
-            <TotalRaisedAmountCard
-              target_amount={target_amount}
-              total_raised_amount={total_raised_amount}
-              donor_count={donor_count}
-            />
-            <DonationButton fundraisingCampaignId={id} organization={organization} />
-            <DateAndTimeCard start_datetime={start_datetime} end_datetime={end_datetime} />
-            <CategoriesCard categories={categories} />
-            <OrganizationCard organization={organization} />
-          </div>
+          <FundraisingCampaignsSlider fundraisingCampaign={fundraisingCampaign} />
         </div>
       </div>
       <DonationSuccessfulDialog />
