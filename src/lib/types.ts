@@ -38,3 +38,21 @@ export type FundraisingCampaign = {
   published: boolean;
   organization: Organization;
 };
+
+export type VolunteerEvent = {
+  id: string;
+  name: string;
+  page_url: string;
+  openings: number;
+  volunteer_count: number;
+  location: string;
+  about_event: string;
+  categories: string[];
+  image_url: string;
+  youtube_url: string;
+  start_datetime: string;
+  end_datetime: string;
+  application_deadline: string;
+  published: boolean;
+  organization: Organization;
+};
