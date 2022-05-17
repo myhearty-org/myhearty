@@ -1,5 +1,5 @@
 import { Search } from '@components/fundraising-campaigns';
-import { TYPESENSE_SERVER_CONFIG } from '@lib/config';
+import { TYPESENSE_CONFIG } from '@lib/config';
 import { NextSeo } from 'next-seo';
 import { GetServerSideProps } from 'next/types';
 import { useState } from 'react';
@@ -7,7 +7,7 @@ import { findResultsState } from 'react-instantsearch-dom/server';
 import TypesenseInstantSearchAdapter from 'typesense-instantsearch-adapter';
 
 const typesense = new TypesenseInstantSearchAdapter({
-  server: TYPESENSE_SERVER_CONFIG,
+  server: TYPESENSE_CONFIG,
   additionalSearchParameters: {
     query_by: 'name,organization,about_campaign',
     queryByWeights: '2,2,1',
@@ -20,7 +20,9 @@ type FundraisingCampaignsSearchPageProps = {
   resultsState: any;
 };
 
-export default function FundraisingCampaignsSearchPage({ resultsState }: FundraisingCampaignsSearchPageProps) {
+export default function FundraisingCampaignsSearchPage({
+  resultsState,
+}: FundraisingCampaignsSearchPageProps) {
   const [searchState, setSearchState] = useState({});
 
   function onSearchStateChange(searchState: any) {
