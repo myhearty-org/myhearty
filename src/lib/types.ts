@@ -2,10 +2,10 @@ export type User = {
   id: string;
   name: string;
   email: string;
-  contact_no: string;
-  address: string;
-  birth_date: string;
-  gender: string;
+  contact_no?: string;
+  address?: string;
+  birth_date?: string;
+  gender?: string;
   avatar_url: string;
 };
 
