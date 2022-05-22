@@ -9,6 +9,14 @@ export type User = {
   avatar_url: string;
 };
 
+export type Profile = {
+  name: string;
+  contact_no: string;
+  address: string;
+  birth_date: string;
+  gender: string;
+};
+
 export type Organization = {
   id: string;
   name: string;
