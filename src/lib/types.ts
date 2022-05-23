@@ -9,7 +9,7 @@ export type User = {
   avatar_url: string;
 };
 
-export type Profile = {
+export type UserProfile = {
   name: string;
   contact_no: string;
   address: string;
