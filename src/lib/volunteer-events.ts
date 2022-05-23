@@ -8,7 +8,7 @@ export async function getVolunteerEvent(idOrSlug: string) {
   return volunteerEvent;
 }
 
-export async function checkVolunteerApplication(id: string) {
+export async function isVolunteerEventApplied(id: string) {
   const { status } = await axiosWithAuth.get(`/user/volunteer-applications/${id}`, {
     validateStatus: (status) => status === 204 || status === 404,
   });
