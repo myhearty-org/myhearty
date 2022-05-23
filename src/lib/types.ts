@@ -66,5 +66,6 @@ export type VolunteerEvent = {
   end_datetime: string;
   application_deadline: string;
   published: boolean;
+  application_closed: boolean;
   organization: Organization;
 };
