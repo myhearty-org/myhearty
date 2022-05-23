@@ -1,15 +1,26 @@
+import { VolunteerEvent } from '@lib/types';
 import { axios, axiosWithAuth } from '@utils/myhearty-axios';
 
-export function getVolunteerEvent(idOrSlug: string) {
-  return axios.get(`/volunteer-events/${idOrSlug}`);
+export async function getVolunteerEvent(idOrSlug: string) {
+  const { data } = await axios.get(`/volunteer-events/${idOrSlug}`);
+  const volunteerEvent: VolunteerEvent = { ...data };
+
+  return volunteerEvent;
 }
 
-export function checkVolunteerApplication(id: string) {
-  return axiosWithAuth.get(`/user/volunteer-applications/${id}`);
+export async function checkVolunteerApplication(id: string) {
+  const { status } = await axiosWithAuth.get(`/user/volunteer-applications/${id}`, {
+    validateStatus: (status) => status === 204 || status === 404,
+  });
+
+  return status === 204;
 }
 
-export function applyForVolunteerEvent(id: string) {
-  return axiosWithAuth.post(`/user/volunteer-applications/${id}`);
+export async function applyForVolunteerEvent(id: string) {
+  const { data } = await axiosWithAuth.post(`/user/volunteer-applications/${id}`);
+  const volunteerEvent: VolunteerEvent = { ...data };
+
+  return volunteerEvent;
 }
 
 export function unapplyForVolunteerEvent(id: string) {
