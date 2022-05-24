@@ -1,8 +1,20 @@
 export type User = {
   id: string;
-  email: string;
   name: string;
+  email: string;
+  contact_no?: string;
+  address?: string;
+  birth_date?: string;
+  gender?: string;
   avatar_url: string;
+};
+
+export type UserProfile = {
+  name: string;
+  contact_no: string;
+  address: string;
+  birth_date: string;
+  gender: string;
 };
 
 export type Organization = {
@@ -36,5 +48,24 @@ export type FundraisingCampaign = {
   start_datetime: string;
   end_datetime: string;
   published: boolean;
+  organization: Organization;
+};
+
+export type VolunteerEvent = {
+  id: string;
+  name: string;
+  page_url: string;
+  openings: number;
+  volunteer_count: number;
+  location: string;
+  about_event: string;
+  categories: string[];
+  image_url: string;
+  youtube_url: string;
+  start_datetime: string;
+  end_datetime: string;
+  application_deadline: string;
+  published: boolean;
+  application_closed: boolean;
   organization: Organization;
 };

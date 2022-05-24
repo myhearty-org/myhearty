@@ -51,11 +51,11 @@ type DialogHeaderProps = {
 
 export function DialogHeader({ title, subtitle }: DialogHeaderProps) {
   return (
-    <div className="mb-8">
-      <h3 className="text-xl text-gray-900" id="modal-title">
+    <div>
+      <h3 className="text-lg text-gray-900 font-medium break-words" id="modal-title">
         {title}
       </h3>
-      {subtitle && <div className="text-sm text-gray-400">{subtitle}</div>}
+      {subtitle && <div className="text-sm text-gray-400 break-words">{subtitle}</div>}
     </div>
   );
 }
@@ -65,11 +65,7 @@ type DialogFooterProps = {
 };
 
 export function DialogFooter({ children }: DialogFooterProps) {
-  return (
-    <div>
-      <div className="flex justify-end space-x-2">{children}</div>
-    </div>
-  );
+  return <div className="flex justify-end space-x-2">{children}</div>;
 }
 
 export const DialogTrigger = DialogPrimitive.Trigger;

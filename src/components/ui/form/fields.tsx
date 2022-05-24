@@ -1,7 +1,9 @@
 import { Alert } from '@components/ui/alert';
-import { handleUnknownError } from '@utils/errors';
-import { showToast } from '@utils/show-toast';
+import { handleRequest } from '@utils/api';
 import cn from 'classnames';
+import formatISO from 'date-fns/formatISO';
+import parseISO from 'date-fns/parseISO';
+import { i18n } from 'next-i18next';
 import { forwardRef, useId, useState } from 'react';
 import { FieldValues, FormProvider, SubmitHandler, useFormContext, UseFormReturn } from 'react-hook-form';
 
@@ -64,7 +66,7 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputF
 
   return (
     <div className={cn(!visible && 'invisible')}>
-      {!!props.name && (
+      {label && (
         <Label htmlFor={id} {...labelProps}>
           {label}
         </Label>
@@ -113,6 +115,10 @@ export const EmailField = forwardRef<HTMLInputElement, InputFieldProps>(function
   );
 });
 
+export const PhoneInput = forwardRef<HTMLInputElement, InputFieldProps>(function PhoneInput(props, ref) {
+  return <InputField ref={ref} type="tel" inputMode="tel" pattern="[0-9]*" {...props} />;
+});
+
 type NumericFieldProps = InputFieldProps & { validate: (numericValue: string) => boolean };
 
 // prettier-ignore
@@ -141,6 +147,19 @@ export const NumericField = forwardRef<HTMLInputElement, NumericFieldProps>(
 );
 
 // prettier-ignore
+export const DateInput = forwardRef<HTMLInputElement, InputFieldProps>(
+  function DateInput({ defaultValue, ...props }, ref) {
+    let dateValue = defaultValue;
+
+    if (dateValue) {
+      dateValue = formatISO(parseISO(dateValue as string), { representation: 'date' });
+    }
+
+    return <InputField ref={ref} type="date" defaultValue={dateValue} {...props} />;
+  }
+);
+
+// prettier-ignore
 export const RadioButton = forwardRef<HTMLInputElement, InputFieldProps>(
   function RadioButton({ className, label, ...props }, ref) {
     const id = useId();
@@ -156,25 +175,37 @@ export const RadioButton = forwardRef<HTMLInputElement, InputFieldProps>(
   }
 );
 
-// prettier-ignore
-type FormProps<T> = 
-  { form: UseFormReturn<T>; handleSubmit: SubmitHandler<T> } & 
-  Omit<JSX.IntrinsicElements['form'], 'onSubmit'>;
+type FormProps<T> = {
+  form: UseFormReturn<T>;
+  handleSubmit: SubmitHandler<T>;
+} & Omit<JSX.IntrinsicElements['form'], 'onSubmit'>;
 
 const PlainForm = <T extends FieldValues>(props: FormProps<T>, ref: React.Ref<HTMLFormElement>) => {
   const { form, handleSubmit, children, ...passThrough } = props;
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     try {
+      event.preventDefault();
       await form.handleSubmit(handleSubmit)(event);
     } catch (error) {
-      showToast(handleUnknownError(error).message, 'error');
+      const errors = error.response.data?.errors;
+
+      if (!errors) {
+        throw error;
+      }
+
+      errors.map(({ field, code }: any) => {
+        const errorField = i18n?.t([`fields.${field}`, 'fields.input'], { ns: 'validation' });
+        const errorCodeMessage = i18n?.t([`codes.${code}`, 'codes.invalid'], { ns: 'validation' });
+
+        form.setError(field, { message: `${errorField} ${errorCodeMessage}` });
+      });
     }
   }
 
   return (
     <FormProvider {...form}>
-      <form ref={ref} onSubmit={onSubmit} {...passThrough}>
+      <form ref={ref} onSubmit={(event) => handleRequest(() => onSubmit(event))} {...passThrough}>
         {children}
       </form>
     </FormProvider>
