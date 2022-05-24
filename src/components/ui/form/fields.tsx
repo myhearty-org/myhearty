@@ -1,6 +1,8 @@
 import { Alert } from '@components/ui/alert';
 import { handleRequest } from '@utils/api';
 import cn from 'classnames';
+import formatISO from 'date-fns/formatISO';
+import parseISO from 'date-fns/parseISO';
 import { i18n } from 'next-i18next';
 import { forwardRef, useId, useState } from 'react';
 import { FieldValues, FormProvider, SubmitHandler, useFormContext, UseFormReturn } from 'react-hook-form';
@@ -64,7 +66,7 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputF
 
   return (
     <div className={cn(!visible && 'invisible')}>
-      {!!props.name && (
+      {label && (
         <Label htmlFor={id} {...labelProps}>
           {label}
         </Label>
@@ -113,6 +115,10 @@ export const EmailField = forwardRef<HTMLInputElement, InputFieldProps>(function
   );
 });
 
+export const PhoneInput = forwardRef<HTMLInputElement, InputFieldProps>(function PhoneInput(props, ref) {
+  return <InputField ref={ref} type="tel" inputMode="tel" pattern="[0-9]*" {...props} />;
+});
+
 type NumericFieldProps = InputFieldProps & { validate: (numericValue: string) => boolean };
 
 // prettier-ignore
@@ -137,6 +143,19 @@ export const NumericField = forwardRef<HTMLInputElement, NumericFieldProps>(
         {...props}
       />
     );
+  }
+);
+
+// prettier-ignore
+export const DateInput = forwardRef<HTMLInputElement, InputFieldProps>(
+  function DateInput({ defaultValue, ...props }, ref) {
+    let dateValue = defaultValue;
+
+    if (dateValue) {
+      dateValue = formatISO(parseISO(dateValue as string), { representation: 'date' });
+    }
+
+    return <InputField ref={ref} type="date" defaultValue={dateValue} {...props} />;
   }
 );
 
