@@ -1,7 +1,7 @@
 import { Alert } from '@components/ui/alert';
-import { handleUnknownError } from '@utils/errors';
-import { showToast } from '@utils/show-toast';
+import { handleRequest } from '@utils/api';
 import cn from 'classnames';
+import { i18n } from 'next-i18next';
 import { forwardRef, useId, useState } from 'react';
 import { FieldValues, FormProvider, SubmitHandler, useFormContext, UseFormReturn } from 'react-hook-form';
 
@@ -156,25 +156,37 @@ export const RadioButton = forwardRef<HTMLInputElement, InputFieldProps>(
   }
 );
 
-// prettier-ignore
-type FormProps<T> = 
-  { form: UseFormReturn<T>; handleSubmit: SubmitHandler<T> } & 
-  Omit<JSX.IntrinsicElements['form'], 'onSubmit'>;
+type FormProps<T> = {
+  form: UseFormReturn<T>;
+  handleSubmit: SubmitHandler<T>;
+} & Omit<JSX.IntrinsicElements['form'], 'onSubmit'>;
 
 const PlainForm = <T extends FieldValues>(props: FormProps<T>, ref: React.Ref<HTMLFormElement>) => {
   const { form, handleSubmit, children, ...passThrough } = props;
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     try {
+      event.preventDefault();
       await form.handleSubmit(handleSubmit)(event);
     } catch (error) {
-      showToast(handleUnknownError(error).message, 'error');
+      const errors = error.response.data?.errors;
+
+      if (!errors) {
+        throw error;
+      }
+
+      errors.map(({ field, code }: any) => {
+        const errorField = i18n?.t([`fields.${field}`, 'fields.input'], { ns: 'validation' });
+        const errorCodeMessage = i18n?.t([`codes.${code}`, 'codes.invalid'], { ns: 'validation' });
+
+        form.setError(field, { message: `${errorField} ${errorCodeMessage}` });
+      });
     }
   }
 
   return (
     <FormProvider {...form}>
-      <form ref={ref} onSubmit={onSubmit} {...passThrough}>
+      <form ref={ref} onSubmit={(event) => handleRequest(() => onSubmit(event))} {...passThrough}>
         {children}
       </form>
     </FormProvider>
