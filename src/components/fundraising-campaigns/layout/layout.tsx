@@ -128,7 +128,7 @@ export function Layout({ fundraisingCampaign }: LayoutProps) {
   return (
     <>
       <div className="relative mx-auto min-h-screen w-full max-w-screen-xl py-8">
-        <div className="mx-4 md:mx-8 lg:mx-16 flex flex-col gap-6">
+        <div className="mx-4 flex flex-col gap-6 md:mx-8 lg:mx-16">
           <div className="grid grid-flow-row grid-cols-1 justify-center gap-y-4 gap-x-8 md:grid-cols-3 lg:gap-x-12">
             <div className="flex flex-col gap-6 md:col-span-2">
               <h1 className="break-words text-center text-2xl font-bold md:text-left lg:text-3xl">{name}</h1>
