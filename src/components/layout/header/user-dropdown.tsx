@@ -8,8 +8,7 @@ import {
 } from '@components/ui/dropdown';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import { useAuth } from '@hooks/index';
-import { handleUnknownError } from '@utils/errors';
-import { showToast } from '@utils/show-toast';
+import { handleRequest } from '@utils/api';
 import Link from 'next/link';
 
 type DropdownItemProps = {
@@ -38,12 +37,8 @@ export function UserDropdown() {
   const auth = useAuth();
 
   async function logOut() {
-    try {
-      await auth.logOut();
-      window.location.reload();
-    } catch (error) {
-      showToast(handleUnknownError(error).message, 'error');
-    }
+    await auth.logOut();
+    window.location.reload();
   }
 
   return (
@@ -60,7 +55,7 @@ export function UserDropdown() {
         <DropdownItem name="Your Profile" href="/user" />
         <DropdownMenuSeparator className="my-2 h-px bg-gray-300" />
         <DropdownMenuItem>
-          <a onClick={logOut}>Log Out</a>
+          <a onClick={() => handleRequest(logOut)}>Log Out</a>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </Dropdown>

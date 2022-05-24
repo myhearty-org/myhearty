@@ -4,8 +4,7 @@ import { Logo } from '@components/ui/icons';
 import { Popover, Transition } from '@headlessui/react';
 import { GiftIcon, HeartIcon, MenuIcon, UserIcon, UsersIcon, XIcon } from '@heroicons/react/outline';
 import { useAuth, useHasMounted } from '@hooks/index';
-import { handleUnknownError } from '@utils/errors';
-import { showToast } from '@utils/show-toast';
+import { handleRequest } from '@utils/api';
 import cn from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -69,12 +68,8 @@ function MobileMenu() {
   const auth = useAuth();
 
   async function logOut() {
-    try {
-      await auth.logOut();
-      window.location.reload();
-    } catch (error) {
-      showToast(handleUnknownError(error).message, 'error');
-    }
+    await auth.logOut();
+    window.location.reload();
   }
 
   const hasMounted = useHasMounted();
@@ -139,7 +134,7 @@ function MobileMenu() {
                   href="/signup"
                   type="button"
                   size="lg"
-                  onClick={logOut}>
+                  onClick={() => handleRequest(logOut)}>
                   Log Out
                 </Button>
               </Popover.Button>
