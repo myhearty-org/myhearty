@@ -76,7 +76,7 @@ function CardBody({ name, organization, start_datetime, end_datetime, location }
       </div>
       <div className="mt-3 flex flex-1 flex-col items-center justify-end">
         <Button type="button" size="sm">
-          Register
+          Apply
         </Button>
       </div>
     </div>
