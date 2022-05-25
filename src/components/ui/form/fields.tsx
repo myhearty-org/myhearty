@@ -188,7 +188,7 @@ const PlainForm = <T extends FieldValues>(props: FormProps<T>, ref: React.Ref<HT
       event.preventDefault();
       await form.handleSubmit(handleSubmit)(event);
     } catch (error) {
-      const errors = error.response.data?.errors;
+      const errors = error.response?.data?.errors;
 
       if (!errors) {
         throw error;
