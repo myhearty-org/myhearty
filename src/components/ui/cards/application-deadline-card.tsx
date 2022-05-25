@@ -1,4 +1,5 @@
 import { CalendarXIcon } from '@components/ui/icons';
+import { useHasMounted } from '@hooks/index';
 import format from 'date-fns/format';
 
 type ApplicationDeadlineCardProps = {
@@ -6,6 +7,9 @@ type ApplicationDeadlineCardProps = {
 };
 
 export function ApplicationDeadlineCard({ applicationDeadline }: ApplicationDeadlineCardProps) {
+  const hasMounted = useHasMounted();
+  if (!hasMounted) return null;
+
   return (
     <div className="flex w-full flex-col gap-4 rounded-md border border-gray-200 bg-white py-3 px-6 shadow-md">
       <h2 className="border-b border-gray-200 pb-1 font-medium">Application Deadline</h2>
