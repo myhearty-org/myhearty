@@ -1,7 +1,7 @@
-import { SanitizedHTML } from '@components/helpers';
 import {
   ApplicationDeadlineCard,
   CategoriesCard,
+  ContentCard,
   DateAndTimeCard,
   LocationCard,
   OrganizationCard,
@@ -50,7 +50,7 @@ export default function VolunteerEventPage({ volunteerEvent }: VolunteerEventPag
                   {name}
                 </h1>
                 <Gallery name={name} imageUrl={imageUrl} />
-                <AboutEventCard aboutEvent={aboutEvent} />
+                <ContentCard content={aboutEvent} />
               </div>
               <div className="flex flex-col gap-6 md:col-span-1">
                 <OpeningsCard openings={openings} volunteerCount={volunteerCount} />
@@ -99,19 +99,6 @@ function OpeningsCard({ openings, volunteerCount }: OpeningsCardProps) {
           left
         </p>
       </div>
-    </div>
-  );
-}
-
-type AboutEventCardProps = {
-  aboutEvent: string;
-};
-
-function AboutEventCard({ aboutEvent }: AboutEventCardProps) {
-  return (
-    <div className="mx-[-1rem] flex w-[calc(100%+2rem)] flex-col gap-4 border-0 border-gray-200 bg-white py-3 px-3 shadow-md md:mx-0 md:w-full md:rounded-md md:border md:px-6">
-      <h2 className="border-b border-gray-200 pb-1 text-lg font-medium">About Event</h2>
-      <SanitizedHTML className="prose tracking-tight" html={aboutEvent} />
     </div>
   );
 }

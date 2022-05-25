@@ -3,8 +3,7 @@ import {
   DonationSuccessfulDialog,
   FundraisingCampaignsSlider,
 } from '@components/fundraising-campaigns';
-import { SanitizedHTML } from '@components/helpers';
-import { CategoriesCard, DateAndTimeCard, OrganizationCard } from '@components/ui/cards';
+import { CategoriesCard, ContentCard, DateAndTimeCard, OrganizationCard } from '@components/ui/cards';
 import { Gallery } from '@components/ui/gallery';
 import { ProgressBar } from '@components/ui/progress-bar';
 import { getFundraisingCampaign } from '@lib/fundraising-campaigns';
@@ -44,7 +43,7 @@ export default function FundraisingCampaignPage({ fundraisingCampaign }: Fundrai
                   {name}
                 </h1>
                 <Gallery name={name} imageUrl={imageUrl} />
-                <AboutCampaignCard aboutCampaign={aboutCampaign} />
+                <ContentCard content={aboutCampaign} />
               </div>
               <div className="flex flex-col gap-6 md:col-span-1">
                 <TotalRaisedAmountCard
@@ -89,19 +88,6 @@ function TotalRaisedAmountCard({ targetAmount, totalRaisedAmount, donorCount }: 
           from {donorCount.toLocaleString()} {pluralize('donor', donorCount)}
         </p>
       </div>
-    </div>
-  );
-}
-
-type AboutCampaignCardProps = {
-  aboutCampaign: string;
-};
-
-function AboutCampaignCard({ aboutCampaign }: AboutCampaignCardProps) {
-  return (
-    <div className="mx-[-1rem] flex w-[calc(100%+2rem)] flex-col gap-4 border-0 border-gray-200 bg-white py-3 px-3 shadow-md md:mx-0 md:w-full md:rounded-md md:border md:px-6">
-      <h2 className="border-b border-gray-200 pb-1 text-lg font-medium">About Campaign</h2>
-      <SanitizedHTML className="prose tracking-tight" html={aboutCampaign} />
     </div>
   );
 }
