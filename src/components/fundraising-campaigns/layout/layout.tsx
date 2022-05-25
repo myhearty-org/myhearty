@@ -2,35 +2,12 @@ import { DonationButton } from './donation-button';
 import { DonationSuccessfulDialog } from './donation-successful-dialog';
 import { FundraisingCampaignsSlider } from './fundraising-campaigns-slider';
 import { SanitizedHTML } from '@components/helpers';
-import { CategoriesCard, OrganizationCard } from '@components/ui/cards';
+import { CategoriesCard, DateAndTimeCard, OrganizationCard } from '@components/ui/cards';
+import { Gallery } from '@components/ui/gallery';
 import { ProgressBar } from '@components/ui/progress-bar';
-import { CalendarIcon, ClockIcon } from '@heroicons/react/solid';
 import { FundraisingCampaign } from '@lib/types';
 import { calculate_percentage, toLocaleFixed } from '@utils/common';
-import differenceInDays from 'date-fns/differenceInDays';
-import format from 'date-fns/format';
-import Image from 'next/image';
 import pluralize from 'pluralize';
-
-type GalleryProps = {
-  name: string;
-  image_url: string;
-};
-
-function Gallery({ name, image_url }: GalleryProps) {
-  return (
-    <div className="relative aspect-[3/2] w-full overflow-hidden rounded-md border border-gray-200 shadow-md">
-      <Image
-        src={image_url}
-        alt={`Image for ${name}`}
-        layout="fill"
-        objectFit="cover"
-        quality={100}
-        priority
-      />
-    </div>
-  );
-}
 
 type TotalRaisedAmountCardProps = {
   target_amount: number;
@@ -57,37 +34,6 @@ function TotalRaisedAmountCard({
         <p className="text-sm">
           from {donor_count.toLocaleString()} {pluralize('donor', donor_count)}
         </p>
-      </div>
-    </div>
-  );
-}
-
-type DateAndTimeCardProps = {
-  start_datetime: string;
-  end_datetime: string;
-};
-
-function DateAndTimeCard({ start_datetime, end_datetime }: DateAndTimeCardProps) {
-  const current_datetime = new Date();
-  const day_count = Math.max(differenceInDays(new Date(end_datetime), current_datetime), 0);
-
-  return (
-    <div className="flex w-full flex-col gap-4 rounded-md border border-gray-200 bg-white py-3 px-6 shadow-md">
-      <h2 className="border-b border-gray-200 pb-1 font-medium">Date and Time</h2>
-      <div className="flex flex-col gap-1">
-        <div className="flex">
-          <CalendarIcon className="mr-3 h-6 w-6 flex-shrink-0 text-pink-600" />
-          <span className="text-sm">
-            <p>{format(new Date(start_datetime), 'E, d MMM yyyy, hh:mm a')} –</p>
-            <p>{format(new Date(end_datetime), 'E, d MMM yyyy, hh:mm a')}</p>
-          </span>
-        </div>
-        <div className="flex">
-          <ClockIcon className="mr-3 h-6 w-6 flex-shrink-0 text-pink-600" />
-          <span className="text-sm">
-            {day_count.toLocaleString()} {pluralize('day', day_count)} left
-          </span>
-        </div>
       </div>
     </div>
   );
@@ -132,7 +78,7 @@ export function Layout({ fundraisingCampaign }: LayoutProps) {
           <div className="grid grid-flow-row grid-cols-1 justify-center gap-y-4 gap-x-8 md:grid-cols-3 lg:gap-x-12">
             <div className="flex flex-col gap-6 md:col-span-2">
               <h1 className="break-words text-center text-2xl font-bold md:text-left lg:text-3xl">{name}</h1>
-              <Gallery name={name} image_url={image_url} />
+              <Gallery name={name} imageUrl={image_url} />
               <AboutCampaignCard about_campaign={about_campaign} />
             </div>
             <div className="flex flex-col gap-6 md:col-span-1">
@@ -142,7 +88,7 @@ export function Layout({ fundraisingCampaign }: LayoutProps) {
                 donor_count={donor_count}
               />
               <DonationButton fundraisingCampaignId={id} organization={organization} />
-              <DateAndTimeCard start_datetime={start_datetime} end_datetime={end_datetime} />
+              <DateAndTimeCard startDatetime={start_datetime} endDatetime={end_datetime} />
               <CategoriesCard categories={categories} />
               <OrganizationCard organization={organization} />
             </div>
