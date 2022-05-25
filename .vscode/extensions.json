@@ -1,8 +1,15 @@
 {
   "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "csstools.postcss",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "bradlc.vscode-tailwindcss",
-    "csstools.postcss"
+    "github.copilot",
+    "github.copilot-labs",
+    "github.vscode-pull-request-github",
+    "mutantdino.resourcemonitor",
+    "richie5um2.vscode-sort-json",
+    "visualstudioexptteam.intellicode-api-usage-examples",
+    "visualstudioexptteam.vscodeintellicode"
   ]
 }
