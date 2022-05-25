@@ -3,7 +3,7 @@ import { Button } from '@components/ui/button';
 import { Dialog, DialogContent, DialogFooter } from '@components/ui/dialog';
 import { Form, InputLeading, NumericInput, RadioButton } from '@components/ui/form';
 import { useAuth } from '@hooks/index';
-import { donateForFundraisingCampaign } from '@lib/fundraising-campaigns';
+import { donateForFundraisingCampaign } from '@lib/users/donations';
 import { Organization } from '@lib/types';
 import { onlyPositiveInteger } from '@utils/common';
 import { useState } from 'react';

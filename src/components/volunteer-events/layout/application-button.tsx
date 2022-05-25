@@ -10,7 +10,7 @@ import {
   applyForVolunteerEvent,
   isVolunteerEventApplied,
   unapplyForVolunteerEvent,
-} from '@lib/volunteer-events';
+} from '@lib/users/volunteer-applications';
 import { handleRequest } from '@utils/api';
 import { showToast } from '@utils/show-toast';
 import formatISO from 'date-fns/formatISO';
