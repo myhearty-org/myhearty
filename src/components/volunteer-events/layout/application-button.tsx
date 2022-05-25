@@ -1,7 +1,7 @@
 import { AuthDialog } from '@components/auth';
 import { Button } from '@components/ui/button';
 import { Dialog, DialogContent, DialogFooter, DialogHeader } from '@components/ui/dialog';
-import { DateInput, Form, Label, PhoneInput, RadioButton, TextField } from '@components/ui/form';
+import { DateInput, Form, Label, PhoneInput, RadioButton, TextInput } from '@components/ui/form';
 import { useHasMounted } from '@hooks/index';
 import { useAuth } from '@hooks/index';
 import { UserProfile } from '@lib/types';
@@ -35,7 +35,11 @@ type ApplicationButtonBehaviour = {
   onClick: () => void;
 };
 
-export function ApplicationButton({ volunteerEventId, volunteerEventName, applicationClosed }: ApplicationButtonProps) {
+export function ApplicationButton({
+  volunteerEventId,
+  volunteerEventName,
+  applicationClosed,
+}: ApplicationButtonProps) {
   const auth = useAuth();
   const [buttonState, setButtonState] = useState<ApplicationButtonState>();
   const [showDialog, setShowDialog] = useState(false);
@@ -140,7 +144,13 @@ type ApplicationDialogFormProps = {
 
 type ApplicationDialogFormData = UserProfile;
 
-function ApplicationDialogForm({ open, onOpenChange, handleClose, volunteerEventId, volunteerEventName }: ApplicationDialogFormProps) {
+function ApplicationDialogForm({
+  open,
+  onOpenChange,
+  handleClose,
+  volunteerEventId,
+  volunteerEventName,
+}: ApplicationDialogFormProps) {
   const [userProfile, setUserProfile] = useState<UserProfile>();
 
   useEffect(() => {
@@ -169,7 +179,7 @@ function ApplicationDialogForm({ open, onOpenChange, handleClose, volunteerEvent
           <DialogHeader title={`Volunteer for ${volunteerEventName}`} />
           <Form className="mx-auto flex w-4/5 flex-col gap-6" form={form} handleSubmit={apply}>
             <p className="break-words text-base font-medium">Personal Information</p>
-            <TextField
+            <TextInput
               label="Name"
               defaultValue={userProfile?.name}
               maxLength={63}
@@ -183,7 +193,7 @@ function ApplicationDialogForm({ open, onOpenChange, handleClose, volunteerEvent
               required
               {...register('contactNo')}
             />
-            <TextField
+            <TextInput
               label="Address"
               defaultValue={userProfile?.address}
               maxLength={255}

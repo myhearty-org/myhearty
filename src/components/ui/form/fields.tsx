@@ -1,11 +1,9 @@
 import { Alert } from '@components/ui/alert';
-import { handleRequest } from '@utils/api';
 import cn from 'classnames';
 import formatISO from 'date-fns/formatISO';
 import parseISO from 'date-fns/parseISO';
-import { i18n } from 'next-i18next';
 import { forwardRef, useId, useState } from 'react';
-import { FieldValues, FormProvider, SubmitHandler, useFormContext, UseFormReturn } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 
 type InputProps = Omit<JSX.IntrinsicElements['input'], 'name'> & { name: string };
 
@@ -92,16 +90,16 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputF
   );
 });
 
-export const TextField = forwardRef<HTMLInputElement, InputFieldProps>(function TextField(props, ref) {
+export const TextInput = forwardRef<HTMLInputElement, InputFieldProps>(function TextInput(props, ref) {
   return <InputField ref={ref} {...props} />;
 });
 
 // prettier-ignore
-export const PasswordField = forwardRef<HTMLInputElement, InputFieldProps>(function PasswordField(props, ref) {
+export const PasswordInput = forwardRef<HTMLInputElement, InputFieldProps>(function PasswordInput(props, ref) {
   return <InputField type="password" ref={ref} {...props} />;
 });
 
-export const EmailField = forwardRef<HTMLInputElement, InputFieldProps>(function EmailField(props, ref) {
+export const EmailInput = forwardRef<HTMLInputElement, InputFieldProps>(function EmailInput(props, ref) {
   return (
     <InputField
       ref={ref}
@@ -119,11 +117,11 @@ export const PhoneInput = forwardRef<HTMLInputElement, InputFieldProps>(function
   return <InputField ref={ref} type="tel" inputMode="tel" pattern="[0-9]*" {...props} />;
 });
 
-type NumericFieldProps = InputFieldProps & { validate: (numericValue: string) => boolean };
+type NumericInputProps = InputFieldProps & { validate: (numericValue: string) => boolean };
 
 // prettier-ignore
-export const NumericField = forwardRef<HTMLInputElement, NumericFieldProps>(
-  function NumericField({ value, validate, ...props }, ref) {
+export const NumericInput = forwardRef<HTMLInputElement, NumericInputProps>(
+  function NumericInput({ value, validate, ...props }, ref) {
     const [numericValue, setNumericValue] = useState<any>(value);
 
     function onChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -174,44 +172,3 @@ export const RadioButton = forwardRef<HTMLInputElement, InputFieldProps>(
     );
   }
 );
-
-type FormProps<T> = {
-  form: UseFormReturn<T>;
-  handleSubmit: SubmitHandler<T>;
-} & Omit<JSX.IntrinsicElements['form'], 'onSubmit'>;
-
-const PlainForm = <T extends FieldValues>(props: FormProps<T>, ref: React.Ref<HTMLFormElement>) => {
-  const { form, handleSubmit, children, ...passThrough } = props;
-
-  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-    try {
-      event.preventDefault();
-      await form.handleSubmit(handleSubmit)(event);
-    } catch (error) {
-      const errors = error.response?.data?.errors;
-
-      if (!errors) {
-        throw error;
-      }
-
-      errors.map(({ field, code }: any) => {
-        const errorField = i18n?.t([`fields.${field}`, 'fields.input'], { ns: 'validation' });
-        const errorCodeMessage = i18n?.t([`codes.${code}`, 'codes.invalid'], { ns: 'validation' });
-
-        form.setError(field, { message: `${errorField} ${errorCodeMessage}` });
-      });
-    }
-  }
-
-  return (
-    <FormProvider {...form}>
-      <form ref={ref} onSubmit={(event) => handleRequest(() => onSubmit(event))} {...passThrough}>
-        {children}
-      </form>
-    </FormProvider>
-  );
-};
-
-// prettier-ignore
-export const Form = forwardRef(PlainForm) as 
-  <T extends FieldValues>(p: FormProps<T> & { ref?: React.Ref<HTMLFormElement> }) => React.ReactElement;

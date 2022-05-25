@@ -1,7 +1,7 @@
 import { AuthDialog } from '@components/auth';
 import { Button } from '@components/ui/button';
 import { Dialog, DialogContent, DialogFooter } from '@components/ui/dialog';
-import { Form, InputLeading, NumericField, RadioButton } from '@components/ui/form';
+import { Form, InputLeading, NumericInput, RadioButton } from '@components/ui/form';
 import { useAuth } from '@hooks/index';
 import { donateForFundraisingCampaign } from '@lib/fundraising-campaigns';
 import { Organization } from '@lib/types';
@@ -132,7 +132,7 @@ function DonationDialogForm({
                 {...register('defaultAmount')}
               />
             </div>
-            <NumericField
+            <NumericInput
               addOnLeading={<InputLeading>RM</InputLeading>}
               visible={showOtherAmountField}
               label="Other amount"
