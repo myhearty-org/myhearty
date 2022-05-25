@@ -29,15 +29,17 @@ export default function VolunteerEventsSearchPage({ resultsState }: VolunteerEve
   }
 
   return (
-    <div className="flex-grow">
+    <>
       <NextSeo title="Search Volunteer Events" />
-      <Search
-        searchClient={searchClient}
-        searchState={searchState}
-        onSearchStateChange={onSearchStateChange}
-        resultsState={resultsState}
-      />
-    </div>
+      <div className="flex-grow">
+        <Search
+          searchClient={searchClient}
+          searchState={searchState}
+          onSearchStateChange={onSearchStateChange}
+          resultsState={resultsState}
+        />
+      </div>
+    </>
   );
 }
 

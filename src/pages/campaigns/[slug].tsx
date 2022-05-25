@@ -10,10 +10,12 @@ type FundraisingCampaignPageProps = {
 
 export default function FundraisingCampaignPage({ fundraisingCampaign }: FundraisingCampaignPageProps) {
   return (
-    <div className="grow">
+    <>
       <NextSeo title={fundraisingCampaign.name} />
-      <Layout fundraisingCampaign={fundraisingCampaign} />
-    </div>
+      <div className="grow">
+        <Layout fundraisingCampaign={fundraisingCampaign} />
+      </div>
+    </>
   );
 }
 

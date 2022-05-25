@@ -11,10 +11,12 @@ type VolunteerEventPageProps = {
 
 export default function VolunteerEventPage({ volunteerEvent }: VolunteerEventPageProps) {
   return (
-    <div className="grow">
+    <>
       <NextSeo title={volunteerEvent.name} />
-      <Layout volunteerEvent={volunteerEvent} />
-    </div>
+      <div className="grow">
+        <Layout volunteerEvent={volunteerEvent} />
+      </div>
+    </>
   );
 }
 
