@@ -40,14 +40,7 @@ function useAuthProvider() {
 
   const logIn = useCallback(
     async (email: string, password: string) => {
-      const { data } = await logInUser(email, password);
-      const user: User = {
-        id: data.id,
-        email: data.email,
-        name: data.name,
-        avatarUrl: data.avatarUrl,
-      };
-
+      const user = await logInUser(email, password);
       setStoredUser(user);
 
       return user;

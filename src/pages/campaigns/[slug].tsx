@@ -19,8 +19,7 @@ export default function FundraisingCampaignPage({ fundraisingCampaign }: Fundrai
 
 export const getServerSideProps: GetServerSideProps = async function ({ params }) {
   try {
-    const { data } = await getFundraisingCampaign(params?.slug as string);
-    const fundraisingCampaign: FundraisingCampaign = { ...data };
+    const fundraisingCampaign = await getFundraisingCampaign(params?.slug as string);
 
     if (!fundraisingCampaign.published) {
       return {

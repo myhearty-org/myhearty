@@ -37,8 +37,8 @@ function DonationDialogForm({
     const otherAmountValue = parseInt(otherAmount) * 100;
     const donationAmount = isNaN(defaultAmountValue) ? otherAmountValue : defaultAmountValue;
 
-    const { data } = await donateForFundraisingCampaign(fundraisingCampaignId, donationAmount);
-    window.location.href = data.stripeCheckoutUrl;
+    const stripeCheckoutUrl = await donateForFundraisingCampaign(fundraisingCampaignId, donationAmount);
+    window.location.href = stripeCheckoutUrl;
   }
 
   function onClickDefaultAmount() {

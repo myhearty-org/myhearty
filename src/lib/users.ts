@@ -1,4 +1,5 @@
 import { axios } from '@utils/myhearty-axios';
+import { User } from '@lib/types';
 
 export function signUpUser(email: string, password: string) {
   return axios.post('/users/signup', {
@@ -9,13 +10,16 @@ export function signUpUser(email: string, password: string) {
   });
 }
 
-export function logInUser(email: string, password: string) {
-  return axios.post('/users/login', {
+export async function logInUser(email: string, password: string) {
+  const { data } = await axios.post('/users/login', {
     user: {
       email,
       password,
     },
   });
+  const user: User = { ...data };
+
+  return user;
 }
 
 export function logOutUser() {
