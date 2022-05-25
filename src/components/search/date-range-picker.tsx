@@ -98,6 +98,8 @@ function DateRangePickerComponent({
   );
 }
 
+export const DateRangePicker = connectRange(DateRangePickerComponent);
+
 function timestampToYYYYMMDD(timestamp: number, isEndDate: boolean = false) {
   if (timestamp) {
     let date = fromUnixTime(timestamp);
@@ -111,5 +113,3 @@ function timestampToYYYYMMDD(timestamp: number, isEndDate: boolean = false) {
     return '';
   }
 }
-
-export const DateRangePicker = connectRange(DateRangePickerComponent);

@@ -1,13 +1,50 @@
 import { AuthDialog } from '@components/auth';
 import { Button } from '@components/ui/button';
 import { Dialog, DialogContent, DialogFooter } from '@components/ui/dialog';
-import { Form, InputLeading, NumericField, RadioButton } from '@components/ui/form';
+import { Form, InputLeading, NumericInput, RadioButton } from '@components/ui/form';
 import { useAuth } from '@hooks/index';
-import { donateForFundraisingCampaign } from '@lib/fundraising-campaigns';
 import { Organization } from '@lib/types';
+import { donateForFundraisingCampaign } from '@lib/users/donations';
 import { onlyPositiveInteger } from '@utils/common';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+
+type DonationButtonProps = {
+  fundraisingCampaignId: string;
+  organization: Organization;
+};
+
+export function DonationButton({ fundraisingCampaignId, organization }: DonationButtonProps) {
+  const auth = useAuth();
+  const [showDialog, setShowDialog] = useState(false);
+
+  function onDialogOpenChange(open: boolean) {
+    if (!open) setShowDialog(false);
+  }
+
+  return (
+    <>
+      <Button className="w-full justify-center" onClick={() => setShowDialog(true)}>
+        Donate Now
+      </Button>
+      {auth.isAuthenticated ? (
+        <DonationDialogForm
+          open={showDialog}
+          onOpenChange={onDialogOpenChange}
+          fundraisingCampaignId={fundraisingCampaignId}
+          organization={organization}
+        />
+      ) : (
+        <AuthDialog
+          open={showDialog}
+          onOpenChange={onDialogOpenChange}
+          handleClose={() => setShowDialog(false)}
+          description="You need to be logged in to donate for this fundraising campaign."
+        />
+      )}
+    </>
+  );
+}
 
 type DonationDialogFormProps = {
   open: boolean;
@@ -95,7 +132,7 @@ function DonationDialogForm({
                 {...register('defaultAmount')}
               />
             </div>
-            <NumericField
+            <NumericInput
               addOnLeading={<InputLeading>RM</InputLeading>}
               visible={showOtherAmountField}
               label="Other amount"
@@ -113,42 +150,5 @@ function DonationDialogForm({
         </div>
       </DialogContent>
     </Dialog>
-  );
-}
-
-type DonationButtonProps = {
-  fundraisingCampaignId: string;
-  organization: Organization;
-};
-
-export function DonationButton({ fundraisingCampaignId, organization }: DonationButtonProps) {
-  const auth = useAuth();
-  const [showDialog, setShowDialog] = useState(false);
-
-  function onDialogOpenChange(open: boolean) {
-    if (!open) setShowDialog(false);
-  }
-
-  return (
-    <>
-      <Button className="w-full justify-center" onClick={() => setShowDialog(true)}>
-        Donate Now
-      </Button>
-      {auth.isAuthenticated ? (
-        <DonationDialogForm
-          open={showDialog}
-          onOpenChange={onDialogOpenChange}
-          fundraisingCampaignId={fundraisingCampaignId}
-          organization={organization}
-        />
-      ) : (
-        <AuthDialog
-          open={showDialog}
-          onOpenChange={onDialogOpenChange}
-          handleClose={() => setShowDialog(false)}
-          description="You need to be logged in to donate for this fundraising campaign."
-        />
-      )}
-    </>
   );
 }

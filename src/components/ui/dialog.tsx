@@ -52,10 +52,10 @@ type DialogHeaderProps = {
 export function DialogHeader({ title, subtitle }: DialogHeaderProps) {
   return (
     <div>
-      <h3 className="text-lg text-gray-900 font-medium break-words" id="modal-title">
+      <h3 className="break-words text-lg font-medium text-gray-900" id="modal-title">
         {title}
       </h3>
-      {subtitle && <div className="text-sm text-gray-400 break-words">{subtitle}</div>}
+      {subtitle && <div className="break-words text-sm text-gray-400">{subtitle}</div>}
     </div>
   );
 }

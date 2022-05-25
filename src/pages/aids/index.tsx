@@ -29,15 +29,17 @@ export default function CharitableAidsSearchPage({ resultsState }: CharitableAid
   }
 
   return (
-    <div className="flex-grow">
+    <>
       <NextSeo title="Search Charitable Aids" />
-      <Search
-        searchClient={searchClient}
-        searchState={searchState}
-        onSearchStateChange={onSearchStateChange}
-        resultsState={resultsState}
-      />
-    </div>
+      <div className="flex-grow">
+        <Search
+          searchClient={searchClient}
+          searchState={searchState}
+          onSearchStateChange={onSearchStateChange}
+          resultsState={resultsState}
+        />
+      </div>
+    </>
   );
 }
 

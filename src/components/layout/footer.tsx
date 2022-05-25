@@ -2,17 +2,6 @@ import { Button } from '@components/ui/button';
 import { Logo } from '@components/ui/icons';
 import Link from 'next/link';
 
-function LogoText() {
-  return (
-    <Link href="/">
-      <a className="flex flex-col items-center gap-1 p-2">
-        <Logo width={60} height={60} />
-        <span className="inline-block whitespace-nowrap text-xl font-semibold">MyHearty</span>
-      </a>
-    </Link>
-  );
-}
-
 export function Footer() {
   return (
     <footer className="relative border-t-2 border-gray-100 bg-white">
@@ -39,5 +28,16 @@ export function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function LogoText() {
+  return (
+    <Link href="/">
+      <a className="flex flex-col items-center gap-1 p-2">
+        <Logo width={60} height={60} />
+        <span className="inline-block whitespace-nowrap text-xl font-semibold">MyHearty</span>
+      </a>
+    </Link>
   );
 }

@@ -8,6 +8,37 @@ import format from 'date-fns/format';
 import fromUnixTime from 'date-fns/fromUnixTime';
 import pluralize from 'pluralize';
 
+type SearchResultCardProps = {
+  hit: any;
+};
+
+export function SearchResultCard({ hit }: SearchResultCardProps) {
+  const hasMounted = useHasMounted();
+  if (!hasMounted) return null;
+
+  return (
+    <a
+      className="flex max-w-[320px] shrink-0 grow basis-full flex-col rounded-md bg-white shadow-md transition hover:shadow-lg hover:drop-shadow-lg focus:rounded-md focus:outline-none focus:ring-4 focus:ring-pink-300 sm:max-w-[264px]"
+      href={hit.page_url}
+      target="_blank"
+      rel="noreferrer">
+      <CardHeader
+        openings={hit.openings}
+        volunteerCount={hit.volunteer_count}
+        startDatetime={hit.start_datetime}
+        imageUrl={hit.image_url}
+      />
+      <CardBody
+        name={hit.name}
+        organization={hit.organization}
+        startDatetime={hit.start_datetime}
+        endDatetime={hit.end_datetime}
+        location={hit.location}
+      />
+    </a>
+  );
+}
+
 type CardHeaderProps = {
   openings: number;
   volunteerCount: number;
@@ -80,36 +111,5 @@ function CardBody({ name, organization, startDatetime, endDatetime, location }: 
         </Button>
       </div>
     </div>
-  );
-}
-
-type SearchResultCardProps = {
-  hit: any;
-};
-
-export function SearchResultCard({ hit }: SearchResultCardProps) {
-  const hasMounted = useHasMounted();
-  if (!hasMounted) return null;
-
-  return (
-    <a
-      className="flex max-w-[320px] shrink-0 grow basis-full flex-col rounded-md bg-white shadow-md transition hover:shadow-lg hover:drop-shadow-lg focus:rounded-md focus:outline-none focus:ring-4 focus:ring-pink-300 sm:max-w-[264px]"
-      href={hit.page_url}
-      target="_blank"
-      rel="noreferrer">
-      <CardHeader
-        openings={hit.openings}
-        volunteerCount={hit.volunteer_count}
-        startDatetime={hit.start_datetime}
-        imageUrl={hit.image_url}
-      />
-      <CardBody
-        name={hit.name}
-        organization={hit.organization}
-        startDatetime={hit.start_datetime}
-        endDatetime={hit.end_datetime}
-        location={hit.location}
-      />
-    </a>
   );
 }
