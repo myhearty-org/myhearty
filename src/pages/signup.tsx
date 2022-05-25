@@ -2,17 +2,6 @@ import { SignupForm } from '@components/auth';
 import { NoAuth } from '@components/helpers';
 import Link from 'next/link';
 
-function LoginLink() {
-  return (
-    <Link href="/login" passHref>
-      <p className="text-center text-sm text-gray-600">
-        {'Already have an account? '}
-        <a className="font-medium text-pink-600 hover:text-pink-400">Log in here.</a>
-      </p>
-    </Link>
-  );
-}
-
 export default function SignupPage() {
   return (
     <NoAuth>
@@ -28,5 +17,16 @@ export default function SignupPage() {
         </div>
       </div>
     </NoAuth>
+  );
+}
+
+function LoginLink() {
+  return (
+    <Link href="/login" passHref>
+      <p className="text-center text-sm text-gray-600">
+        {'Already have an account? '}
+        <a className="font-medium text-pink-600 hover:text-pink-400">Log in here.</a>
+      </p>
+    </Link>
   );
 }

@@ -6,6 +6,32 @@ import differenceInDays from 'date-fns/differenceInDays';
 import fromUnixTime from 'date-fns/fromUnixTime';
 import pluralize from 'pluralize';
 
+type SearchResultCardProps = {
+  hit: any;
+};
+
+export function SearchResultCard({ hit }: SearchResultCardProps) {
+  const hasMounted = useHasMounted();
+  if (!hasMounted) return null;
+
+  return (
+    <a
+      className="flex max-w-[320px] shrink-0 grow basis-full flex-col rounded-md bg-white shadow-md transition hover:shadow-lg hover:drop-shadow-lg focus:rounded-md focus:outline-none focus:ring-4 focus:ring-pink-300 sm:max-w-[264px]"
+      href={hit.page_url}
+      target="_blank"
+      rel="noreferrer">
+      <CardHeader
+        targetAmount={hit.target_amount}
+        totalRaisedAmount={hit.total_raised_amount}
+        donorCount={hit.donor_count}
+        endDatetime={hit.end_datetime}
+        imageUrl={hit.image_url}
+      />
+      <CardBody name={hit.name} organization={hit.organization} aboutCampaign={hit.about_campaign} />
+    </a>
+  );
+}
+
 type CardHeaderProps = {
   targetAmount: number;
   totalRaisedAmount: number;
@@ -62,31 +88,5 @@ function CardBody({ name, organization, aboutCampaign }: CardBodyProps) {
         </Button>
       </div>
     </div>
-  );
-}
-
-type SearchResultCardProps = {
-  hit: any;
-};
-
-export function SearchResultCard({ hit }: SearchResultCardProps) {
-  const hasMounted = useHasMounted();
-  if (!hasMounted) return null;
-
-  return (
-    <a
-      className="flex max-w-[320px] shrink-0 grow basis-full flex-col rounded-md bg-white shadow-md transition hover:shadow-lg hover:drop-shadow-lg focus:rounded-md focus:outline-none focus:ring-4 focus:ring-pink-300 sm:max-w-[264px]"
-      href={hit.page_url}
-      target="_blank"
-      rel="noreferrer">
-      <CardHeader
-        targetAmount={hit.target_amount}
-        totalRaisedAmount={hit.total_raised_amount}
-        donorCount={hit.donor_count}
-        endDatetime={hit.end_datetime}
-        imageUrl={hit.image_url}
-      />
-      <CardBody name={hit.name} organization={hit.organization} aboutCampaign={hit.about_campaign} />
-    </a>
   );
 }

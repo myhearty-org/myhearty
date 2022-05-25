@@ -14,47 +14,6 @@ import { VolunteerEvent } from '@lib/types';
 import { calculatePercentage } from '@utils/common';
 import pluralize from 'pluralize';
 
-type OpeningsCardProps = {
-  openings: number;
-  volunteerCount: number;
-};
-
-function OpeningsCard({ openings, volunteerCount }: OpeningsCardProps) {
-  const countPercentage = calculatePercentage(volunteerCount, openings);
-
-  return (
-    <div className="flex w-full flex-col gap-4 rounded-md border border-gray-200 bg-white py-3 px-6 shadow-md">
-      <h2 className="border-b border-gray-200 pb-1 font-medium">Openings</h2>
-      <div className="flex flex-col gap-1 font-medium">
-        <h2 className="text-lg lg:text-xl">
-          {openings.toLocaleString()} {pluralize('opening', openings)}
-        </h2>
-        <p className="text-sm">
-          joined by {volunteerCount.toLocaleString()} {pluralize('volunteer', volunteerCount)}
-        </p>
-        <ProgressBar className="my-1" color="bg-pink-500" percentage={countPercentage} />
-        <p className="text-sm">
-          {(openings - volunteerCount).toLocaleString()} {pluralize('opening', openings - volunteerCount)}{' '}
-          left
-        </p>
-      </div>
-    </div>
-  );
-}
-
-type AboutEventCardProps = {
-  aboutEvent: string;
-};
-
-function AboutEventCard({ aboutEvent }: AboutEventCardProps) {
-  return (
-    <div className="mx-[-1rem] flex w-[calc(100%+2rem)] flex-col gap-4 border-0 border-gray-200 bg-white py-3 px-3 shadow-md md:mx-0 md:w-full md:rounded-md md:border md:px-6">
-      <h2 className="border-b border-gray-200 pb-1 text-lg font-medium">About Event</h2>
-      <SanitizedHTML className="prose tracking-tight" html={aboutEvent} />
-    </div>
-  );
-}
-
 type LayoutProps = {
   volunteerEvent: VolunteerEvent;
 };
@@ -101,6 +60,47 @@ export function Layout({ volunteerEvent }: LayoutProps) {
         </div>
         <VolunteerEventsSlider volunteerEvent={volunteerEvent} />
       </div>
+    </div>
+  );
+}
+
+type OpeningsCardProps = {
+  openings: number;
+  volunteerCount: number;
+};
+
+function OpeningsCard({ openings, volunteerCount }: OpeningsCardProps) {
+  const countPercentage = calculatePercentage(volunteerCount, openings);
+
+  return (
+    <div className="flex w-full flex-col gap-4 rounded-md border border-gray-200 bg-white py-3 px-6 shadow-md">
+      <h2 className="border-b border-gray-200 pb-1 font-medium">Openings</h2>
+      <div className="flex flex-col gap-1 font-medium">
+        <h2 className="text-lg lg:text-xl">
+          {openings.toLocaleString()} {pluralize('opening', openings)}
+        </h2>
+        <p className="text-sm">
+          joined by {volunteerCount.toLocaleString()} {pluralize('volunteer', volunteerCount)}
+        </p>
+        <ProgressBar className="my-1" color="bg-pink-500" percentage={countPercentage} />
+        <p className="text-sm">
+          {(openings - volunteerCount).toLocaleString()} {pluralize('opening', openings - volunteerCount)}{' '}
+          left
+        </p>
+      </div>
+    </div>
+  );
+}
+
+type AboutEventCardProps = {
+  aboutEvent: string;
+};
+
+function AboutEventCard({ aboutEvent }: AboutEventCardProps) {
+  return (
+    <div className="mx-[-1rem] flex w-[calc(100%+2rem)] flex-col gap-4 border-0 border-gray-200 bg-white py-3 px-3 shadow-md md:mx-0 md:w-full md:rounded-md md:border md:px-6">
+      <h2 className="border-b border-gray-200 pb-1 text-lg font-medium">About Event</h2>
+      <SanitizedHTML className="prose tracking-tight" html={aboutEvent} />
     </div>
   );
 }

@@ -9,6 +9,43 @@ import { onlyPositiveInteger } from '@utils/common';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+type DonationButtonProps = {
+  fundraisingCampaignId: string;
+  organization: Organization;
+};
+
+export function DonationButton({ fundraisingCampaignId, organization }: DonationButtonProps) {
+  const auth = useAuth();
+  const [showDialog, setShowDialog] = useState(false);
+
+  function onDialogOpenChange(open: boolean) {
+    if (!open) setShowDialog(false);
+  }
+
+  return (
+    <>
+      <Button className="w-full justify-center" onClick={() => setShowDialog(true)}>
+        Donate Now
+      </Button>
+      {auth.isAuthenticated ? (
+        <DonationDialogForm
+          open={showDialog}
+          onOpenChange={onDialogOpenChange}
+          fundraisingCampaignId={fundraisingCampaignId}
+          organization={organization}
+        />
+      ) : (
+        <AuthDialog
+          open={showDialog}
+          onOpenChange={onDialogOpenChange}
+          handleClose={() => setShowDialog(false)}
+          description="You need to be logged in to donate for this fundraising campaign."
+        />
+      )}
+    </>
+  );
+}
+
 type DonationDialogFormProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -113,42 +150,5 @@ function DonationDialogForm({
         </div>
       </DialogContent>
     </Dialog>
-  );
-}
-
-type DonationButtonProps = {
-  fundraisingCampaignId: string;
-  organization: Organization;
-};
-
-export function DonationButton({ fundraisingCampaignId, organization }: DonationButtonProps) {
-  const auth = useAuth();
-  const [showDialog, setShowDialog] = useState(false);
-
-  function onDialogOpenChange(open: boolean) {
-    if (!open) setShowDialog(false);
-  }
-
-  return (
-    <>
-      <Button className="w-full justify-center" onClick={() => setShowDialog(true)}>
-        Donate Now
-      </Button>
-      {auth.isAuthenticated ? (
-        <DonationDialogForm
-          open={showDialog}
-          onOpenChange={onDialogOpenChange}
-          fundraisingCampaignId={fundraisingCampaignId}
-          organization={organization}
-        />
-      ) : (
-        <AuthDialog
-          open={showDialog}
-          onOpenChange={onDialogOpenChange}
-          handleClose={() => setShowDialog(false)}
-          description="You need to be logged in to donate for this fundraising campaign."
-        />
-      )}
-    </>
   );
 }

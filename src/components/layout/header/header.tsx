@@ -10,6 +10,45 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Fragment } from 'react';
 
+export function Header() {
+  const auth = useAuth();
+  const hasMounted = useHasMounted();
+
+  return (
+    <Popover as="nav" className="relative border-b border-gray-100 bg-white shadow-sm">
+      <div className="max-w-8xl mx-auto px-4 py-1">
+        <div className="mx-auto flex items-center justify-start md:space-x-5">
+          <LogoTextLink />
+          <div className="hidden items-center md:flex md:space-x-2">
+            <NavItem href={'/campaigns'}>Donate Now</NavItem>
+            <NavItem href={'/volunteer-events'}>Volunteer Today</NavItem>
+            <NavItem href={'/aids'}>Receive Aids</NavItem>
+          </div>
+          <div className="flex w-0 flex-1 justify-end md:hidden">
+            <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500">
+              <MenuIcon className="h-6 w-6" />
+            </Popover.Button>
+          </div>
+          <div className="hidden items-center justify-end md:flex md:w-0 md:flex-1 lg:space-x-4">
+            {hasMounted && !auth.isAuthenticated && (
+              <>
+                <Button href="/login" type="button" color="minimal" size="lg">
+                  Log In
+                </Button>
+                <Button href="/signup" type="button" size="lg">
+                  Sign Up
+                </Button>
+              </>
+            )}
+            {hasMounted && auth.isAuthenticated && <UserDropdown />}
+          </div>
+        </div>
+      </div>
+      <MobileMenu />
+    </Popover>
+  );
+}
+
 function LogoTextLink() {
   return (
     <Link href="/">
@@ -42,25 +81,6 @@ function NavItem({ href, children }: NavItemProps) {
         {children}
       </a>
     </Link>
-  );
-}
-
-type MobileNavItemProps = {
-  href: string;
-  name: string;
-  icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-};
-
-function MobileNavItem({ href, name, icon: Icon }: MobileNavItemProps) {
-  return (
-    <Popover.Button as={'div'}>
-      <Link href={href}>
-        <a className="-m-3 flex items-center rounded-md p-3 hover:bg-pink-50" key={name}>
-          <Icon className="h-6 w-6 flex-shrink-0 text-pink-600" />
-          <span className="ml-3 text-base font-medium text-gray-900">{name}</span>
-        </a>
-      </Link>
-    </Popover.Button>
   );
 }
 
@@ -146,41 +166,21 @@ function MobileMenu() {
   );
 }
 
-export function Header() {
-  const auth = useAuth();
-  const hasMounted = useHasMounted();
+type MobileNavItemProps = {
+  href: string;
+  name: string;
+  icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+};
 
+function MobileNavItem({ href, name, icon: Icon }: MobileNavItemProps) {
   return (
-    <Popover as="nav" className="relative border-b border-gray-100 bg-white shadow-sm">
-      <div className="max-w-8xl mx-auto px-4 py-1">
-        <div className="mx-auto flex items-center justify-start md:space-x-5">
-          <LogoTextLink />
-          <div className="hidden items-center md:flex md:space-x-2">
-            <NavItem href={'/campaigns'}>Donate Now</NavItem>
-            <NavItem href={'/volunteer-events'}>Volunteer Today</NavItem>
-            <NavItem href={'/aids'}>Receive Aids</NavItem>
-          </div>
-          <div className="flex w-0 flex-1 justify-end md:hidden">
-            <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500">
-              <MenuIcon className="h-6 w-6" />
-            </Popover.Button>
-          </div>
-          <div className="hidden items-center justify-end md:flex md:w-0 md:flex-1 lg:space-x-4">
-            {hasMounted && !auth.isAuthenticated && (
-              <>
-                <Button href="/login" type="button" color="minimal" size="lg">
-                  Log In
-                </Button>
-                <Button href="/signup" type="button" size="lg">
-                  Sign Up
-                </Button>
-              </>
-            )}
-            {hasMounted && auth.isAuthenticated && <UserDropdown />}
-          </div>
-        </div>
-      </div>
-      <MobileMenu />
-    </Popover>
+    <Popover.Button as={'div'}>
+      <Link href={href}>
+        <a className="-m-3 flex items-center rounded-md p-3 hover:bg-pink-50" key={name}>
+          <Icon className="h-6 w-6 flex-shrink-0 text-pink-600" />
+          <span className="ml-3 text-base font-medium text-gray-900">{name}</span>
+        </a>
+      </Link>
+    </Popover.Button>
   );
 }

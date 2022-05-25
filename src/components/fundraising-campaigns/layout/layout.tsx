@@ -9,45 +9,6 @@ import { FundraisingCampaign } from '@lib/types';
 import { calculatePercentage, toLocaleFixed } from '@utils/common';
 import pluralize from 'pluralize';
 
-type TotalRaisedAmountCardProps = {
-  targetAmount: number;
-  totalRaisedAmount: number;
-  donorCount: number;
-};
-
-function TotalRaisedAmountCard({ targetAmount, totalRaisedAmount, donorCount }: TotalRaisedAmountCardProps) {
-  const amountPercentage = calculatePercentage(totalRaisedAmount, targetAmount);
-
-  return (
-    <div className="flex w-full flex-col gap-4 rounded-md border border-gray-200 bg-white py-3 px-6 shadow-md">
-      <h2 className="border-b border-gray-200 pb-1 font-medium">Total Raised Amount</h2>
-      <div className="flex flex-col gap-1 font-medium">
-        <h2 className="text-lg lg:text-xl">RM{toLocaleFixed(totalRaisedAmount)} raised</h2>
-        <p className="text-sm">
-          {amountPercentage}% of RM{toLocaleFixed(targetAmount, 0)}
-        </p>
-        <ProgressBar className="my-1" color="bg-pink-500" percentage={amountPercentage} />
-        <p className="text-sm">
-          from {donorCount.toLocaleString()} {pluralize('donor', donorCount)}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-type AboutCampaignCardProps = {
-  aboutCampaign: string;
-};
-
-function AboutCampaignCard({ aboutCampaign }: AboutCampaignCardProps) {
-  return (
-    <div className="mx-[-1rem] flex w-[calc(100%+2rem)] flex-col gap-4 border-0 border-gray-200 bg-white py-3 px-3 shadow-md md:mx-0 md:w-full md:rounded-md md:border md:px-6">
-      <h2 className="border-b border-gray-200 pb-1 text-lg font-medium">About Campaign</h2>
-      <SanitizedHTML className="prose tracking-tight" html={aboutCampaign} />
-    </div>
-  );
-}
-
 type LayoutProps = {
   fundraisingCampaign: FundraisingCampaign;
 };
@@ -94,5 +55,44 @@ export function Layout({ fundraisingCampaign }: LayoutProps) {
       </div>
       <DonationSuccessfulDialog />
     </>
+  );
+}
+
+type TotalRaisedAmountCardProps = {
+  targetAmount: number;
+  totalRaisedAmount: number;
+  donorCount: number;
+};
+
+function TotalRaisedAmountCard({ targetAmount, totalRaisedAmount, donorCount }: TotalRaisedAmountCardProps) {
+  const amountPercentage = calculatePercentage(totalRaisedAmount, targetAmount);
+
+  return (
+    <div className="flex w-full flex-col gap-4 rounded-md border border-gray-200 bg-white py-3 px-6 shadow-md">
+      <h2 className="border-b border-gray-200 pb-1 font-medium">Total Raised Amount</h2>
+      <div className="flex flex-col gap-1 font-medium">
+        <h2 className="text-lg lg:text-xl">RM{toLocaleFixed(totalRaisedAmount)} raised</h2>
+        <p className="text-sm">
+          {amountPercentage}% of RM{toLocaleFixed(targetAmount, 0)}
+        </p>
+        <ProgressBar className="my-1" color="bg-pink-500" percentage={amountPercentage} />
+        <p className="text-sm">
+          from {donorCount.toLocaleString()} {pluralize('donor', donorCount)}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+type AboutCampaignCardProps = {
+  aboutCampaign: string;
+};
+
+function AboutCampaignCard({ aboutCampaign }: AboutCampaignCardProps) {
+  return (
+    <div className="mx-[-1rem] flex w-[calc(100%+2rem)] flex-col gap-4 border-0 border-gray-200 bg-white py-3 px-3 shadow-md md:mx-0 md:w-full md:rounded-md md:border md:px-6">
+      <h2 className="border-b border-gray-200 pb-1 text-lg font-medium">About Campaign</h2>
+      <SanitizedHTML className="prose tracking-tight" html={aboutCampaign} />
+    </div>
   );
 }
