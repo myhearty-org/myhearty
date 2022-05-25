@@ -1,2 +1,4 @@
 export { Search } from './search';
-export { Layout } from './layout';
+export { DonationButton } from './donation-button';
+export { DonationSuccessfulDialog } from './donation-successful-dialog';
+export { FundraisingCampaignsSlider } from './fundraising-campaigns-slider';

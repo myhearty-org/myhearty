@@ -1,2 +1,3 @@
 export { Search } from './search';
-export { Layout } from './layout';
+export { ApplicationButton } from './application-button';
+export { VolunteerEventsSlider } from './volunteer-events-slider';
