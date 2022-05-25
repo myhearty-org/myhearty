@@ -1,6 +1,6 @@
 import { useLocalStorage } from '@hooks/index';
-import { User } from '@lib/types';
 import { logInUser, logOutUser, signUpUser } from '@lib/auth/users';
+import { User } from '@lib/types';
 import { AxiosResponse } from 'axios';
 import isEmpty from 'lodash/isEmpty';
 import { createContext, useCallback, useContext, useMemo } from 'react';
