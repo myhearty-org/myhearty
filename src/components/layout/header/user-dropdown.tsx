@@ -46,7 +46,7 @@ export function UserDropdown() {
       <DropdownMenuTrigger asChild>
         <button className="group flex cursor-pointer appearance-none items-center">
           <span className="relative mr-1 h-8 w-8">
-            <Avatar src={auth.user.avatar_url} alt="User avatar" />
+            <Avatar src={auth.user.avatarUrl} alt="User avatar" />
           </span>
           <ChevronDownIcon className="h-4 w-4 text-gray-400 group-hover:text-gray-600" />
         </button>

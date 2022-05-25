@@ -11,7 +11,7 @@ import {
 import { Gallery } from '@components/ui/gallery';
 import { ProgressBar } from '@components/ui/progress-bar';
 import { VolunteerEvent } from '@lib/types';
-import { calculate_percentage } from '@utils/common';
+import { calculatePercentage } from '@utils/common';
 import pluralize from 'pluralize';
 
 type OpeningsCardProps = {
@@ -20,7 +20,7 @@ type OpeningsCardProps = {
 };
 
 function OpeningsCard({ openings, volunteerCount }: OpeningsCardProps) {
-  const count_percentage = calculate_percentage(volunteerCount, openings);
+  const countPercentage = calculatePercentage(volunteerCount, openings);
 
   return (
     <div className="flex w-full flex-col gap-4 rounded-md border border-gray-200 bg-white py-3 px-6 shadow-md">
@@ -32,7 +32,7 @@ function OpeningsCard({ openings, volunteerCount }: OpeningsCardProps) {
         <p className="text-sm">
           joined by {volunteerCount.toLocaleString()} {pluralize('volunteer', volunteerCount)}
         </p>
-        <ProgressBar className="my-1" color="bg-pink-500" percentage={count_percentage} />
+        <ProgressBar className="my-1" color="bg-pink-500" percentage={countPercentage} />
         <p className="text-sm">
           {(openings - volunteerCount).toLocaleString()} {pluralize('opening', openings - volunteerCount)}{' '}
           left
@@ -64,15 +64,15 @@ export function Layout({ volunteerEvent }: LayoutProps) {
     id,
     name,
     openings,
-    volunteer_count,
+    volunteerCount,
     location,
-    about_event,
+    aboutEvent,
     categories,
-    image_url,
-    start_datetime,
-    end_datetime,
-    application_deadline,
-    application_closed,
+    imageUrl,
+    startDatetime,
+    endDatetime,
+    applicationDeadline,
+    applicationClosed,
     organization,
   } = volunteerEvent;
 
@@ -82,18 +82,18 @@ export function Layout({ volunteerEvent }: LayoutProps) {
         <div className="grid grid-flow-row grid-cols-1 justify-center gap-y-4 gap-x-8 md:grid-cols-3 lg:gap-x-12">
           <div className="flex flex-col gap-6 md:col-span-2">
             <h1 className="break-words text-center text-2xl font-bold md:text-left lg:text-3xl">{name}</h1>
-            <Gallery name={name} imageUrl={image_url} />
-            <AboutEventCard aboutEvent={about_event} />
+            <Gallery name={name} imageUrl={imageUrl} />
+            <AboutEventCard aboutEvent={aboutEvent} />
           </div>
           <div className="flex flex-col gap-6 md:col-span-1">
-            <OpeningsCard openings={openings} volunteerCount={volunteer_count} />
-            <ApplicationDeadlineCard applicationDeadline={application_deadline} />
+            <OpeningsCard openings={openings} volunteerCount={volunteerCount} />
+            <ApplicationDeadlineCard applicationDeadline={applicationDeadline} />
             <ApplicationButton
               volunteerEventId={id}
               volunteerEventName={name}
-              applicationClosed={application_closed}
+              applicationClosed={applicationClosed}
             />
-            <DateAndTimeCard startDatetime={start_datetime} endDatetime={end_datetime} />
+            <DateAndTimeCard startDatetime={startDatetime} endDatetime={endDatetime} />
             <LocationCard location={location} />
             <CategoriesCard categories={categories} />
             <OrganizationCard organization={organization} />

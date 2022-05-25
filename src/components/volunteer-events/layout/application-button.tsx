@@ -154,8 +154,8 @@ function ApplicationDialogForm({ open, onOpenChange, handleClose, volunteerEvent
   const form = useForm<ApplicationDialogFormData>();
   const { formState, register } = form;
 
-  async function apply({ name, contact_no, address, birth_date, gender }: ApplicationDialogFormData) {
-    await updateUserProfile({ name, contact_no, address, birth_date, gender });
+  async function apply({ name, contactNo, address, birthDate, gender }: ApplicationDialogFormData) {
+    await updateUserProfile({ name, contactNo, address, birthDate, gender });
     await applyForVolunteerEvent(volunteerEventId);
 
     showToast('Volunteer application is successful.', 'success');
@@ -178,10 +178,10 @@ function ApplicationDialogForm({ open, onOpenChange, handleClose, volunteerEvent
             />
             <PhoneInput
               label="Contact Number"
-              defaultValue={userProfile?.contact_no}
+              defaultValue={userProfile?.contactNo}
               maxLength={20}
               required
-              {...register('contact_no')}
+              {...register('contactNo')}
             />
             <TextField
               label="Address"
@@ -192,10 +192,10 @@ function ApplicationDialogForm({ open, onOpenChange, handleClose, volunteerEvent
             />
             <DateInput
               label="Date of Birth"
-              defaultValue={userProfile?.birth_date}
+              defaultValue={userProfile?.birthDate}
               max={formatISO(new Date(), { representation: 'date' })}
               required
-              {...register('birth_date')}
+              {...register('birthDate')}
             />
             <div className="flex flex-col gap-2">
               <Label>Gender</Label>
