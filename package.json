@@ -64,5 +64,6 @@
   },
   "resolutions": {
     "rheostat/react-with-styles": "4.1.0"
-  }
+  },
+  "packageManager": "yarn@3.2.1"
 }
