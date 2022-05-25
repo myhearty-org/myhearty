@@ -2,14 +2,14 @@
   "codes": {
     "invalid": "is invalid",
     "unspecific": "An unexpected error has occured. Please try again later.",
-    "user_personal_info_missing": "Missing user's personal information.",
-    "volunteer_application_closed": "Volunteer application is closed.",
-    "volunteer_application_processed": "Volunteer application is currently being processed."
+    "userPersonalInfoMissing": "Missing user's personal information.",
+    "volunteerApplicationClosed": "Volunteer application is closed.",
+    "volunteerApplicationProcessed": "Volunteer application is currently being processed."
   },
   "fields": {
     "address": "Address",
-    "birth_date": "Date of Birth",
-    "contact_no": "Contact Number",
+    "birthDate": "Date of Birth",
+    "contactNo": "Contact number",
     "gender": "Gender",
     "input": "Input",
     "name": "Name"

@@ -38,7 +38,7 @@ function DonationDialogForm({
     const donationAmount = isNaN(defaultAmountValue) ? otherAmountValue : defaultAmountValue;
 
     const { data } = await donateForFundraisingCampaign(fundraisingCampaignId, donationAmount);
-    window.location.href = data.stripe_checkout_url;
+    window.location.href = data.stripeCheckoutUrl;
   }
 
   function onClickDefaultAmount() {

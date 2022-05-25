@@ -16,7 +16,7 @@ export function getPathHistory() {
   return [previousPath, currentPath];
 }
 
-export function calculate_percentage(partialValue: number, totalValue: number) {
+export function calculatePercentage(partialValue: number, totalValue: number) {
   return Math.round((partialValue / totalValue) * 100);
 }
 
