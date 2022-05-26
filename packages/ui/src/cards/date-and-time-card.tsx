@@ -1,5 +1,5 @@
 import { CalendarIcon, ClockIcon } from '@heroicons/react/solid';
-import { useHasMounted } from '@hooks/index';
+import { useHasMounted } from '@myhearty/hooks';
 import differenceInDays from 'date-fns/differenceInDays';
 import format from 'date-fns/format';
 import pluralize from 'pluralize';

@@ -1,4 +1,4 @@
-import { Alert } from '@components/ui/alert';
+import { Alert } from '../alert';
 import cn from 'classnames';
 import formatISO from 'date-fns/formatISO';
 import parseISO from 'date-fns/parseISO';

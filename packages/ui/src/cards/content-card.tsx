@@ -1,4 +1,4 @@
-import { SanitizedHTML } from '@components/helpers';
+import { SanitizedHTML } from '@myhearty/utils/sanitized-html';
 
 type ContentCardProps = {
   content: string;

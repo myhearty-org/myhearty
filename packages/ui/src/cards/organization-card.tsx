@@ -1,4 +1,4 @@
-import { Avatar } from '@components/ui/avatar';
+import { Avatar } from '../avatar';
 import {
   GlobeAltIcon,
   LocationMarkerIcon,
@@ -6,7 +6,7 @@ import {
   PhoneIcon,
   UserCircleIcon,
 } from '@heroicons/react/solid';
-import { Organization } from '@lib/types';
+import { Organization } from '@myhearty/lib/types';
 
 type OrganizationCardProps = {
   organization: Organization;

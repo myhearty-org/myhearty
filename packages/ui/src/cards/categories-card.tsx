@@ -1,4 +1,4 @@
-import { CATEGORY_BADGES } from '@lib/constants';
+import { CATEGORY_BADGES } from '@myhearty/lib/constants';
 import cn from 'classnames';
 import sortBy from 'lodash/sortBy';
 

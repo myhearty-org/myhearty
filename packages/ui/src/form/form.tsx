@@ -1,4 +1,4 @@
-import { handleRequest } from '@utils/api';
+import { handleRequest } from '@myhearty/utils/api';
 import { i18n } from 'next-i18next';
 import { forwardRef } from 'react';
 import { FieldValues, FormProvider, SubmitHandler, UseFormReturn } from 'react-hook-form';

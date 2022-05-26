@@ -1,4 +1,4 @@
-import { Spinner } from '@components/ui/icons';
+import { Spinner } from './icons';
 import cn from 'classnames';
 import Link, { LinkProps } from 'next/link';
 import { createElement, forwardRef } from 'react';

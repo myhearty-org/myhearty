@@ -1,5 +1,5 @@
-import { CalendarXIcon } from '@components/ui/icons';
-import { useHasMounted } from '@hooks/index';
+import { CalendarXIcon } from '../icons';
+import { useHasMounted } from '@myhearty/hooks';
 import format from 'date-fns/format';
 
 type ApplicationDeadlineCardProps = {
