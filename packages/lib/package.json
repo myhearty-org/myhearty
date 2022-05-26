@@ -1,0 +1,16 @@
+{
+  "name": "@myhearty/lib",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/index.tsx",
+  "types": "src/index.tsx",
+  "dependencies": {
+    "@heroicons/react": "^1.0.6",
+    "@myhearty/ui": "workspace:^",
+    "@myhearty/utils": "workspace:^",
+    "react": "18.0.0"
+  },
+  "devDependencies": {
+    "typescript": "4.6.3"
+  }
+}

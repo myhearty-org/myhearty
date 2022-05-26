@@ -1,0 +1,51 @@
+{
+  "folders": [
+    {
+      "name": "web",
+      "path": "../apps/web"
+    },
+    {
+      "name": "hooks",
+      "path": "../packages/hooks"
+    },
+    {
+      "name": "lib",
+      "path": "../packages/lib"
+    },
+    {
+      "name": "ui",
+      "path": "../packages/ui"
+    },
+    {
+      "name": "utils",
+      "path": "../packages/utils"
+    },
+    {
+      "name": "root",
+      "path": "../"
+    }
+  ],
+  "extensions": {
+    "recommendations": [
+      "bradlc.vscode-tailwindcss",
+      "csstools.postcss",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "github.copilot",
+      "github.vscode-pull-request-github",
+      "mutantdino.resourcemonitor",
+      "richie5um2.vscode-sort-json",
+      "visualstudioexptteam.intellicode-api-usage-examples",
+      "visualstudioexptteam.vscodeintellicode"
+    ]
+  },
+  "settings": {
+    "eslint.workingDirectories": [
+      "../apps/web",
+      "../packages/hooks",
+      "../packages/lib",
+      "../packages/ui",
+      "../packages/utils"
+    ]
+  }
+}
