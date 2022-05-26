@@ -1,0 +1,16 @@
+{
+  "name": "@myhearty/hooks",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./src/index.tsx",
+  "types": "./src/index.tsx",
+  "dependencies": {
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-use": "^17.4.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.0.5",
+    "typescript": "4.6.3"
+  }
+}
