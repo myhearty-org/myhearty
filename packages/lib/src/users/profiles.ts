@@ -1,5 +1,5 @@
-import { UserProfile } from '@lib/types';
-import { axiosWithAuth } from '@utils/myhearty-axios';
+import { UserProfile } from '../types';
+import { axiosWithAuth } from '@myhearty/utils/myhearty-axios';
 
 export async function getUserProfile() {
   const { data } = await axiosWithAuth.get('/user/profile');

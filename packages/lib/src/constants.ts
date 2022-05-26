@@ -1,13 +1,4 @@
 import {
-  ElderlyIcon,
-  EscalatorWarningIcon,
-  FamilyRestroomIcon,
-  FemaleIcon,
-  PawPrintIcon,
-  PoolIcon,
-  WheelchairIcon,
-} from '@components/ui/icons';
-import {
   AcademicCapIcon,
   GlobeIcon,
   HandIcon,
@@ -16,6 +7,15 @@ import {
   SupportIcon,
   UserGroupIcon,
 } from '@heroicons/react/solid';
+import {
+  ElderlyIcon,
+  EscalatorWarningIcon,
+  FamilyRestroomIcon,
+  FemaleIcon,
+  PawPrintIcon,
+  PoolIcon,
+  WheelchairIcon,
+} from '@myhearty/ui/icons';
 
 type CategoryBadgeType = {
   [category: string]: { icon: any; backgroundColor: string; textColor: string };

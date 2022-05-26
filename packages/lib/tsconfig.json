@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@myhearty/ui/*": ["../../../packages/ui/src/*"],
+      "@myhearty/ui": ["../../../packages/ui/src/index"],
+      "@myhearty/utils/*": ["../../../packages/utils/src/*"],
+      "@myhearty/utils": ["../../../packages/utils/src/index"]
+    }
+  },
+  "include": ["."],
+  "exclude": ["**/node_modules", "dist", "build"]
+}

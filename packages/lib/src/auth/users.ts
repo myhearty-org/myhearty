@@ -1,5 +1,5 @@
-import { User } from '@lib/types';
-import { axios } from '@utils/myhearty-axios';
+import { User } from '../types';
+import { axios } from '@myhearty/utils/myhearty-axios';
 
 export function signUpUser(email: string, password: string) {
   return axios.post('/users/signup', {

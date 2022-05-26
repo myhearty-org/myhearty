@@ -1,5 +1,5 @@
-import { VolunteerEvent } from '@lib/types';
-import { axios } from '@utils/myhearty-axios';
+import { VolunteerEvent } from './types';
+import { axios } from '@myhearty/utils/myhearty-axios';
 
 export async function getVolunteerEvent(idOrSlug: string) {
   const { data } = await axios.get(`/volunteer-events/${idOrSlug}`);

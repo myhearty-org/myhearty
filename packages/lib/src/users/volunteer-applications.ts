@@ -1,5 +1,5 @@
-import { VolunteerEvent } from '@lib/types';
-import { axiosWithAuth } from '@utils/myhearty-axios';
+import { VolunteerEvent } from '../types';
+import { axiosWithAuth } from '@myhearty/utils/myhearty-axios';
 
 export async function isVolunteerEventApplied(id: string) {
   const { status } = await axiosWithAuth.get(`/user/volunteer-applications/${id}`, {
