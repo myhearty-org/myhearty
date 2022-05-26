@@ -1,4 +1,4 @@
-import { showToast } from '@utils/show-toast';
+import { showToast } from './show-toast';
 import { i18n } from 'next-i18next';
 
 export function handleRequest(request: (...args: any[]) => any) {

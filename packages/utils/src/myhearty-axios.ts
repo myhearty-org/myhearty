@@ -1,4 +1,4 @@
-import { camelizeObject, snakeizeObject } from '@utils/case-converter';
+import { camelizeObject, snakeizeObject } from './case-converter';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import camelizeString from 'lodash/camelCase';
 
