@@ -213,7 +213,7 @@ function ApplicationDialogForm({
                 <RadioButton
                   label="Male"
                   value="male"
-                  defaultChecked={userProfile?.gender === 'male'}
+                  defaultChecked={!userProfile?.gender || userProfile.gender === 'male'}
                   {...register('gender')}
                 />
                 <RadioButton
