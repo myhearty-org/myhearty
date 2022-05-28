@@ -9,8 +9,10 @@ export async function isCharitableAidApplied(id: string) {
   return status === 204;
 }
 
-export async function applyForCharitableAid(id: string) {
-  const { data } = await axiosWithAuth.post(`/user/aid-applications/${id}`);
+export async function applyForCharitableAid(id: string, reason: string) {
+  const { data } = await axiosWithAuth.post(`/user/aid-applications/${id}`, {
+    reason,
+  });
   const charitableAid: CharitableAid = { ...data };
 
   return charitableAid;
