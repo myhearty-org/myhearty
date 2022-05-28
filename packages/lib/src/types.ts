@@ -69,3 +69,20 @@ export type VolunteerEvent = {
   applicationClosed: boolean;
   organization: Organization;
 };
+
+export type CharitableAid = {
+  id: string;
+  name: string;
+  pageUrl: string;
+  openings: number;
+  receiverCount: number;
+  location: string;
+  aboutAid: string;
+  categories: string[];
+  imageUrl: string;
+  youtubeUrl: string;
+  applicationDeadline: string;
+  published: boolean;
+  applicationClosed: boolean;
+  organization: Organization;
+};
