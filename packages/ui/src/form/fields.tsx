@@ -76,8 +76,8 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputF
             className={cn(className, 'mt-0 rounded-l-none')}
             id={id}
             placeholder={placeholder}
-            {...passThrough}
             ref={ref}
+            {...passThrough}
           />
         </div>
       ) : (
@@ -154,6 +154,30 @@ export const DateInput = forwardRef<HTMLInputElement, InputFieldProps>(
     }
 
     return <InputField ref={ref} type="date" defaultValue={dateValue} {...props} />;
+  }
+);
+
+type TextAreaProps = Omit<JSX.IntrinsicElements['textarea'], 'name'> & { name: string; label: string };
+
+// prettier-ignore
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
+  function TextArea({ label, className, ...props }, ref) {
+    const id = useId();
+
+    return (
+      <div>
+        <Label htmlFor={id}>{label}</Label>
+        <textarea
+          className={cn(
+            'mt-2 block w-full rounded border-gray-300 shadow-sm focus:border-pink-300 focus:outline-none focus:ring focus:ring-pink-300 sm:text-sm',
+            className
+          )}
+          id={id}
+          ref={ref}
+          {...props}
+        />
+      </div>
+    );
   }
 );
 
