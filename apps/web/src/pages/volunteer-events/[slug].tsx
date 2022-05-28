@@ -105,7 +105,6 @@ function OpeningsCard({ openings, volunteerCount }: OpeningsCardProps) {
 export const getServerSideProps: GetServerSideProps = async function ({ params, locale }) {
   try {
     const volunteerEvent = await getVolunteerEvent(params?.slug as string);
-    console.log(locale);
 
     if (!volunteerEvent.published) {
       return {
@@ -120,7 +119,6 @@ export const getServerSideProps: GetServerSideProps = async function ({ params, 
       },
     };
   } catch (error) {
-    console.log(error);
     return {
       notFound: true,
     };
