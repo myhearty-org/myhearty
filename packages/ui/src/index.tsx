@@ -8,4 +8,5 @@ export * from './form';
 export { Gallery } from './gallery';
 export * from './icons';
 export { Loader } from './loader';
+export * from './menu';
 export { ProgressBar } from './progress-bar';
