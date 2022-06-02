@@ -542,7 +542,6 @@ __metadata:
     "@heroicons/react": ^1.0.6
     "@myhearty/ui": "workspace:^"
     "@myhearty/utils": "workspace:^"
-    "@web3-storage/parse-link-header": ^3.1.0
     react: 18.0.0
     typescript: 4.6.3
   languageName: unknown
@@ -588,6 +587,7 @@ __metadata:
   resolution: "@myhearty/utils@workspace:packages/utils"
   dependencies:
     "@types/lodash": ^4.14.182
+    "@web3-storage/parse-link-header": ^3.1.0
     axios: ^0.26.1
     isomorphic-dompurify: ^0.18.0
     lodash: ^4.17.21

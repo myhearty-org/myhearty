@@ -8,7 +8,6 @@
     "@heroicons/react": "^1.0.6",
     "@myhearty/ui": "workspace:^",
     "@myhearty/utils": "workspace:^",
-    "@web3-storage/parse-link-header": "^3.1.0",
     "react": "18.0.0"
   },
   "devDependencies": {
