@@ -1,5 +1,5 @@
 export type User = {
-  id: string;
+  id: number;
   name: string;
   email: string;
   contactNo?: string;
@@ -18,7 +18,7 @@ export type UserProfile = {
 };
 
 export type Organization = {
-  id: string;
+  id: number;
   name: string;
   pageUrl: string;
   location: string;
@@ -35,7 +35,7 @@ export type Organization = {
 };
 
 export type FundraisingCampaign = {
-  id: string;
+  id: number;
   name: string;
   pageUrl: string;
   targetAmount: number;
@@ -52,7 +52,7 @@ export type FundraisingCampaign = {
 };
 
 export type Donation = {
-  id: string;
+  id: number;
   donationId: string;
   amount: string;
   grossAmount: string;
@@ -65,7 +65,7 @@ export type Donation = {
 };
 
 export type VolunteerEvent = {
-  id: string;
+  id: number;
   name: string;
   pageUrl: string;
   openings: number;
@@ -84,18 +84,18 @@ export type VolunteerEvent = {
 };
 
 export type VolunteerApplication = {
-  id: string;
+  id: number;
   status: string;
   statusUpdatedAt: string;
   attendance: string;
   attendanceUpdatedAt: string;
-  volunteerEventId: string;
-  volunteerId: string;
+  volunteerEventId: number;
+  volunteerId: number;
   volunteerEvent: VolunteerEvent;
 };
 
 export type CharitableAid = {
-  id: string;
+  id: number;
   name: string;
   pageUrl: string;
   openings: number;
@@ -112,11 +112,11 @@ export type CharitableAid = {
 };
 
 export type CharitableAidApplication = {
-  id: string;
+  id: number;
   status: string;
   statusUpdatedAt: string;
   reason: string;
-  charitableAidId: string;
-  receiverId: string;
+  charitableAidId: number;
+  receiverId: number;
   charitableAid: CharitableAid;
 };
