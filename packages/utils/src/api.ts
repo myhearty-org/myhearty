@@ -1,4 +1,6 @@
 import { showToast } from './show-toast';
+import { parseLinkHeader } from '@web3-storage/parse-link-header';
+import { AxiosResponseHeaders } from 'axios';
 import { i18n } from 'next-i18next';
 
 export function handleRequest(request: (...args: any[]) => any) {
@@ -14,4 +16,15 @@ export function handleRequest(request: (...args: any[]) => any) {
       showToast('An unexpected error has occured. Please try again later.', 'error');
     }
   }
+}
+
+export function generatePaginationMetadata(headers: AxiosResponseHeaders) {
+  const pagination = {
+    perPage: Number(headers['x-per-page']),
+    page: Number(headers['x-page']),
+    totalCount: Number(headers['x-total']),
+    links: parseLinkHeader(headers['link']),
+  };
+
+  return pagination;
 }
