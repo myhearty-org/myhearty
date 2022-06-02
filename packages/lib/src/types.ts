@@ -51,6 +51,19 @@ export type FundraisingCampaign = {
   organization: Organization;
 };
 
+export type Donation = {
+  id: string;
+  donationId: string;
+  amount: string;
+  grossAmount: string;
+  fee: string;
+  netAmount: string;
+  paymentMethod: string;
+  status: string;
+  completedAt: string;
+  fundraisingCampaign: FundraisingCampaign;
+};
+
 export type VolunteerEvent = {
   id: string;
   name: string;
@@ -70,6 +83,17 @@ export type VolunteerEvent = {
   organization: Organization;
 };
 
+export type VolunteerApplication = {
+  id: string;
+  status: string;
+  statusUpdatedAt: string;
+  attendance: string;
+  attendanceUpdatedAt: string;
+  volunteerEventId: string;
+  volunteerId: string;
+  volunteerEvent: VolunteerEvent;
+};
+
 export type CharitableAid = {
   id: string;
   name: string;
@@ -85,4 +109,14 @@ export type CharitableAid = {
   published: boolean;
   applicationClosed: boolean;
   organization: Organization;
+};
+
+export type CharitableAidApplication = {
+  id: string;
+  status: string;
+  statusUpdatedAt: string;
+  reason: string;
+  charitableAidId: string;
+  receiverId: string;
+  charitableAid: CharitableAid;
 };
