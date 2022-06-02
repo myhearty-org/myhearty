@@ -19,6 +19,7 @@
     "@myhearty/lib": "workspace:^",
     "@myhearty/ui": "workspace:^",
     "@myhearty/utils": "workspace:^",
+    "@tanstack/react-table": "8.0.0-beta.3",
     "classnames": "^2.3.1",
     "date-fns": "^2.28.0",
     "lodash": "^4.17.21",
