@@ -1182,25 +1182,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-table@npm:8.0.0-beta.3":
-  version: 8.0.0-beta.3
-  resolution: "@tanstack/react-table@npm:8.0.0-beta.3"
-  dependencies:
-    "@tanstack/table-core": 8.0.0-beta.3
-  peerDependencies:
-    react: ">=16"
-    react-dom: ">=16"
-  checksum: 7b1fc9c2b7c5fd51606fe25e737affeeb0c1940662c8582ec0203f8587f86de70a08cd528fe0bfe7f9606570f025c55d1016ad669bb8d5d94ac47f2022aec5cc
-  languageName: node
-  linkType: hard
-
-"@tanstack/table-core@npm:8.0.0-beta.3":
-  version: 8.0.0-beta.3
-  resolution: "@tanstack/table-core@npm:8.0.0-beta.3"
-  checksum: 9c05371d932941935a216315386e98dbd3c774104d48099417cb3759cccb9108c1a2ad684da551296b551687faff610acc5c77585ed96d8530f2695e5457e836
-  languageName: node
-  linkType: hard
-
 "@tootallnate/once@npm:2":
   version: 2.0.0
   resolution: "@tootallnate/once@npm:2.0.0"
@@ -4213,7 +4194,6 @@ __metadata:
     "@tailwindcss/forms": ^0.5.0
     "@tailwindcss/line-clamp": ^0.4.0
     "@tailwindcss/typography": ^0.5.2
-    "@tanstack/react-table": 8.0.0-beta.3
     "@types/glidejs__glide": ^3.4.2
     "@types/lodash": ^4.14.182
     "@types/node": 17.0.25
