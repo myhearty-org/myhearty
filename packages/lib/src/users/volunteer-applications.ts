@@ -1,4 +1,5 @@
-import { VolunteerEvent } from '../types';
+import { VolunteerApplication, VolunteerEvent } from '../types';
+import { generatePaginationMetadata } from '@myhearty/utils/api';
 import { axiosWithAuth } from '@myhearty/utils/myhearty-axios';
 
 export async function isVolunteerEventApplied(id: string) {
@@ -18,4 +19,18 @@ export async function applyForVolunteerEvent(id: string) {
 
 export function unapplyForVolunteerEvent(id: string) {
   return axiosWithAuth.delete(`/user/volunteer-applications/${id}`);
+}
+
+export async function getVolunteerApplications(page?: number, perPage?: number) {
+  const { data, headers } = await axiosWithAuth.get('/user/volunteer-applications', {
+    params: {
+      page,
+      perPage,
+    },
+  });
+
+  const volunteerApplications: VolunteerApplication[] = data;
+  const paginationMetadata = generatePaginationMetadata(headers);
+
+  return { volunteerApplications, paginationMetadata };
 }

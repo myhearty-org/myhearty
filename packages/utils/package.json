@@ -5,6 +5,7 @@
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "dependencies": {
+    "@web3-storage/parse-link-header": "^3.1.0",
     "axios": "^0.26.1",
     "isomorphic-dompurify": "^0.18.0",
     "lodash": "^4.17.21",

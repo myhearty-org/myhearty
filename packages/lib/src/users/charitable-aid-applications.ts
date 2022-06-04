@@ -1,4 +1,5 @@
-import { CharitableAid } from '../types';
+import { CharitableAid, CharitableAidApplication } from '../types';
+import { generatePaginationMetadata } from '@myhearty/utils/api';
 import { axiosWithAuth } from '@myhearty/utils/myhearty-axios';
 
 export async function isCharitableAidApplied(id: string) {
@@ -20,4 +21,18 @@ export async function applyForCharitableAid(id: string, reason: string) {
 
 export function unapplyForCharitableAid(id: string) {
   return axiosWithAuth.delete(`/user/aid-applications/${id}`);
+}
+
+export async function getCharitableAidApplications(page?: number, perPage?: number) {
+  const { data, headers } = await axiosWithAuth.get('/user/aid-applications', {
+    params: {
+      page,
+      perPage,
+    },
+  });
+
+  const charitableAidApplications: CharitableAidApplication[] = data;
+  const paginationMetadata = generatePaginationMetadata(headers);
+
+  return { charitableAidApplications, paginationMetadata };
 }

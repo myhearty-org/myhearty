@@ -1,1 +1,26 @@
-{}
+{
+  "charitableAidApplicationStatuses": {
+    "approved": "Approved",
+    "pending": "Pending",
+    "rejected": "Rejected"
+  },
+  "paymentMethods": {
+    "card": "Card",
+    "fpx": "FPX",
+    "grabpay": "GrabPay"
+  },
+  "paymentStatuses": {
+    "failed": "Failed",
+    "pending": "Pending",
+    "succeeded": "Succeeded"
+  },
+  "volunteerApplicationAttendances": {
+    "absent": "Absent",
+    "present": "Present"
+  },
+  "volunteerApplicationStatuses": {
+    "confirmed": "Confirmed",
+    "pending": "Pending",
+    "rejected": "Rejected"
+  }
+}

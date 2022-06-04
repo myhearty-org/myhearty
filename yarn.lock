@@ -587,6 +587,7 @@ __metadata:
   resolution: "@myhearty/utils@workspace:packages/utils"
   dependencies:
     "@types/lodash": ^4.14.182
+    "@web3-storage/parse-link-header": ^3.1.0
     axios: ^0.26.1
     isomorphic-dompurify: ^0.18.0
     lodash: ^4.17.21
@@ -1405,6 +1406,13 @@ __metadata:
     "@typescript-eslint/types": 5.10.1
     eslint-visitor-keys: ^3.0.0
   checksum: 7e1e1a41b2df797534ee56c0d9ae2a056e0ca0ca019b31125fd52d7deb0e802d899920031f2dbf88a951e6752d8fcbd9fa904eaeccb50cf30d2b92b54fd7879d
+  languageName: node
+  linkType: hard
+
+"@web3-storage/parse-link-header@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@web3-storage/parse-link-header@npm:3.1.0"
+  checksum: e91ce3ad25162ca84ecb8d607f54afc166ab91700c507a9cc81dac4ac6231d51cd307efdf1752f227046ef2cf255ada5e8fb6269703080f95a49b07ec90834a5
   languageName: node
   linkType: hard
 
