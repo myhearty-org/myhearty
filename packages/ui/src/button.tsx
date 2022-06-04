@@ -95,7 +95,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
       {props.children}
       {loading && (
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-          <Spinner theme={color === 'primary' ? 'light' : 'dark'} />
+          <Spinner className={cn('mx-4 h-5 w-5', color === 'primary' ? 'text-white' : 'text-pink-400')} />
         </div>
       )}
       {EndIcon && <EndIcon className="-mr-1 ml-2 inline h-5 w-5" />}
