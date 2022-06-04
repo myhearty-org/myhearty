@@ -18,7 +18,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 type ApplicationButtonProps = {
-  charitableAidId: string;
+  charitableAidId: number;
   charitableAidName: string;
   applicationClosed: boolean;
 };
@@ -138,7 +138,7 @@ type ApplicationDialogFormProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   handleClose: () => void;
-  charitableAidId: string;
+  charitableAidId: number;
   charitableAidName: string;
 };
 

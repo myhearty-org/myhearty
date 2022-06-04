@@ -38,7 +38,7 @@ export function VolunteerEventsSlider({ volunteerEvent }: VolunteerEventsSliderP
         page: 1,
         per_page: 12,
         limit_hits: 12,
-        hidden_hits: volunteerEvent.id,
+        hidden_hits: volunteerEvent.id.toString(),
       };
 
       try {

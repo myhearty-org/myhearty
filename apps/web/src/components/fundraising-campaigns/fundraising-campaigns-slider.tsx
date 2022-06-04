@@ -38,7 +38,7 @@ export function FundraisingCampaignsSlider({ fundraisingCampaign }: FundraisingC
         page: 1,
         per_page: 12,
         limit_hits: 12,
-        hidden_hits: fundraisingCampaign.id,
+        hidden_hits: fundraisingCampaign.id.toString(),
       };
 
       try {

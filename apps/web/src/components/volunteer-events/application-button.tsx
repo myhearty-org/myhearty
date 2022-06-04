@@ -18,7 +18,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 type ApplicationButtonProps = {
-  volunteerEventId: string;
+  volunteerEventId: number;
   volunteerEventName: string;
   applicationClosed: boolean;
 };
@@ -138,7 +138,7 @@ type ApplicationDialogFormProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   handleClose: () => void;
-  volunteerEventId: string;
+  volunteerEventId: number;
   volunteerEventName: string;
 };
 

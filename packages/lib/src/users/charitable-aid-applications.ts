@@ -2,7 +2,7 @@ import { CharitableAid, CharitableAidApplication } from '../types';
 import { generatePaginationMetadata } from '@myhearty/utils/api';
 import { axiosWithAuth } from '@myhearty/utils/myhearty-axios';
 
-export async function isCharitableAidApplied(id: string) {
+export async function isCharitableAidApplied(id: number) {
   const { status } = await axiosWithAuth.get(`/user/aid-applications/${id}`, {
     validateStatus: (status) => status === 204 || status === 404,
   });
@@ -10,7 +10,7 @@ export async function isCharitableAidApplied(id: string) {
   return status === 204;
 }
 
-export async function applyForCharitableAid(id: string, reason: string) {
+export async function applyForCharitableAid(id: number, reason: string) {
   const { data } = await axiosWithAuth.post(`/user/aid-applications/${id}`, {
     reason,
   });
@@ -19,7 +19,7 @@ export async function applyForCharitableAid(id: string, reason: string) {
   return charitableAid;
 }
 
-export function unapplyForCharitableAid(id: string) {
+export function unapplyForCharitableAid(id: number) {
   return axiosWithAuth.delete(`/user/aid-applications/${id}`);
 }
 

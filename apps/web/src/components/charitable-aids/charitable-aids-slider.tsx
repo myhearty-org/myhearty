@@ -38,7 +38,7 @@ export function CharitableAidsSlider({ charitableAid }: CharitableAidsSliderProp
         page: 1,
         per_page: 12,
         limit_hits: 12,
-        hidden_hits: charitableAid.id,
+        hidden_hits: charitableAid.id.toString(),
       };
 
       try {

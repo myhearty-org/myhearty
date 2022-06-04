@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 type DonationButtonProps = {
-  fundraisingCampaignId: string;
+  fundraisingCampaignId: number;
   organization: Organization;
 };
 
@@ -49,7 +49,7 @@ export function DonationButton({ fundraisingCampaignId, organization }: Donation
 type DonationDialogFormProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  fundraisingCampaignId: string;
+  fundraisingCampaignId: number;
   organization: Organization;
 };
 
