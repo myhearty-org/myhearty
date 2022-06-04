@@ -42,6 +42,20 @@ select:focus {
   color: #ec4899;
 }
 
+/* Table */
+
+tbody tr:last-child td:first-child {
+  @apply rounded rounded-r-none rounded-t-none;
+}
+
+tbody tr:last-child td:last-child {
+  @apply rounded rounded-l-none rounded-t-none;
+}
+
+tbody tr:last-child td:only-child {
+  @apply rounded rounded-t-none;
+}
+
 /* Add word-break attribute to the break-words (overflow-wrap: break-word) 
    utility class that does not work due to unknown reason. */
 

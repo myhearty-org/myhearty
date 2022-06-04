@@ -11,3 +11,4 @@ export { Loader } from './loader';
 export { Loading } from './loading';
 export * from './menu';
 export { ProgressBar } from './progress-bar';
+export * from './table';
