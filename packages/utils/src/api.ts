@@ -1,5 +1,5 @@
 import { showToast } from './show-toast';
-import { parseLinkHeader } from '@web3-storage/parse-link-header';
+import { Links, parseLinkHeader } from '@web3-storage/parse-link-header';
 import { AxiosResponseHeaders } from 'axios';
 import { i18n } from 'next-i18next';
 
@@ -18,13 +18,20 @@ export function handleRequest(request: (...args: any[]) => any) {
   }
 }
 
+export type PaginationMetadata = {
+  pageIndex: number;
+  pageSize: number;
+  pageCount?: number;
+  pageLinks?: Links | null;
+};
+
 export function generatePaginationMetadata(headers: AxiosResponseHeaders) {
-  const pagination = {
-    perPage: Number(headers['x-per-page']),
-    page: Number(headers['x-page']),
-    totalCount: Number(headers['x-total']),
-    links: parseLinkHeader(headers['link']),
+  const paginationMetadata: PaginationMetadata = {
+    pageIndex: Number(headers['x-page']),
+    pageSize: Number(headers['x-per-page']),
+    pageCount: Number(headers['x-total']),
+    pageLinks: parseLinkHeader(headers['link']),
   };
 
-  return pagination;
+  return paginationMetadata;
 }

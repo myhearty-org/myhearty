@@ -21,11 +21,16 @@ export function unapplyForVolunteerEvent(id: string) {
   return axiosWithAuth.delete(`/user/volunteer-applications/${id}`);
 }
 
-export async function getVolunteerApplications() {
-  const { data, headers } = await axiosWithAuth.get('/user/volunteer-applications');
+export async function getVolunteerApplications(page?: number, perPage?: number) {
+  const { data, headers } = await axiosWithAuth.get('/user/volunteer-applications', {
+    params: {
+      page,
+      perPage,
+    },
+  });
 
   const volunteerApplications: VolunteerApplication[] = data;
-  const pagination = generatePaginationMetadata(headers);
+  const paginationMetadata = generatePaginationMetadata(headers);
 
-  return { volunteerApplications, pagination };
+  return { volunteerApplications, paginationMetadata };
 }

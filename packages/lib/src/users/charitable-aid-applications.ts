@@ -23,11 +23,16 @@ export function unapplyForCharitableAid(id: string) {
   return axiosWithAuth.delete(`/user/aid-applications/${id}`);
 }
 
-export async function getCharitableAidApplications() {
-  const { data, headers } = await axiosWithAuth.get('/user/aid-applications');
-  
-  const charitableAidApplications: CharitableAidApplication[] = data;
-  const pagination = generatePaginationMetadata(headers);
+export async function getCharitableAidApplications(page?: number, perPage?: number) {
+  const { data, headers } = await axiosWithAuth.get('/user/aid-applications', {
+    params: {
+      page,
+      perPage,
+    },
+  });
 
-  return { charitableAidApplications, pagination };
+  const charitableAidApplications: CharitableAidApplication[] = data;
+  const paginationMetadata = generatePaginationMetadata(headers);
+
+  return { charitableAidApplications, paginationMetadata };
 }

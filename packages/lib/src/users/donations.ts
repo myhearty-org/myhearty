@@ -10,11 +10,16 @@ export async function donateForFundraisingCampaign(id: string, amount: number) {
   return data.stripeCheckoutUrl;
 }
 
-export async function getDonations() {
-  const { data, headers } = await axiosWithAuth.get('/user/donations');
+export async function getDonations(page?: number, perPage?: number) {
+  const { data, headers } = await axiosWithAuth.get('/user/donations', {
+    params: {
+      page,
+      perPage,
+    },
+  });
 
   const donations: Donation[] = data;
-  const pagination = generatePaginationMetadata(headers);
+  const paginationMetadata = generatePaginationMetadata(headers);
 
-  return { donations, pagination };
+  return { donations, paginationMetadata };
 }
