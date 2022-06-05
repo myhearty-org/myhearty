@@ -1,8 +1,8 @@
 import { AuthDialog } from '@components/auth';
 import { useAuth } from '@hooks';
+import { Button } from '@mantine/core';
 import { Organization } from '@myhearty/lib/types';
 import { donateForFundraisingCampaign } from '@myhearty/lib/users/donations';
-import { Button } from '@myhearty/ui/button';
 import { Dialog, DialogContent, DialogFooter } from '@myhearty/ui/dialog';
 import { Form, InputLeading, NumericInput, RadioButton } from '@myhearty/ui/form';
 import { onlyPositiveInteger } from '@myhearty/utils/common';
@@ -24,7 +24,7 @@ export function DonationButton({ fundraisingCampaignId, organization }: Donation
 
   return (
     <>
-      <Button className="w-full justify-center" onClick={() => setShowDialog(true)}>
+      <Button fullWidth onClick={() => setShowDialog(true)}>
         Donate Now
       </Button>
       {auth.isAuthenticated ? (

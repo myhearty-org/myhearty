@@ -1,6 +1,5 @@
 export { Alert } from './alert';
 export { Avatar } from './avatar';
-export { Button } from './button';
 export * from './cards';
 export * from './dialog';
 export * from './dropdown';

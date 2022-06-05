@@ -1,6 +1,6 @@
 import { LocationMarkerIcon } from '@heroicons/react/solid';
+import { Button } from '@mantine/core';
 import { useHasMounted } from '@myhearty/hooks';
-import { Button } from '@myhearty/ui/button';
 import { CalendarXIcon } from '@myhearty/ui/icons';
 import { ProgressBar } from '@myhearty/ui/progress-bar';
 import { calculatePercentage } from '@myhearty/utils/common';
@@ -104,7 +104,7 @@ function CardBody({ name, organization, applicationDeadline, location }: CardBod
         </div>
       </div>
       <div className="mt-3 flex flex-1 flex-col items-center justify-end">
-        <Button type="button" size="sm">
+        <Button>
           Apply
         </Button>
       </div>

@@ -1,6 +1,6 @@
 import { CalendarIcon, LocationMarkerIcon } from '@heroicons/react/solid';
+import { Button } from '@mantine/core';
 import { useHasMounted } from '@myhearty/hooks';
-import { Button } from '@myhearty/ui/button';
 import { ProgressBar } from '@myhearty/ui/progress-bar';
 import { calculatePercentage } from '@myhearty/utils/common';
 import differenceInDays from 'date-fns/differenceInDays';
@@ -106,7 +106,7 @@ function CardBody({ name, organization, startDatetime, endDatetime, location }: 
         </div>
       </div>
       <div className="mt-3 flex flex-1 flex-col items-center justify-end">
-        <Button type="button" size="sm">
+        <Button>
           Apply
         </Button>
       </div>

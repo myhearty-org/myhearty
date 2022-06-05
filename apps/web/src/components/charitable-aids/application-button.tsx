@@ -1,5 +1,6 @@
 import { AuthDialog } from '@components/auth';
 import { useAuth } from '@hooks';
+import { Button } from '@mantine/core';
 import { useHasMounted } from '@myhearty/hooks';
 import { UserProfile } from '@myhearty/lib/types';
 import {
@@ -8,7 +9,6 @@ import {
   unapplyForCharitableAid,
 } from '@myhearty/lib/users/charitable-aid-applications';
 import { getUserProfile, updateUserProfile } from '@myhearty/lib/users/profiles';
-import { Button } from '@myhearty/ui/button';
 import { Dialog, DialogContent, DialogFooter, DialogHeader } from '@myhearty/ui/dialog';
 import { DateInput, Form, Label, PhoneInput, RadioButton, TextArea, TextInput } from '@myhearty/ui/form';
 import { handleRequest } from '@myhearty/utils/api';
@@ -108,7 +108,7 @@ export function ApplicationButton({
     <>
       {buttonState !== undefined && (
         <Button
-          className="w-full justify-center"
+          fullWidth
           disabled={buttonStates[buttonState].disabled}
           onClick={buttonStates[buttonState].onClick}>
           {buttonStates[buttonState].text}

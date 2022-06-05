@@ -1,4 +1,4 @@
-import { Button } from '@myhearty/ui/button';
+import { Button } from '@mantine/core';
 import { Logo } from '@myhearty/ui/icons';
 import Link from 'next/link';
 
@@ -10,9 +10,11 @@ export function Footer() {
           <LogoText />
           <p className="mt-2 text-base font-semibold ">{"Let's join us today!"}</p>
           <div className="mt-4">
-            <Button href="/signup" type="button" size="lg">
-              Sign Up Now
-            </Button>
+            <Link href="/signup" passHref>
+              <Button component="a" size="md">
+                Sign Up Now
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="mt-4 flex flex-col items-center gap-1 sm:flex-row sm:justify-between">

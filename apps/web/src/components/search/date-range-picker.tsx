@@ -1,4 +1,4 @@
-import { Button } from '@myhearty/ui/button';
+import { Button } from '@mantine/core';
 import addDays from 'date-fns/addDays';
 import formatISO from 'date-fns/formatISO';
 import fromUnixTime from 'date-fns/fromUnixTime';
@@ -91,7 +91,7 @@ function DateRangePickerComponent({
           onChange={onMaxChange}
         />
       </div>
-      <Button className="w-full justify-center" type="submit" size="xs" onClick={onClick}>
+      <Button size="xs" fullWidth type="submit" onClick={onClick}>
         Apply
       </Button>
     </form>

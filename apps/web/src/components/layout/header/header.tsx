@@ -2,8 +2,8 @@ import { UserDropdown } from './user-dropdown';
 import { Popover, Transition } from '@headlessui/react';
 import { GiftIcon, HeartIcon, MenuIcon, UserIcon, UsersIcon, XIcon } from '@heroicons/react/outline';
 import { useAuth } from '@hooks';
+import { Button } from '@mantine/core';
 import { useHasMounted } from '@myhearty/hooks';
-import { Button } from '@myhearty/ui/button';
 import { Logo } from '@myhearty/ui/icons';
 import { handleRequest } from '@myhearty/utils/api';
 import cn from 'classnames';
@@ -33,12 +33,16 @@ export function Header() {
           <div className="hidden items-center justify-end md:flex md:w-0 md:flex-1 lg:space-x-4">
             {hasMounted && !auth.isAuthenticated && (
               <>
-                <Button href="/login" type="button" color="minimal" size="lg">
-                  Log In
-                </Button>
-                <Button href="/signup" type="button" size="lg">
-                  Sign Up
-                </Button>
+                <Link href="/login" passHref>
+                  <Button component="a" variant="subtle" size="md">
+                    Log In
+                  </Button>
+                </Link>
+                <Link href="/signup" passHref>
+                  <Button component="a" size="md">
+                    Sign Up
+                  </Button>
+                </Link>
               </>
             )}
             {hasMounted && auth.isAuthenticated && <UserDropdown />}
@@ -132,29 +136,26 @@ function MobileMenu() {
             {hasMounted && !auth.isAuthenticated && (
               <>
                 <Popover.Button as={'div'}>
-                  <Button className="w-full justify-center" href="/signup" type="button" size="lg">
-                    Sign Up
-                  </Button>
+                  <Link href="/signup" passHref>
+                    <Button component="a" size="md" fullWidth>
+                      Sign Up
+                    </Button>
+                  </Link>
                 </Popover.Button>
                 <Popover.Button as={'div'}>
-                  <Button
-                    className="w-full justify-center"
-                    href="/login"
-                    type="button"
-                    color="minimal"
-                    size="lg">
-                    Log In
-                  </Button>
+                  <Link href="/login" passHref>
+                    <Button component="a" variant="subtle" size="md" fullWidth>
+                      Log In
+                    </Button>
+                  </Link>
                 </Popover.Button>
               </>
             )}
             {hasMounted && auth.isAuthenticated && (
               <Popover.Button as={'div'}>
                 <Button
-                  className="w-full justify-center"
-                  href="/signup"
-                  type="button"
-                  size="lg"
+                  size="md"
+                  fullWidth
                   onClick={() => handleRequest(logOut)}>
                   Log Out
                 </Button>

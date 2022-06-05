@@ -1,5 +1,5 @@
+import { Button } from '@mantine/core';
 import { useHasMounted } from '@myhearty/hooks';
-import { Button } from '@myhearty/ui/button';
 import { ProgressBar } from '@myhearty/ui/progress-bar';
 import { calculatePercentage, toLocaleFixed } from '@myhearty/utils/common';
 import differenceInDays from 'date-fns/differenceInDays';
@@ -83,7 +83,7 @@ function CardBody({ name, organization, aboutCampaign }: CardBodyProps) {
       <p className="line-clamp-1 text-sm text-gray-500">By {organization}</p>
       <p className="text-sm">{aboutCampaign}</p>
       <div className="mt-3 flex flex-1 flex-col items-center justify-end">
-        <Button type="button" size="sm">
+        <Button>
           Donate
         </Button>
       </div>

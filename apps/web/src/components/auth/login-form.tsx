@@ -1,6 +1,6 @@
 import { useAuth } from '@hooks';
+import { Button } from '@mantine/core';
 import { Alert } from '@myhearty/ui/alert';
-import { Button } from '@myhearty/ui/button';
 import { EmailInput, Form, PasswordInput } from '@myhearty/ui/form';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -28,7 +28,7 @@ export function LoginForm({ afterLogin }: LoginFormProps) {
       await auth.logIn(email, password);
       afterLogin && afterLogin();
     } catch (error) {
-      setErrorMessage(error.response.data.error);
+      setErrorMessage(error.response?.data?.error);
     }
   }
 
@@ -43,7 +43,7 @@ export function LoginForm({ afterLogin }: LoginFormProps) {
         {...register('password')}
       />
       {errorMessage && <Alert severity="error" title={errorMessage} />}
-      <Button className="w-full justify-center" type="submit" loading={formState.isSubmitting}>
+      <Button fullWidth type="submit" loading={formState.isSubmitting}>
         Log In
       </Button>
     </Form>

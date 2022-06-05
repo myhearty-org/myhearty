@@ -1,7 +1,8 @@
 import { CheckCircleIcon } from '@heroicons/react/solid';
+import { Button } from '@mantine/core';
 import { useHasMounted } from '@myhearty/hooks';
-import { Button } from '@myhearty/ui/button';
 import { Dialog, DialogContent } from '@myhearty/ui/dialog';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export function DonationSuccessfulDialog() {
@@ -21,9 +22,11 @@ export function DonationSuccessfulDialog() {
             <CheckCircleIcon className="mr-2 h-8 w-8 flex-shrink-0 text-lime-400" />
             <span className="min-w-0 break-words text-lg font-medium">Your donation was successful!</span>
           </div>
-          <Button className="w-fit justify-center" href="/user/donations" type="button" size="lg">
-            View your donation records
-          </Button>
+          <Link href="/user/donations" passHref>
+            <Button component="a" size="md" fullWidth>
+              View your donation records
+            </Button>
+          </Link>
         </div>
       </DialogContent>
     </Dialog>
