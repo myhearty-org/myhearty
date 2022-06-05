@@ -5,6 +5,10 @@ module.exports = {
     '../../packages/ui/**/*.{js,ts,jsx,tsx}',
     '../../packages/lib/src/constants/**/*.{js,ts}',
   ],
+  important: '#__next',
+  corePlugins: {
+    preflight: false,
+  },
   theme: {
     extend: {
       boxShadow: {
