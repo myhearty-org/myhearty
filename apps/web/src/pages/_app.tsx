@@ -1,5 +1,7 @@
 import { Layout } from '@components/layout';
 import { AuthProvider } from '@hooks/use-auth';
+import { MantineProvider } from '@mantine/core';
+import { MANTINE_CLASSNAMES, MANTINE_THEME } from '@myhearty/lib/constants/mantine';
 import { storePathHistory } from '@myhearty/utils/common';
 import { appWithTranslation } from 'next-i18next';
 import { DefaultSeo } from 'next-seo';
@@ -20,19 +22,24 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <DefaultSeo {...defaultSeoConfig} />
-      <AuthProvider>
-        <Layout>
-          <NextNProgress
-            color="#ec4899"
-            startPosition={0.3}
-            stopDelayMs={200}
-            height={2}
-            showOnShallow={true}
-            options={{ showSpinner: false }}
-          />
-          <Component {...pageProps} />
-        </Layout>
-      </AuthProvider>
+      <MantineProvider
+        emotionOptions={{ key: 'mantine', prepend: false }}
+        theme={MANTINE_THEME}
+        classNames={MANTINE_CLASSNAMES}>
+        <AuthProvider>
+          <Layout>
+            <NextNProgress
+              color="#ec4899"
+              startPosition={0.3}
+              stopDelayMs={200}
+              height={2}
+              showOnShallow={true}
+              options={{ showSpinner: false }}
+            />
+            <Component {...pageProps} />
+          </Layout>
+        </AuthProvider>
+      </MantineProvider>
     </>
   );
 }
