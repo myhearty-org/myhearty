@@ -1,7 +1,6 @@
 export { Alert } from './alert';
 export { Avatar } from './avatar';
 export * from './cards';
-export * from './dialog';
 export * from './form';
 export { Gallery } from './gallery';
 export * from './icons';

@@ -25,6 +25,12 @@ export const MANTINE_DEFAULT_PROPS = {
     withArrow: true,
     withinPortal: false,
   },
+  Modal: {
+    centered: true,
+    overflow: 'inside',
+    withinPortal: false,
+    zIndex: 999,
+  },
 };
 
 export const MANTINE_CLASSNAMES = {
@@ -36,5 +42,10 @@ export const MANTINE_CLASSNAMES = {
     body: 'py-2 px-0',
     item: 'focus:ring-0',
     itemHovered: 'rounded-none bg-pink-500 text-white',
+  },
+  Modal: {
+    modal: 'w-[440px] md:w-[560px]',
+    title: 'font-medium',
+    close: 'text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none',
   },
 };

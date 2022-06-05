@@ -1,34 +1,39 @@
 import { CheckCircleIcon } from '@heroicons/react/solid';
-import { Button } from '@mantine/core';
+import { Button, Modal } from '@mantine/core';
 import { useHasMounted } from '@myhearty/hooks';
-import { Dialog, DialogContent } from '@myhearty/ui/dialog';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
 
 export function DonationSuccessfulDialog() {
-  const { query } = useRouter();
+  const [showDialog, setShowDialog] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.query.session_id) {
+      setShowDialog(true);
+
+      const url = router.asPath.split('?')[0];
+      router.replace(url, undefined, { shallow: true });
+    }
+  }, [router]);
 
   const hasMounted = useHasMounted();
   if (!hasMounted) return null;
 
-  const { session_id } = query;
-  if (!session_id) return null;
-
   return (
-    <Dialog defaultOpen={true}>
-      <DialogContent>
-        <div className="flex flex-col items-center gap-6">
-          <div className="flex">
-            <CheckCircleIcon className="mr-2 h-8 w-8 flex-shrink-0 text-lime-400" />
-            <span className="min-w-0 break-words text-lg font-medium">Your donation was successful!</span>
-          </div>
-          <Link href="/user/donations" passHref>
-            <Button component="a" size="md" fullWidth>
-              View your donation records
-            </Button>
-          </Link>
+    <Modal opened={showDialog} onClose={() => setShowDialog(false)}>
+      <div className="mb-1 flex flex-col items-center gap-6">
+        <div className="flex">
+          <CheckCircleIcon className="mr-2 h-8 w-8 flex-shrink-0 text-lime-400" />
+          <span className="min-w-0 break-words text-lg font-medium">Your donation was successful!</span>
         </div>
-      </DialogContent>
-    </Dialog>
+        <Link href="/user/donations" passHref>
+          <Button component="a" size="md">
+            View your donation records
+          </Button>
+        </Link>
+      </div>
+    </Modal>
   );
 }

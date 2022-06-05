@@ -1,9 +1,8 @@
 import { AuthDialog } from '@components/auth';
 import { useAuth } from '@hooks';
-import { Button } from '@mantine/core';
+import { Button, Modal } from '@mantine/core';
 import { Organization } from '@myhearty/lib/types';
 import { donateForFundraisingCampaign } from '@myhearty/lib/users/donations';
-import { Dialog, DialogContent, DialogFooter } from '@myhearty/ui/dialog';
 import { Form, InputLeading, NumericInput, RadioButton } from '@myhearty/ui/form';
 import { onlyPositiveInteger } from '@myhearty/utils/common';
 import { useState } from 'react';
@@ -18,10 +17,6 @@ export function DonationButton({ fundraisingCampaignId, organization }: Donation
   const auth = useAuth();
   const [showDialog, setShowDialog] = useState(false);
 
-  function onDialogOpenChange(open: boolean) {
-    if (!open) setShowDialog(false);
-  }
-
   return (
     <>
       <Button fullWidth onClick={() => setShowDialog(true)}>
@@ -29,16 +24,15 @@ export function DonationButton({ fundraisingCampaignId, organization }: Donation
       </Button>
       {auth.isAuthenticated ? (
         <DonationDialogForm
-          open={showDialog}
-          onOpenChange={onDialogOpenChange}
+          opened={showDialog}
+          onClose={() => setShowDialog(false)}
           fundraisingCampaignId={fundraisingCampaignId}
           organization={organization}
         />
       ) : (
         <AuthDialog
-          open={showDialog}
-          onOpenChange={onDialogOpenChange}
-          handleClose={() => setShowDialog(false)}
+          opened={showDialog}
+          onClose={() => setShowDialog(false)}
           description="You need to be logged in to donate for this fundraising campaign."
         />
       )}
@@ -47,8 +41,8 @@ export function DonationButton({ fundraisingCampaignId, organization }: Donation
 }
 
 type DonationDialogFormProps = {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
+  opened: boolean;
+  onClose: () => void;
   fundraisingCampaignId: number;
   organization: Organization;
 };
@@ -59,8 +53,8 @@ type DonationDialogFormData = {
 };
 
 function DonationDialogForm({
-  open,
-  onOpenChange,
+  opened,
+  onClose,
   fundraisingCampaignId,
   organization,
 }: DonationDialogFormProps) {
@@ -94,61 +88,59 @@ function DonationDialogForm({
   }
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-1">
-            <p className="break-words text-lg font-medium">Donation collected by {organization.name}</p>
-            <p className="text-sm">
-              MyHearty uses Stripe as the payment gateway. A 3% transaction fees will be charged for each
-              successful donation.
-            </p>
-          </div>
-          <Form className="mx-auto flex w-4/5 flex-col gap-6" form={form} handleSubmit={donate}>
-            <div className="grid grid-cols-2 justify-center gap-4">
-              <RadioButton
-                label="RM25"
-                value="25"
-                onClick={onClickDefaultAmount}
-                {...register('defaultAmount')}
-              />
-              <RadioButton
-                label="RM50"
-                value="50"
-                onClick={onClickDefaultAmount}
-                defaultChecked
-                {...register('defaultAmount')}
-              />
-              <RadioButton
-                label="RM100"
-                value="100"
-                onClick={onClickDefaultAmount}
-                {...register('defaultAmount')}
-              />
-              <RadioButton
-                label="Other amount"
-                value=""
-                onClick={onClickOtherAmount}
-                {...register('defaultAmount')}
-              />
-            </div>
-            <NumericInput
-              addOnLeading={<InputLeading>RM</InputLeading>}
-              visible={showOtherAmountField}
+    <Modal opened={opened} onClose={onClose}>
+      <div className="mb-1 flex flex-col gap-6">
+        <div className="flex flex-col gap-1">
+          <p className="break-words text-lg font-medium">Donation collected by {organization.name}</p>
+          <p className="text-sm">
+            MyHearty uses Stripe as the payment gateway. A 3% transaction fees will be charged for each
+            successful donation.
+          </p>
+        </div>
+        <Form className="mx-auto flex w-4/5 flex-col gap-6" form={form} handleSubmit={donate}>
+          <div className="grid grid-cols-2 justify-center gap-4">
+            <RadioButton
+              label="RM25"
+              value="25"
+              onClick={onClickDefaultAmount}
+              {...register('defaultAmount')}
+            />
+            <RadioButton
+              label="RM50"
+              value="50"
+              onClick={onClickDefaultAmount}
+              defaultChecked
+              {...register('defaultAmount')}
+            />
+            <RadioButton
+              label="RM100"
+              value="100"
+              onClick={onClickDefaultAmount}
+              {...register('defaultAmount')}
+            />
+            <RadioButton
               label="Other amount"
               value=""
-              validate={onlyPositiveInteger}
-              required={showOtherAmountField}
-              {...register('otherAmount', { validate: { betweenAllowedAmounts } })}
+              onClick={onClickOtherAmount}
+              {...register('defaultAmount')}
             />
-            <DialogFooter>
-              <Button type="submit" loading={formState.isSubmitting}>
-                Continue
-              </Button>
-            </DialogFooter>
-          </Form>
-        </div>
-      </DialogContent>
-    </Dialog>
+          </div>
+          <NumericInput
+            addOnLeading={<InputLeading>RM</InputLeading>}
+            visible={showOtherAmountField}
+            label="Other amount"
+            value=""
+            validate={onlyPositiveInteger}
+            required={showOtherAmountField}
+            {...register('otherAmount', { validate: { betweenAllowedAmounts } })}
+          />
+          <div className="flex justify-end">
+            <Button type="submit" loading={formState.isSubmitting}>
+              Continue
+            </Button>
+          </div>
+        </Form>
+      </div>
+    </Modal>
   );
 }
