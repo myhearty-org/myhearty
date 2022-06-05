@@ -20,9 +20,21 @@ export const MANTINE_THEME: MantineThemeOverride = {
   focusRing: 'always',
 };
 
+export const MANTINE_DEFAULT_PROPS = {
+  Menu: {
+    withArrow: true,
+    withinPortal: false,
+  },
+};
+
 export const MANTINE_CLASSNAMES = {
   Button: {
     root: 'focus:outline-none focus:ring focus:ring-pink-300 active:translate-y-0',
     subtle: 'text-gray-900',
+  },
+  Menu: {
+    body: 'py-2 px-0',
+    item: 'focus:ring-0',
+    itemHovered: 'rounded-none bg-pink-500 text-white',
   },
 };
