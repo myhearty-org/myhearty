@@ -1,5 +1,5 @@
 import { Alert } from '@myhearty/ui/alert';
-import { Button } from '@myhearty/ui/button';
+import { Button } from '@mantine/core';
 import { onlyPositiveInteger } from '@myhearty/utils/common';
 import inRange from 'lodash/inRange';
 import { useEffect, useState } from 'react';
@@ -129,7 +129,7 @@ function RangeSliderComponent({
         <NumberInput min={defaultMin + 1} max={defaultMax} value={max} onChange={onMaxChange} />
       </div>
       {errorMessage && <Alert severity="error" message={errorMessage} />}
-      <Button className="w-full justify-center" type="submit" size="xs" onClick={onClick}>
+      <Button size="xs" fullWidth type="submit" onClick={onClick}>
         Apply
       </Button>
     </form>

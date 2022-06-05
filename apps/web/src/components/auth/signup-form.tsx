@@ -1,6 +1,6 @@
 import { useAuth } from '@hooks';
+import { Button } from '@mantine/core';
 import { Alert } from '@myhearty/ui/alert';
-import { Button } from '@myhearty/ui/button';
 import { EmailInput, Form, PasswordInput } from '@myhearty/ui/form';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -47,7 +47,7 @@ export function SignupForm() {
       />
       {successMessage && <Alert severity="success" title={successMessage} />}
       {errorMessage && <Alert severity="error" title={errorMessage} />}
-      <Button className="w-full justify-center" type="submit" loading={formState.isSubmitting}>
+      <Button fullWidth type="submit" loading={formState.isSubmitting}>
         Sign Up
       </Button>
     </Form>

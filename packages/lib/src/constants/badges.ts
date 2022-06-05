@@ -17,11 +17,11 @@ import {
   WheelchairIcon,
 } from '@myhearty/ui/icons';
 
-type CategoryBadgeType = {
+type CategoryBadge = {
   [category: string]: { icon: any; backgroundColor: string; textColor: string };
 };
 
-export const CATEGORY_BADGES: CategoryBadgeType = {
+export const CATEGORY_BADGES: CategoryBadge = {
   'Animal Welfare': {
     icon: PawPrintIcon,
     backgroundColor: 'bg-yellow-100',
@@ -92,4 +92,31 @@ export const CATEGORY_BADGES: CategoryBadgeType = {
     backgroundColor: 'bg-red-100',
     textColor: 'text-red-600 fill-red-600',
   },
+};
+
+type Badge = {
+  [category: string]: { backgroundColor: string; textColor: string };
+};
+
+export const PAYMENT_STATUS_BADGES: Badge = {
+  succeeded: { backgroundColor: 'bg-green-100', textColor: 'text-green-600' },
+  pending: { backgroundColor: 'bg-blue-100', textColor: 'text-blue-600' },
+  failed: { backgroundColor: 'bg-red-100', textColor: 'text-red-600' },
+};
+
+export const CHARITABLE_AID_APPLICATION_STATUS_BADGES: Badge = {
+  approved: { backgroundColor: 'bg-green-100', textColor: 'text-green-600' },
+  pending: { backgroundColor: 'bg-blue-100', textColor: 'text-blue-600' },
+  rejected: { backgroundColor: 'bg-red-100', textColor: 'text-red-600' },
+};
+
+export const VOLUNTEER_APPLICATION_STATUS_BADGES: Badge = {
+  confirmed: { backgroundColor: 'bg-green-100', textColor: 'text-green-600' },
+  pending: { backgroundColor: 'bg-blue-100', textColor: 'text-blue-600' },
+  rejected: { backgroundColor: 'bg-red-100', textColor: 'text-red-600' },
+};
+
+export const VOLUNTEER_APPLICATION_ATTENDANCE_BADGES: Badge = {
+  present: { backgroundColor: 'bg-blue-100', textColor: 'text-blue-600' },
+  absent: { backgroundColor: 'bg-yellow-100', textColor: 'text-yellow-600' },
 };

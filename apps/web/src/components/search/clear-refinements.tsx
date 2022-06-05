@@ -1,4 +1,4 @@
-import { Button } from '@myhearty/ui/button';
+import { Button } from '@mantine/core';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
 
 type ClearRefinementsComponentProps = {
@@ -9,9 +9,9 @@ type ClearRefinementsComponentProps = {
 export function ClearRefinementsComponent({ items, refine }: ClearRefinementsComponentProps) {
   return (
     <Button
-      className="w-full justify-center"
-      type="button"
-      color="secondary"
+      variant="default"
+      size="xs"
+      fullWidth
       onClick={() => refine(items)}
       disabled={!items.length}>
       Clear all filters

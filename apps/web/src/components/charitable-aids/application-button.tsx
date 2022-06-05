@@ -1,5 +1,6 @@
 import { AuthDialog } from '@components/auth';
 import { useAuth } from '@hooks';
+import { Button, Modal } from '@mantine/core';
 import { useHasMounted } from '@myhearty/hooks';
 import { UserProfile } from '@myhearty/lib/types';
 import {
@@ -8,8 +9,6 @@ import {
   unapplyForCharitableAid,
 } from '@myhearty/lib/users/charitable-aid-applications';
 import { getUserProfile, updateUserProfile } from '@myhearty/lib/users/profiles';
-import { Button } from '@myhearty/ui/button';
-import { Dialog, DialogContent, DialogFooter, DialogHeader } from '@myhearty/ui/dialog';
 import { DateInput, Form, Label, PhoneInput, RadioButton, TextArea, TextInput } from '@myhearty/ui/form';
 import { handleRequest } from '@myhearty/utils/api';
 import { showToast } from '@myhearty/utils/show-toast';
@@ -95,11 +94,7 @@ export function ApplicationButton({
   const hasMounted = useHasMounted();
   if (!hasMounted) return null;
 
-  function onDialogOpenChange(open: boolean) {
-    if (!open) setShowDialog(false);
-  }
-
-  function handleApplicationDialogFormClose() {
+  function afterApplication() {
     setShowDialog(false);
     setButtonState(ApplicationButtonState.Unapply);
   }
@@ -108,7 +103,7 @@ export function ApplicationButton({
     <>
       {buttonState !== undefined && (
         <Button
-          className="w-full justify-center"
+          fullWidth
           disabled={buttonStates[buttonState].disabled}
           onClick={buttonStates[buttonState].onClick}>
           {buttonStates[buttonState].text}
@@ -116,17 +111,16 @@ export function ApplicationButton({
       )}
       {auth.isAuthenticated ? (
         <ApplicationDialogForm
-          open={showDialog}
-          onOpenChange={onDialogOpenChange}
-          handleClose={handleApplicationDialogFormClose}
+          opened={showDialog}
+          onClose={() => setShowDialog(false)}
+          afterApplication={afterApplication}
           charitableAidId={charitableAidId}
           charitableAidName={charitableAidName}
         />
       ) : (
         <AuthDialog
-          open={showDialog}
-          onOpenChange={onDialogOpenChange}
-          handleClose={() => setShowDialog(false)}
+          opened={showDialog}
+          onClose={() => setShowDialog(false)}
           description="You need to be logged in to apply for this charitable aid."
         />
       )}
@@ -135,9 +129,9 @@ export function ApplicationButton({
 }
 
 type ApplicationDialogFormProps = {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  handleClose: () => void;
+  opened: boolean;
+  onClose: () => void;
+  afterApplication: () => void;
   charitableAidId: number;
   charitableAidName: string;
 };
@@ -145,9 +139,9 @@ type ApplicationDialogFormProps = {
 type ApplicationDialogFormData = UserProfile & { reason: string };
 
 function ApplicationDialogForm({
-  open,
-  onOpenChange,
-  handleClose,
+  opened,
+  onClose,
+  afterApplication,
   charitableAidId,
   charitableAidName,
 }: ApplicationDialogFormProps) {
@@ -169,77 +163,72 @@ function ApplicationDialogForm({
     await applyForCharitableAid(charitableAidId, reason);
 
     showToast('Charitable aid application is successful.', 'success');
-    handleClose();
+    afterApplication();
   }
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>
-        <div className="flex flex-col gap-6">
-          <DialogHeader title={`Receive aid from ${charitableAidName}`} />
-          <Form className="mx-auto flex w-4/5 flex-col gap-6" form={form} handleSubmit={apply}>
-            <p className="break-words text-base font-medium">Personal Information</p>
-            <TextInput
-              label="Name"
-              defaultValue={userProfile?.name}
-              maxLength={63}
-              required
-              {...register('name')}
+    <Modal title={`Receive aid from ${charitableAidName}`} opened={opened} onClose={onClose}>
+      <Form className="mx-auto mb-1 flex w-4/5 flex-col gap-6" form={form} handleSubmit={apply}>
+        <p className="break-words text-base font-medium">Personal Information</p>
+        <TextInput
+          label="Name"
+          defaultValue={userProfile?.name}
+          maxLength={63}
+          required
+          {...register('name')}
+        />
+        <PhoneInput
+          label="Contact Number"
+          defaultValue={userProfile?.contactNo}
+          maxLength={20}
+          required
+          {...register('contactNo')}
+        />
+        <TextInput
+          label="Address"
+          defaultValue={userProfile?.address}
+          maxLength={255}
+          required
+          {...register('address')}
+        />
+        <DateInput
+          label="Date of Birth"
+          defaultValue={userProfile?.birthDate}
+          max={formatISO(new Date(), { representation: 'date' })}
+          required
+          {...register('birthDate')}
+        />
+        <div className="flex flex-col gap-2">
+          <Label>Gender</Label>
+          <div className="flex gap-4">
+            <RadioButton
+              label="Male"
+              value="male"
+              defaultChecked={!userProfile?.gender || userProfile.gender === 'male'}
+              {...register('gender')}
             />
-            <PhoneInput
-              label="Contact Number"
-              defaultValue={userProfile?.contactNo}
-              maxLength={20}
-              required
-              {...register('contactNo')}
+            <RadioButton
+              label="Female"
+              value="female"
+              defaultChecked={userProfile?.gender === 'female'}
+              {...register('gender')}
             />
-            <TextInput
-              label="Address"
-              defaultValue={userProfile?.address}
-              maxLength={255}
-              required
-              {...register('address')}
-            />
-            <DateInput
-              label="Date of Birth"
-              defaultValue={userProfile?.birthDate}
-              max={formatISO(new Date(), { representation: 'date' })}
-              required
-              {...register('birthDate')}
-            />
-            <div className="flex flex-col gap-2">
-              <Label>Gender</Label>
-              <div className="flex gap-4">
-                <RadioButton
-                  label="Male"
-                  value="male"
-                  defaultChecked={!userProfile?.gender || userProfile.gender === 'male'}
-                  {...register('gender')}
-                />
-                <RadioButton
-                  label="Female"
-                  value="female"
-                  defaultChecked={userProfile?.gender === 'female'}
-                  {...register('gender')}
-                />
-              </div>
-            </div>
-            <TextArea
-              className="resize-none"
-              label="Application reason"
-              rows={5}
-              maxLength={2500}
-              required
-              {...register('reason')}
-            />
-            <DialogFooter>
-              <Button type="submit" loading={formState.isSubmitting}>
-                Apply
-              </Button>
-            </DialogFooter>
-          </Form>
+          </div>
         </div>
-      </DialogContent>
-    </Dialog>
+        <TextArea
+          className="resize-none"
+          label="Application reason"
+          rows={5}
+          maxLength={2500}
+          required
+          {...register('reason')}
+        />
+        <div className="flex justify-end">
+          <Button type="submit" loading={formState.isSubmitting}>
+            Apply
+          </Button>
+        </div>
+      </Form>
+    </Modal>
   );
 }
