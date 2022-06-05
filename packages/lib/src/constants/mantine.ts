@@ -34,6 +34,11 @@ export const MANTINE_DEFAULT_PROPS = {
 };
 
 export const MANTINE_CLASSNAMES = {
+  Badge: {
+    root: 'gap-2 whitespace-nowrap rounded px-2 py-3.5 text-sm font-medium normal-case',
+    leftSection: 'h-6 w-6',
+    rightSection: 'h-6 w-6',
+  },
   Button: {
     root: 'focus:outline-none focus:ring focus:ring-pink-300 active:translate-y-0',
     subtle: 'text-gray-900',

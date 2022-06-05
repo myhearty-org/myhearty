@@ -1,4 +1,5 @@
-import { CATEGORY_BADGES } from '@myhearty/lib/constants';
+import { Badge } from '@mantine/core';
+import { CATEGORY_BADGES } from '@myhearty/lib/constants/badges';
 import cn from 'classnames';
 import sortBy from 'lodash/sortBy';
 
@@ -13,18 +14,15 @@ export function CategoriesCard({ categories }: CategoriesCardProps) {
       <div className="flex flex-wrap gap-2">
         {sortBy(categories).map((category, i) => {
           const Icon = CATEGORY_BADGES[category].icon;
+          const icon = <Icon className={CATEGORY_BADGES[category].textColor} />;
 
           return (
-            <span
+            <Badge
               key={i}
-              className={cn(
-                'mr-2 flex rounded px-2.5 py-0.5 text-sm font-medium',
-                CATEGORY_BADGES[category].backgroundColor,
-                CATEGORY_BADGES[category].textColor
-              )}>
-              <Icon className={cn('mr-3 h-6 w-6 flex-shrink-0', CATEGORY_BADGES[category].textColor)} />
+              className={cn(CATEGORY_BADGES[category].backgroundColor, CATEGORY_BADGES[category].textColor)}
+              leftSection={icon}>
               {category}
-            </span>
+            </Badge>
           );
         })}
       </div>

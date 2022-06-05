@@ -3,7 +3,7 @@ module.exports = {
     './src/pages/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
     '../../packages/ui/**/*.{js,ts,jsx,tsx}',
-    '../../packages/lib/src/constants.ts',
+    '../../packages/lib/src/constants/**/*.{js,ts}',
   ],
   theme: {
     extend: {
