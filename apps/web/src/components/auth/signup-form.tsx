@@ -1,4 +1,4 @@
-import { useAuth } from '@hooks';
+import { useAuth } from '@components/providers/auth-provider';
 import { Button } from '@mantine/core';
 import { Alert } from '@myhearty/ui/alert';
 import { EmailInput, Form, PasswordInput } from '@myhearty/ui/form';

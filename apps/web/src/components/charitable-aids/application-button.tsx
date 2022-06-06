@@ -1,5 +1,5 @@
 import { AuthDialog } from '@components/auth';
-import { useAuth } from '@hooks';
+import { useAuth } from '@components/providers/auth-provider';
 import { Button, Modal } from '@mantine/core';
 import { useHasMounted } from '@myhearty/hooks';
 import { UserProfile } from '@myhearty/lib/types';

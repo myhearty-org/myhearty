@@ -1,5 +1,5 @@
+import { useAuth } from '@components/providers/auth-provider';
 import { ChevronDownIcon } from '@heroicons/react/solid';
-import { useAuth } from '@hooks';
 import { Divider, Menu } from '@mantine/core';
 import { NextLink } from '@mantine/next';
 import { Avatar } from '@myhearty/ui/avatar';

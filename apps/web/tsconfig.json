@@ -4,8 +4,6 @@
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
-      "@hooks/*": ["hooks/*"],
-      "@hooks": ["hooks/index"],
       "@lib/*": ["lib/*"],
       "@utils/*": ["utils/*"],
       "@myhearty/hooks/*": ["../../../packages/hooks/src/*"],

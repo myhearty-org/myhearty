@@ -1,5 +1,5 @@
 import { Layout } from '@components/layout';
-import { AuthProvider } from '@hooks/use-auth';
+import { AuthProvider } from '@components/providers';
 import { MantineProvider } from '@mantine/core';
 import { MANTINE_CLASSNAMES, MANTINE_DEFAULT_PROPS, MANTINE_THEME } from '@myhearty/lib/constants/mantine';
 import { storePathHistory } from '@myhearty/utils/common';

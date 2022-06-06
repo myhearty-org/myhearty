@@ -1,7 +1,7 @@
 import { UserDropdown } from './user-dropdown';
+import { useAuth } from '@components/providers/auth-provider';
 import { Popover, Transition } from '@headlessui/react';
 import { GiftIcon, HeartIcon, MenuIcon, UserIcon, UsersIcon, XIcon } from '@heroicons/react/outline';
-import { useAuth } from '@hooks';
 import { Button } from '@mantine/core';
 import { useHasMounted } from '@myhearty/hooks';
 import { Logo } from '@myhearty/ui/icons';
@@ -153,10 +153,7 @@ function MobileMenu() {
             )}
             {hasMounted && auth.isAuthenticated && (
               <Popover.Button as={'div'}>
-                <Button
-                  size="md"
-                  fullWidth
-                  onClick={() => handleRequest(logOut)}>
+                <Button size="md" fullWidth onClick={() => handleRequest(logOut)}>
                   Log Out
                 </Button>
               </Popover.Button>
