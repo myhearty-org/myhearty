@@ -58,7 +58,7 @@ export function Slider({ title, className, items, itemKey, renderItem, options =
         <div className="glide__track" data-glide-el="track">
           <ul className="glide__slides justify-between">
             {items?.map((item) => (
-              <li key={itemKey(item)} className="glide__slide mb-6 flex flex-col items-center">
+              <li key={itemKey(item)} className="glide__slide mb-6 mt-1 flex flex-col items-center">
                 {renderItem(item)}
               </li>
             ))}
