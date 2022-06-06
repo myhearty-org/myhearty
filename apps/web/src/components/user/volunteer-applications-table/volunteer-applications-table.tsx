@@ -3,6 +3,7 @@ import { ExclamationCircleIcon } from '@heroicons/react/solid';
 import { VolunteerApplication } from '@myhearty/lib/types';
 import { getVolunteerApplications } from '@myhearty/lib/users/volunteer-applications';
 import { Loading } from '@myhearty/ui/loading';
+import { Pagination, PaginationResults } from '@myhearty/ui/pagination';
 import { Table, Td, Th, Tr } from '@myhearty/ui/table';
 import { handleRequest, PaginationMetadata } from '@myhearty/utils/api';
 import { useEffect, useState } from 'react';
@@ -10,6 +11,7 @@ import { useEffect, useState } from 'react';
 export function VolunteerApplicationsTable() {
   const [isLoading, setIsLoading] = useState(true);
   const [volunteerApplications, setVolunteerApplications] = useState<VolunteerApplication[]>([]);
+  const [pageIndex, setPageIndex] = useState(1);
   const [paginationMetadata, setPaginationMetadata] = useState<PaginationMetadata>();
 
   useEffect(() => {
@@ -17,7 +19,7 @@ export function VolunteerApplicationsTable() {
       setIsLoading(true);
 
       try {
-        const { volunteerApplications, paginationMetadata } = await getVolunteerApplications();
+        const { volunteerApplications, paginationMetadata } = await getVolunteerApplications(pageIndex);
 
         setVolunteerApplications(volunteerApplications);
         setPaginationMetadata(paginationMetadata);
@@ -28,7 +30,7 @@ export function VolunteerApplicationsTable() {
       }
     }
     handleRequest(getVolunteerApplicationsData);
-  }, []);
+  }, [pageIndex]);
 
   return (
     <Loading isLoading={isLoading}>
@@ -75,6 +77,14 @@ export function VolunteerApplicationsTable() {
           </>
         }
       />
+      <div className="mt-1 flex items-center justify-center px-2 lg:justify-between">
+        <div className="hidden lg:block">
+          <PaginationResults paginationMetadata={paginationMetadata} />
+        </div>
+        {paginationMetadata && (
+          <Pagination paginationMetadata={paginationMetadata} setPageIndex={setPageIndex} />
+        )}
+      </div>
     </Loading>
   );
 }
