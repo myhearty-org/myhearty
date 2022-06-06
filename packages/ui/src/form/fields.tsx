@@ -169,7 +169,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         <Label htmlFor={id}>{label}</Label>
         <textarea
           className={cn(
-            'mt-2 block w-full rounded border-gray-300 shadow-sm focus:border-pink-300 focus:outline-none focus:ring focus:ring-pink-300 sm:text-sm',
+            'mt-2 p-2 block w-full rounded border-gray-300 shadow-sm focus:border-pink-300 focus:outline-none focus:ring focus:ring-pink-300 sm:text-sm',
             className
           )}
           id={id}
