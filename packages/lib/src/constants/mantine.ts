@@ -53,4 +53,7 @@ export const MANTINE_CLASSNAMES = {
     title: 'font-medium',
     close: 'text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none',
   },
+  Pagination: {
+    item: 'text-sm font-normal focus:outline-none focus:ring focus:ring-pink-300 active:translate-y-0',
+  },
 };

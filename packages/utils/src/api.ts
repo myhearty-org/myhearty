@@ -21,15 +21,15 @@ export function handleRequest(request: (...args: any[]) => any) {
 export type PaginationMetadata = {
   pageIndex: number;
   pageSize: number;
-  pageCount?: number;
-  pageLinks?: Links | null;
+  totalCount: number;
+  pageLinks: Links | null;
 };
 
 export function generatePaginationMetadata(headers: AxiosResponseHeaders) {
   const paginationMetadata: PaginationMetadata = {
     pageIndex: Number(headers['x-page']),
     pageSize: Number(headers['x-per-page']),
-    pageCount: Number(headers['x-total']),
+    totalCount: Number(headers['x-total']),
     pageLinks: parseLinkHeader(headers['link']),
   };
 

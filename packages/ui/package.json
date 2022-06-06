@@ -6,6 +6,8 @@
   "types": "src/index.tsx",
   "dependencies": {
     "@heroicons/react": "^1.0.6",
+    "@mantine/core": "^4.2.7",
+    "@mantine/hooks": "^4.2.7",
     "@myhearty/hooks": "workspace:^",
     "@myhearty/lib": "workspace:^",
     "@myhearty/utils": "workspace:^",

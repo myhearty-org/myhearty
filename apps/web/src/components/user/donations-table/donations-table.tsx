@@ -3,6 +3,7 @@ import { ExclamationCircleIcon } from '@heroicons/react/solid';
 import { Donation } from '@myhearty/lib/types';
 import { getDonations } from '@myhearty/lib/users/donations';
 import { Loading } from '@myhearty/ui/loading';
+import { Pagination, PaginationResults } from '@myhearty/ui/pagination';
 import { Table, Td, Th, Tr } from '@myhearty/ui/table';
 import { handleRequest, PaginationMetadata } from '@myhearty/utils/api';
 import { useEffect, useState } from 'react';
@@ -10,6 +11,7 @@ import { useEffect, useState } from 'react';
 export function DonationsTable() {
   const [isLoading, setIsLoading] = useState(true);
   const [donations, setDonations] = useState<Donation[]>([]);
+  const [pageIndex, setPageIndex] = useState(1);
   const [paginationMetadata, setPaginationMetadata] = useState<PaginationMetadata>();
 
   useEffect(() => {
@@ -17,7 +19,7 @@ export function DonationsTable() {
       setIsLoading(true);
 
       try {
-        const { donations, paginationMetadata } = await getDonations();
+        const { donations, paginationMetadata } = await getDonations(pageIndex);
 
         setDonations(donations);
         setPaginationMetadata(paginationMetadata);
@@ -28,7 +30,7 @@ export function DonationsTable() {
       }
     }
     handleRequest(getDonationsData);
-  }, []);
+  }, [pageIndex]);
 
   return (
     <Loading isLoading={isLoading}>
@@ -73,6 +75,14 @@ export function DonationsTable() {
           </>
         }
       />
+      <div className="mt-1 flex items-center justify-center px-2 lg:justify-between">
+        <div className="hidden lg:block">
+          <PaginationResults paginationMetadata={paginationMetadata} />
+        </div>
+        {paginationMetadata && (
+          <Pagination paginationMetadata={paginationMetadata} setPageIndex={setPageIndex} />
+        )}
+      </div>
     </Loading>
   );
 }
