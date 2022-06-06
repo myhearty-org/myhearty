@@ -8,12 +8,7 @@ type ClearRefinementsComponentProps = {
 
 export function ClearRefinementsComponent({ items, refine }: ClearRefinementsComponentProps) {
   return (
-    <Button
-      variant="default"
-      size="xs"
-      fullWidth
-      onClick={() => refine(items)}
-      disabled={!items.length}>
+    <Button variant="default" size="xs" fullWidth onClick={() => refine(items)} disabled={!items.length}>
       Clear all filters
     </Button>
   );

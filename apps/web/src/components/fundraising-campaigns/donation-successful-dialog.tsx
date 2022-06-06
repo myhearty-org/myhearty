@@ -3,7 +3,7 @@ import { Button, Modal } from '@mantine/core';
 import { useHasMounted } from '@myhearty/hooks';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export function DonationSuccessfulDialog() {
   const [showDialog, setShowDialog] = useState(false);

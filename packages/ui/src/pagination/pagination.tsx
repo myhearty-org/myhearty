@@ -14,12 +14,5 @@ export function Pagination({ paginationMetadata, setPageIndex, ...props }: Pagin
   const { pageIndex, pageSize, totalCount } = paginationMetadata;
   const pageCount = Math.ceil(totalCount / pageSize);
 
-  return (
-    <PaginationComponent
-      page={pageIndex}
-      onChange={setPageIndex}
-      total={pageCount}
-      {...props}
-    />
-  );
+  return <PaginationComponent page={pageIndex} onChange={setPageIndex} total={pageCount} {...props} />;
 }

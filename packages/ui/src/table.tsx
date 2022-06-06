@@ -48,7 +48,7 @@ type TrProps = {
 
 export function Tr({ children, className, onClick }: TrProps) {
   return (
-    <tr className={cn('hover:bg-gray-200',className)} onClick={onClick}>
+    <tr className={cn('hover:bg-gray-200', className)} onClick={onClick}>
       {children}
     </tr>
   );

@@ -106,9 +106,7 @@ function CardBody({ name, organization, startDatetime, endDatetime, location }: 
         </div>
       </div>
       <div className="mt-3 flex flex-1 flex-col items-center justify-end">
-        <Button>
-          Apply
-        </Button>
+        <Button>Apply</Button>
       </div>
     </div>
   );
