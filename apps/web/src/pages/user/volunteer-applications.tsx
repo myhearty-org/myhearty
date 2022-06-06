@@ -1,3 +1,4 @@
+import { AuthRequired } from '@components/helpers';
 import { UserLayout } from '@components/user';
 import { VolunteerApplicationsTable } from '@components/user';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -5,9 +6,11 @@ import { GetServerSideProps } from 'next/types';
 
 export default function VolunteerApplicationsPage() {
   return (
-    <UserLayout title="Your Volunteer Applications">
-      <VolunteerApplicationsTable />
-    </UserLayout>
+    <AuthRequired>
+      <UserLayout title="Your Volunteer Applications">
+        <VolunteerApplicationsTable />
+      </UserLayout>
+    </AuthRequired>
   );
 }
 
