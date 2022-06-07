@@ -34,6 +34,13 @@ export type Organization = {
   charity: boolean;
 };
 
+export type Member = {
+  id: number;
+  email: string;
+  organizationId: string;
+  admin: boolean;
+};
+
 export type FundraisingCampaign = {
   id: number;
   name: string;
