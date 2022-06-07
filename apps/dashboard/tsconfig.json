@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@myhearty/hooks/*": ["../../../packages/hooks/src/*"],
+      "@myhearty/hooks": ["../../../packages/hooks/src/index"],
+      "@myhearty/lib/*": ["../../../packages/lib/src/*"],
+      "@myhearty/lib": ["../../../packages/lib/src/index"],
+      "@myhearty/ui/*": ["../../../packages/ui/src/*"],
+      "@myhearty/ui": ["../../../packages/ui/src/index"],
+      "@myhearty/utils/*": ["../../../packages/utils/src/*"],
+      "@myhearty/utils": ["../../../packages/utils/src/index"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}
