@@ -31,6 +31,9 @@ export type Organization = {
   avatarUrl: string;
   videoUrl: string;
   imageUrl: string;
+  categories?: string[];
+  aboutUs?: string;
+  programmesSummary?: string;
   charity: boolean;
 };
 
