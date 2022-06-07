@@ -5,6 +5,10 @@
       "path": "../apps/web"
     },
     {
+      "name": "dashboard",
+      "path": "../apps/dashboard"
+    },
+    {
       "name": "hooks",
       "path": "../packages/hooks"
     },
@@ -42,6 +46,7 @@
   "settings": {
     "eslint.workingDirectories": [
       "../apps/web",
+      "../apps/dashboard",
       "../packages/hooks",
       "../packages/lib",
       "../packages/ui",

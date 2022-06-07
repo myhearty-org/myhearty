@@ -1,0 +1,291 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-100;
+}
+
+#__next {
+  @apply flex min-h-screen flex-col text-gray-900;
+}
+
+*:focus-visible {
+  @apply rounded border-pink-300 outline-none ring ring-pink-300;
+}
+
+/* Override default tailwindcss-forms styling */
+
+[type='text']:focus,
+[type='email']:focus,
+[type='url']:focus,
+[type='password']:focus,
+[type='number']:focus,
+[type='date']:focus,
+[type='datetime-local']:focus,
+[type='month']:focus,
+[type='search']:focus,
+[type='tel']:focus,
+[type='checkbox']:focus,
+[type='radio']:focus,
+[type='time']:focus,
+[type='week']:focus,
+[multiple]:focus,
+textarea:focus,
+select:focus {
+  --tw-ring-color: #f9a8d4;
+  border-color: #f9a8d4;
+  @apply rounded border-pink-300 outline-none ring-2 ring-pink-300;
+}
+
+[type='checkbox'] {
+  color: #ec4899;
+}
+
+/* Table */
+
+tbody tr:last-child td:first-child {
+  @apply rounded rounded-r-none rounded-t-none;
+}
+
+tbody tr:last-child td:last-child {
+  @apply rounded rounded-l-none rounded-t-none;
+}
+
+tbody tr:last-child td:only-child {
+  @apply rounded rounded-t-none;
+}
+
+/* Add word-break attribute to the break-words (overflow-wrap: break-word) 
+   utility class that does not work due to unknown reason. */
+
+.break-words {
+  word-break: break-word;
+}
+
+/* Remove default spinner from input[type=number] */
+
+.spinner-none::-webkit-inner-spin-button,
+.spinner-none::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+.spinner-none {
+  -moz-appearance: textfield !important;
+}
+
+/* Loader */
+
+.loader {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.loader::before {
+  content: '';
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  top: -20px;
+  animation: loader-shadow 2s ease infinite;
+}
+
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  background: rgb(236, 72, 153);
+  animation: loader-transform 2s ease infinite;
+}
+
+@keyframes loader-shadow {
+  0% {
+    box-shadow: 20px 20px rgba(236, 72, 153, 0.8), 20px 40px rgba(236, 72, 153, 0.8),
+      0px 40px rgba(236, 72, 153, 0.8);
+  }
+
+  16% {
+    box-shadow: 20px 20px rgba(37, 99, 235, 0.6), 20px 40px rgba(236, 72, 153, 0.8),
+      0px 40px rgba(236, 72, 153, 0.8);
+  }
+
+  33% {
+    box-shadow: 20px 20px rgba(37, 99, 235, 0.6), 20px 40px rgba(37, 99, 235, 0.6),
+      0px 40px rgba(236, 72, 153, 0.8);
+  }
+
+  50% {
+    box-shadow: 20px 20px rgba(37, 99, 235, 0.6), 20px 40px rgba(37, 99, 235, 0.6),
+      0px 40px rgba(37, 99, 235, 0.6);
+  }
+
+  66% {
+    box-shadow: 20px 20px rgba(236, 72, 153, 0.8), 20px 40px rgba(37, 99, 235, 0.6),
+      0px 40px rgba(37, 99, 235, 0.6);
+  }
+
+  83% {
+    box-shadow: 20px 20px rgba(236, 72, 153, 0.8), 20px 40px rgba(236, 72, 153, 0.8),
+      0px 40px rgba(37, 99, 235, 0.6);
+  }
+
+  100% {
+    box-shadow: 20px 20px rgba(236, 72, 153, 0.8), 20px 40px rgba(236, 72, 153, 0.8),
+      0px 40px rgba(236, 72, 153, 0.8);
+  }
+}
+
+@keyframes loader-transform {
+  0% {
+    background: rgb(236, 72, 153);
+    transform: translate(0, 100%) rotateX(-180deg) rotateY(360deg);
+  }
+
+  16% {
+    background: rgb(59, 130, 246);
+    transform: translate(100%, 0) rotateX(0) rotateY(180deg);
+  }
+
+  33% {
+    background: rgb(59, 130, 246);
+    transform: translate(100%, 100%) rotateX(-180deg) rotateY(180deg);
+  }
+
+  50% {
+    background: rgb(59, 130, 246);
+    transform: translate(0, 100%) rotateX(-180deg) rotateY(360deg);
+  }
+
+  66% {
+    background: rgb(236, 72, 153);
+    transform: translate(100%, 0) rotateX(0) rotateY(180deg);
+  }
+
+  83% {
+    background: rgb(236, 72, 153);
+    transform: translate(100%, 100%) rotateX(-180deg) rotateY(180deg);
+  }
+
+  100% {
+    background: rgb(236, 72, 153);
+    transform: translate(0, 100%) rotateX(-180deg) rotateY(360deg);
+  }
+}
+
+/* InstantSearch.js */
+
+.ais-Pagination-list {
+  @apply space-x-[2px] !important;
+}
+
+.ais-Pagination-item {
+  @apply m-0 !important;
+}
+
+.ais-Pagination-link {
+  @apply rounded border border-none bg-white text-gray-900 transition-all duration-150 ease-out !important;
+}
+.ais-Pagination-link:hover {
+  @apply bg-pink-400 text-white !important;
+}
+
+.ais-Pagination-link--selected {
+  @apply bg-pink-500 text-white !important;
+}
+.ais-Pagination-link--selected:hover {
+  @apply bg-pink-400 text-white !important;
+}
+
+.ais-Pagination-item--disabled {
+  @apply cursor-not-allowed opacity-95 !important;
+}
+
+.ais-SortBy-select {
+  @apply rounded-none border-transparent bg-transparent py-3 pr-6 pl-2 text-xs text-gray-900 transition hover:bg-gray-50 focus:border-transparent focus:outline-none focus:ring-0 sm:pr-8 sm:pl-4 sm:text-sm;
+}
+
+.ais-ClearRefinements-button {
+  @apply bg-transparent text-black !important;
+}
+
+/* Rheostat */
+
+.DefaultProgressBar_progressBar {
+  @apply top-[-2px] h-1 bg-pink-500 !important;
+}
+
+.DefaultBackground {
+  @apply h-1 rounded-full border-none bg-gray-300 !important;
+}
+
+.DefaultHandle_handle {
+  @apply top-[-6px] z-10 ml-[-6px] h-4 w-4 cursor-grab rounded-full border-none bg-white drop-shadow before:hidden after:hidden !important;
+}
+
+/* Simplebar */
+
+@import 'simplebar/dist/simplebar.min.css';
+
+.simplebar-content:before,
+.simplebar-content:after {
+  content: '';
+}
+
+.simplebar-scrollbar:before {
+  @apply bg-gray-500;
+}
+
+/* Geoapify Location Searchbox */
+
+.geoapify-autocomplete-input {
+  @apply w-full rounded-none border-transparent bg-white py-3 pr-8 text-xs text-black placeholder-gray-600 transition hover:bg-opacity-60 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm;
+}
+
+.geoapify-autocomplete-items {
+  @apply absolute left-2.5 right-0 top-[calc(100%+2px)] z-40 overflow-hidden rounded-md bg-white text-xs shadow-lg ring-2 ring-black ring-opacity-5 focus:outline-none sm:text-sm md:left-0;
+}
+
+.geoapify-autocomplete-item {
+  @apply flex cursor-pointer select-none p-2.5 hover:bg-pink-500 hover:text-white;
+}
+
+.geoapify-autocomplete-item .icon {
+  @apply mr-2 flex-shrink-0 pt-0.5 text-gray-500;
+}
+
+.geoapify-autocomplete-item .icon svg {
+  @apply h-4 w-4 sm:h-5 sm:w-5;
+}
+
+.geoapify-autocomplete-item:hover .icon {
+  @apply text-white;
+}
+
+.geoapify-autocomplete-item .main-part {
+  @apply font-medium;
+}
+.geoapify-autocomplete-item .main-part strong {
+  @apply font-medium;
+}
+
+.geoapify-autocomplete-item .secondary-part {
+  @apply ml-2;
+}
+
+.geoapify-close-button {
+  @apply absolute top-0 right-1.5 hidden h-full cursor-pointer opacity-40 hover:opacity-60;
+}
+
+.geoapify-close-button.visible {
+  @apply flex items-center;
+}
