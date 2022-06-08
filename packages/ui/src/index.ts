@@ -6,6 +6,7 @@ export { Gallery } from './gallery';
 export * from './icons';
 export { Loader } from './loader';
 export { Loading } from './loading';
+export * from './logos';
 export * from './menu';
 export * from './pagination';
 export { ProgressBar } from './progress-bar';
