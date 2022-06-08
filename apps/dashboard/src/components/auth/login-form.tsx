@@ -28,7 +28,12 @@ export function LoginForm({ afterLogin }: LoginFormProps) {
       await auth.logIn(email, password);
       afterLogin && afterLogin();
     } catch (error) {
-      setErrorMessage(error.response?.data?.error);
+      const errorMessage = error.response?.data?.error;
+
+      if (!errorMessage) {
+        throw error;
+      }
+      setErrorMessage(errorMessage);
     }
   }
 
