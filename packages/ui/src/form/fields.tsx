@@ -157,6 +157,38 @@ export const DateInput = forwardRef<HTMLInputElement, InputFieldProps>(
   }
 );
 
+type CheckboxProps = InputFieldProps & { description?: string };
+
+// prettier-ignore
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+  function Checkbox({ label, description, className, ...props }, ref) {
+    const id = useId();
+
+    return (
+      <div className="flex items-start">
+        <div className="flex items-center h-5">
+          <input
+            className={cn(
+              'focus:outline-none focus:ring focus:ring-pink-300 h-4 w-4 text-pink-500 border-gray-300 rounded',
+              className
+            )}
+            type="checkbox"
+            id={id}
+            ref={ref}
+            {...props}
+          />
+        </div>
+        <div className="ml-3 text-sm">
+          <label className="font-medium text-gray-700" htmlFor={id}>
+            {label}
+          </label>
+          {description && <p className="text-gray-500">{description}</p>}
+        </div>
+      </div>
+    );
+  }
+);
+
 type TextAreaProps = Omit<JSX.IntrinsicElements['textarea'], 'name'> & { name: string; label: string };
 
 // prettier-ignore
