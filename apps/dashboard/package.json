@@ -33,7 +33,8 @@
     "react-hook-form": "^7.30.0",
     "react-hot-toast": "^2.2.0",
     "react-use": "^17.4.0",
-    "simplebar-react": "^2.3.7"
+    "simplebar-react": "^2.3.7",
+    "zod": "^3.17.3"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.0",
