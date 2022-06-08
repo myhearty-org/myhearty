@@ -1,15 +1,13 @@
 import { useLocalStorage } from '@myhearty/hooks';
-import { logInUser, logOutUser, signUpUser } from '@myhearty/lib/auth/users';
-import { User } from '@myhearty/lib/types';
-import { AxiosResponse } from 'axios';
+import { logInMember, logOutMember } from '@myhearty/lib/auth/members';
+import { Member } from '@myhearty/lib/types';
 import isEmpty from 'lodash/isEmpty';
 import { createContext, useCallback, useContext, useMemo } from 'react';
 
 type AuthContextType = {
-  user: User;
+  member: Member;
   isAuthenticated: boolean;
-  signUp: (email: string, password: string) => Promise<AxiosResponse<any, any>>;
-  logIn: (email: string, password: string) => Promise<User>;
+  logIn: (email: string, password: string) => Promise<Member>;
   logOut: () => Promise<void>;
 };
 
@@ -30,39 +28,34 @@ export function AuthProvider({ children }: AuthProviderProps) {
 }
 
 function useAuthProvider() {
-  const [storedUser, setStoredUser] = useLocalStorage<User>('user', {} as User);
+  const [storedMember, setStoredMember] = useLocalStorage<Member>('member', {} as Member);
 
-  const isAuthenticated = !isEmpty(storedUser);
-
-  function signUp(email: string, password: string) {
-    return signUpUser(email, password);
-  }
+  const isAuthenticated = !isEmpty(storedMember);
 
   const logIn = useCallback(
     async (email: string, password: string) => {
-      const user = await logInUser(email, password);
-      setStoredUser(user);
+      const member = await logInMember(email, password);
+      setStoredMember(member);
 
-      return user;
+      return member;
     },
-    [setStoredUser]
+    [setStoredMember]
   );
 
   const logOut = useCallback(async () => {
-    await logOutUser();
+    await logOutMember();
 
-    setStoredUser({} as User);
-  }, [setStoredUser]);
+    setStoredMember({} as Member);
+  }, [setStoredMember]);
 
   const authProvider = useMemo(
     () => ({
-      user: storedUser,
+      member: storedMember,
       isAuthenticated,
-      signUp,
       logIn,
       logOut,
     }),
-    [storedUser, isAuthenticated, logIn, logOut]
+    [storedMember, isAuthenticated, logIn, logOut]
   );
 
   return authProvider;
