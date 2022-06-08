@@ -9,6 +9,7 @@ import defaultSeoConfig from 'next-seo.json';
 import { useRouter } from 'next/router';
 import NextNProgress from 'nextjs-progressbar';
 import { useEffect } from 'react';
+import { Toaster } from 'react-hot-toast';
 import 'styles/globals.css';
 import 'styles/preflight.css';
 
@@ -38,6 +39,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             showOnShallow={true}
             options={{ showSpinner: false }}
           />
+          <Toaster position="bottom-right" />
           {getLayout(<Component {...pageProps} />)}
         </AuthProvider>
       </MantineProvider>
