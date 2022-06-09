@@ -1,6 +1,7 @@
 {
   "codes": {
-    "invalid": "is invalid",
+    "alreadyExists": "already exists.",
+    "invalid": "is invalid.",
     "unspecific": "An unexpected error has occured. Please try again later.",
     "userPersonalInfoMissing": "Missing user's personal information.",
     "volunteerApplicationClosed": "Volunteer application is closed.",
@@ -10,8 +11,10 @@
     "address": "Address",
     "birthDate": "Date of Birth",
     "contactNo": "Contact number",
+    "email": "Email",
     "gender": "Gender",
     "input": "Input",
-    "name": "Name"
+    "name": "Name",
+    "websiteUrl": "Website URL"
   }
 }
