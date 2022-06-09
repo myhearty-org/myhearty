@@ -26,7 +26,7 @@ function FormComponent<T extends FieldValues>(props: FormComponentProps<T>, ref:
         const errorField = i18n?.t([`fields.${field}`, 'fields.input'], { ns: 'validation' });
         const errorCodeMessage = i18n?.t([`codes.${code}`, 'codes.invalid'], { ns: 'validation' });
 
-        form.setError(field, { message: `${errorField} ${errorCodeMessage}` });
+        form.setError(field, { message: `${errorField} ${errorCodeMessage}` }, { shouldFocus: true });
       });
     }
   }
