@@ -1,23 +1,26 @@
 import { AuthProvider } from '@components/providers';
 import { MantineProvider } from '@mantine/core';
 import { MANTINE_CLASSNAMES, MANTINE_DEFAULT_PROPS, MANTINE_THEME } from '@myhearty/lib/constants/mantine';
+import { AppPropsWithLayout } from '@myhearty/lib/types';
 import { storePathHistory } from '@myhearty/utils/common';
 import { appWithTranslation } from 'next-i18next';
 import { DefaultSeo } from 'next-seo';
 import defaultSeoConfig from 'next-seo.json';
-import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import NextNProgress from 'nextjs-progressbar';
 import { useEffect } from 'react';
+import { Toaster } from 'react-hot-toast';
 import 'styles/globals.css';
 import 'styles/preflight.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter();
 
   useEffect(() => {
     storePathHistory();
   }, [router.asPath]);
+
+  const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
     <>
@@ -36,7 +39,8 @@ function MyApp({ Component, pageProps }: AppProps) {
             showOnShallow={true}
             options={{ showSpinner: false }}
           />
-          <Component {...pageProps} />
+          <Toaster position="bottom-right" />
+          {getLayout(<Component {...pageProps} />)}
         </AuthProvider>
       </MantineProvider>
     </>

@@ -31,7 +31,17 @@ export type Organization = {
   avatarUrl: string;
   videoUrl: string;
   imageUrl: string;
+  categories?: string[];
+  aboutUs?: string;
+  programmesSummary?: string;
   charity: boolean;
+};
+
+export type Member = {
+  id: number;
+  email: string;
+  organizationId: string;
+  admin: boolean;
 };
 
 export type FundraisingCampaign = {

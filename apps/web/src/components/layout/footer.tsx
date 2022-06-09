@@ -1,5 +1,5 @@
 import { Button } from '@mantine/core';
-import { Logo } from '@myhearty/ui/icons';
+import { VerticalLogoText } from '@myhearty/ui/logos';
 import Link from 'next/link';
 
 export function Footer() {
@@ -7,7 +7,11 @@ export function Footer() {
     <footer className="relative border-t-2 border-gray-100 bg-white">
       <div className="max-w-8xl mx-auto px-4 pt-1 pb-4">
         <div className="flex flex-col items-center">
-          <LogoText />
+          <Link href="/">
+            <a>
+              <VerticalLogoText />
+            </a>
+          </Link>
           <p className="mt-2 text-base font-semibold ">{"Let's join us today!"}</p>
           <div className="mt-4">
             <Link href="/signup" passHref>
@@ -30,16 +34,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  );
-}
-
-function LogoText() {
-  return (
-    <Link href="/">
-      <a className="flex flex-col items-center gap-1 p-2">
-        <Logo width={60} height={60} />
-        <span className="inline-block whitespace-nowrap text-xl font-semibold">MyHearty</span>
-      </a>
-    </Link>
   );
 }

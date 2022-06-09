@@ -4,7 +4,7 @@ import { Popover, Transition } from '@headlessui/react';
 import { GiftIcon, HeartIcon, MenuIcon, UserIcon, UsersIcon, XIcon } from '@heroicons/react/outline';
 import { Button } from '@mantine/core';
 import { useHasMounted } from '@myhearty/hooks';
-import { Logo } from '@myhearty/ui/icons';
+import { HorizontalLogoText, Logo } from '@myhearty/ui/logos';
 import { handleRequest } from '@myhearty/utils/api';
 import cn from 'classnames';
 import Link from 'next/link';
@@ -19,7 +19,11 @@ export function Header() {
     <Popover as="nav" className="relative border-b border-gray-100 bg-white shadow-sm">
       <div className="max-w-8xl mx-auto px-4 py-1">
         <div className="mx-auto flex items-center justify-start md:space-x-5">
-          <LogoTextLink />
+          <Link href="/">
+            <a>
+              <HorizontalLogoText />
+            </a>
+          </Link>
           <div className="hidden items-center md:flex md:space-x-2">
             <NavItem href={'/campaigns'}>Donate Now</NavItem>
             <NavItem href={'/volunteer-events'}>Volunteer Today</NavItem>
@@ -51,17 +55,6 @@ export function Header() {
       </div>
       <MobileMenu />
     </Popover>
-  );
-}
-
-function LogoTextLink() {
-  return (
-    <Link href="/">
-      <a className="flex items-center p-2">
-        <Logo className="mr-3" width={36} height={36} />
-        <span className="inline-block whitespace-nowrap text-xl font-semibold sm:text-lg">MyHearty</span>
-      </a>
-    </Link>
   );
 }
 
