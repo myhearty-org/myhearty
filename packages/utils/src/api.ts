@@ -3,9 +3,9 @@ import { Links, parseLinkHeader } from '@web3-storage/parse-link-header';
 import { AxiosResponseHeaders } from 'axios';
 import { i18n } from 'next-i18next';
 
-export function handleRequest(request: (...args: any[]) => any) {
+export async function handleRequest(request: (...args: any[]) => any) {
   try {
-    request();
+    await request();
   } catch (error) {
     const errorCode = error.response?.data?.code;
 
