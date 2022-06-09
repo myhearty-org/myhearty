@@ -2,6 +2,7 @@ import { Alert } from '../alert';
 import cn from 'classnames';
 import formatISO from 'date-fns/formatISO';
 import parseISO from 'date-fns/parseISO';
+import get from 'lodash/get';
 import { forwardRef, useId, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
@@ -62,6 +63,8 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputF
     ...passThrough
   } = props;
 
+  const errorMessage = get(methods?.formState?.errors, `${props.name}.message`);
+
   return (
     <div className={cn(!visible && 'invisible')}>
       {label && (
@@ -83,9 +86,7 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputF
       ) : (
         <Input className={className} id={id} placeholder={placeholder} ref={ref} {...passThrough} />
       )}
-      {methods?.formState?.errors[props.name] && (
-        <Alert className="mt-4" severity="error" message={methods.formState.errors[props.name].message} />
-      )}
+      {errorMessage && <Alert className="mt-4" severity="error" message={errorMessage} />}
     </div>
   );
 });
