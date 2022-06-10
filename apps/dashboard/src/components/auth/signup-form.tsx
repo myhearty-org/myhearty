@@ -12,8 +12,8 @@ import {
   TextInput,
 } from '@myhearty/ui/form';
 import { showToast } from '@myhearty/utils/show-toast';
-import { useForm } from 'react-hook-form';
 import remove from 'lodash/remove';
+import { useForm } from 'react-hook-form';
 
 type SignupFormData = CreateOrganization;
 
@@ -44,7 +44,7 @@ export function SignupForm() {
       if (adminEmailAlreadyExistsError) {
         setError('admin.email', { message: 'Email already exists.' });
       }
-``
+
       throw error;
     }
   }
