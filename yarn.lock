@@ -607,13 +607,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@headlessui/react@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "@headlessui/react@npm:1.5.0"
+"@headlessui/react@npm:^1.6.4":
+  version: 1.6.4
+  resolution: "@headlessui/react@npm:1.6.4"
   peerDependencies:
     react: ^16 || ^17 || ^18
     react-dom: ^16 || ^17 || ^18
-  checksum: e3373dfb73936950d659a87718fb9fdedc599b344b30cb0d8b1ef0a2ec13d6f405c653fa51284236788658840ece82c6a8538a5a5931e595274e9590b2020079
+  checksum: f24dd2f5bd4de5954b2fd40998627b58a650a874894a90f96320ae5bad1b961a140e85ce821b92dc8cbed0628523df57ae9533137467d867788eac907bd396d7
   languageName: node
   linkType: hard
 
@@ -4286,7 +4286,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "myhearty-dashboard@workspace:apps/dashboard"
   dependencies:
-    "@headlessui/react": ^1.5.0
+    "@headlessui/react": ^1.6.4
     "@heroicons/react": ^1.0.6
     "@hookform/resolvers": ^2.9.0
     "@mantine/core": ^4.2.7
@@ -4335,7 +4335,7 @@ __metadata:
   dependencies:
     "@geoapify/geocoder-autocomplete": ^1.3.4
     "@glidejs/glide": ^3.5.2
-    "@headlessui/react": ^1.5.0
+    "@headlessui/react": ^1.6.4
     "@heroicons/react": ^1.0.6
     "@mantine/core": ^4.2.7
     "@mantine/hooks": ^4.2.7

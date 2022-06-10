@@ -19,18 +19,21 @@ type MenuItemProps = {
   icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   isActive?: boolean;
   onClick?: any;
+  backgroundColor?: string;
   children: React.ReactNode;
 };
 
-export function MenuItem({ href, icon: Icon, isActive, onClick, children }: MenuItemProps) {
+// TODO: Use a better API to make theme properties like background color more customizable instead of passing props
+export function MenuItem({ href, icon: Icon, isActive, onClick, backgroundColor, children }: MenuItemProps) {
   return (
     <li className="outline-none" role="menuitem">
       <Link href={href}>
         <a
           className={cn(
-            'relative flex cursor-pointer items-center gap-2 rounded px-4 py-2 transition-colors duration-150 hover:bg-gray-200',
+            'relative flex cursor-pointer items-center gap-2 rounded px-4 py-2 transition-colors duration-150',
+            `hover:${backgroundColor}`,
             isActive &&
-              'bg-gray-200 font-medium after:absolute after:top-[calc(50%-12px)] after:left-[-8px] after:h-6 after:w-1 after:rounded-md after:bg-pink-600'
+              `${backgroundColor} font-medium after:absolute after:top-[calc(50%-12px)] after:left-[-8px] after:h-6 after:w-1 after:rounded-md after:bg-pink-600`
           )}
           onClick={onClick}
           aria-current={isActive ? 'page' : undefined}>

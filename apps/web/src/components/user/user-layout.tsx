@@ -51,7 +51,7 @@ function UserMenuItem({ href, icon, children }: UserMenuItemProps) {
   const isActive = router.asPath === href;
 
   return (
-    <MenuItem href={href} icon={icon} isActive={isActive}>
+    <MenuItem href={href} icon={icon} isActive={isActive} backgroundColor="bg-gray-200">
       {children}
     </MenuItem>
   );

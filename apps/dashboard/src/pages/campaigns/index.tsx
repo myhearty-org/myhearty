@@ -1,9 +1,10 @@
 import { AppLayout } from '@components/layouts';
 import { useOrganization } from '@components/providers/organization-provider';
 import { Loader } from '@myhearty/ui/loader';
+import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 
-export default function HomePage() {
+export default function FundraisingCampaignsPage() {
   const organization = useOrganization();
   const router = useRouter();
 
@@ -15,11 +16,15 @@ export default function HomePage() {
     );
   }
 
-  if (organization.charity) {
-    router.replace('/campaigns');
-  } else {
+  if (!organization.charity) {
     router.replace('/volunteer-events');
   }
+
+  return (
+    <>
+      <NextSeo title="Fundraising Campaigns" />
+    </>
+  );
 }
 
-HomePage.getLayout = (page: React.ReactElement) => <AppLayout>{page}</AppLayout>;
+FundraisingCampaignsPage.getLayout = (page: React.ReactElement) => <AppLayout>{page}</AppLayout>;
