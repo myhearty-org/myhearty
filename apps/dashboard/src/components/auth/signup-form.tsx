@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@mantine/core';
-import { signUpOrganization } from '@myhearty/lib/auth/organizations';
+import { signUpOrganization } from '@myhearty/lib/organizations';
 import { CreateOrganization, CreateOrganizationSchema } from '@myhearty/lib/types';
 import {
   Checkbox,
