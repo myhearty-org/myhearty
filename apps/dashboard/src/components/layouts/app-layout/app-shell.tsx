@@ -18,6 +18,7 @@ export function AppShell({ children }: AppShellProps) {
   return (
     <AppShellComponent
       fixed
+      padding={6}
       navbarOffsetBreakpoint={1024}
       navbar={
         <>
