@@ -1,4 +1,5 @@
 import { NavMenu } from './nav-menu';
+import { StripeOnboardSection } from './stripe-onboard-section';
 import { UserDropdown } from './user-dropdown';
 import { Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
@@ -33,11 +34,17 @@ export function AppShell({ children }: AppShellProps) {
               <Navbar.Section className="-mr-3 grow" component={ScrollArea}>
                 <NavMenu />
               </Navbar.Section>
+              <Navbar.Section>
+                <StripeOnboardSection />
+              </Navbar.Section>
             </Navbar>
           </Transition>
           <Navbar className="hidden py-4 px-2 lg:flex lg:flex-col" width={{ base: 230 }}>
             <Navbar.Section className="-mr-3 grow" component={ScrollArea}>
               <NavMenu />
+            </Navbar.Section>
+            <Navbar.Section>
+              <StripeOnboardSection />
             </Navbar.Section>
           </Navbar>
         </>

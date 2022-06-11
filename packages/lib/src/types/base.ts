@@ -35,6 +35,7 @@ export type Organization = {
   aboutUs?: string;
   programmesSummary?: string;
   charity: boolean;
+  stripeOnboarded?: boolean;
 };
 
 export type Member = {
