@@ -1,5 +1,5 @@
 import { AuthDialog } from '@components/auth';
-import { useAuth } from '@components/providers/auth-provider';
+import { useAuth } from '@components/providers';
 import { Button, Modal } from '@mantine/core';
 import { Organization } from '@myhearty/lib/types';
 import { donateForFundraisingCampaign } from '@myhearty/lib/users/donations';

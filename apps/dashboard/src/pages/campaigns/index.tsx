@@ -1,5 +1,5 @@
 import { AppLayout } from '@components/layouts';
-import { useOrganization } from '@components/providers/organization-provider';
+import { useOrganization } from '@components/providers';
 import { Loader } from '@myhearty/ui/loader';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';

@@ -1,4 +1,4 @@
-import { useAuth } from '@components/providers/auth-provider';
+import { useAuth } from '@components/providers';
 import { useHasMounted } from '@myhearty/hooks';
 import { Loader } from '@myhearty/ui/loader';
 import { useRouter } from 'next/router';

@@ -1,5 +1,5 @@
 import { UserDropdown } from './user-dropdown';
-import { useAuth } from '@components/providers/auth-provider';
+import { useAuth } from '@components/providers';
 import { Popover, Transition } from '@headlessui/react';
 import { GiftIcon, HeartIcon, MenuIcon, UserIcon, UsersIcon, XIcon } from '@heroicons/react/outline';
 import { Button } from '@mantine/core';

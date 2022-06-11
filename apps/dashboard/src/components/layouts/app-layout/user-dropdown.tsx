@@ -1,4 +1,4 @@
-import { useAuth } from '@components/providers/auth-provider';
+import { useAuth } from '@components/providers';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import { Menu } from '@mantine/core';
 import { Avatar } from '@myhearty/ui/avatar';

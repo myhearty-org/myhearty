@@ -1,4 +1,4 @@
-import { useOrganization } from '@components/providers/organization-provider';
+import { useOrganization } from '@components/providers';
 import { CogIcon, GiftIcon, HeartIcon, UsersIcon } from '@heroicons/react/outline';
 import { Skeleton } from '@mantine/core';
 import { Menu, MenuItem } from '@myhearty/ui/menu';

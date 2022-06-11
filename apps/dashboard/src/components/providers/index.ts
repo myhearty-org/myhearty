@@ -1,2 +1,2 @@
-export { AuthProvider } from './auth-provider';
-export { OrganizationProvider } from './organization-provider';
+export { useAuth, AuthProvider } from './auth-provider';
+export { useOrganization, OrganizationProvider } from './organization-provider';

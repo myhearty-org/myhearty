@@ -1,5 +1,4 @@
-import { useAuth } from '@components/providers/auth-provider';
-import { useOrganization } from '@components/providers/organization-provider';
+import { useAuth, useOrganization } from '@components/providers';
 import { Button } from '@mantine/core';
 import { createStripeAccountLink } from '@myhearty/lib/organizations';
 import { Alert } from '@myhearty/ui/alert';
