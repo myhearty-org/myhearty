@@ -56,23 +56,25 @@ tbody tr:last-child td:only-child {
   @apply rounded rounded-t-none;
 }
 
-/* Add word-break attribute to the break-words (overflow-wrap: break-word) 
+@layer utilities {
+  /* Add word-break attribute to the break-words (overflow-wrap: break-word) 
    utility class that does not work due to unknown reason. */
 
-.break-words {
-  word-break: break-word;
-}
+  .break-words {
+    word-break: break-word;
+  }
 
-/* Remove default spinner from input[type=number] */
+  /* Remove default spinner from input[type=number] */
 
-.spinner-none::-webkit-inner-spin-button,
-.spinner-none::-webkit-outer-spin-button {
-  -webkit-appearance: none !important;
-  margin: 0 !important;
-}
+  .spinner-none::-webkit-inner-spin-button,
+  .spinner-none::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-.spinner-none {
-  -moz-appearance: textfield !important;
+  .spinner-none {
+    -moz-appearance: textfield;
+  }
 }
 
 /* Loader */
