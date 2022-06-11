@@ -17,7 +17,6 @@ export const MANTINE_THEME: MantineThemeOverride = {
     ],
   },
   primaryColor: 'brand',
-  focusRing: 'always',
 };
 
 export const MANTINE_DEFAULT_PROPS = {
