@@ -23,7 +23,7 @@ export function DonationSuccessfulDialog() {
 
   return (
     <Modal opened={showDialog} onClose={() => setShowDialog(false)}>
-      <div className="mb-1 flex flex-col items-center gap-6">
+      <div className="flex flex-col items-center gap-6">
         <div className="flex">
           <CheckCircleIcon className="mr-2 h-8 w-8 flex-shrink-0 text-lime-400" />
           <span className="min-w-0 break-words text-lg font-medium">Your donation was successful!</span>

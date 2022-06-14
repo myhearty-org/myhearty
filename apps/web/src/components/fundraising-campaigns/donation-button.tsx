@@ -89,7 +89,7 @@ function DonationDialogForm({
 
   return (
     <Modal opened={opened} onClose={onClose}>
-      <div className="mb-1 flex flex-col gap-6">
+      <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-1">
           <p className="break-words text-lg font-medium">Donation collected by {organization.name}</p>
           <p className="text-sm">

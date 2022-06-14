@@ -168,7 +168,7 @@ function ApplicationDialogForm({
 
   return (
     <Modal title={`Receive aid from ${charitableAidName}`} opened={opened} onClose={onClose}>
-      <Form className="mx-auto mb-1 flex w-4/5 flex-col gap-6" form={form} handleSubmit={apply}>
+      <Form className="mx-auto flex w-4/5 flex-col gap-6" form={form} handleSubmit={apply}>
         <p className="break-words text-base font-medium">Personal Information</p>
         <TextInput
           label="Name"
