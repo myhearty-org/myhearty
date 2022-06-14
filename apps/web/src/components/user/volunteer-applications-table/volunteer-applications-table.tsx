@@ -82,7 +82,11 @@ export function VolunteerApplicationsTable() {
           <PaginationResults paginationMetadata={paginationMetadata} />
         </div>
         {paginationMetadata && (
-          <Pagination paginationMetadata={paginationMetadata} setPageIndex={setPageIndex} />
+          <Pagination
+            paginationMetadata={paginationMetadata}
+            pageIndex={pageIndex}
+            onPageIndexChange={setPageIndex}
+          />
         )}
       </div>
     </Loading>
