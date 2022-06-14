@@ -71,8 +71,8 @@ function Item({ item, isFromSearch, refine }: ItemProps) {
             checked={item.isRefined}
             aria-label={item.label}
             className={cn(
-              'pointer-events-none rounded-sm border-gray-300 bg-gray-200',
-              item.isRefined && 'bg-pink-500'
+              'pointer-events-none rounded-sm border-gray-300',
+              item.isRefined ? 'bg-pink-500' : 'bg-gray-200'
             )}
           />
           <span className="whitespace-nowrap pl-2">
