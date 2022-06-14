@@ -1,12 +1,14 @@
-import { AppLayout } from '@components/layouts';
-import { NextSeo } from 'next-seo';
+import { GetServerSideProps } from 'next/types';
 
 export default function SettingsPage() {
-  return (
-    <>
-      <NextSeo title="Settings" />
-    </>
-  );
+  return;
 }
 
-SettingsPage.getLayout = (page: React.ReactElement) => <AppLayout>{page}</AppLayout>;
+export const getServerSideProps: GetServerSideProps = async function () {
+  return {
+    redirect: {
+      destination: '/settings/members',
+      permanent: false,
+    },
+  };
+};

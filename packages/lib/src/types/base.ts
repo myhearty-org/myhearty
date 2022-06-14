@@ -43,6 +43,7 @@ export type Member = {
   email: string;
   organizationId: string;
   admin: boolean;
+  createdAt: string;
 };
 
 export type FundraisingCampaign = {

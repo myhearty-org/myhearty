@@ -1,8 +1,10 @@
 import { AuthProvider } from '@components/providers';
 import { MantineProvider } from '@mantine/core';
+import { ModalsProvider } from '@mantine/modals';
 import { MANTINE_CLASSNAMES, MANTINE_DEFAULT_PROPS, MANTINE_THEME } from '@myhearty/lib/constants/mantine';
 import { AppPropsWithLayout } from '@myhearty/lib/types';
 import { storePathHistory } from '@myhearty/utils/common';
+import { showToast } from '@myhearty/utils/show-toast';
 import { appWithTranslation } from 'next-i18next';
 import { DefaultSeo } from 'next-seo';
 import defaultSeoConfig from 'next-seo.json';
@@ -12,6 +14,7 @@ import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 import 'styles/globals.css';
 import 'styles/preflight.css';
+import { SWRConfig } from 'swr';
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter();
@@ -30,7 +33,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         theme={MANTINE_THEME}
         defaultProps={MANTINE_DEFAULT_PROPS}
         classNames={MANTINE_CLASSNAMES}>
-        <AuthProvider>
+        <ModalsProvider>
           <NextNProgress
             color="#ec4899"
             startPosition={0.3}
@@ -40,8 +43,15 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             options={{ showSpinner: false }}
           />
           <Toaster position="bottom-right" />
-          {getLayout(<Component {...pageProps} />)}
-        </AuthProvider>
+          <SWRConfig
+            value={{
+              revalidateOnFocus: false,
+              revalidateOnReconnect: false,
+              onError: () => showToast('An unexpected error has occured. Please try again later.', 'error'),
+            }}>
+            <AuthProvider>{getLayout(<Component {...pageProps} />)}</AuthProvider>
+          </SWRConfig>
+        </ModalsProvider>
       </MantineProvider>
     </>
   );

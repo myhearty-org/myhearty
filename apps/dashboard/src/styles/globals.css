@@ -75,6 +75,19 @@ tbody tr:last-child td:only-child {
   .spinner-none {
     -moz-appearance: textfield;
   }
+
+  /* Scrollable tab bar */
+
+  .scrollable-tab-bar {
+    overflow: auto;
+    flex-wrap: nowrap;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollable-tab-bar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* Loader */

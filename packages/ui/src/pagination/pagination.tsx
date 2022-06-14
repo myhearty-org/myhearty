@@ -3,16 +3,16 @@ import {
   PaginationProps as PaginationComponentProps,
 } from '@mantine/core';
 import { PaginationMetadata } from '@myhearty/utils/api';
-import { Dispatch, SetStateAction } from 'react';
 
 type PaginationProps = {
   paginationMetadata: PaginationMetadata;
-  setPageIndex: Dispatch<SetStateAction<number>>;
+  pageIndex: number;
+  onPageIndexChange: (page: number) => void;
 } & Omit<PaginationComponentProps, 'total'>;
 
-export function Pagination({ paginationMetadata, setPageIndex, ...props }: PaginationProps) {
-  const { pageIndex, pageSize, totalCount } = paginationMetadata;
+export function Pagination({ paginationMetadata, pageIndex, onPageIndexChange, ...props }: PaginationProps) {
+  const { pageSize, totalCount } = paginationMetadata;
   const pageCount = Math.ceil(totalCount / pageSize);
 
-  return <PaginationComponent page={pageIndex} onChange={setPageIndex} total={pageCount} {...props} />;
+  return <PaginationComponent page={pageIndex} onChange={onPageIndexChange} total={pageCount} {...props} />;
 }

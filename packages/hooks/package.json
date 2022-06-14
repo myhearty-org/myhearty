@@ -5,6 +5,7 @@
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "dependencies": {
+    "@myhearty/lib": "workspace:^",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-use": "^17.4.0"

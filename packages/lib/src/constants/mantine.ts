@@ -22,12 +22,10 @@ export const MANTINE_THEME: MantineThemeOverride = {
 export const MANTINE_DEFAULT_PROPS = {
   Menu: {
     withArrow: true,
-    withinPortal: false,
   },
   Modal: {
     centered: true,
     overflow: 'inside',
-    withinPortal: false,
     zIndex: 999,
   },
 };
@@ -44,15 +42,22 @@ export const MANTINE_CLASSNAMES = {
   },
   Menu: {
     body: 'py-2 px-0',
-    item: 'focus:ring-0',
+    item: 'group focus:ring-0',
     itemHovered: 'rounded-none bg-pink-500 text-white',
   },
   Modal: {
     modal: 'w-[440px] md:w-[560px]',
+    body: 'px-1 pb-1',
     title: 'font-medium',
     close: 'text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none',
   },
   Pagination: {
     item: 'text-sm font-normal focus:outline-none focus:ring focus:ring-pink-300 active:translate-y-0',
+  },
+  Tabs: {
+    tabControl: 'mx-1 mt-1 h-8 focus-visible:outline-none focus-visible:ring focus-visible:ring-pink-300',
+    tabsListWrapper: 'border-gray-200',
+    tabsList: 'scrollable-tab-bar',
+    tabActive: 'font-medium !text-pink-600',
   },
 };
