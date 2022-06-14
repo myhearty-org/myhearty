@@ -20,7 +20,7 @@ export default class _Document extends Document {
             href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
           />
         </Head>
-        <body>
+        <body id="myhearty">
           <Main />
           <NextScript />
         </body>

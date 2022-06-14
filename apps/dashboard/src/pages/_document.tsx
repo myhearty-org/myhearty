@@ -16,7 +16,7 @@ export default class _Document extends Document {
           <link href="/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
           <link href="/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
         </Head>
-        <body>
+        <body id="myhearty">
           <Main />
           <NextScript />
         </body>

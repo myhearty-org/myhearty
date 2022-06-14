@@ -5,7 +5,7 @@ module.exports = {
     '../../packages/ui/**/*.{js,ts,jsx,tsx}',
     '../../packages/lib/src/constants/**/*.{js,ts}',
   ],
-  important: '#__next',
+  important: '#myhearty',
   corePlugins: {
     preflight: false,
   },
