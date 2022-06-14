@@ -35,6 +35,7 @@ export function VolunteerApplicationsTable() {
   return (
     <Loading isLoading={isLoading}>
       <Table
+        containerClassName="-mx-6 md:mx-0"
         head={
           <tr>
             <Th>Volunteer Event</Th>
