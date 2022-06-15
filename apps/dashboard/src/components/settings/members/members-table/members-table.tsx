@@ -11,6 +11,7 @@ export function MembersTable() {
   return (
     <Loading isLoading={isLoading}>
       <Table
+        containerClassName="mx-[-22px] lg:mx-0"
         head={
           <tr>
             <Th>User ID</Th>
