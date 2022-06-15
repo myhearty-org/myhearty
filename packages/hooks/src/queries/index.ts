@@ -1,1 +1,1 @@
-export { useMembers } from './useMembers';
+export { useMembers } from './use-members';
