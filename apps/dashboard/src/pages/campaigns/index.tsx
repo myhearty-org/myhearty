@@ -1,11 +1,11 @@
 import { AppLayout } from '@components/layouts';
-import { useOrganization } from '@components/providers';
+import { useOrganization } from '@myhearty/hooks';
 import { Loader } from '@myhearty/ui/loader';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 
 export default function FundraisingCampaignsPage() {
-  const organization = useOrganization();
+  const { organization } = useOrganization();
   const router = useRouter();
 
   if (!organization) {

@@ -1,5 +1,6 @@
-import { useAuth, useOrganization } from '@components/providers';
+import { useAuth } from '@components/providers';
 import { Button } from '@mantine/core';
+import { useOrganization } from '@myhearty/hooks';
 import { createStripeAccountLink } from '@myhearty/lib/organizations';
 import { Alert } from '@myhearty/ui/alert';
 import { handleRequest } from '@myhearty/utils/api';
@@ -7,7 +8,7 @@ import { useState } from 'react';
 
 export function StripeOnboardSection() {
   const auth = useAuth();
-  const organization = useOrganization();
+  const { organization } = useOrganization();
   const [isLoading, setIsLoading] = useState(false);
 
   if (!auth.member.admin || !organization || !organization.charity || organization.stripeOnboarded) {

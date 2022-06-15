@@ -1,11 +1,11 @@
-import { useOrganization } from '@components/providers';
 import { CogIcon, GiftIcon, HeartIcon, UsersIcon } from '@heroicons/react/outline';
 import { Skeleton } from '@mantine/core';
+import { useOrganization } from '@myhearty/hooks';
 import { Menu, MenuItem } from '@myhearty/ui/menu';
 import { useRouter } from 'next/router';
 
 export function NavMenu() {
-  const organization = useOrganization();
+  const { organization } = useOrganization();
 
   if (!organization) {
     return (

@@ -1,4 +1,4 @@
-import { useMembers } from '@myhearty/hooks/queries';
+import { useMembers } from '@myhearty/hooks';
 import { createContext, useContext, useMemo } from 'react';
 
 type Members = ReturnType<typeof useMembers>;
