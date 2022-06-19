@@ -20,6 +20,7 @@ export type UserProfile = {
 export type Organization = {
   id: number;
   name: string;
+  slug: string;
   pageUrl: string;
   location: string;
   email: string;
@@ -49,6 +50,7 @@ export type Member = {
 export type FundraisingCampaign = {
   id: number;
   name: string;
+  slug: string;
   pageUrl: string;
   targetAmount: number;
   totalRaisedAmount: number;
@@ -79,6 +81,7 @@ export type Donation = {
 export type VolunteerEvent = {
   id: number;
   name: string;
+  slug: string;
   pageUrl: string;
   openings: number;
   volunteerCount: number;
@@ -109,6 +112,7 @@ export type VolunteerApplication = {
 export type CharitableAid = {
   id: number;
   name: string;
+  slug: string;
   pageUrl: string;
   openings: number;
   receiverCount: number;

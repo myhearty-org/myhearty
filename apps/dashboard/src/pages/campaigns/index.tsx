@@ -1,3 +1,4 @@
+import { FundraisingCampaigns } from '@components/fundraising-campaigns';
 import { AppLayout } from '@components/layouts';
 import { useOrganization } from '@myhearty/hooks';
 import { Loader } from '@myhearty/ui/loader';
@@ -23,6 +24,9 @@ export default function FundraisingCampaignsPage() {
   return (
     <>
       <NextSeo title="Fundraising Campaigns" />
+      <div className="px-4 py-2">
+        <FundraisingCampaigns />
+      </div>
     </>
   );
 }
