@@ -1,16 +1,19 @@
 import { useAuth } from '@components/providers';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import { Menu } from '@mantine/core';
+import { useOrganization } from '@myhearty/hooks';
 import { Avatar } from '@myhearty/ui/avatar';
 import { handleRequest } from '@myhearty/utils/api';
 import { useRouter } from 'next/router';
 
 export function UserDropdown() {
   const auth = useAuth();
+  const { mutate } = useOrganization();
   const router = useRouter();
 
   async function logOut() {
     await auth.logOut();
+    mutate(null!);
     router.push('/login');
   }
 

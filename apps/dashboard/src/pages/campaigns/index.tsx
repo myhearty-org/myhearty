@@ -19,6 +19,12 @@ export default function FundraisingCampaignsPage() {
 
   if (!organization.charity) {
     router.replace('/volunteer-events');
+
+    return (
+      <div className="flex h-full flex-col items-center justify-center">
+        <Loader text="Redirecting..." />
+      </div>
+    );
   }
 
   return (

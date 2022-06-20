@@ -20,6 +20,12 @@ export default function HomePage() {
   } else {
     router.replace('/volunteer-events');
   }
+
+  return (
+    <div className="flex h-full flex-col items-center justify-center">
+      <Loader text="Redirecting..." />
+    </div>
+  );
 }
 
 HomePage.getLayout = (page: React.ReactElement) => <AppLayout>{page}</AppLayout>;
