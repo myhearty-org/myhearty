@@ -10,5 +10,6 @@ export { Loading } from './loading';
 export * from './logos';
 export * from './menu';
 export * from './pagination';
+export { Panel } from './panel';
 export { ProgressBar } from './progress-bar';
 export * from './table';

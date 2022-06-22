@@ -1,4 +1,4 @@
-import { VolunteerEvent } from '../types';
+import { CreateVolunteerEvent, VolunteerEvent } from '../types';
 import { generatePaginationMetadata } from '@myhearty/utils/api';
 import { axiosWithAuth } from '@myhearty/utils/myhearty-axios';
 
@@ -14,4 +14,11 @@ export async function getVolunteerEvents(page?: number, perPage?: number) {
   const paginationMetadata = generatePaginationMetadata(headers);
 
   return { volunteerEvents, paginationMetadata };
+}
+
+export async function createVolunteerEvent(payload: CreateVolunteerEvent) {
+  const { data } = await axiosWithAuth.post('/volunteer-events', payload);
+  const volunteerEvent: VolunteerEvent = { ...data };
+
+  return volunteerEvent;
 }

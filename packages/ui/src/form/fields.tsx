@@ -43,17 +43,19 @@ export function InputLeading({ children }: InputLeadingProps) {
   );
 }
 
-// prettier-ignore
-type InputFieldProps = 
-  { label?: React.ReactNode; labelProps?: React.ComponentProps<typeof Label>; } &
-  { addOnLeading?: React.ReactNode } &
-  { visible?: boolean; } &
-  React.ComponentProps<typeof Input>;
+type InputFieldProps = {
+  layout?: 'horizontal' | 'vertical';
+  label?: React.ReactNode;
+  labelProps?: React.ComponentProps<typeof Label>;
+  addOnLeading?: React.ReactNode;
+  visible?: boolean;
+} & React.ComponentProps<typeof Input>;
 
 const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputField(props, ref) {
   const id = useId();
   const methods = useFormContext();
   const {
+    layout = 'vertical',
     label = props.name,
     labelProps,
     placeholder,
@@ -66,27 +68,41 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputF
   const errorMessage = get(methods?.formState?.errors, `${props.name}.message`);
 
   return (
-    <div className={cn(!visible && 'invisible')}>
-      {label && (
-        <Label htmlFor={id} {...labelProps}>
-          {label}
-        </Label>
-      )}
-      {addOnLeading ? (
-        <div className="mt-2 flex">
-          {addOnLeading}
+    <div
+      className={cn(
+        !visible && 'invisible',
+        layout === 'horizontal' && 'md:grid md:grid-cols-12 md:gap-x-4'
+      )}>
+      <div className={cn(layout === 'horizontal' && 'md:col-span-4')}>
+        {label && (
+          <Label htmlFor={id} {...labelProps}>
+            {label}
+          </Label>
+        )}
+      </div>
+      <div className={cn(layout === 'horizontal' && 'md:col-span-8')}>
+        {addOnLeading ? (
+          <div className={cn('flex', layout === 'horizontal' ? 'md:mt-0' : 'mt-2')}>
+            {addOnLeading}
+            <Input
+              className={cn(className, 'mt-0 rounded-l-none')}
+              id={id}
+              placeholder={placeholder}
+              ref={ref}
+              {...passThrough}
+            />
+          </div>
+        ) : (
           <Input
-            className={cn(className, 'mt-0 rounded-l-none')}
+            className={cn(className, layout === 'horizontal' && 'md:mt-0')}
             id={id}
             placeholder={placeholder}
             ref={ref}
             {...passThrough}
           />
-        </div>
-      ) : (
-        <Input className={className} id={id} placeholder={placeholder} ref={ref} {...passThrough} />
-      )}
-      {errorMessage && <Alert className="mt-4" severity="error" message={errorMessage} />}
+        )}
+        {errorMessage && <Alert className="mt-4" severity="error" message={errorMessage} />}
+      </div>
     </div>
   );
 });
