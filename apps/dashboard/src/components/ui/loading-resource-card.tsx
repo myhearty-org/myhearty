@@ -1,5 +1,5 @@
-import { CardButton } from '@myhearty/ui/card-button';
 import { Skeleton } from '@mantine/core';
+import { CardButton } from '@myhearty/ui/card-button';
 
 export function LoadingResourceCard() {
   return (
