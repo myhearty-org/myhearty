@@ -1,7 +1,6 @@
 import { Alert } from '../alert';
+import { formatDate } from '@myhearty/utils/common';
 import cn from 'classnames';
-import formatISO from 'date-fns/formatISO';
-import parseISO from 'date-fns/parseISO';
 import get from 'lodash/get';
 import { forwardRef, useId, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
@@ -12,7 +11,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input({ c
   return (
     <input
       className={cn(
-        'mt-2 block w-full rounded border border-gray-300 py-2 px-3 shadow-sm focus:border-pink-300 focus:outline-none focus:ring focus:ring-pink-300 sm:text-sm',
+        'mt-2 block w-full rounded border border-gray-300 py-2 px-3 shadow-sm sm:text-sm',
+        'focus:border-pink-300 focus:outline-none focus:ring focus:ring-pink-300',
+        'read-only:cursor-default read-only:bg-slate-100',
         className
       )}
       ref={ref}
@@ -82,10 +83,10 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputF
       </div>
       <div className={cn(layout === 'horizontal' && 'md:col-span-8')}>
         {addOnLeading ? (
-          <div className={cn('flex', layout === 'horizontal' ? 'md:mt-0' : 'mt-2')}>
+          <div className={cn('mt-2 flex', layout === 'horizontal' && 'md:mt-0')}>
             {addOnLeading}
             <Input
-              className={cn(className, 'mt-0 rounded-l-none')}
+              className={cn(className, '!mt-0 rounded-l-none')}
               id={id}
               placeholder={placeholder}
               ref={ref}
@@ -108,7 +109,7 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputF
 });
 
 export const TextInput = forwardRef<HTMLInputElement, InputFieldProps>(function TextInput(props, ref) {
-  return <InputField ref={ref} {...props} />;
+  return <InputField ref={ref} type="text" {...props} />;
 });
 
 // prettier-ignore
@@ -138,8 +139,8 @@ type NumericInputProps = InputFieldProps & { validate: (numericValue: string) =>
 
 // prettier-ignore
 export const NumericInput = forwardRef<HTMLInputElement, NumericInputProps>(
-  function NumericInput({ value, validate, ...props }, ref) {
-    const [numericValue, setNumericValue] = useState<any>(value);
+  function NumericInput({ defaultValue, validate, ...props }, ref) {
+    const [numericValue, setNumericValue] = useState<any>(defaultValue ?? "");
 
     function onChange(event: React.ChangeEvent<HTMLInputElement>) {
       if (validate(event.target.value)) {
@@ -164,15 +165,24 @@ export const NumericInput = forwardRef<HTMLInputElement, NumericInputProps>(
 // prettier-ignore
 export const DateInput = forwardRef<HTMLInputElement, InputFieldProps>(
   function DateInput({ defaultValue, ...props }, ref) {
-    let dateValue = defaultValue;
+    defaultValue = formatDate(defaultValue as string, "yyyy-MM-dd");
 
-    if (dateValue) {
-      dateValue = formatISO(parseISO(dateValue as string), { representation: 'date' });
-    }
-
-    return <InputField ref={ref} type="date" defaultValue={dateValue} {...props} />;
+    return <InputField ref={ref} type="date" defaultValue={defaultValue} {...props} />;
   }
 );
+
+export const DateTimeInput = forwardRef<HTMLInputElement, InputFieldProps>(function DateTimeInput(
+  { defaultValue, min, max, ...props },
+  ref
+) {
+  defaultValue = formatDate(defaultValue as string, "yyyy-MM-dd'T'HH:mm");
+  min = formatDate(min as string, "yyyy-MM-dd'T'HH:mm");
+  max = formatDate(max as string, "yyyy-MM-dd'T'HH:mm");
+
+  return (
+    <InputField ref={ref} type="datetime-local" defaultValue={defaultValue} min={min} max={max} {...props} />
+  );
+});
 
 type CheckboxProps = InputFieldProps & { description?: string };
 
@@ -205,6 +215,37 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     );
   }
 );
+
+type SwitchProps = InputFieldProps & { description?: string };
+
+export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
+  { label, description, ...props },
+  ref
+) {
+  const id = useId();
+
+  return (
+    <div className="md:grid md:grid-cols-12 md:gap-x-4">
+      <div className="md:col-span-4">
+        <Label htmlFor={id}>{label}</Label>
+      </div>
+      <div className="mt-2 md:col-span-8 md:mt-0">
+        <label className="relative inline-flex cursor-pointer items-center" htmlFor={id}>
+          <input className="peer sr-only" type="checkbox" id={id} ref={ref} {...props} />
+          <div
+            className={cn(
+              'peer h-6 w-11 rounded-full bg-gray-200',
+              'after:absolute after:top-[2px] after:left-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all',
+              'peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-pink-300',
+              props.disabled ? 'peer-checked:bg-pink-300' : 'peer-checked:bg-pink-600'
+            )}
+          />
+        </label>
+        <div className="mt-1 text-sm text-gray-900">{description}</div>
+      </div>
+    </div>
+  );
+});
 
 type TextAreaProps = Omit<JSX.IntrinsicElements['textarea'], 'name'> & { name: string; label: string };
 

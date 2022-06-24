@@ -51,6 +51,12 @@ export const MANTINE_CLASSNAMES = {
     title: 'font-medium',
     close: 'text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none',
   },
+  MultiSelect: {
+    wrapper:
+      'block w-full rounded focus-within:border-pink-300 focus-within:outline-none focus-within:ring focus-within:ring-pink-300',
+    searchInput: 'focus:ring-0',
+    required: 'hidden',
+  },
   Pagination: {
     item: 'text-sm font-normal focus:outline-none focus:ring focus:ring-pink-300 active:translate-y-0',
   },

@@ -2,6 +2,13 @@
   "codes": {
     "alreadyExists": "already exists.",
     "invalid": "is invalid.",
+    "mustBeAfterCurrentDatetime": "must be later than now.",
+    "mustBeAfterStartDatetime": "must be later than start date and time.",
+    "mustBeBeforeStartDatetime": "must be earlier than start date and time.",
+    "mustBeMoreThanReceiverCount": "must be more than number of receivers.",
+    "mustBeMoreThanVolunteerCount": "must be more than number of volunteers.",
+    "notAllowedToUpdateAfterApplicationDeadline": "cannot be updated after the application deadline.",
+    "notAllowedToUpdateAfterPublished": "cannot be updated after it has been published.",
     "unspecific": "An unexpected error has occured. Please try again later.",
     "userPersonalInfoMissing": "Missing user's personal information.",
     "volunteerApplicationClosed": "Volunteer application is closed.",
@@ -9,12 +16,16 @@
   },
   "fields": {
     "address": "Address",
+    "applicationDeadline": "Application deadline",
     "birthDate": "Date of Birth",
     "contactNo": "Contact number",
     "email": "Email",
+    "endDatetime": "End date and time",
     "gender": "Gender",
     "input": "Input",
     "name": "Name",
+    "openings": "Number of openings",
+    "startDatetime": "Start date and time",
     "websiteUrl": "Website URL"
   }
 }

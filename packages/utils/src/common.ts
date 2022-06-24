@@ -1,3 +1,5 @@
+import format from 'date-fns/format';
+
 export function storePathHistory() {
   const storage = window?.sessionStorage;
   if (!storage) return;
@@ -18,6 +20,12 @@ export function getPathHistory() {
 
 export function calculatePercentage(partialValue: number, totalValue: number) {
   return Math.round((partialValue / totalValue) * 100);
+}
+
+export function formatDate(date: string, dateFormat: string) {
+  if (!date) return date;
+
+  return format(new Date(date), dateFormat);
 }
 
 export function toLocaleFixed(number: number, n: number = 2) {

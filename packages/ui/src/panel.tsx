@@ -7,7 +7,7 @@ type PanelProps = {
   children?: React.ReactNode;
   footer?: JSX.Element | false;
   hideHeaderStyling?: boolean;
-  loading?: boolean;
+  isLoading?: boolean;
   noMargin?: boolean;
   title?: JSX.Element | false;
   wrapWithLoading?: boolean;
@@ -47,7 +47,7 @@ export function Panel(props: PanelProps) {
     return content;
   }
 
-  return <Loading isLoading={Boolean(props.loading)}>{content}</Loading>;
+  return <Loading isLoading={Boolean(props.isLoading)}>{content}</Loading>;
 }
 
 type ContentProps = {

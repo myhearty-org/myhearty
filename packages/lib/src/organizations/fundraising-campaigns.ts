@@ -1,4 +1,4 @@
-import { CreateFundraisingCampaign, FundraisingCampaign } from '../types';
+import { CreateFundraisingCampaign, FundraisingCampaign, UpdateFundraisingCampaign } from '../types';
 import { generatePaginationMetadata } from '@myhearty/utils/api';
 import { axiosWithAuth } from '@myhearty/utils/myhearty-axios';
 
@@ -18,6 +18,15 @@ export async function getFundraisingCampaigns(page?: number, perPage?: number) {
 
 export async function createFundraisingCampaign(payload: CreateFundraisingCampaign) {
   const { data } = await axiosWithAuth.post('/campaigns', payload);
+  const fundraisingCampaign: FundraisingCampaign = { ...data };
+
+  return fundraisingCampaign;
+}
+
+export async function updateFundraisingCampaign(idOrSlug: string, payload: UpdateFundraisingCampaign) {
+  const { data } = await axiosWithAuth.patch(`/campaigns/${idOrSlug}`, {
+    ...payload,
+  });
   const fundraisingCampaign: FundraisingCampaign = { ...data };
 
   return fundraisingCampaign;
