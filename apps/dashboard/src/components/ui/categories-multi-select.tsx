@@ -19,7 +19,7 @@ const data = [
 ];
 
 export const CategoriesMultiSelect = forwardRef<HTMLInputElement, Omit<MultiSelectProps, 'data'>>(
-  function CategoriesMultiSelect({ defaultValue, ...props }, ref) {
+  ({ defaultValue, ...props }, ref) => {
     defaultValue = toCategoryValues(defaultValue);
 
     return (
@@ -42,6 +42,8 @@ export const CategoriesMultiSelect = forwardRef<HTMLInputElement, Omit<MultiSele
     );
   }
 );
+
+CategoriesMultiSelect.displayName = 'CategoriesMultiSelect';
 
 export function toCategoryValues(categories?: string[]) {
   if (!categories) return categories;

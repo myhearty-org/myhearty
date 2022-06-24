@@ -40,6 +40,6 @@ function FormComponent<T extends FieldValues>(props: FormComponentProps<T>, ref:
   );
 }
 
-// prettier-ignore
-export const Form = forwardRef(FormComponent) as 
-  <T extends FieldValues>(p: FormComponentProps<T> & { ref?: React.Ref<HTMLFormElement> }) => React.ReactElement;
+export const Form = forwardRef(FormComponent) as <T extends FieldValues>(
+  p: FormComponentProps<T> & { ref?: React.Ref<HTMLFormElement> }
+) => React.ReactElement;

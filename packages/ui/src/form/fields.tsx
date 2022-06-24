@@ -7,7 +7,7 @@ import { useFormContext } from 'react-hook-form';
 
 type InputProps = Omit<JSX.IntrinsicElements['input'], 'name'> & { name: string };
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(function Input({ className, ...props }, ref) {
+export const Input = forwardRef<HTMLInputElement, InputProps>(({ className, ...props }, ref) => {
   return (
     <input
       className={cn(
@@ -21,6 +21,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input({ c
     />
   );
 });
+
+Input.displayName = 'Input';
 
 type LabelProps = JSX.IntrinsicElements['label'];
 
@@ -52,7 +54,7 @@ type InputFieldProps = {
   visible?: boolean;
 } & React.ComponentProps<typeof Input>;
 
-const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputField(props, ref) {
+const InputField = forwardRef<HTMLInputElement, InputFieldProps>((props, ref) => {
   const id = useId();
   const methods = useFormContext();
   const {
@@ -108,16 +110,21 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(function InputF
   );
 });
 
-export const TextInput = forwardRef<HTMLInputElement, InputFieldProps>(function TextInput(props, ref) {
+InputField.displayName = 'InputField';
+
+export const TextInput = forwardRef<HTMLInputElement, InputFieldProps>((props, ref) => {
   return <InputField ref={ref} type="text" {...props} />;
 });
 
-// prettier-ignore
-export const PasswordInput = forwardRef<HTMLInputElement, InputFieldProps>(function PasswordInput(props, ref) {
+TextInput.displayName = 'TextInput';
+
+export const PasswordInput = forwardRef<HTMLInputElement, InputFieldProps>((props, ref) => {
   return <InputField type="password" ref={ref} {...props} />;
 });
 
-export const EmailInput = forwardRef<HTMLInputElement, InputFieldProps>(function EmailInput(props, ref) {
+PasswordInput.displayName = 'PasswordInput';
+
+export const EmailInput = forwardRef<HTMLInputElement, InputFieldProps>((props, ref) => {
   return (
     <InputField
       ref={ref}
@@ -131,16 +138,19 @@ export const EmailInput = forwardRef<HTMLInputElement, InputFieldProps>(function
   );
 });
 
-export const PhoneInput = forwardRef<HTMLInputElement, InputFieldProps>(function PhoneInput(props, ref) {
+EmailInput.displayName = 'EmailInput';
+
+export const PhoneInput = forwardRef<HTMLInputElement, InputFieldProps>((props, ref) => {
   return <InputField ref={ref} type="tel" inputMode="tel" pattern="[0-9]*" {...props} />;
 });
 
+PhoneInput.displayName = 'PhoneInput';
+
 type NumericInputProps = InputFieldProps & { validate: (numericValue: string) => boolean };
 
-// prettier-ignore
 export const NumericInput = forwardRef<HTMLInputElement, NumericInputProps>(
-  function NumericInput({ defaultValue, validate, ...props }, ref) {
-    const [numericValue, setNumericValue] = useState<any>(defaultValue ?? "");
+  ({ defaultValue, validate, ...props }, ref) => {
+    const [numericValue, setNumericValue] = useState<any>(defaultValue ?? '');
 
     function onChange(event: React.ChangeEvent<HTMLInputElement>) {
       if (validate(event.target.value)) {
@@ -162,41 +172,49 @@ export const NumericInput = forwardRef<HTMLInputElement, NumericInputProps>(
   }
 );
 
-// prettier-ignore
-export const DateInput = forwardRef<HTMLInputElement, InputFieldProps>(
-  function DateInput({ defaultValue, ...props }, ref) {
-    defaultValue = formatDate(defaultValue as string, "yyyy-MM-dd");
+NumericInput.displayName = 'NumericInput';
 
-    return <InputField ref={ref} type="date" defaultValue={defaultValue} {...props} />;
+export const DateInput = forwardRef<HTMLInputElement, InputFieldProps>(({ defaultValue, ...props }, ref) => {
+  defaultValue = formatDate(defaultValue as string, 'yyyy-MM-dd');
+
+  return <InputField ref={ref} type="date" defaultValue={defaultValue} {...props} />;
+});
+
+DateInput.displayName = 'DateInput';
+
+export const DateTimeInput = forwardRef<HTMLInputElement, InputFieldProps>(
+  ({ defaultValue, min, max, ...props }, ref) => {
+    defaultValue = formatDate(defaultValue as string, "yyyy-MM-dd'T'HH:mm");
+    min = formatDate(min as string, "yyyy-MM-dd'T'HH:mm");
+    max = formatDate(max as string, "yyyy-MM-dd'T'HH:mm");
+
+    return (
+      <InputField
+        ref={ref}
+        type="datetime-local"
+        defaultValue={defaultValue}
+        min={min}
+        max={max}
+        {...props}
+      />
+    );
   }
 );
 
-export const DateTimeInput = forwardRef<HTMLInputElement, InputFieldProps>(function DateTimeInput(
-  { defaultValue, min, max, ...props },
-  ref
-) {
-  defaultValue = formatDate(defaultValue as string, "yyyy-MM-dd'T'HH:mm");
-  min = formatDate(min as string, "yyyy-MM-dd'T'HH:mm");
-  max = formatDate(max as string, "yyyy-MM-dd'T'HH:mm");
-
-  return (
-    <InputField ref={ref} type="datetime-local" defaultValue={defaultValue} min={min} max={max} {...props} />
-  );
-});
+DateTimeInput.displayName = 'DateTimeInput';
 
 type CheckboxProps = InputFieldProps & { description?: string };
 
-// prettier-ignore
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  function Checkbox({ label, description, className, ...props }, ref) {
+  ({ label, description, className, ...props }, ref) => {
     const id = useId();
 
     return (
       <div className="flex items-start">
-        <div className="flex items-center h-5">
+        <div className="flex h-5 items-center">
           <input
             className={cn(
-              'focus:outline-none focus:ring focus:ring-pink-300 h-4 w-4 text-pink-500 border-gray-300 rounded',
+              'h-4 w-4 rounded border-gray-300 text-pink-500 focus:outline-none focus:ring focus:ring-pink-300',
               className
             )}
             type="checkbox"
@@ -216,12 +234,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   }
 );
 
+Checkbox.displayName = 'Checkbox';
+
 type SwitchProps = InputFieldProps & { description?: string };
 
-export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
-  { label, description, ...props },
-  ref
-) {
+export const Switch = forwardRef<HTMLInputElement, SwitchProps>(({ label, description, ...props }, ref) => {
   const id = useId();
 
   return (
@@ -247,11 +264,12 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
   );
 });
 
+Switch.displayName = 'Switch';
+
 type TextAreaProps = Omit<JSX.IntrinsicElements['textarea'], 'name'> & { name: string; label: string };
 
-// prettier-ignore
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  function TextArea({ label, className, ...props }, ref) {
+  ({ label, className, ...props }, ref) => {
     const id = useId();
 
     return (
@@ -259,7 +277,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         <Label htmlFor={id}>{label}</Label>
         <textarea
           className={cn(
-            'mt-2 p-2 block w-full rounded border-gray-300 shadow-sm focus:border-pink-300 focus:outline-none focus:ring focus:ring-pink-300 sm:text-sm',
+            'mt-2 block w-full rounded border-gray-300 p-2 shadow-sm focus:border-pink-300 focus:outline-none focus:ring focus:ring-pink-300 sm:text-sm',
             className
           )}
           id={id}
@@ -271,18 +289,21 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   }
 );
 
-// prettier-ignore
+TextArea.displayName = 'TextArea';
+
 export const RadioButton = forwardRef<HTMLInputElement, InputFieldProps>(
-  function RadioButton({ className, label, ...props }, ref) {
+  ({ className, label, ...props }, ref) => {
     const id = useId();
 
     return (
       <label className="cursor-pointer" htmlFor={id}>
         <input className={cn('peer sr-only', className)} type="radio" id={id} ref={ref} {...props} />
-        <div className="flex h-full w-full items-center justify-center text-center rounded border border-pink-500 px-3 py-2 text-sm font-semibold text-pink-600 peer-checked:border-transparent peer-checked:bg-pink-500 peer-checked:text-white">
+        <div className="flex h-full w-full items-center justify-center rounded border border-pink-500 px-3 py-2 text-center text-sm font-semibold text-pink-600 peer-checked:border-transparent peer-checked:bg-pink-500 peer-checked:text-white">
           {label}
         </div>
       </label>
     );
   }
 );
+
+RadioButton.displayName = 'RadioButton';
