@@ -6,8 +6,8 @@
   "types": "src/index.tsx",
   "dependencies": {
     "@heroicons/react": "^1.0.6",
-    "@mantine/core": "^4.2.7",
-    "@mantine/hooks": "^4.2.7",
+    "@mantine/core": "^4.2.10",
+    "@mantine/hooks": "^4.2.10",
     "@myhearty/hooks": "workspace:^",
     "@myhearty/lib": "workspace:^",
     "@myhearty/utils": "workspace:^",
@@ -19,7 +19,7 @@
     "pluralize": "^8.0.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
-    "react-hook-form": "^7.30.0"
+    "react-hook-form": "^7.33.0"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.0",
