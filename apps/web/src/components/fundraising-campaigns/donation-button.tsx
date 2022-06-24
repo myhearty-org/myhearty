@@ -129,7 +129,7 @@ function DonationDialogForm({
             addOnLeading={<InputLeading>RM</InputLeading>}
             visible={showOtherAmountField}
             label="Other amount"
-            value=""
+            defaultValue=""
             validate={onlyPositiveInteger}
             required={showOtherAmountField}
             {...register('otherAmount', { validate: { betweenAllowedAmounts } })}
