@@ -13,7 +13,7 @@
   "dependencies": {
     "@headlessui/react": "^1.6.5",
     "@heroicons/react": "^1.0.6",
-    "@hookform/resolvers": "^2.9.0",
+    "@hookform/resolvers": "^2.9.3",
     "@mantine/core": "^4.2.10",
     "@mantine/hooks": "^4.2.10",
     "@mantine/modals": "^4.2.10",

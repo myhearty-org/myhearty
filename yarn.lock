@@ -626,12 +626,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hookform/resolvers@npm:^2.9.0":
-  version: 2.9.0
-  resolution: "@hookform/resolvers@npm:2.9.0"
+"@hookform/resolvers@npm:^2.9.3":
+  version: 2.9.3
+  resolution: "@hookform/resolvers@npm:2.9.3"
   peerDependencies:
     react-hook-form: ^7.0.0
-  checksum: e56771f5c1452edba7829e35a2572aa401b854eb7a25513a876f117e9d1cb1ecca2cde0141a66629bbd830b6e359dd10c18b60d62a91427e5f5f2e18a752b9c4
+  checksum: e0010426c9415024ed65ac32e40a3b0a15837c3bc465ce6aa7048e7a47eb5ec5d4578b662e7bb3fdf528f8fb9216bf8b97fb5742b9f79f0314c7472e3b37c2f6
   languageName: node
   linkType: hard
 
@@ -4641,7 +4641,7 @@ __metadata:
   dependencies:
     "@headlessui/react": ^1.6.5
     "@heroicons/react": ^1.0.6
-    "@hookform/resolvers": ^2.9.0
+    "@hookform/resolvers": ^2.9.3
     "@mantine/core": ^4.2.10
     "@mantine/hooks": ^4.2.10
     "@mantine/modals": ^4.2.10

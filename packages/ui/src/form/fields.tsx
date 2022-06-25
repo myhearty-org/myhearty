@@ -68,7 +68,7 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>((props, ref) =>
     ...passThrough
   } = props;
 
-  const errorMessage = get(methods?.formState?.errors, `${props.name}.message`);
+  const errorMessage = get(methods?.formState?.errors, `${props.name}.message`) as any;
 
   return (
     <div
