@@ -1,4 +1,5 @@
 import { CategoriesMultiSelect, toCategoryValues } from '@components/ui/categories-multi-select';
+import { LoadingPanel } from '@components/ui/loading';
 import { RichTextEditor } from '@components/ui/rich-text-editor';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@mantine/core';
@@ -6,7 +7,6 @@ import { useFundraisingCampaign } from '@myhearty/hooks';
 import { updateFundraisingCampaign } from '@myhearty/lib/organizations';
 import { UpdateFundraisingCampaign, UpdateFundraisingCampaignSchema } from '@myhearty/lib/types';
 import { DateTimeInput, Form, InputLeading, NumericInput, Switch, TextInput } from '@myhearty/ui/form';
-import { Loading } from '@myhearty/ui/loading';
 import { Panel } from '@myhearty/ui/panel';
 import { onlyPositiveInteger } from '@myhearty/utils/common';
 import { showToast } from '@myhearty/utils/show-toast';
@@ -31,11 +31,7 @@ export function EditFundraisingCampaignForm() {
   } = form;
 
   if (!fundraisingCampaign) {
-    return (
-      <div className="mt-16">
-        <Loading isLoading />
-      </div>
-    );
+    return <LoadingPanel />;
   }
 
   async function handleUpdate(updateFundraisingCampaignFormData: UpdateFundraisingCampaignFormData) {

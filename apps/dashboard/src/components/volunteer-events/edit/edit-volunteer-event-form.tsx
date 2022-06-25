@@ -1,4 +1,5 @@
 import { CategoriesMultiSelect, toCategoryValues } from '@components/ui/categories-multi-select';
+import { LoadingPanel } from '@components/ui/loading';
 import { RichTextEditor } from '@components/ui/rich-text-editor';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@mantine/core';
@@ -6,7 +7,6 @@ import { useVolunteerEvent } from '@myhearty/hooks';
 import { updateVolunteerEvent } from '@myhearty/lib/organizations';
 import { UpdateVolunteerEvent, UpdateVolunteerEventSchema } from '@myhearty/lib/types';
 import { DateTimeInput, Form, NumericInput, Switch, TextInput } from '@myhearty/ui/form';
-import { Loading } from '@myhearty/ui/loading';
 import { Panel } from '@myhearty/ui/panel';
 import { onlyPositiveInteger } from '@myhearty/utils/common';
 import { showToast } from '@myhearty/utils/show-toast';
@@ -31,11 +31,7 @@ export function EditVolunteerEventForm() {
   } = form;
 
   if (!volunteerEvent) {
-    return (
-      <div className="mt-16">
-        <Loading isLoading />
-      </div>
-    );
+    return <LoadingPanel />;
   }
 
   async function handleUpdate(updateVolunteerEventFormData: UpdateVolunteerEventFormData) {
