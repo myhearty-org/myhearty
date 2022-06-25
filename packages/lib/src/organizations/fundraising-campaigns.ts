@@ -31,3 +31,7 @@ export async function updateFundraisingCampaign(idOrSlug: string, payload: Updat
 
   return fundraisingCampaign;
 }
+
+export async function deleteFundraisingCampaign(id: number) {
+  return axiosWithAuth.delete(`/campaigns/${id}`);
+}

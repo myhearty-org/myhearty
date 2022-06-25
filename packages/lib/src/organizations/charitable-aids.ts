@@ -31,3 +31,7 @@ export async function updateCharitableAid(idOrSlug: string, payload: UpdateChari
 
   return charitableAid;
 }
+
+export async function deleteCharitableAid(id: number) {
+  return axiosWithAuth.delete(`/aids/${id}`);
+}

@@ -31,3 +31,7 @@ export async function updateVolunteerEvent(idOrSlug: string, payload: UpdateVolu
 
   return volunteerEvent;
 }
+
+export async function deleteVolunteerEvent(id: number) {
+  return axiosWithAuth.delete(`/volunteer-events/${id}`);
+}
