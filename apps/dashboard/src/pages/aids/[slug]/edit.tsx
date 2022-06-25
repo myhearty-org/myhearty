@@ -1,10 +1,10 @@
-import { EditCharitableAidForm } from '@components/charitable-aids';
+import { Edit } from '@components/charitable-aids';
 import { CharitableAidLayout } from '@components/layouts';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetServerSideProps } from 'next/types';
 
 export default function EditCharitableAidPage() {
-  return <EditCharitableAidForm />;
+  return <Edit />;
 }
 
 EditCharitableAidPage.getLayout = (page: React.ReactElement) => (

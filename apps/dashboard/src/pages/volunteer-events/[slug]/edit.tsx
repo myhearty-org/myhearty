@@ -1,10 +1,10 @@
 import { VolunteerEventLayout } from '@components/layouts';
-import { EditVolunteerEventForm } from '@components/volunteer-events';
+import { Edit } from '@components/volunteer-events';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetServerSideProps } from 'next/types';
 
 export default function EditVolunteerEventPage() {
-  return <EditVolunteerEventForm />;
+  return <Edit />;
 }
 
 EditVolunteerEventPage.getLayout = (page: React.ReactElement) => (

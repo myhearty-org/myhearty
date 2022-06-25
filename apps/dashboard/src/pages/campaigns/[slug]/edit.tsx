@@ -1,10 +1,10 @@
-import { EditFundraisingCampaignForm } from '@components/fundraising-campaigns';
+import { Edit } from '@components/fundraising-campaigns';
 import { FundraisingCampaignLayout } from '@components/layouts';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetServerSideProps } from 'next/types';
 
 export default function EditFundraisingCampaignPage() {
-  return <EditFundraisingCampaignForm />;
+  return <Edit />;
 }
 
 EditFundraisingCampaignPage.getLayout = (page: React.ReactElement) => (

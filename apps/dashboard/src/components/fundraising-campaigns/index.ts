@@ -1,2 +1,2 @@
-export { EditFundraisingCampaignForm } from './edit-fundraising-campaign-form';
+export { Edit } from './edit';
 export { FundraisingCampaigns } from './home';

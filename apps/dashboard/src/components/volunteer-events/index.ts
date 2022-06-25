@@ -1,2 +1,2 @@
-export { EditVolunteerEventForm } from './edit-volunteer-event-form';
+export { Edit } from './edit';
 export { VolunteerEvents } from './home';
