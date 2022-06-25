@@ -1,5 +1,5 @@
 import { VolunteerEventCard } from './volunteer-event-card';
-import { LoadingResourceCard } from '@components/ui/loading-resource-card';
+import { LoadingResourceCard } from '@components/ui/loading';
 import { useVolunteerEvents } from '@myhearty/hooks';
 import { Pagination } from '@myhearty/ui/pagination';
 

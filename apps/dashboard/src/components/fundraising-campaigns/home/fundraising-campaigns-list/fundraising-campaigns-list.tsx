@@ -1,5 +1,5 @@
 import { FundraisingCampaignCard } from './fundraising-campaign-card';
-import { LoadingResourceCard } from '@components/ui/loading-resource-card';
+import { LoadingResourceCard } from '@components/ui/loading';
 import { useFundraisingCampaigns } from '@myhearty/hooks';
 import { Pagination } from '@myhearty/ui/pagination';
 

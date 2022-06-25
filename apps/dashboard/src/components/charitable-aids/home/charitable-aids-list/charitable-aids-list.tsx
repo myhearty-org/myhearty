@@ -1,5 +1,5 @@
 import { CharitableAidCard } from './charitable-aid-card';
-import { LoadingResourceCard } from '@components/ui/loading-resource-card';
+import { LoadingResourceCard } from '@components/ui/loading';
 import { useCharitableAids } from '@myhearty/hooks';
 import { Pagination } from '@myhearty/ui/pagination';
 
