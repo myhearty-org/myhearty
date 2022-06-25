@@ -1,2 +1,2 @@
-export { CharitableAids } from './charitable-aids';
+export { CharitableAids } from './home';
 export { EditCharitableAidForm } from './edit-charitable-aid-form';
