@@ -4,3 +4,4 @@ export * from './common';
 export { axios, axiosWithAuth } from './myhearty-axios';
 export { SanitizedHTML } from './sanitized-html';
 export { showToast } from './show-toast';
+export { uploadedFileData } from './upload-files';

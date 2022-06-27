@@ -58,6 +58,7 @@ export type FundraisingCampaign = {
   aboutCampaign: string;
   categories: string[];
   imageUrl: string;
+  imageData: string;
   youtubeUrl: string;
   startDatetime: string;
   endDatetime: string;
@@ -89,6 +90,7 @@ export type VolunteerEvent = {
   aboutEvent: string;
   categories: string[];
   imageUrl: string;
+  imageData: string;
   youtubeUrl: string;
   startDatetime: string;
   endDatetime: string;
@@ -120,6 +122,7 @@ export type CharitableAid = {
   aboutAid: string;
   categories: string[];
   imageUrl: string;
+  imageData: string;
   youtubeUrl: string;
   applicationDeadline: string;
   published: boolean;

@@ -20,6 +20,8 @@ axios.defaults.headers.put['Accept'] = 'application/json';
 axios.defaults.headers.patch['Accept'] = 'application/json';
 axios.defaults.headers.delete['Accept'] = 'application/json';
 
+const axiosWithoutInterceptors = axios.create();
+
 function snakeizeConfig(config: AxiosRequestConfig) {
   config.params = snakeizeObject(config.params);
   config.data = snakeizeObject(config.data);
@@ -98,4 +100,4 @@ axiosWithAuth.interceptors.response.use(
   }
 );
 
-export { defaultAxios as axios, axiosWithAuth };
+export { axiosWithoutInterceptors, defaultAxios as axios, axiosWithAuth };

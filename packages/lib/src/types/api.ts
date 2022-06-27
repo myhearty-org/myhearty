@@ -25,7 +25,7 @@ const FundraisingCampaignSchema = z.object({
     z.number().positive({ message: 'Please enter an amount larger than RM0.' })
   ),
   aboutCampaign: z.string().trim(),
-  image: z.string(),
+  image: z.string().nullable(),
   endDatetime: z.string().refine((v) => v === '' || new Date(v) > new Date(), {
     message: 'Please select an end date and time that is later than now.',
   }),
@@ -52,7 +52,7 @@ const VolunteerEventSchema = z.object({
   volunteerCount: z.string().transform((v) => parseInt(v, 10)),
   location: z.string().trim().max(255),
   aboutEvent: z.string().trim(),
-  image: z.string(),
+  image: z.string().nullable(),
   startDatetime: z.string().refine((v) => v === '' || new Date(v) > new Date(), {
     message: 'Please select a start date and time that is later than now.',
   }),
@@ -125,7 +125,7 @@ const CharitableAidSchema = z.object({
   receiverCount: z.string().transform((v) => parseInt(v, 10)),
   location: z.string().trim().max(255),
   aboutAid: z.string().trim(),
-  image: z.string(),
+  image: z.string().nullable(),
   applicationDeadline: z.string().refine((v) => v === '' || new Date(v) > new Date(), {
     message: 'Please select an application deadline that is later than now.',
   }),

@@ -1,4 +1,5 @@
 import { CategoriesMultiSelect, toCategoryValues } from '@components/ui/categories-multi-select';
+import { ImageUploader } from '@components/ui/image-uploader';
 import { LoadingPanel } from '@components/ui/loading';
 import { RichTextEditor } from '@components/ui/rich-text-editor';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -26,6 +27,7 @@ export function EditCharitableAidForm() {
   const {
     formState: { isSubmitting },
     register,
+    setValue,
     watch,
     control,
   } = form;
@@ -132,6 +134,15 @@ export function EditCharitableAidForm() {
               />
             )}
           />
+        </Panel.Content>
+        <Panel.Content className="border-t border-gray-200">
+          <ImageUploader
+            id="charitable-aid-page"
+            defaultImageData={JSON.parse(charitableAid.imageData)}
+            defaultImageUrl={charitableAid.imageUrl}
+            onChange={(image) => setValue('image', image)}
+          />
+          <input type="hidden" defaultValue={charitableAid.imageData} {...register('image')} />
         </Panel.Content>
         <Panel.Content className="border-t border-gray-200">
           <Switch

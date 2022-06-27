@@ -5,7 +5,7 @@ const nextConfig = {
   i18n,
   reactStrictMode: false,
   images: {
-    domains: ['loremflickr.com'],
+    domains: ['assets.myhearty.my', 'loremflickr.com', 'fakeimg.pl'],
   },
   experimental: {
     externalDir: true,
