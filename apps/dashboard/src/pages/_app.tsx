@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             showOnShallow={true}
             options={{ showSpinner: false }}
           />
-          <Toaster position="bottom-right" />
+          <Toaster position="top-right" />
           <SWRConfig
             value={{
               revalidateOnFocus: false,

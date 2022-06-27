@@ -13,7 +13,7 @@ export function Layout({ children }: LayoutProps) {
       <Header />
       <Main>{children}</Main>
       <Footer />
-      <Toaster position="bottom-right" />
+      <Toaster position="top-right" />
     </div>
   );
 }
