@@ -40,6 +40,10 @@ export function CharitableAidDangerZone() {
     return <LoadingPanel />;
   }
 
+  if (charitableAid.published) {
+    return null;
+  }
+
   return (
     <Panel title={<p className="font-medium">Danger Zone</p>}>
       <Panel.Content>

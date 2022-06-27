@@ -40,6 +40,10 @@ export function VolunteerEventDangerZone() {
     return <LoadingPanel />;
   }
 
+  if (volunteerEvent.published) {
+    return null;
+  }
+
   return (
     <Panel title={<p className="font-medium">Danger Zone</p>}>
       <Panel.Content>

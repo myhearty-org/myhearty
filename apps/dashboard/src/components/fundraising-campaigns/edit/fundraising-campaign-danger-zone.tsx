@@ -41,6 +41,10 @@ export function FundraisingCampaignDangerZone() {
     return <LoadingPanel />;
   }
 
+  if (fundraisingCampaign.published) {
+    return null;
+  }
+
   return (
     <Panel title={<p className="font-medium">Danger Zone</p>}>
       <Panel.Content>
