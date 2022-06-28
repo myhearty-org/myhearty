@@ -13,6 +13,7 @@ type PaginationProps = {
 export function Pagination({ paginationMetadata, pageIndex, onPageIndexChange, ...props }: PaginationProps) {
   const { pageSize, totalCount } = paginationMetadata;
   const pageCount = Math.ceil(totalCount / pageSize);
+  pageIndex = pageCount === 0 ? 0 : pageIndex;
 
   return <PaginationComponent page={pageIndex} onChange={onPageIndexChange} total={pageCount} {...props} />;
 }
