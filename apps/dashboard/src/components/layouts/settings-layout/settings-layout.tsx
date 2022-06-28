@@ -9,11 +9,9 @@ type SettingsLayoutProps = {
 export function SettingsLayout({ children }: SettingsLayoutProps) {
   return (
     <AppLayout>
-      <>
-        <NextSeo title="Settings" />
-        <SettingsTabs />
-        <div className="px-4 py-2">{children}</div>
-      </>
+      <NextSeo title="Settings" />
+      <SettingsTabs />
+      <div className="px-4 py-2">{children}</div>
     </AppLayout>
   );
 }

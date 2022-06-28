@@ -9,11 +9,9 @@ type FundraisingCampaignLayoutProps = {
 export function FundraisingCampaignLayout({ children }: FundraisingCampaignLayoutProps) {
   return (
     <AppLayout>
-      <>
-        <NextSeo title="Fundraising Campaign" />
-        <FundraisingCampaignTabs />
-        <div className="px-4 py-2">{children}</div>
-      </>
+      <NextSeo title="Fundraising Campaign" />
+      <FundraisingCampaignTabs />
+      <div className="px-4 py-2">{children}</div>
     </AppLayout>
   );
 }

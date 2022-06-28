@@ -9,11 +9,9 @@ type VolunteerEventLayoutProps = {
 export function VolunteerEventLayout({ children }: VolunteerEventLayoutProps) {
   return (
     <AppLayout>
-      <>
-        <NextSeo title="Volunteer Event" />
-        <VolunteerEventTabs />
-        <div className="px-4 py-2">{children}</div>
-      </>
+      <NextSeo title="Volunteer Event" />
+      <VolunteerEventTabs />
+      <div className="px-4 py-2">{children}</div>
     </AppLayout>
   );
 }
