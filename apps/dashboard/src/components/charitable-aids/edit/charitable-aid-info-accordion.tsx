@@ -45,7 +45,7 @@ export function CharitableAidInfoAccordion() {
         <div className="flex flex-col gap-4">
           <Alert
             severity="warning"
-            title="After the charitable aid page is published, you can no longer unpublish it or edit its:"
+            title="After the charitable aid page is published, you can no longer delete it, unpublish it or edit its:"
             message={
               <ul className="list-inside list-disc">
                 <li>Name</li>
