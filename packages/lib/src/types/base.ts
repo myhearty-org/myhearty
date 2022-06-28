@@ -77,6 +77,7 @@ export type Donation = {
   status: string;
   completedAt: string;
   fundraisingCampaign: FundraisingCampaign;
+  donor?: User;
 };
 
 export type VolunteerEvent = {
@@ -109,6 +110,7 @@ export type VolunteerApplication = {
   volunteerEventId: number;
   volunteerId: number;
   volunteerEvent: VolunteerEvent;
+  volunteer?: User;
 };
 
 export type CharitableAid = {
@@ -138,4 +140,5 @@ export type CharitableAidApplication = {
   charitableAidId: number;
   receiverId: number;
   charitableAid: CharitableAid;
+  receiver?: User;
 };

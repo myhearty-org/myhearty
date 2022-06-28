@@ -9,7 +9,7 @@ type CharitableAidTab = {
 
 const charitableAidTabs: CharitableAidTab[] = [
   { name: 'edit', label: 'Charitable Aid' },
-  { name: 'applications', label: 'Applications' },
+  { name: 'aid-applications', label: 'Applications' },
 ];
 
 export function CharitableAidTabs() {

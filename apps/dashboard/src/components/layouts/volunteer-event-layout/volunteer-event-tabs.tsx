@@ -9,7 +9,7 @@ type VolunteerEventTab = {
 
 const volunteerEventTabs: VolunteerEventTab[] = [
   { name: 'edit', label: 'Volunteer Event' },
-  { name: 'applications', label: 'Applications' },
+  { name: 'volunteer-applications', label: 'Applications' },
 ];
 
 export function VolunteerEventTabs() {
