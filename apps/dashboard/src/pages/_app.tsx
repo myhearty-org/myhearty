@@ -3,14 +3,12 @@ import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 import { MANTINE_CLASSNAMES, MANTINE_DEFAULT_PROPS, MANTINE_THEME } from '@myhearty/lib/constants/mantine';
 import { AppPropsWithLayout } from '@myhearty/lib/types';
-import { storePathHistory } from '@myhearty/utils/common';
 import { showToast } from '@myhearty/utils/show-toast';
 import { appWithTranslation } from 'next-i18next';
 import { DefaultSeo } from 'next-seo';
 import defaultSeoConfig from 'next-seo.json';
 import { useRouter } from 'next/router';
 import NextNProgress from 'nextjs-progressbar';
-import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 import 'styles/globals.css';
 import 'styles/preflight.css';
@@ -18,10 +16,6 @@ import { SWRConfig } from 'swr';
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter();
-
-  useEffect(() => {
-    storePathHistory();
-  }, [router.asPath]);
 
   const getLayout = Component.getLayout ?? ((page) => page);
 
