@@ -5,6 +5,7 @@
     "rejected": "Rejected"
   },
   "paymentMethods": {
+    "alipay": "Alipay",
     "card": "Card",
     "fpx": "FPX",
     "grabpay": "GrabPay"
