@@ -11,7 +11,7 @@ import { useForm } from 'react-hook-form';
 
 export function AddMemberButton() {
   const modals = useModals();
-  const { setPageIndex } = useMembers();
+  const { pageIndex, setPageIndex, mutate } = useMembers();
 
   const openAddMemberModal = () => {
     const id = modals.openModal({
@@ -21,7 +21,12 @@ export function AddMemberButton() {
         <AddMemberModal
           onClose={() => {
             modals.closeModal(id);
-            setPageIndex(1);
+
+            if (pageIndex === 1) {
+              mutate();
+            } else {
+              setPageIndex(1);
+            }
           }}
         />
       ),
