@@ -1,4 +1,4 @@
-import { CreateFundraisingCampaign, FundraisingCampaign, UpdateFundraisingCampaign } from '../types';
+import { CreateFundraisingCampaign, FundraisingCampaign, Metrics, UpdateFundraisingCampaign } from '../types';
 import { generatePaginationMetadata } from '@myhearty/utils/api';
 import { axiosWithAuth } from '@myhearty/utils/myhearty-axios';
 
@@ -34,4 +34,11 @@ export async function updateFundraisingCampaign(idOrSlug: string, payload: Updat
 
 export async function deleteFundraisingCampaign(id: number) {
   return axiosWithAuth.delete(`/campaigns/${id}`);
+}
+
+export async function getMetrics(fundraisingCampaignIdOrSlug: string) {
+  const { data } = await axiosWithAuth.get(`/campaigns/${fundraisingCampaignIdOrSlug}/metrics`);
+  const metrics: Metrics = { ...data };
+
+  return metrics;
 }

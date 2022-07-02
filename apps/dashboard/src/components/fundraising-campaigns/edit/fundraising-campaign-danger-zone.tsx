@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 export function FundraisingCampaignDangerZone() {
   const router = useRouter();
   const { slug } = router.query;
+  
   const { fundraisingCampaign } = useFundraisingCampaign(slug as string);
 
   async function handleDelete() {

@@ -11,8 +11,8 @@ import { useRouter } from 'next/router';
 export function CharitableAidApplicationsStats() {
   const router = useRouter();
   const { slug } = router.query;
-  const { charitableAid, isLoading: isCharitableAidLoading } = useCharitableAid(slug as string);
 
+  const { charitableAid, isLoading: isCharitableAidLoading } = useCharitableAid(slug as string);
   const { isLoading: isCharitableAidApplicationsLoading, paginationMetadata } =
     useCharitableAidApplications();
 

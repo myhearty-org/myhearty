@@ -80,6 +80,11 @@ export type Donation = {
   donor?: User;
 };
 
+export type Metrics = {
+  id: number;
+  data: [number, number][];
+};
+
 export type VolunteerEvent = {
   id: number;
   name: string;

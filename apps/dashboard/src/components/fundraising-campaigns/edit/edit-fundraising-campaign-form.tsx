@@ -19,6 +19,7 @@ type UpdateFundraisingCampaignFormData = UpdateFundraisingCampaign;
 export function EditFundraisingCampaignForm() {
   const router = useRouter();
   const { slug } = router.query;
+  
   const { fundraisingCampaign, isLoading, mutate } = useFundraisingCampaign(slug as string);
 
   const form = useForm<UpdateFundraisingCampaignFormData>({

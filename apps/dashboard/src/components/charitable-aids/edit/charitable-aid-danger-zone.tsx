@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 export function CharitableAidDangerZone() {
   const router = useRouter();
   const { slug } = router.query;
+  
   const { charitableAid } = useCharitableAid(slug as string);
 
   async function handleDelete() {

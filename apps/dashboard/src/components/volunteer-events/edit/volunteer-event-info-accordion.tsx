@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 export function VolunteerEventInfoAccordion() {
   const router = useRouter();
   const { slug } = router.query;
+  
   const { volunteerEvent, isLoading } = useVolunteerEvent(slug as string);
 
   if (isLoading) {

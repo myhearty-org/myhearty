@@ -19,6 +19,7 @@ type UpdateVolunteerEventFormData = UpdateVolunteerEvent;
 export function EditVolunteerEventForm() {
   const router = useRouter();
   const { slug } = router.query;
+  
   const { volunteerEvent, isLoading, mutate } = useVolunteerEvent(slug as string);
 
   const form = useForm<UpdateVolunteerEventFormData>({

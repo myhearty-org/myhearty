@@ -7,10 +7,10 @@ import { useRouter } from 'next/router';
 export function ReloadVolunteerApplicationsButton() {
   const router = useRouter();
   const { slug } = router.query;
+
   const { isLoading: isVolunteerEventLoading, mutate: mutateVolunteerEvent } = useVolunteerEvent(
     slug as string
   );
-
   const { isLoading: isVolunteerApplicationsLoading, mutate: mutateVolunteerApplications } =
     useVolunteerApplications();
 

@@ -7,8 +7,8 @@ import { useRouter } from 'next/router';
 export function VolunteerApplicationsStats() {
   const router = useRouter();
   const { slug } = router.query;
-  const { volunteerEvent, isLoading: isVolunteerEventLoading } = useVolunteerEvent(slug as string);
 
+  const { volunteerEvent, isLoading: isVolunteerEventLoading } = useVolunteerEvent(slug as string);
   const { isLoading: isVolunteerApplicationsLoading, paginationMetadata } = useVolunteerApplications();
 
   return (

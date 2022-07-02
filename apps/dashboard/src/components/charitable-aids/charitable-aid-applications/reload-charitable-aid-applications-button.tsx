@@ -7,8 +7,8 @@ import { useRouter } from 'next/router';
 export function ReloadCharitableAidApplicationsButton() {
   const router = useRouter();
   const { slug } = router.query;
-  const { isLoading: isCharitableAidLoading, mutate: mutateCharitableAid } = useCharitableAid(slug as string);
 
+  const { isLoading: isCharitableAidLoading, mutate: mutateCharitableAid } = useCharitableAid(slug as string);
   const { isLoading: isCharitableAidApplicationsLoading, mutate: mutateCharitableAidApplications } =
     useCharitableAidApplications();
 

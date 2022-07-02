@@ -19,6 +19,7 @@ type UpdateCharitableAidFormData = UpdateCharitableAid;
 export function EditCharitableAidForm() {
   const router = useRouter();
   const { slug } = router.query;
+  
   const { charitableAid, isLoading, mutate } = useCharitableAid(slug as string);
 
   const form = useForm<UpdateCharitableAidFormData>({

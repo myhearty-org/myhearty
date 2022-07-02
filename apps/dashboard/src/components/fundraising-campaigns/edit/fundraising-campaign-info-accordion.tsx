@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 export function FundraisingCampaignInfoAccordion() {
   const router = useRouter();
   const { slug } = router.query;
+  
   const { fundraisingCampaign, isLoading } = useFundraisingCampaign(slug as string);
 
   if (isLoading) {

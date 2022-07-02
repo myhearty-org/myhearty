@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 export function VolunteerEventDangerZone() {
   const router = useRouter();
   const { slug } = router.query;
+  
   const { volunteerEvent } = useVolunteerEvent(slug as string);
 
   async function handleDelete() {

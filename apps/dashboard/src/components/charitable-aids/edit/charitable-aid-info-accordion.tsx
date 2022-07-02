@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 export function CharitableAidInfoAccordion() {
   const router = useRouter();
   const { slug } = router.query;
+  
   const { charitableAid, isLoading } = useCharitableAid(slug as string);
 
   if (isLoading) {
