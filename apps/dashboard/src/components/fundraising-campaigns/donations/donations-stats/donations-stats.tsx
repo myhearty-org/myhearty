@@ -7,11 +7,15 @@ import { useRouter } from 'next/router';
 export function DonationsStats() {
   const router = useRouter();
   const { slug } = router.query;
-  
+
   const { fundraisingCampaign, isLoading: isFundraisingCampaignLoading } = useFundraisingCampaign(
     slug as string
   );
   const { metrics, isLoading: isMetricsLoading } = useMetrics(slug as string);
+
+  if (!fundraisingCampaign?.published) {
+    return null;
+  }
 
   return (
     <div className="flex flex-col gap-6">

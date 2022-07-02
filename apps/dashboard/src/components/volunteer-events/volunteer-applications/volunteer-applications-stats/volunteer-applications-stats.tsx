@@ -11,6 +11,10 @@ export function VolunteerApplicationsStats() {
   const { volunteerEvent, isLoading: isVolunteerEventLoading } = useVolunteerEvent(slug as string);
   const { isLoading: isVolunteerApplicationsLoading, paginationMetadata } = useVolunteerApplications();
 
+  if (!volunteerEvent?.published) {
+    return null;
+  }
+
   return (
     <div className="flex flex-col gap-6">
       {!volunteerEvent || isVolunteerEventLoading || isVolunteerApplicationsLoading ? (

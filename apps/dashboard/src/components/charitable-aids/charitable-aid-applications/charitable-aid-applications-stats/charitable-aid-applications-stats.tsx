@@ -16,6 +16,10 @@ export function CharitableAidApplicationsStats() {
   const { isLoading: isCharitableAidApplicationsLoading, paginationMetadata } =
     useCharitableAidApplications();
 
+  if (!charitableAid?.published) {
+    return null;
+  }
+
   return (
     <div className="flex flex-col gap-6">
       {!charitableAid || isCharitableAidLoading || isCharitableAidApplicationsLoading ? (
