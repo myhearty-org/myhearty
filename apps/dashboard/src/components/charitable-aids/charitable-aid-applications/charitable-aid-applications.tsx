@@ -1,7 +1,8 @@
+import { CharitableAidApplicationsStats } from './charitable-aid-applications-stats';
 import { CharitableAidApplicationsTable } from './charitable-aid-applications-table';
+import { ReloadCharitableAidApplicationsButton } from './reload-charitable-aid-applications-button';
 import { CharitableAidApplicationsProvider } from '@components/providers';
 import { useRouter } from 'next/router';
-import { ReloadCharitableAidApplicationsButton } from './reload-charitable-aid-applications-button';
 
 export function CharitableAidApplications() {
   const router = useRouter();
@@ -13,6 +14,7 @@ export function CharitableAidApplications() {
         <ReloadCharitableAidApplicationsButton />
       </div>
       <div className="flex flex-col gap-6">
+        <CharitableAidApplicationsStats />
         <CharitableAidApplicationsTable />
       </div>
     </CharitableAidApplicationsProvider>

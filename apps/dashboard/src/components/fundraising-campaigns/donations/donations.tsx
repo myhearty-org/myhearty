@@ -1,7 +1,8 @@
+import { DonationsStats } from './donations-stats';
 import { DonationsTable } from './donations-table';
+import { ReloadDonationsButton } from './reload-donations-button';
 import { DonationsProvider } from '@components/providers';
 import { useRouter } from 'next/router';
-import { ReloadDonationsButton } from './reload-donations-button';
 
 export function Donations() {
   const router = useRouter();
@@ -13,6 +14,7 @@ export function Donations() {
         <ReloadDonationsButton />
       </div>
       <div className="flex flex-col gap-6">
+        <DonationsStats />
         <DonationsTable />
       </div>
     </DonationsProvider>
