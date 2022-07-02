@@ -12,10 +12,12 @@ export function Table({ body, head, className, containerClassName }: TableProps)
   return (
     <div className={containerClassName}>
       <SimpleBar className="overflow-x-auto pb-2">
-        <table className={cn('w-full border-separate [border-spacing:0]', className)}>
-          <thead>{head}</thead>
-          <tbody>{body}</tbody>
-        </table>
+        <div className="rounded shadow-sm">
+          <table className={cn('w-full border-separate [border-spacing:0]', className)}>
+            <thead>{head}</thead>
+            <tbody>{body}</tbody>
+          </table>
+        </div>
       </SimpleBar>
     </div>
   );
