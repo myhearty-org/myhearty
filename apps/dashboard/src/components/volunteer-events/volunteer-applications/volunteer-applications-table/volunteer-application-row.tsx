@@ -1,3 +1,4 @@
+import { UpdateVolunteerApplicationButton } from './update-volunteer-application-button';
 import { Badge } from '@mantine/core';
 import {
   VOLUNTEER_APPLICATION_ATTENDANCE_BADGES,
@@ -40,6 +41,9 @@ export function VolunteerApplicationRow({ volunteerApplication }: VolunteerAppli
         </Badge>
       </Td>
       <Td className="whitespace-nowrap">{format(new Date(attendanceUpdatedAt), 'E, d MMM yyyy, hh:mm a')}</Td>
+      <Td className="text-right">
+        <UpdateVolunteerApplicationButton volunteerApplication={volunteerApplication} />
+      </Td>
     </Tr>
   );
 }

@@ -278,6 +278,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         <textarea
           className={cn(
             'mt-2 block w-full rounded border-gray-300 p-2 shadow-sm focus:border-pink-300 focus:outline-none focus:ring focus:ring-pink-300 sm:text-sm',
+            'read-only:cursor-default read-only:bg-slate-100',
             className
           )}
           id={id}

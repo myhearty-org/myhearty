@@ -106,11 +106,15 @@ export type VolunteerEvent = {
   organization: Organization;
 };
 
+export type VolunteerApplicationStatus = 'pending' | 'confirmed' | 'rejected';
+
+export type VolunteerApplicationAttendance = 'absent' | 'present';
+
 export type VolunteerApplication = {
   id: number;
-  status: string;
+  status: VolunteerApplicationStatus;
   statusUpdatedAt: string;
-  attendance: string;
+  attendance: VolunteerApplicationAttendance;
   attendanceUpdatedAt: string;
   volunteerEventId: number;
   volunteerId: number;
@@ -137,9 +141,11 @@ export type CharitableAid = {
   organization: Organization;
 };
 
+export type CharitableAidApplicationStatus = 'pending' | 'approved' | 'rejected';
+
 export type CharitableAidApplication = {
   id: number;
-  status: string;
+  status: CharitableAidApplicationStatus;
   statusUpdatedAt: string;
   reason: string;
   charitableAidId: number;

@@ -1,4 +1,4 @@
-import { CharitableAidApplication } from '../types';
+import { CharitableAidApplication, CharitableAidApplicationStatus } from '../types';
 import { generatePaginationMetadata } from '@myhearty/utils/api';
 import { axiosWithAuth } from '@myhearty/utils/myhearty-axios';
 
@@ -18,4 +18,13 @@ export async function getCharitableAidApplications(
   const paginationMetadata = generatePaginationMetadata(headers);
 
   return { charitableAidApplications, paginationMetadata };
+}
+
+export async function updateCharitableAidApplication(id: number, status: CharitableAidApplicationStatus) {
+  const { data } = await axiosWithAuth.patch(`/aid-applications/${id}`, {
+    status,
+  });
+  const charitableAidApplication: CharitableAidApplication = { ...data };
+
+  return charitableAidApplication;
 }

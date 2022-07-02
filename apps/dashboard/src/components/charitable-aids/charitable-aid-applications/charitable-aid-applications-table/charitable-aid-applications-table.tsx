@@ -18,20 +18,21 @@ export function CharitableAidApplicationsTable() {
             <Th>Applicant</Th>
             <Th className="text-center">Status</Th>
             <Th>Status Update Date</Th>
+            <Th></Th>
           </tr>
         }
         body={
           <>
             {isLoading && (
               <Tr>
-                <Td className="h-14 whitespace-nowrap text-sm leading-5 text-gray-400" colSpan={3}>
+                <Td className="h-14 whitespace-nowrap text-sm leading-5 text-gray-400" colSpan={4}>
                   Retrieving charitable aid application records
                 </Td>
               </Tr>
             )}
             {!isLoading && charitableAidApplications.length == 0 && (
               <Tr>
-                <Td className="h-14 whitespace-nowrap text-sm leading-5 text-gray-400" colSpan={3}>
+                <Td className="h-14 whitespace-nowrap text-sm leading-5 text-gray-400" colSpan={4}>
                   <div className="flex items-center opacity-80">
                     <ExclamationCircleIcon className="mr-3 h-5 w-5 flex-shrink-0 text-gray-400" />
                     <span>No charitable aid application records found</span>

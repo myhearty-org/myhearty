@@ -9,10 +9,12 @@
     "mustBeMoreThanVolunteerCount": "must be more than number of volunteers.",
     "notAllowedToUpdateAfterApplicationDeadline": "cannot be updated after the application deadline.",
     "notAllowedToUpdateAfterPublished": "cannot be updated after it has been published.",
+    "receiverCountExceeded": "You've reached maximum number of receivers that can be accepted.",
     "unspecific": "An unexpected error has occured. Please try again later.",
     "userPersonalInfoMissing": "Missing user's personal information.",
     "volunteerApplicationClosed": "Volunteer application is closed.",
-    "volunteerApplicationProcessed": "Volunteer application is currently being processed."
+    "volunteerApplicationProcessed": "Volunteer application is currently being processed.",
+    "volunteerCountExceeded": "You've reached maximum number of volunteers that can be accepted."
   },
   "fields": {
     "address": "Address",

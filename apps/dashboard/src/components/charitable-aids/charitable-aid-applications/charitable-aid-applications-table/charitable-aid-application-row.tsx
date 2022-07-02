@@ -1,3 +1,4 @@
+import { UpdateCharitableAidApplicationButton } from './update-charitable-aid-application-button';
 import { Badge } from '@mantine/core';
 import { CHARITABLE_AID_APPLICATION_STATUS_BADGES } from '@myhearty/lib/constants/badges';
 import { CharitableAidApplication } from '@myhearty/lib/types';
@@ -27,6 +28,9 @@ export function CharitableAidApplicationRow({ charitableAidApplication }: Charit
         </Badge>
       </Td>
       <Td className="whitespace-nowrap">{format(new Date(statusUpdatedAt), 'E, d MMM yyyy, hh:mm a')}</Td>
+      <Td className="text-right">
+        <UpdateCharitableAidApplicationButton charitableAidApplication={charitableAidApplication} />
+      </Td>
     </Tr>
   );
 }

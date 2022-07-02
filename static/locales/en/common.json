@@ -4,6 +4,10 @@
     "pending": "Pending",
     "rejected": "Rejected"
   },
+  "genders": {
+    "female": "Female",
+    "male": "Male"
+  },
   "paymentMethods": {
     "alipay": "Alipay",
     "card": "Card",

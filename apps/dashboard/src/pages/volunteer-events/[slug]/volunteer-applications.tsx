@@ -14,7 +14,7 @@ VolunteerApplicationsPage.getLayout = (page: React.ReactElement) => (
 export const getServerSideProps: GetServerSideProps = async function ({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale!, ['common'])),
+      ...(await serverSideTranslations(locale!, ['common', 'validation'])),
     },
   };
 };
