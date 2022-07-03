@@ -17,7 +17,7 @@ export function VolunteerApplicationsStats() {
 
   return (
     <div className="flex flex-col gap-6">
-      {!volunteerEvent || isVolunteerEventLoading || isVolunteerApplicationsLoading ? (
+      {!volunteerEvent || isVolunteerEventLoading || !paginationMetadata || isVolunteerApplicationsLoading ? (
         <div className="mx-auto grid w-full grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
           <LoadingStatsCard />
           <LoadingStatsCard />
@@ -27,7 +27,7 @@ export function VolunteerApplicationsStats() {
         <div className="mx-auto grid w-full grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
           <OpeningsCard openings={volunteerEvent.openings} volunteerCount={volunteerEvent.volunteerCount} />
           <VolunteerCountCard volunteerCount={volunteerEvent.volunteerCount} />
-          <ApplicantCountCard applicantCount={paginationMetadata!.totalCount} />
+          <ApplicantCountCard applicantCount={paginationMetadata.totalCount} />
         </div>
       )}
     </div>

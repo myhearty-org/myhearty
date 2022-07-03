@@ -22,7 +22,10 @@ export function CharitableAidApplicationsStats() {
 
   return (
     <div className="flex flex-col gap-6">
-      {!charitableAid || isCharitableAidLoading || isCharitableAidApplicationsLoading ? (
+      {!charitableAid ||
+      isCharitableAidLoading ||
+      !paginationMetadata ||
+      isCharitableAidApplicationsLoading ? (
         <div className="mx-auto grid w-full grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
           <LoadingStatsCard />
           <LoadingStatsCard />
@@ -32,7 +35,7 @@ export function CharitableAidApplicationsStats() {
         <div className="mx-auto grid w-full grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
           <OpeningsCard openings={charitableAid.openings} receiverCount={charitableAid.receiverCount} />
           <ReceiverCountCard receiverCount={charitableAid.receiverCount} />
-          <ApplicantCountCard applicantCount={paginationMetadata!.totalCount} />
+          <ApplicantCountCard applicantCount={paginationMetadata.totalCount} />
         </div>
       )}
     </div>
