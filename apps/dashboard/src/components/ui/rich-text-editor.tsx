@@ -10,17 +10,30 @@ const RichTextEditorComponent = dynamic(() => import('@mantine/rte'), {
 
 type RichTextEditorProps = {
   label: string;
+  description?: string;
   defaultValue?: string;
   onChange: (value: string) => void;
+  isVideoEmbedEnabled?: boolean;
 } & Omit<RichTextEditorComponentProps, 'value' | 'onChange'>;
 
 export const RichTextEditor = forwardRef<Editor, RichTextEditorProps>(
-  ({ label, defaultValue, onChange, ...props }, ref) => {
+  ({ label, description, defaultValue, onChange, isVideoEmbedEnabled = true, ...props }, ref) => {
     const [value, setValue] = useState(defaultValue ?? '');
+    const controls: RichTextEditorProps['controls'] = [
+      ['bold', 'italic', 'underline', 'clean', 'link'],
+      ['h1', 'h2', 'h3', 'h4', 'sup', 'sub'],
+      ['unorderedList', 'orderedList'],
+      ['alignLeft', 'alignCenter', 'alignRight'],
+    ];
+
+    if (isVideoEmbedEnabled) {
+      controls[0].push('video');
+    }
 
     return (
       <div>
         <Label>{label}</Label>
+        {description && <p className="text-sm text-gray-500">{description}</p>}
         <RichTextEditorComponent
           className="prose mt-2 max-w-none tracking-tight"
           classNames={{ toolbar: 'mb-0.5' }}
@@ -30,12 +43,7 @@ export const RichTextEditor = forwardRef<Editor, RichTextEditorProps>(
             setValue(value);
             onChange(value);
           }}
-          controls={[
-            ['bold', 'italic', 'underline', 'clean', 'link', 'video'],
-            ['h1', 'h2', 'h3', 'h4', 'sup', 'sub'],
-            ['unorderedList', 'orderedList'],
-            ['alignLeft', 'alignCenter', 'alignRight'],
-          ]}
+          controls={controls}
           {...props}
         />
       </div>

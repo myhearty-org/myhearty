@@ -67,6 +67,7 @@ const VolunteerEventSchema = z.object({
     message: 'Please select an application deadline that is later than now.',
   }),
   published: z.boolean(),
+  confirmationEmailBody: z.string().trim(),
 });
 
 const VolunteerEventSchemaPartial = VolunteerEventSchema.partial();
@@ -139,6 +140,7 @@ const CharitableAidSchema = z.object({
     message: 'Please select an application deadline that is later than now.',
   }),
   published: z.boolean(),
+  approvalEmailBody: z.string().trim(),
 });
 
 const CharitableAidSchemaPartial = CharitableAidSchema.partial();

@@ -19,7 +19,7 @@ type UpdateVolunteerEventFormData = UpdateVolunteerEvent;
 export function EditVolunteerEventForm() {
   const router = useRouter();
   const { slug } = router.query;
-  
+
   const { volunteerEvent, isLoading, mutate } = useVolunteerEvent(slug as string);
 
   const form = useForm<UpdateVolunteerEventFormData>({
@@ -168,6 +168,27 @@ export function EditVolunteerEventForm() {
             onChange={(image) => setValue('image', image)}
           />
           <input type="hidden" defaultValue={volunteerEvent.imageData} {...register('image')} />
+        </Panel.Content>
+        <Panel.Content className="border-t border-gray-200">
+          <Controller
+            control={control}
+            name="confirmationEmailBody"
+            defaultValue={volunteerEvent.confirmationEmailBody}
+            render={({ field: { ref, onChange, onBlur } }) => (
+              <RichTextEditor
+                ref={ref}
+                label="Confirmation email message"
+                description={
+                  'You can include relevant information about the volunteer event in the email message.' +
+                  ' A confimation email with this message will be sent to the volunteer if their volunteer application is confirmed.'
+                }
+                defaultValue={volunteerEvent.confirmationEmailBody}
+                onChange={onChange}
+                isVideoEmbedEnabled={false}
+                onBlur={onBlur}
+              />
+            )}
+          />
         </Panel.Content>
         <Panel.Content className="border-t border-gray-200">
           <Switch

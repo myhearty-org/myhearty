@@ -103,6 +103,7 @@ export type VolunteerEvent = {
   applicationDeadline: string;
   published: boolean;
   applicationClosed: boolean;
+  confirmationEmailBody: string;
   organization: Organization;
 };
 
@@ -138,6 +139,7 @@ export type CharitableAid = {
   applicationDeadline: string;
   published: boolean;
   applicationClosed: boolean;
+  approvalEmailBody: string;
   organization: Organization;
 };
 

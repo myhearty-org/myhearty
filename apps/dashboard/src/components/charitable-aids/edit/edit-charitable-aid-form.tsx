@@ -19,7 +19,7 @@ type UpdateCharitableAidFormData = UpdateCharitableAid;
 export function EditCharitableAidForm() {
   const router = useRouter();
   const { slug } = router.query;
-  
+
   const { charitableAid, isLoading, mutate } = useCharitableAid(slug as string);
 
   const form = useForm<UpdateCharitableAidFormData>({
@@ -144,6 +144,27 @@ export function EditCharitableAidForm() {
             onChange={(image) => setValue('image', image)}
           />
           <input type="hidden" defaultValue={charitableAid.imageData} {...register('image')} />
+        </Panel.Content>
+        <Panel.Content className="border-t border-gray-200">
+          <Controller
+            control={control}
+            name="approvalEmailBody"
+            defaultValue={charitableAid.approvalEmailBody}
+            render={({ field: { ref, onChange, onBlur } }) => (
+              <RichTextEditor
+                ref={ref}
+                label="Approval email message"
+                description={
+                  'You can include relevant information about the charitable aid in the email message.' +
+                  ' An approval email with this message will be sent to the receiver if their application is approved.'
+                }
+                defaultValue={charitableAid.approvalEmailBody}
+                onChange={onChange}
+                isVideoEmbedEnabled={false}
+                onBlur={onBlur}
+              />
+            )}
+          />
         </Panel.Content>
         <Panel.Content className="border-t border-gray-200">
           <Switch
