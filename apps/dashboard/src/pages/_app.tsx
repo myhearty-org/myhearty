@@ -1,4 +1,5 @@
 import { AuthProvider } from '@components/providers';
+import { XIcon } from '@heroicons/react/solid';
 import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 import { MANTINE_CLASSNAMES, MANTINE_DEFAULT_PROPS, MANTINE_THEME } from '@myhearty/lib/constants/mantine';
@@ -9,7 +10,7 @@ import { DefaultSeo } from 'next-seo';
 import defaultSeoConfig from 'next-seo.json';
 import { useRouter } from 'next/router';
 import NextNProgress from 'nextjs-progressbar';
-import { Toaster } from 'react-hot-toast';
+import { toast, ToastBar, Toaster } from 'react-hot-toast';
 import 'styles/globals.css';
 import 'styles/preflight.css';
 import { SWRConfig } from 'swr';
@@ -36,7 +37,23 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             showOnShallow={true}
             options={{ showSpinner: false }}
           />
-          <Toaster position="top-right" />
+          <Toaster position="top-right">
+            {(t) => (
+              <ToastBar toast={t}>
+                {({ icon, message }) => (
+                  <>
+                    {icon}
+                    {message}
+                    {t.type !== 'loading' && (
+                      <button className="rounded p-1" onClick={() => toast.dismiss(t.id)}>
+                        <XIcon className="h-4 w-4" />
+                      </button>
+                    )}
+                  </>
+                )}
+              </ToastBar>
+            )}
+          </Toaster>
           <SWRConfig
             value={{
               revalidateOnFocus: false,
