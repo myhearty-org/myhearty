@@ -210,7 +210,29 @@ tbody tr:last-child td:only-child {
   @apply bg-gray-500;
 }
 
-/* ApexCharts styles */
+/* Uppy dashboard */
+
+.uppy-DashboardContent-bar {
+  z-index: 40 !important;
+}
+
+.uppy-Dashboard-Item-action--remove {
+  z-index: 40 !important;
+}
+
+.uppy-Dashboard-Item-progress {
+  z-index: 30 !important;
+}
+
+.uppy-StatusBar {
+  z-index: 30 !important;
+}
+
+.uppy-Informer {
+  z-index: 40 !important;
+}
+
+/* ApexCharts */
 
 .apexcharts-tooltip {
   @apply rounded border-0 bg-white text-gray-900 shadow-lg !important;
