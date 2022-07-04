@@ -13,3 +13,4 @@ export * from './pagination';
 export { Panel } from './panel';
 export { ProgressBar } from './progress-bar';
 export * from './table';
+export { ToastProvider } from './toast-provider';
