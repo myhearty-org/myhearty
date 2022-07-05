@@ -19,6 +19,7 @@ import { useForm } from 'react-hook-form';
 type ApplicationButtonProps = {
   charitableAidId: number;
   charitableAidName: string;
+  applicationDeadline: string;
   applicationClosed: boolean;
 };
 
@@ -37,6 +38,7 @@ type ApplicationButtonBehaviour = {
 export function ApplicationButton({
   charitableAidId,
   charitableAidName,
+  applicationDeadline,
   applicationClosed,
 }: ApplicationButtonProps) {
   const auth = useAuth();
@@ -70,7 +72,7 @@ export function ApplicationButton({
 
   useEffect(() => {
     async function initializeButtonState() {
-      if (applicationClosed) {
+      if (!auth.isAuthenticated && applicationClosed) {
         setButtonState(ApplicationButtonState.Closed);
         return;
       }
@@ -82,14 +84,25 @@ export function ApplicationButton({
 
       const isApplied = await isCharitableAidApplied(charitableAidId);
 
-      if (isApplied) {
-        setButtonState(ApplicationButtonState.Unapply);
-      } else {
-        setButtonState(ApplicationButtonState.Apply);
+      if (!isApplied && applicationClosed) {
+        setButtonState(ApplicationButtonState.Closed);
+        return;
       }
+
+      if (!isApplied) {
+        setButtonState(ApplicationButtonState.Apply);
+        return;
+      }
+
+      if (!applicationClosed || new Date(applicationDeadline) < new Date()) {
+        setButtonState(ApplicationButtonState.Unapply);
+        return;
+      }
+      
+      setButtonState(ApplicationButtonState.Closed);
     }
     handleRequest(initializeButtonState);
-  }, [applicationClosed, auth.isAuthenticated, charitableAidId]);
+  }, [applicationClosed, auth.isAuthenticated, charitableAidId, applicationDeadline]);
 
   const hasMounted = useHasMounted();
   if (!hasMounted) return null;

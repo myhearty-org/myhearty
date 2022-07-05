@@ -55,6 +55,7 @@ export default function CharitableAidPage({ charitableAid }: CharitableAidPagePr
                 <ApplicationButton
                   charitableAidId={id}
                   charitableAidName={name}
+                  applicationDeadline={applicationDeadline}
                   applicationClosed={applicationClosed}
                 />
                 <LocationCard location={location} />

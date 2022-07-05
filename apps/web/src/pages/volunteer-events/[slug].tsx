@@ -59,6 +59,7 @@ export default function VolunteerEventPage({ volunteerEvent }: VolunteerEventPag
                   volunteerEventId={id}
                   volunteerEventName={name}
                   applicationClosed={applicationClosed}
+                  applicationDeadline={applicationDeadline}
                 />
                 <DateAndTimeCard startDatetime={startDatetime} endDatetime={endDatetime} />
                 <LocationCard location={location} />
