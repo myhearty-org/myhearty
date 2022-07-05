@@ -1,6 +1,7 @@
 import { FundraisingCampaigns } from '@components/fundraising-campaigns';
 import { AppLayout } from '@components/layouts';
 import { useOrganization } from '@myhearty/hooks';
+import { Alert } from '@myhearty/ui/alert';
 import { Loader } from '@myhearty/ui/loader';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
@@ -31,7 +32,17 @@ export default function FundraisingCampaignsPage() {
     <>
       <NextSeo title="Fundraising Campaigns" />
       <div className="px-4 py-2">
-        <FundraisingCampaigns />
+        {organization.stripeOnboarded ? (
+          <FundraisingCampaigns />
+        ) : (
+          <div className="flex justify-center">
+            <Alert
+              severity="warning"
+              title="You need to create a Stripe account to start collecting donations."
+              message="Please note that only organization admin can create a Stripe account."
+            />
+          </div>
+        )}
       </div>
     </>
   );
