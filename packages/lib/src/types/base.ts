@@ -39,6 +39,12 @@ export type Organization = {
   stripeOnboarded?: boolean;
 };
 
+export type ApiKey = {
+  id: number;
+  token: string;
+  createdAt: string;
+};
+
 export type Member = {
   id: number;
   email: string;

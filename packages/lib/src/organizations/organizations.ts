@@ -1,4 +1,4 @@
-import { CreateOrganization, Organization } from '../types';
+import { ApiKey, CreateOrganization, Organization } from '../types';
 import { axios, axiosWithAuth } from '@myhearty/utils/myhearty-axios';
 
 export function signUpOrganization(payload: CreateOrganization) {
@@ -16,4 +16,11 @@ export async function getAuthenticatedOrganization() {
   const organization: Organization = { ...data };
 
   return organization;
+}
+
+export async function getApiKeys() {
+  const { data } = await axiosWithAuth.get('/org/api-keys');
+  const apiKeys: ApiKey[] = data;
+
+  return apiKeys;
 }

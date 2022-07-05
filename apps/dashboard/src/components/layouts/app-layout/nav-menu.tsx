@@ -1,16 +1,18 @@
-import { CogIcon, GiftIcon, HeartIcon, UsersIcon } from '@heroicons/react/outline';
+import { useAuth } from '@components/providers';
+import { CogIcon, GiftIcon, HeartIcon, KeyIcon, UsersIcon } from '@heroicons/react/outline';
 import { Skeleton } from '@mantine/core';
 import { useOrganization } from '@myhearty/hooks';
 import { Menu, MenuItem } from '@myhearty/ui/menu';
 import { useRouter } from 'next/router';
 
 export function NavMenu() {
+  const auth = useAuth();
   const { organization } = useOrganization();
 
   if (!organization) {
     return (
       <div className="flex w-full flex-col gap-2 p-2">
-        {[...Array(4)].map((_, i) => (
+        {[...Array(5)].map((_, i) => (
           <Skeleton key={i} className="h-8 rounded" />
         ))}
       </div>
@@ -35,6 +37,11 @@ export function NavMenu() {
           <NavItem href="/settings" icon={CogIcon}>
             Settings
           </NavItem>
+          {auth.member.admin && (
+            <NavItem href="/api-keys" icon={KeyIcon}>
+              API Keys
+            </NavItem>
+          )}
         </Menu>
       </div>
     </div>
