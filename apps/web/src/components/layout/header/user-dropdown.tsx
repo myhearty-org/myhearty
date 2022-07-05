@@ -27,6 +27,11 @@ export function UserDropdown() {
       }
       placement="end"
       position="bottom">
+      <Menu.Item>
+        Logged in as <br />
+        <strong className="truncate font-medium leading-normal">{auth.user.email}</strong>
+      </Menu.Item>
+      <Divider />
       <Menu.Item component={NextLink} href="/user/donations">
         Your donations
       </Menu.Item>

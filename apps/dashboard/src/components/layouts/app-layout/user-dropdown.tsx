@@ -1,6 +1,6 @@
 import { useAuth } from '@components/providers';
 import { ChevronDownIcon } from '@heroicons/react/solid';
-import { Menu } from '@mantine/core';
+import { Divider, Menu } from '@mantine/core';
 import { useOrganization } from '@myhearty/hooks';
 import { Avatar } from '@myhearty/ui/avatar';
 import { handleRequest } from '@myhearty/utils/api';
@@ -19,7 +19,7 @@ export function UserDropdown() {
 
   return (
     <Menu
-      size={100}
+      size={220}
       transition="pop-top-right"
       control={
         <button className="group flex cursor-pointer appearance-none items-center">
@@ -31,6 +31,11 @@ export function UserDropdown() {
       }
       placement="end"
       position="bottom">
+      <Menu.Item>
+        Logged in as <br />
+        <strong className="truncate font-medium leading-normal">{auth.member.email}</strong>
+      </Menu.Item>
+      <Divider />
       <Menu.Item component="a" onClick={() => handleRequest(logOut)}>
         Log out
       </Menu.Item>
