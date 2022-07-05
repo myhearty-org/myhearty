@@ -11,6 +11,7 @@ import {
 } from '@myhearty/lib/types';
 import { DateInput, Form, Label, RadioButton, TextInput } from '@myhearty/ui/form';
 import { showToast } from '@myhearty/utils/show-toast';
+import intervalToDuration from 'date-fns/intervalToDuration';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
@@ -112,6 +113,17 @@ function UpdateVolunteerApplicationModal({
         name="birthDate"
         label="Date of Birth"
         defaultValue={volunteerApplication.volunteer?.birthDate}
+        readOnly
+      />
+      <TextInput
+        name="age"
+        label="Age"
+        defaultValue={
+          intervalToDuration({
+            start: new Date(volunteerApplication.volunteer?.birthDate!),
+            end: new Date(),
+          }).years
+        }
         readOnly
       />
       <TextInput
