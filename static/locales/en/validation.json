@@ -1,6 +1,8 @@
 {
   "codes": {
     "alreadyExists": "already exists.",
+    "charitableAidApplicationClosed": "Charitable aid application is closed",
+    "charitableAidApplicationProcessed": "Charitable aid application is currently being processed",
     "invalid": "is invalid.",
     "mustBeAfterCurrentDatetime": "must be later than now.",
     "mustBeAfterStartDatetime": "must be later than start date and time.",
