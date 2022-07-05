@@ -34,7 +34,7 @@ export function NavMenu() {
           <NavItem href="/aids" icon={HeartIcon}>
             Charitable Aids
           </NavItem>
-          <NavItem href="/settings" icon={CogIcon}>
+          <NavItem href="/settings/members" icon={CogIcon}>
             Settings
           </NavItem>
           {auth.member.admin && (
@@ -56,7 +56,7 @@ type NavItemProps = {
 
 function NavItem({ href, icon, children }: NavItemProps) {
   const router = useRouter();
-  const isActive = router.asPath.split('/')[1] === href.slice(1);
+  const isActive = router.asPath.split('/')[1] === href.split('/')[1];
 
   return (
     <MenuItem href={href} icon={icon} isActive={isActive} backgroundColor="bg-gray-100">
