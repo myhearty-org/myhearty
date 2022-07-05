@@ -27,7 +27,7 @@ export function UserDropdown() {
       }
       placement="end"
       position="bottom">
-      <Menu.Item>
+      <Menu.Item className="pointer-events-none">
         Logged in as <br />
         <strong className="truncate font-medium leading-normal">{auth.user.email}</strong>
       </Menu.Item>
