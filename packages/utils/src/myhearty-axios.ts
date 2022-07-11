@@ -91,6 +91,8 @@ axiosWithAuth.interceptors.response.use(
   function (error) {
     if (error.response.status === 401 || error.response.status === 403) {
       window.localStorage.removeItem('user');
+      window.localStorage.removeItem('member');
+      
       window.location.href = '/login';
     } else {
       error = camelizeError(error);
