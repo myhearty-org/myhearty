@@ -17,7 +17,7 @@
 
 ## About The Project
 
-MyHearty is a one-stop, centralized charity website for people to fundraise, donate, volunteer and aid for individuals, organizations and lives in need. The motivation behind this project stems from the idea of integrating fundraising, donation, volunteering and aiding components into a single solution with API access. This project aims to connect various parties that are involved in charity via a centralized platform and provide open charity data via an API.
+MyHearty is a one-stop, centralized charity website for people to fundraise, donate, volunteer and apply for aids. The motivation behind this project stems from the idea of integrating fundraising, donation, volunteering and aiding functions into a single platform with API access. This project aims to connect various parties that are involved in charity via a centralized platform and provide open charity data via an API.
 
 ### Features
 
