@@ -47,7 +47,11 @@ export function SignupForm() {
       />
       {successMessage && <Alert severity="success" title={successMessage} />}
       {errorMessage && <Alert severity="error" title={errorMessage} />}
-      <Button fullWidth type="submit" loading={formState.isSubmitting}>
+      <Button
+        fullWidth
+        type="submit"
+        disabled={process.env.NEXT_PUBLIC_DEMO_MODE === 'true'}
+        loading={formState.isSubmitting}>
         Sign Up
       </Button>
     </Form>

@@ -1,5 +1,6 @@
 import { SignupForm } from '@components/auth';
 import { NoAuth } from '@components/helpers';
+import { Alert } from '@myhearty/ui/alert';
 import { VerticalLogoText } from '@myhearty/ui/logos';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
@@ -13,9 +14,12 @@ export default function SignupPage() {
       <NoAuth>
         <div className="px-4 sm:px-6 lg:grid lg:grid-cols-3">
           <div className="flex w-full flex-col justify-center gap-6 lg:sticky lg:inset-y-0 lg:col-span-1 lg:h-screen">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col items-center gap-2">
               <VerticalLogoText />
               <h2 className="text-center text-2xl font-bold text-gray-900">Create an organization account</h2>
+              {process.env.NEXT_PUBLIC_DEMO_MODE === 'true' && (
+                <Alert severity="warning" title="New account signup is currently disabled." />
+              )}
             </div>
             <LoginLink />
           </div>

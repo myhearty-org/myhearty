@@ -39,10 +39,17 @@ export function LoginForm({ afterLogin }: LoginFormProps) {
 
   return (
     <Form className="flex flex-col gap-6" form={form} handleSubmit={logIn}>
-      <EmailInput id="email" label="Email Address" required {...register('email')} />
+      <EmailInput
+        id="email"
+        label="Email Address"
+        defaultValue={process.env.NEXT_PUBLIC_DEMO_MODE === 'true' ? 'admin1@example.com' : ''}
+        required
+        {...register('email')}
+      />
       <PasswordInput
         id="current-password"
         label="Password"
+        defaultValue={process.env.NEXT_PUBLIC_DEMO_MODE === 'true' ? 'password' : ''}
         autoComplete="current-password"
         required
         {...register('password')}

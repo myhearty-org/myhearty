@@ -1,5 +1,6 @@
 import { SignupForm } from '@components/auth';
 import { NoAuth } from '@components/helpers';
+import { Alert } from '@myhearty/ui/alert';
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 
@@ -15,6 +16,9 @@ export default function SignupPage() {
               <br />
               Create a new account
             </h2>
+            {process.env.NEXT_PUBLIC_DEMO_MODE === 'true' && (
+              <Alert severity="warning" title="New account signup is currently disabled." />
+            )}
             <SignupForm />
             <LoginLink />
           </div>

@@ -122,7 +122,10 @@ export function SignupForm() {
           </div>
         </div>
         <div className="flex justify-end">
-          <Button type="submit" loading={isSubmitting}>
+          <Button
+            type="submit"
+            disabled={process.env.NEXT_PUBLIC_DEMO_MODE === 'true'}
+            loading={isSubmitting}>
             Sign Up
           </Button>
         </div>
